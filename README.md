@@ -251,4 +251,4 @@ Once Use Case 1 is working end-to-end, move on to Use Case 2, then Use Case 3.
 
 ## Background
 
-This project explores LLM techniques through EV charging demand forecasting — a domain with 10 years of real charging session data from State College, PA. The eight synthetic datasets here are designed for learning and prototyping; Use Case 8 in particular is ready to be replicated with real data once the modeling pipeline is established.
+This project explores LLM techniques through EV charging demand forecasting — a domain with 10 years of real charging session data from Kansas City, Missouri. The eight synthetic datasets here are designed for learning and prototyping; Use Case 8 in particular is ready to be replicated with real data once the modeling pipeline is established.
