@@ -106,3 +106,17 @@ Use Case 3: Full prediction + explanation system     ← dataset3
 ## Context
 
 This project was set up to learn LLM techniques through a domain-familiar problem (EV charging demand forecasting). The three synthetic datasets were generated to support hands-on experimentation across the three use cases above.
+
+---
+
+## Next Session — Starting Point
+
+Pick up from **Use Case 1**, end-to-end from scratch:
+
+1. **Connect to remote server** — SSH into the compute server, verify GPU availability
+2. **Set up Python environment** — create a conda/venv environment, install dependencies (PyTorch, Chronos or TimesFM, pandas, etc.)
+3. **Understand the mechanics** — walk through how numeric sequences are tokenized and embedded in a time series LLM
+4. **Run the code** — train or run inference on `dataset1_timeseries.csv`
+5. **See the predictions** — visualize predicted vs. actual demand for the next 6 hours
+
+Once Use Case 1 is working end-to-end, move on to Use Case 2, then Use Case 3.
