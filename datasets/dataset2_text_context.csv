@@ -1,0 +1,365 @@
+date,total_demand,peak_demand,avg_temp,is_weekend,month,event_name,event_type,context_text,next_day_demand
+2023-01-01,732.53,55.6,32.47083333333333,1,1,New Year's Day,holiday,Date: 2023-01-01. Winter weekend. Average temperature: 32.5°F (cold). Public holiday today. Reduced commercial activity; residential demand dominant.,1562.26
+2023-01-02,1562.26,111.05,32.5125,0,1,,none,Date: 2023-01-02. Winter weekday. Average temperature: 32.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1566.09
+2023-01-03,1566.09,105.65,33.425000000000004,0,1,,none,Date: 2023-01-03. Winter weekday. Average temperature: 33.4°F (cold). Standard operations. Weather-driven variation expected.,1585.42
+2023-01-04,1585.42,106.35,32.666666666666664,0,1,,none,Date: 2023-01-04. Winter weekday. Average temperature: 32.7°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1576.79
+2023-01-05,1576.79,108.85,31.491666666666664,0,1,,none,Date: 2023-01-05. Winter weekday. Average temperature: 31.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1542.19
+2023-01-06,1542.19,102.29,34.94583333333333,0,1,,none,Date: 2023-01-06. Winter weekday. Average temperature: 34.9°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1188.27
+2023-01-07,1188.27,87.44,34.449999999999996,1,1,,none,Date: 2023-01-07. Winter weekend. Average temperature: 34.4°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1117.97
+2023-01-08,1117.97,80.38,33.44166666666667,1,1,,none,Date: 2023-01-08. Winter weekend. Average temperature: 33.4°F (cold). Standard operations. Weather-driven variation expected.,1501.46
+2023-01-09,1501.46,107.72,33.3125,0,1,,none,Date: 2023-01-09. Winter weekday. Average temperature: 33.3°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1547.95
+2023-01-10,1547.95,111.02,33.949999999999996,0,1,,none,Date: 2023-01-10. Winter weekday. Average temperature: 33.9°F (cold). Standard operations. Weather-driven variation expected.,1573.01
+2023-01-11,1573.01,102.75,32.68333333333333,0,1,,none,Date: 2023-01-11. Winter weekday. Average temperature: 32.7°F (cold). Standard operations. Weather-driven variation expected.,1522.29
+2023-01-12,1522.29,104.86,33.43333333333333,0,1,,none,Date: 2023-01-12. Winter weekday. Average temperature: 33.4°F (cold). Standard operations. Weather-driven variation expected.,1586.4
+2023-01-13,1586.4,108.94,32.59583333333333,0,1,,none,Date: 2023-01-13. Winter weekday. Average temperature: 32.6°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1196.75
+2023-01-14,1196.75,89.02,32.49583333333333,1,1,,none,Date: 2023-01-14. Winter weekend. Average temperature: 32.5°F (cold). Standard operations. Weather-driven variation expected.,1232.18
+2023-01-15,1232.18,81.78,33.699999999999996,1,1,,none,Date: 2023-01-15. Winter weekend. Average temperature: 33.7°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1007.0
+2023-01-16,1007.0,72.98,33.62916666666667,0,1,MLK Day,holiday,Date: 2023-01-16. Winter weekday. Average temperature: 33.6°F (cold). Public holiday today. Reduced commercial activity; residential demand dominant.,1572.2
+2023-01-17,1572.2,104.57,34.479166666666664,0,1,,none,Date: 2023-01-17. Winter weekday. Average temperature: 34.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1577.22
+2023-01-18,1577.22,105.45,32.34583333333333,0,1,,none,Date: 2023-01-18. Winter weekday. Average temperature: 32.3°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1609.76
+2023-01-19,1609.76,103.18,33.50416666666667,0,1,,none,Date: 2023-01-19. Winter weekday. Average temperature: 33.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1589.18
+2023-01-20,1589.18,109.18,30.45,0,1,,none,Date: 2023-01-20. Winter weekday. Average temperature: 30.4°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1166.94
+2023-01-21,1166.94,84.05,34.395833333333336,1,1,,none,Date: 2023-01-21. Winter weekend. Average temperature: 34.4°F (cold). Standard operations. Weather-driven variation expected.,1159.49
+2023-01-22,1159.49,81.86,33.5625,1,1,,none,Date: 2023-01-22. Winter weekend. Average temperature: 33.6°F (cold). Standard operations. Weather-driven variation expected.,1578.6
+2023-01-23,1578.6,104.85,31.525000000000002,0,1,,none,Date: 2023-01-23. Winter weekday. Average temperature: 31.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1584.64
+2023-01-24,1584.64,107.21,35.229166666666664,0,1,,none,Date: 2023-01-24. Winter weekday. Average temperature: 35.2°F (cold). Standard operations. Weather-driven variation expected.,1572.36
+2023-01-25,1572.36,107.25,34.92916666666667,0,1,,none,Date: 2023-01-25. Winter weekday. Average temperature: 34.9°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1523.98
+2023-01-26,1523.98,105.86,33.84166666666667,0,1,,none,Date: 2023-01-26. Winter weekday. Average temperature: 33.8°F (cold). Standard operations. Weather-driven variation expected.,1548.05
+2023-01-27,1548.05,109.45,34.1625,0,1,,none,Date: 2023-01-27. Winter weekday. Average temperature: 34.2°F (cold). Standard operations. Weather-driven variation expected.,1187.48
+2023-01-28,1187.48,81.16,35.666666666666664,1,1,,none,Date: 2023-01-28. Winter weekend. Average temperature: 35.7°F (cold). Standard operations. Weather-driven variation expected.,1225.94
+2023-01-29,1225.94,82.46,31.308333333333334,1,1,,none,Date: 2023-01-29. Winter weekend. Average temperature: 31.3°F (cold). Standard operations. Weather-driven variation expected.,1543.78
+2023-01-30,1543.78,103.0,30.675,0,1,,none,Date: 2023-01-30. Winter weekday. Average temperature: 30.7°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1555.84
+2023-01-31,1555.84,105.49,33.6875,0,1,,none,Date: 2023-01-31. Winter weekday. Average temperature: 33.7°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1542.17
+2023-02-01,1542.17,104.12,43.458333333333336,0,2,,none,Date: 2023-02-01. Winter weekday. Average temperature: 43.5°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1562.3700000000001
+2023-02-02,1562.3700000000001,105.6,42.104166666666664,0,2,,none,Date: 2023-02-02. Winter weekday. Average temperature: 42.1°F (cool). Standard operations. Weather-driven variation expected.,1547.07
+2023-02-03,1547.07,105.06,42.65416666666667,0,2,,none,Date: 2023-02-03. Winter weekday. Average temperature: 42.7°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1151.78
+2023-02-04,1151.78,82.06,42.6625,1,2,,none,Date: 2023-02-04. Winter weekend. Average temperature: 42.7°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1172.0
+2023-02-05,1172.0,81.55,41.59583333333333,1,2,,none,Date: 2023-02-05. Winter weekend. Average temperature: 41.6°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1540.3799999999999
+2023-02-06,1540.3799999999999,105.09,43.72083333333333,0,2,,none,Date: 2023-02-06. Winter weekday. Average temperature: 43.7°F (cool). Standard operations. Weather-driven variation expected.,1590.24
+2023-02-07,1590.24,112.78,42.50833333333333,0,2,,none,Date: 2023-02-07. Winter weekday. Average temperature: 42.5°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1510.78
+2023-02-08,1510.78,106.24,44.55833333333334,0,2,,none,Date: 2023-02-08. Winter weekday. Average temperature: 44.6°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1550.47
+2023-02-09,1550.47,104.9,41.108333333333334,0,2,,none,Date: 2023-02-09. Winter weekday. Average temperature: 41.1°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1563.13
+2023-02-10,1563.13,100.57,43.270833333333336,0,2,,none,Date: 2023-02-10. Winter weekday. Average temperature: 43.3°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1189.13
+2023-02-11,1189.13,81.34,41.074999999999996,1,2,,none,Date: 2023-02-11. Winter weekend. Average temperature: 41.1°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1177.85
+2023-02-12,1177.85,78.3,41.93333333333334,1,2,,none,Date: 2023-02-12. Winter weekend. Average temperature: 41.9°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1559.8
+2023-02-13,1559.8,99.34,41.99583333333333,0,2,,none,Date: 2023-02-13. Winter weekday. Average temperature: 42.0°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1584.48
+2023-02-14,1584.48,111.82,45.37916666666666,0,2,Valentine's Day,minor_event,Date: 2023-02-14. Winter weekday. Average temperature: 45.4°F (cool). Minor community event. Slight uptick in local activity.,1524.9099999999999
+2023-02-15,1524.9099999999999,106.8,41.358333333333334,0,2,,none,Date: 2023-02-15. Winter weekday. Average temperature: 41.4°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1561.22
+2023-02-16,1561.22,105.92,42.574999999999996,0,2,,none,Date: 2023-02-16. Winter weekday. Average temperature: 42.6°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1534.12
+2023-02-17,1534.12,108.58,42.479166666666664,0,2,,none,Date: 2023-02-17. Winter weekday. Average temperature: 42.5°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1141.24
+2023-02-18,1141.24,82.13,43.61666666666667,1,2,,none,Date: 2023-02-18. Winter weekend. Average temperature: 43.6°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1145.49
+2023-02-19,1145.49,80.1,41.43333333333333,1,2,,none,Date: 2023-02-19. Winter weekend. Average temperature: 41.4°F (cool). Standard operations. Weather-driven variation expected.,1534.76
+2023-02-20,1534.76,107.8,43.8125,0,2,,none,Date: 2023-02-20. Winter weekday. Average temperature: 43.8°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1506.16
+2023-02-21,1506.16,98.62,42.012499999999996,0,2,,none,Date: 2023-02-21. Winter weekday. Average temperature: 42.0°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1552.38
+2023-02-22,1552.38,102.34,43.07083333333333,0,2,,none,Date: 2023-02-22. Winter weekday. Average temperature: 43.1°F (cool). Standard operations. Weather-driven variation expected.,1592.54
+2023-02-23,1592.54,107.21,42.020833333333336,0,2,,none,Date: 2023-02-23. Winter weekday. Average temperature: 42.0°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1568.09
+2023-02-24,1568.09,108.32,43.8125,0,2,,none,Date: 2023-02-24. Winter weekday. Average temperature: 43.8°F (cool). Standard operations. Weather-driven variation expected.,1151.7
+2023-02-25,1151.7,87.39,43.262499999999996,1,2,,none,Date: 2023-02-25. Winter weekend. Average temperature: 43.3°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1143.37
+2023-02-26,1143.37,78.83,43.90833333333333,1,2,,none,Date: 2023-02-26. Winter weekend. Average temperature: 43.9°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1568.3
+2023-02-27,1568.3,113.03,41.17916666666667,0,2,,none,Date: 2023-02-27. Winter weekday. Average temperature: 41.2°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1603.57
+2023-02-28,1603.57,114.81,41.079166666666666,0,2,,none,Date: 2023-02-28. Winter weekday. Average temperature: 41.1°F (cool). Standard operations. Weather-driven variation expected.,1753.95
+2023-03-01,1753.95,117.2,54.80416666666667,0,3,,none,Date: 2023-03-01. Spring weekday. Average temperature: 54.8°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1819.8700000000001
+2023-03-02,1819.8700000000001,124.05,56.06666666666666,0,3,,none,Date: 2023-03-02. Spring weekday. Average temperature: 56.1°F (cool). Standard operations. Weather-driven variation expected.,1713.01
+2023-03-03,1713.01,121.89,53.75416666666666,0,3,,none,Date: 2023-03-03. Spring weekday. Average temperature: 53.8°F (cool). Standard operations. Weather-driven variation expected.,1298.51
+2023-03-04,1298.51,94.95,52.80833333333334,1,3,,none,Date: 2023-03-04. Spring weekend. Average temperature: 52.8°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1312.78
+2023-03-05,1312.78,92.84,54.25416666666666,1,3,,none,Date: 2023-03-05. Spring weekend. Average temperature: 54.3°F (cool). Standard operations. Weather-driven variation expected.,1789.72
+2023-03-06,1789.72,124.47,54.94583333333333,0,3,,none,Date: 2023-03-06. Spring weekday. Average temperature: 54.9°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1745.53
+2023-03-07,1745.53,119.65,53.76666666666667,0,3,,none,Date: 2023-03-07. Spring weekday. Average temperature: 53.8°F (cool). Standard operations. Weather-driven variation expected.,1800.11
+2023-03-08,1800.11,122.53,52.395833333333336,0,3,,none,Date: 2023-03-08. Spring weekday. Average temperature: 52.4°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1754.47
+2023-03-09,1754.47,126.55,56.35,0,3,,none,Date: 2023-03-09. Spring weekday. Average temperature: 56.4°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1747.72
+2023-03-10,1747.72,116.06,52.42083333333333,0,3,,none,Date: 2023-03-10. Spring weekday. Average temperature: 52.4°F (cool). Standard operations. Weather-driven variation expected.,1318.3
+2023-03-11,1318.3,88.83,55.208333333333336,1,3,,none,Date: 2023-03-11. Spring weekend. Average temperature: 55.2°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1272.43
+2023-03-12,1272.43,91.13,55.708333333333336,1,3,,none,Date: 2023-03-12. Spring weekend. Average temperature: 55.7°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1778.93
+2023-03-13,1778.93,118.38,52.229166666666664,0,3,,none,Date: 2023-03-13. Spring weekday. Average temperature: 52.2°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1736.48
+2023-03-14,1736.48,116.49,53.85833333333333,0,3,,none,Date: 2023-03-14. Spring weekday. Average temperature: 53.9°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1759.74
+2023-03-15,1759.74,121.06,55.52916666666667,0,3,,none,Date: 2023-03-15. Spring weekday. Average temperature: 55.5°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1758.97
+2023-03-16,1758.97,125.81,56.37083333333334,0,3,,none,Date: 2023-03-16. Spring weekday. Average temperature: 56.4°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1785.9
+2023-03-17,1785.9,121.7,54.00833333333333,0,3,,none,Date: 2023-03-17. Spring weekday. Average temperature: 54.0°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1319.9
+2023-03-18,1319.9,89.67,54.8375,1,3,St. Patrick's Day,minor_event,Date: 2023-03-18. Spring weekend. Average temperature: 54.8°F (cool). Local event may cause small increase in traffic and demand.,1346.26
+2023-03-19,1346.26,88.97,54.65833333333333,1,3,,none,Date: 2023-03-19. Spring weekend. Average temperature: 54.7°F (cool). Standard operations. Weather-driven variation expected.,1765.71
+2023-03-20,1765.71,122.64,51.645833333333336,0,3,,none,Date: 2023-03-20. Spring weekday. Average temperature: 51.6°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1772.89
+2023-03-21,1772.89,120.93,54.50833333333333,0,3,,none,Date: 2023-03-21. Spring weekday. Average temperature: 54.5°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1779.03
+2023-03-22,1779.03,121.14,55.30416666666667,0,3,,none,Date: 2023-03-22. Spring weekday. Average temperature: 55.3°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1787.56
+2023-03-23,1787.56,119.8,54.51666666666667,0,3,,none,Date: 2023-03-23. Spring weekday. Average temperature: 54.5°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1765.25
+2023-03-24,1765.25,122.84,56.14166666666667,0,3,,none,Date: 2023-03-24. Spring weekday. Average temperature: 56.1°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1317.3
+2023-03-25,1317.3,88.91,55.25833333333333,1,3,,none,Date: 2023-03-25. Spring weekend. Average temperature: 55.3°F (cool). Standard operations. Weather-driven variation expected.,1325.75
+2023-03-26,1325.75,89.5,54.73333333333333,1,3,,none,Date: 2023-03-26. Spring weekend. Average temperature: 54.7°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1776.17
+2023-03-27,1776.17,123.35,56.475,0,3,,none,Date: 2023-03-27. Spring weekday. Average temperature: 56.5°F (cool). Standard operations. Weather-driven variation expected.,1777.32
+2023-03-28,1777.32,119.17,55.49583333333334,0,3,,none,Date: 2023-03-28. Spring weekday. Average temperature: 55.5°F (cool). Standard operations. Weather-driven variation expected.,1731.01
+2023-03-29,1731.01,120.46,53.05416666666667,0,3,,none,Date: 2023-03-29. Spring weekday. Average temperature: 53.1°F (cool). Standard operations. Weather-driven variation expected.,1727.71
+2023-03-30,1727.71,123.7,54.37083333333334,0,3,,none,Date: 2023-03-30. Spring weekday. Average temperature: 54.4°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1778.35
+2023-03-31,1778.35,120.15,53.925000000000004,0,3,,none,Date: 2023-03-31. Spring weekday. Average temperature: 53.9°F (cool). Standard operations. Weather-driven variation expected.,1296.13
+2023-04-01,1296.13,91.15,69.27083333333333,1,4,,none,Date: 2023-04-01. Spring weekend. Average temperature: 69.3°F (warm). Standard operations. Weather-driven variation expected.,1354.07
+2023-04-02,1354.07,90.88,65.99166666666666,1,4,,none,Date: 2023-04-02. Spring weekend. Average temperature: 66.0°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1797.6
+2023-04-03,1797.6,122.78,65.625,0,4,,none,Date: 2023-04-03. Spring weekday. Average temperature: 65.6°F (warm). Standard operations. Weather-driven variation expected.,1741.05
+2023-04-04,1741.05,119.08,66.88333333333334,0,4,,none,Date: 2023-04-04. Spring weekday. Average temperature: 66.9°F (warm). Standard operations. Weather-driven variation expected.,1714.32
+2023-04-05,1714.32,114.57,68.02916666666667,0,4,,none,Date: 2023-04-05. Spring weekday. Average temperature: 68.0°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1704.6299999999999
+2023-04-06,1704.6299999999999,117.74,69.0125,0,4,,none,Date: 2023-04-06. Spring weekday. Average temperature: 69.0°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1753.46
+2023-04-07,1753.46,122.02,63.88333333333333,0,4,,none,Date: 2023-04-07. Spring weekday. Average temperature: 63.9°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1676.79
+2023-04-08,1676.79,118.0,69.67916666666666,1,4,Spring Game,psu_game,Date: 2023-04-08. Spring weekend. Average temperature: 69.7°F (warm). Football game at PSU today. Tailgating and fan activity throughout the day.,1312.8799999999999
+2023-04-09,1312.8799999999999,92.01,67.80416666666666,1,4,,none,Date: 2023-04-09. Spring weekend. Average temperature: 67.8°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1814.71
+2023-04-10,1814.71,116.52,68.0625,0,4,,none,Date: 2023-04-10. Spring weekday. Average temperature: 68.1°F (warm). Standard operations. Weather-driven variation expected.,1754.03
+2023-04-11,1754.03,122.9,67.59583333333333,0,4,,none,Date: 2023-04-11. Spring weekday. Average temperature: 67.6°F (warm). Standard operations. Weather-driven variation expected.,1772.32
+2023-04-12,1772.32,113.43,66.52499999999999,0,4,,none,Date: 2023-04-12. Spring weekday. Average temperature: 66.5°F (warm). Standard operations. Weather-driven variation expected.,1759.49
+2023-04-13,1759.49,123.64,68.19166666666666,0,4,,none,Date: 2023-04-13. Spring weekday. Average temperature: 68.2°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1767.32
+2023-04-14,1767.32,118.22,68.25833333333334,0,4,,none,Date: 2023-04-14. Spring weekday. Average temperature: 68.3°F (warm). Standard operations. Weather-driven variation expected.,1323.03
+2023-04-15,1323.03,93.52,66.10833333333333,1,4,,none,Date: 2023-04-15. Spring weekend. Average temperature: 66.1°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1287.96
+2023-04-16,1287.96,90.5,65.33333333333333,1,4,,none,Date: 2023-04-16. Spring weekend. Average temperature: 65.3°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1773.68
+2023-04-17,1773.68,118.61,67.5625,0,4,,none,Date: 2023-04-17. Spring weekday. Average temperature: 67.6°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1736.41
+2023-04-18,1736.41,120.98,70.08749999999999,0,4,,none,Date: 2023-04-18. Spring weekday. Average temperature: 70.1°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1755.2
+2023-04-19,1755.2,116.59,66.65833333333333,0,4,,none,Date: 2023-04-19. Spring weekday. Average temperature: 66.7°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1738.49
+2023-04-20,1738.49,114.41,66.8875,0,4,,none,Date: 2023-04-20. Spring weekday. Average temperature: 66.9°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1802.62
+2023-04-21,1802.62,116.19,65.89166666666667,0,4,,none,Date: 2023-04-21. Spring weekday. Average temperature: 65.9°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1301.47
+2023-04-22,1301.47,89.84,66.425,1,4,,none,Date: 2023-04-22. Spring weekend. Average temperature: 66.4°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1282.31
+2023-04-23,1282.31,86.97,69.79583333333333,1,4,,none,Date: 2023-04-23. Spring weekend. Average temperature: 69.8°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1754.15
+2023-04-24,1754.15,123.59,65.80833333333334,0,4,,none,Date: 2023-04-24. Spring weekday. Average temperature: 65.8°F (warm). Standard operations. Weather-driven variation expected.,1781.78
+2023-04-25,1781.78,125.39,70.66250000000001,0,4,,none,Date: 2023-04-25. Spring weekday. Average temperature: 70.7°F (warm). Standard operations. Weather-driven variation expected.,1765.05
+2023-04-26,1765.05,114.18,67.175,0,4,,none,Date: 2023-04-26. Spring weekday. Average temperature: 67.2°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1746.57
+2023-04-27,1746.57,119.7,67.82916666666667,0,4,,none,Date: 2023-04-27. Spring weekday. Average temperature: 67.8°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1774.3899999999999
+2023-04-28,1774.3899999999999,120.13,66.25,0,4,,none,Date: 2023-04-28. Spring weekday. Average temperature: 66.2°F (warm). Standard operations. Weather-driven variation expected.,1328.54
+2023-04-29,1328.54,94.23,67.02083333333333,1,4,,none,Date: 2023-04-29. Spring weekend. Average temperature: 67.0°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1292.79
+2023-04-30,1292.79,84.5,68.22083333333333,1,4,,none,Date: 2023-04-30. Spring weekend. Average temperature: 68.2°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1783.08
+2023-05-01,1783.08,121.88,78.66666666666667,0,5,,none,Date: 2023-05-01. Spring weekday. Average temperature: 78.7°F (hot). Standard operations. Weather-driven variation expected.,1747.91
+2023-05-02,1747.91,121.18,77.575,0,5,,none,Date: 2023-05-02. Spring weekday. Average temperature: 77.6°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1732.66
+2023-05-03,1732.66,117.94,77.55833333333334,0,5,,none,Date: 2023-05-03. Spring weekday. Average temperature: 77.6°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1743.55
+2023-05-04,1743.55,119.94,77.05,0,5,,none,Date: 2023-05-04. Spring weekday. Average temperature: 77.0°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1731.58
+2023-05-05,1731.58,116.02,75.26666666666667,0,5,,none,Date: 2023-05-05. Spring weekday. Average temperature: 75.3°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1524.34
+2023-05-06,1524.34,104.5,78.03333333333333,1,5,Graduation Weekend,major_event,Date: 2023-05-06. Spring weekend. Average temperature: 78.0°F (hot). Large campus event taking place. Elevated foot traffic and activity expected.,1352.73
+2023-05-07,1352.73,93.34,76.47083333333333,1,5,,none,Date: 2023-05-07. Spring weekend. Average temperature: 76.5°F (hot). Standard operations. Weather-driven variation expected.,1782.55
+2023-05-08,1782.55,117.28,77.74166666666666,0,5,,none,Date: 2023-05-08. Spring weekday. Average temperature: 77.7°F (hot). Standard operations. Weather-driven variation expected.,1747.59
+2023-05-09,1747.59,123.22,76.925,0,5,,none,Date: 2023-05-09. Spring weekday. Average temperature: 76.9°F (hot). Standard operations. Weather-driven variation expected.,1774.47
+2023-05-10,1774.47,125.16,76.8,0,5,,none,Date: 2023-05-10. Spring weekday. Average temperature: 76.8°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1778.89
+2023-05-11,1778.89,120.95,78.57083333333334,0,5,,none,Date: 2023-05-11. Spring weekday. Average temperature: 78.6°F (hot). Standard operations. Weather-driven variation expected.,1758.25
+2023-05-12,1758.25,123.16,77.65833333333333,0,5,,none,Date: 2023-05-12. Spring weekday. Average temperature: 77.7°F (hot). Standard operations. Weather-driven variation expected.,1310.81
+2023-05-13,1310.81,89.85,75.11666666666666,1,5,,none,Date: 2023-05-13. Spring weekend. Average temperature: 75.1°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1309.16
+2023-05-14,1309.16,98.22,77.33333333333333,1,5,,none,Date: 2023-05-14. Spring weekend. Average temperature: 77.3°F (hot). Standard operations. Weather-driven variation expected.,1731.97
+2023-05-15,1731.97,119.01,78.37916666666666,0,5,,none,Date: 2023-05-15. Spring weekday. Average temperature: 78.4°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1777.18
+2023-05-16,1777.18,113.78,77.10416666666667,0,5,,none,Date: 2023-05-16. Spring weekday. Average temperature: 77.1°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1807.21
+2023-05-17,1807.21,117.34,77.19583333333334,0,5,,none,Date: 2023-05-17. Spring weekday. Average temperature: 77.2°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1769.31
+2023-05-18,1769.31,124.03,76.78333333333333,0,5,,none,Date: 2023-05-18. Spring weekday. Average temperature: 76.8°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1781.92
+2023-05-19,1781.92,117.37,74.39583333333333,0,5,,none,Date: 2023-05-19. Spring weekday. Average temperature: 74.4°F (warm). Standard operations. Weather-driven variation expected.,1338.99
+2023-05-20,1338.99,95.53,77.31666666666666,1,5,,none,Date: 2023-05-20. Spring weekend. Average temperature: 77.3°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1346.93
+2023-05-21,1346.93,93.99,75.14583333333333,1,5,,none,Date: 2023-05-21. Spring weekend. Average temperature: 75.1°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1749.33
+2023-05-22,1749.33,115.3,78.25416666666666,0,5,,none,Date: 2023-05-22. Spring weekday. Average temperature: 78.3°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1815.1399999999999
+2023-05-23,1815.1399999999999,122.58,76.93333333333334,0,5,,none,Date: 2023-05-23. Spring weekday. Average temperature: 76.9°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1791.3899999999999
+2023-05-24,1791.3899999999999,124.57,76.65833333333333,0,5,,none,Date: 2023-05-24. Spring weekday. Average temperature: 76.7°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1761.34
+2023-05-25,1761.34,125.68,76.15833333333333,0,5,,none,Date: 2023-05-25. Spring weekday. Average temperature: 76.2°F (hot). Standard operations. Weather-driven variation expected.,1751.96
+2023-05-26,1751.96,122.49,73.96249999999999,0,5,,none,Date: 2023-05-26. Spring weekday. Average temperature: 74.0°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1354.41
+2023-05-27,1354.41,91.84,74.1875,1,5,,none,Date: 2023-05-27. Spring weekend. Average temperature: 74.2°F (warm). Standard operations. Weather-driven variation expected.,1356.88
+2023-05-28,1356.88,96.43,76.71249999999999,1,5,,none,Date: 2023-05-28. Spring weekend. Average temperature: 76.7°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1752.82
+2023-05-29,1752.82,119.43,78.12916666666666,0,5,,none,Date: 2023-05-29. Spring weekday. Average temperature: 78.1°F (hot). Standard operations. Weather-driven variation expected.,1785.09
+2023-05-30,1785.09,118.44,77.82916666666667,0,5,,none,Date: 2023-05-30. Spring weekday. Average temperature: 77.8°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1754.3
+2023-05-31,1754.3,116.66,75.8875,0,5,,none,Date: 2023-05-31. Spring weekday. Average temperature: 75.9°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2057.7400000000002
+2023-06-01,2057.7400000000002,144.29,79.20833333333333,0,6,,none,Date: 2023-06-01. Summer weekday. Average temperature: 79.2°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2096.4
+2023-06-02,2096.4,138.41,78.2625,0,6,,none,Date: 2023-06-02. Summer weekday. Average temperature: 78.3°F (hot). Standard operations. Weather-driven variation expected.,1578.42
+2023-06-03,1578.42,113.19,79.8,1,6,,none,Date: 2023-06-03. Summer weekend. Average temperature: 79.8°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1547.47
+2023-06-04,1547.47,104.67,80.20416666666667,1,6,,none,Date: 2023-06-04. Summer weekend. Average temperature: 80.2°F (hot). Standard operations. Weather-driven variation expected.,2089.07
+2023-06-05,2089.07,144.92,80.375,0,6,,none,Date: 2023-06-05. Summer weekday. Average temperature: 80.4°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2101.03
+2023-06-06,2101.03,144.33,79.32083333333334,0,6,,none,Date: 2023-06-06. Summer weekday. Average temperature: 79.3°F (hot). Standard operations. Weather-driven variation expected.,2068.12
+2023-06-07,2068.12,143.86,80.3625,0,6,,none,Date: 2023-06-07. Summer weekday. Average temperature: 80.4°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2077.2799999999997
+2023-06-08,2077.2799999999997,151.72,80.87083333333334,0,6,,none,Date: 2023-06-08. Summer weekday. Average temperature: 80.9°F (hot). Standard operations. Weather-driven variation expected.,2067.92
+2023-06-09,2067.92,142.95,79.26666666666667,0,6,,none,Date: 2023-06-09. Summer weekday. Average temperature: 79.3°F (hot). Standard operations. Weather-driven variation expected.,1560.31
+2023-06-10,1560.31,105.67,79.29166666666667,1,6,,none,Date: 2023-06-10. Summer weekend. Average temperature: 79.3°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1555.65
+2023-06-11,1555.65,107.34,79.63333333333334,1,6,,none,Date: 2023-06-11. Summer weekend. Average temperature: 79.6°F (hot). Standard operations. Weather-driven variation expected.,2103.23
+2023-06-12,2103.23,142.85,80.44166666666666,0,6,,none,Date: 2023-06-12. Summer weekday. Average temperature: 80.4°F (hot). Standard operations. Weather-driven variation expected.,2049.98
+2023-06-13,2049.98,140.9,79.65833333333333,0,6,,none,Date: 2023-06-13. Summer weekday. Average temperature: 79.7°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2093.02
+2023-06-14,2093.02,143.51,80.34166666666667,0,6,,none,Date: 2023-06-14. Summer weekday. Average temperature: 80.3°F (hot). Standard operations. Weather-driven variation expected.,2073.27
+2023-06-15,2073.27,137.44,79.98333333333333,0,6,,none,Date: 2023-06-15. Summer weekday. Average temperature: 80.0°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2054.46
+2023-06-16,2054.46,141.74,79.13333333333334,0,6,,none,Date: 2023-06-16. Summer weekday. Average temperature: 79.1°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1589.48
+2023-06-17,1589.48,105.13,78.70416666666667,1,6,,none,Date: 2023-06-17. Summer weekend. Average temperature: 78.7°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1577.8500000000001
+2023-06-18,1577.8500000000001,113.75,79.9875,1,6,,none,Date: 2023-06-18. Summer weekend. Average temperature: 80.0°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2091.69
+2023-06-19,2091.69,136.63,79.65833333333333,0,6,,none,Date: 2023-06-19. Summer weekday. Average temperature: 79.7°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2093.83
+2023-06-20,2093.83,137.78,80.73333333333333,0,6,,none,Date: 2023-06-20. Summer weekday. Average temperature: 80.7°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2085.98
+2023-06-21,2085.98,141.89,79.68333333333334,0,6,,none,Date: 2023-06-21. Summer weekday. Average temperature: 79.7°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2057.14
+2023-06-22,2057.14,143.02,78.95416666666667,0,6,,none,Date: 2023-06-22. Summer weekday. Average temperature: 79.0°F (hot). Standard operations. Weather-driven variation expected.,2062.62
+2023-06-23,2062.62,141.16,81.02499999999999,0,6,,none,Date: 2023-06-23. Summer weekday. Average temperature: 81.0°F (hot). Standard operations. Weather-driven variation expected.,1573.01
+2023-06-24,1573.01,106.46,79.40833333333333,1,6,,none,Date: 2023-06-24. Summer weekend. Average temperature: 79.4°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1519.35
+2023-06-25,1519.35,101.77,79.46249999999999,1,6,,none,Date: 2023-06-25. Summer weekend. Average temperature: 79.5°F (hot). Standard operations. Weather-driven variation expected.,2105.9
+2023-06-26,2105.9,140.56,79.70833333333333,0,6,,none,Date: 2023-06-26. Summer weekday. Average temperature: 79.7°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2044.08
+2023-06-27,2044.08,144.37,79.9375,0,6,,none,Date: 2023-06-27. Summer weekday. Average temperature: 79.9°F (hot). Standard operations. Weather-driven variation expected.,2039.5
+2023-06-28,2039.5,135.85,79.91250000000001,0,6,,none,Date: 2023-06-28. Summer weekday. Average temperature: 79.9°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2053.15
+2023-06-29,2053.15,143.57,80.75,0,6,,none,Date: 2023-06-29. Summer weekday. Average temperature: 80.8°F (hot). Standard operations. Weather-driven variation expected.,2064.38
+2023-06-30,2064.38,138.09,80.9875,0,6,,none,Date: 2023-06-30. Summer weekday. Average temperature: 81.0°F (hot). Typical day. No special events. Demand follows seasonal baseline.,1584.24
+2023-07-01,1584.24,108.67,75.43333333333334,1,7,,none,Date: 2023-07-01. Summer weekend. Average temperature: 75.4°F (hot). Standard operations. Weather-driven variation expected.,1526.12
+2023-07-02,1526.12,104.59,77.74583333333332,1,7,,none,Date: 2023-07-02. Summer weekend. Average temperature: 77.7°F (hot). Standard operations. Weather-driven variation expected.,2090.4900000000002
+2023-07-03,2090.4900000000002,141.09,77.375,0,7,,none,Date: 2023-07-03. Summer weekday. Average temperature: 77.4°F (hot). Standard operations. Weather-driven variation expected.,1396.66
+2023-07-04,1396.66,95.76,75.925,0,7,Independence Day,holiday,Date: 2023-07-04. Summer weekday. Average temperature: 75.9°F (hot). Public holiday today. Reduced commercial activity; residential demand dominant.,2061.39
+2023-07-05,2061.39,143.66,76.34166666666667,0,7,,none,Date: 2023-07-05. Summer weekday. Average temperature: 76.3°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2097.03
+2023-07-06,2097.03,140.96,74.66250000000001,0,7,,none,Date: 2023-07-06. Summer weekday. Average temperature: 74.7°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2051.61
+2023-07-07,2051.61,143.35,76.57916666666667,0,7,,none,Date: 2023-07-07. Summer weekday. Average temperature: 76.6°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1592.15
+2023-07-08,1592.15,107.04,75.51666666666667,1,7,,none,Date: 2023-07-08. Summer weekend. Average temperature: 75.5°F (hot). Standard operations. Weather-driven variation expected.,1594.03
+2023-07-09,1594.03,108.06,76.125,1,7,,none,Date: 2023-07-09. Summer weekend. Average temperature: 76.1°F (hot). Standard operations. Weather-driven variation expected.,2140.19
+2023-07-10,2140.19,143.64,76.80416666666666,0,7,,none,Date: 2023-07-10. Summer weekday. Average temperature: 76.8°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2091.82
+2023-07-11,2091.82,144.6,75.72083333333333,0,7,,none,Date: 2023-07-11. Summer weekday. Average temperature: 75.7°F (hot). Standard operations. Weather-driven variation expected.,2064.62
+2023-07-12,2064.62,140.85,77.57083333333334,0,7,,none,Date: 2023-07-12. Summer weekday. Average temperature: 77.6°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2069.35
+2023-07-13,2069.35,141.59,76.71666666666667,0,7,,none,Date: 2023-07-13. Summer weekday. Average temperature: 76.7°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2069.87
+2023-07-14,2069.87,140.88,76.14999999999999,0,7,,none,Date: 2023-07-14. Summer weekday. Average temperature: 76.1°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1538.23
+2023-07-15,1538.23,101.4,77.48333333333333,1,7,,none,Date: 2023-07-15. Summer weekend. Average temperature: 77.5°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1557.98
+2023-07-16,1557.98,103.75,74.92916666666666,1,7,,none,Date: 2023-07-16. Summer weekend. Average temperature: 74.9°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2113.4
+2023-07-17,2113.4,144.84,77.36666666666666,0,7,,none,Date: 2023-07-17. Summer weekday. Average temperature: 77.4°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2108.96
+2023-07-18,2108.96,143.54,77.56666666666666,0,7,,none,Date: 2023-07-18. Summer weekday. Average temperature: 77.6°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2072.08
+2023-07-19,2072.08,144.8,76.02916666666667,0,7,,none,Date: 2023-07-19. Summer weekday. Average temperature: 76.0°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2086.44
+2023-07-20,2086.44,145.17,79.05416666666666,0,7,,none,Date: 2023-07-20. Summer weekday. Average temperature: 79.1°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2094.65
+2023-07-21,2094.65,144.61,77.97500000000001,0,7,,none,Date: 2023-07-21. Summer weekday. Average temperature: 78.0°F (hot). Standard operations. Weather-driven variation expected.,1547.45
+2023-07-22,1547.45,106.89,75.57916666666667,1,7,,none,Date: 2023-07-22. Summer weekend. Average temperature: 75.6°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1545.08
+2023-07-23,1545.08,105.35,76.44166666666666,1,7,,none,Date: 2023-07-23. Summer weekend. Average temperature: 76.4°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2078.25
+2023-07-24,2078.25,140.86,76.30833333333334,0,7,,none,Date: 2023-07-24. Summer weekday. Average temperature: 76.3°F (hot). Standard operations. Weather-driven variation expected.,2053.85
+2023-07-25,2053.85,135.8,75.70416666666667,0,7,,none,Date: 2023-07-25. Summer weekday. Average temperature: 75.7°F (hot). Typical day. No special events. Demand follows seasonal baseline.,2096.51
+2023-07-26,2096.51,139.67,77.02083333333333,0,7,,none,Date: 2023-07-26. Summer weekday. Average temperature: 77.0°F (hot). Regular weekday. Normal commuting and commercial activity expected.,2114.47
+2023-07-27,2114.47,142.22,76.14583333333333,0,7,,none,Date: 2023-07-27. Summer weekday. Average temperature: 76.1°F (hot). Standard operations. Weather-driven variation expected.,2081.37
+2023-07-28,2081.37,146.37,78.05,0,7,,none,Date: 2023-07-28. Summer weekday. Average temperature: 78.0°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1556.41
+2023-07-29,1556.41,106.58,76.81666666666666,1,7,,none,Date: 2023-07-29. Summer weekend. Average temperature: 76.8°F (hot). Regular weekday. Normal commuting and commercial activity expected.,1562.86
+2023-07-30,1562.86,105.44,76.00833333333334,1,7,,none,Date: 2023-07-30. Summer weekend. Average temperature: 76.0°F (hot). Standard operations. Weather-driven variation expected.,2058.58
+2023-07-31,2058.58,141.45,74.87916666666666,0,7,,none,Date: 2023-07-31. Summer weekday. Average temperature: 74.9°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2088.27
+2023-08-01,2088.27,138.96,68.0,0,8,,none,Date: 2023-08-01. Summer weekday. Average temperature: 68.0°F (warm). Standard operations. Weather-driven variation expected.,2100.64
+2023-08-02,2100.64,143.33,68.88333333333334,0,8,,none,Date: 2023-08-02. Summer weekday. Average temperature: 68.9°F (warm). Regular weekday. Normal commuting and commercial activity expected.,2139.39
+2023-08-03,2139.39,139.41,67.25416666666666,0,8,,none,Date: 2023-08-03. Summer weekday. Average temperature: 67.3°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2108.5
+2023-08-04,2108.5,153.76,66.6875,0,8,,none,Date: 2023-08-04. Summer weekday. Average temperature: 66.7°F (warm). Standard operations. Weather-driven variation expected.,1552.77
+2023-08-05,1552.77,99.78,70.97500000000001,1,8,,none,Date: 2023-08-05. Summer weekend. Average temperature: 71.0°F (warm). Standard operations. Weather-driven variation expected.,1574.42
+2023-08-06,1574.42,109.87,68.78333333333333,1,8,,none,Date: 2023-08-06. Summer weekend. Average temperature: 68.8°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2049.31
+2023-08-07,2049.31,145.24,68.00416666666666,0,8,,none,Date: 2023-08-07. Summer weekday. Average temperature: 68.0°F (warm). Regular weekday. Normal commuting and commercial activity expected.,2081.9
+2023-08-08,2081.9,145.58,66.66666666666667,0,8,,none,Date: 2023-08-08. Summer weekday. Average temperature: 66.7°F (warm). Standard operations. Weather-driven variation expected.,2083.6
+2023-08-09,2083.6,135.58,68.19583333333334,0,8,,none,Date: 2023-08-09. Summer weekday. Average temperature: 68.2°F (warm). Standard operations. Weather-driven variation expected.,2111.79
+2023-08-10,2111.79,145.22,68.05833333333334,0,8,,none,Date: 2023-08-10. Summer weekday. Average temperature: 68.1°F (warm). Standard operations. Weather-driven variation expected.,2066.96
+2023-08-11,2066.96,142.27,67.10000000000001,0,8,,none,Date: 2023-08-11. Summer weekday. Average temperature: 67.1°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1543.79
+2023-08-12,1543.79,110.8,69.44166666666666,1,8,,none,Date: 2023-08-12. Summer weekend. Average temperature: 69.4°F (warm). Standard operations. Weather-driven variation expected.,1634.38
+2023-08-13,1634.38,106.22,65.54583333333333,1,8,,none,Date: 2023-08-13. Summer weekend. Average temperature: 65.5°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2064.91
+2023-08-14,2064.91,142.3,67.4875,0,8,,none,Date: 2023-08-14. Summer weekday. Average temperature: 67.5°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2113.25
+2023-08-15,2113.25,147.68,69.09583333333333,0,8,,none,Date: 2023-08-15. Summer weekday. Average temperature: 69.1°F (warm). Standard operations. Weather-driven variation expected.,2066.06
+2023-08-16,2066.06,140.7,68.66250000000001,0,8,,none,Date: 2023-08-16. Summer weekday. Average temperature: 68.7°F (warm). Standard operations. Weather-driven variation expected.,2082.59
+2023-08-17,2082.59,143.27,69.39166666666667,0,8,,none,Date: 2023-08-17. Summer weekday. Average temperature: 69.4°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2094.76
+2023-08-18,2094.76,145.71,67.00833333333334,0,8,,none,Date: 2023-08-18. Summer weekday. Average temperature: 67.0°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1564.26
+2023-08-19,1564.26,103.85,66.05833333333334,1,8,,none,Date: 2023-08-19. Summer weekend. Average temperature: 66.1°F (warm). Standard operations. Weather-driven variation expected.,1562.9
+2023-08-20,1562.9,101.6,65.1125,1,8,,none,Date: 2023-08-20. Summer weekend. Average temperature: 65.1°F (warm). Typical day. No special events. Demand follows seasonal baseline.,2117.42
+2023-08-21,2117.42,141.2,67.27499999999999,0,8,,none,Date: 2023-08-21. Summer weekday. Average temperature: 67.3°F (warm). Regular weekday. Normal commuting and commercial activity expected.,2128.81
+2023-08-22,2128.81,145.04,68.86666666666666,0,8,,none,Date: 2023-08-22. Summer weekday. Average temperature: 68.9°F (warm). Regular weekday. Normal commuting and commercial activity expected.,2061.75
+2023-08-23,2061.75,146.94,66.7,0,8,,none,Date: 2023-08-23. Summer weekday. Average temperature: 66.7°F (warm). Regular weekday. Normal commuting and commercial activity expected.,2078.67
+2023-08-24,2078.67,139.09,69.94583333333334,0,8,,none,Date: 2023-08-24. Summer weekday. Average temperature: 69.9°F (warm). Regular weekday. Normal commuting and commercial activity expected.,2061.91
+2023-08-25,2061.91,140.93,68.13333333333334,0,8,,none,Date: 2023-08-25. Summer weekday. Average temperature: 68.1°F (warm). Typical day. No special events. Demand follows seasonal baseline.,1519.83
+2023-08-26,1519.83,105.07,69.06666666666666,1,8,,none,Date: 2023-08-26. Summer weekend. Average temperature: 69.1°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1555.83
+2023-08-27,1555.83,107.02,67.5125,1,8,,none,Date: 2023-08-27. Summer weekend. Average temperature: 67.5°F (warm). Standard operations. Weather-driven variation expected.,2070.48
+2023-08-28,2070.48,139.47,69.41250000000001,0,8,,none,Date: 2023-08-28. Summer weekday. Average temperature: 69.4°F (warm). Standard operations. Weather-driven variation expected.,2097.92
+2023-08-29,2097.92,143.84,67.175,0,8,,none,Date: 2023-08-29. Summer weekday. Average temperature: 67.2°F (warm). Regular weekday. Normal commuting and commercial activity expected.,2062.77
+2023-08-30,2062.77,144.11,68.95,0,8,,none,Date: 2023-08-30. Summer weekday. Average temperature: 69.0°F (warm). Standard operations. Weather-driven variation expected.,2062.34
+2023-08-31,2062.34,142.77,67.79583333333333,0,8,,none,Date: 2023-08-31. Summer weekday. Average temperature: 67.8°F (warm). Regular weekday. Normal commuting and commercial activity expected.,1795.64
+2023-09-01,1795.64,120.37,56.46666666666667,0,9,,none,Date: 2023-09-01. Fall weekday. Average temperature: 56.5°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1685.6299999999999
+2023-09-02,1685.6299999999999,115.07,54.949999999999996,1,9,PSU vs West Virginia,psu_game,Date: 2023-09-02. Fall weekend. Average temperature: 54.9°F (cool). Penn State home football game today. Moderate increase in local traffic.,1353.62
+2023-09-03,1353.62,91.5,55.74583333333334,1,9,,none,Date: 2023-09-03. Fall weekend. Average temperature: 55.7°F (cool). Standard operations. Weather-driven variation expected.,1762.34
+2023-09-04,1762.34,126.34,54.50416666666666,0,9,,none,Date: 2023-09-04. Fall weekday. Average temperature: 54.5°F (cool). Standard operations. Weather-driven variation expected.,1761.37
+2023-09-05,1761.37,123.4,54.4125,0,9,,none,Date: 2023-09-05. Fall weekday. Average temperature: 54.4°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1745.16
+2023-09-06,1745.16,118.43,54.05416666666667,0,9,,none,Date: 2023-09-06. Fall weekday. Average temperature: 54.1°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1806.91
+2023-09-07,1806.91,122.49,56.125,0,9,,none,Date: 2023-09-07. Fall weekday. Average temperature: 56.1°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1726.71
+2023-09-08,1726.71,122.25,55.09166666666667,0,9,,none,Date: 2023-09-08. Fall weekday. Average temperature: 55.1°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1679.46
+2023-09-09,1679.46,118.12,52.17916666666667,1,9,PSU vs Delaware,psu_game,Date: 2023-09-09. Fall weekend. Average temperature: 52.2°F (cool). Football game at PSU today. Tailgating and fan activity throughout the day.,1337.48
+2023-09-10,1337.48,91.68,54.65416666666667,1,9,,none,Date: 2023-09-10. Fall weekend. Average temperature: 54.7°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1780.06
+2023-09-11,1780.06,131.5,55.62083333333334,0,9,,none,Date: 2023-09-11. Fall weekday. Average temperature: 55.6°F (cool). Standard operations. Weather-driven variation expected.,1770.76
+2023-09-12,1770.76,116.46,54.69583333333333,0,9,,none,Date: 2023-09-12. Fall weekday. Average temperature: 54.7°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1730.21
+2023-09-13,1730.21,118.45,55.262499999999996,0,9,,none,Date: 2023-09-13. Fall weekday. Average temperature: 55.3°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1755.89
+2023-09-14,1755.89,119.78,54.74166666666667,0,9,,none,Date: 2023-09-14. Fall weekday. Average temperature: 54.7°F (cool). Standard operations. Weather-driven variation expected.,1738.47
+2023-09-15,1738.47,114.42,55.333333333333336,0,9,,none,Date: 2023-09-15. Fall weekday. Average temperature: 55.3°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1670.92
+2023-09-16,1670.92,119.02,55.025,1,9,PSU vs Illinois,psu_game,Date: 2023-09-16. Fall weekend. Average temperature: 55.0°F (cool). Penn State home football game today. Moderate increase in local traffic.,1380.52
+2023-09-17,1380.52,90.03,54.375,1,9,,none,Date: 2023-09-17. Fall weekend. Average temperature: 54.4°F (cool). Standard operations. Weather-driven variation expected.,1776.6200000000001
+2023-09-18,1776.6200000000001,120.8,54.34583333333333,0,9,,none,Date: 2023-09-18. Fall weekday. Average temperature: 54.3°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1794.79
+2023-09-19,1794.79,126.0,55.137499999999996,0,9,,none,Date: 2023-09-19. Fall weekday. Average temperature: 55.1°F (cool). Standard operations. Weather-driven variation expected.,1782.08
+2023-09-20,1782.08,121.9,56.145833333333336,0,9,,none,Date: 2023-09-20. Fall weekday. Average temperature: 56.1°F (cool). Standard operations. Weather-driven variation expected.,1767.52
+2023-09-21,1767.52,129.91,54.362500000000004,0,9,,none,Date: 2023-09-21. Fall weekday. Average temperature: 54.4°F (cool). Standard operations. Weather-driven variation expected.,1757.23
+2023-09-22,1757.23,120.61,56.87916666666666,0,9,,none,Date: 2023-09-22. Fall weekday. Average temperature: 56.9°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1714.3700000000001
+2023-09-23,1714.3700000000001,120.01,53.99166666666667,1,9,PSU vs Iowa,psu_game,Date: 2023-09-23. Fall weekend. Average temperature: 54.0°F (cool). Penn State home football game today. Moderate increase in local traffic.,1318.59
+2023-09-24,1318.59,92.33,54.645833333333336,1,9,,none,Date: 2023-09-24. Fall weekend. Average temperature: 54.6°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1778.67
+2023-09-25,1778.67,125.57,53.237500000000004,0,9,,none,Date: 2023-09-25. Fall weekday. Average temperature: 53.2°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1726.81
+2023-09-26,1726.81,123.58,55.75833333333333,0,9,,none,Date: 2023-09-26. Fall weekday. Average temperature: 55.8°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1759.87
+2023-09-27,1759.87,123.82,54.637499999999996,0,9,,none,Date: 2023-09-27. Fall weekday. Average temperature: 54.6°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1796.73
+2023-09-28,1796.73,116.41,55.3125,0,9,,none,Date: 2023-09-28. Fall weekday. Average temperature: 55.3°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1799.03
+2023-09-29,1799.03,118.53,53.67083333333333,0,9,,none,Date: 2023-09-29. Fall weekday. Average temperature: 53.7°F (cool). Standard operations. Weather-driven variation expected.,1332.48
+2023-09-30,1332.48,95.44,55.76666666666667,1,9,,none,Date: 2023-09-30. Fall weekend. Average temperature: 55.8°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1308.38
+2023-10-01,1308.38,87.26,43.30416666666667,1,10,,none,Date: 2023-10-01. Fall weekend. Average temperature: 43.3°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1751.3700000000001
+2023-10-02,1751.3700000000001,117.53,42.074999999999996,0,10,,none,Date: 2023-10-02. Fall weekday. Average temperature: 42.1°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1780.91
+2023-10-03,1780.91,120.42,43.6625,0,10,,none,Date: 2023-10-03. Fall weekday. Average temperature: 43.7°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1759.9
+2023-10-04,1759.9,121.42,42.791666666666664,0,10,,none,Date: 2023-10-04. Fall weekday. Average temperature: 42.8°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1801.13
+2023-10-05,1801.13,119.4,43.18333333333334,0,10,,none,Date: 2023-10-05. Fall weekday. Average temperature: 43.2°F (cool). Standard operations. Weather-driven variation expected.,1756.73
+2023-10-06,1756.73,119.93,41.987500000000004,0,10,,none,Date: 2023-10-06. Fall weekday. Average temperature: 42.0°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1299.87
+2023-10-07,1299.87,88.46,44.458333333333336,1,10,,none,Date: 2023-10-07. Fall weekend. Average temperature: 44.5°F (cool). Standard operations. Weather-driven variation expected.,1318.1
+2023-10-08,1318.1,90.07,41.237500000000004,1,10,,none,Date: 2023-10-08. Fall weekend. Average temperature: 41.2°F (cool). Standard operations. Weather-driven variation expected.,1776.74
+2023-10-09,1776.74,120.15,42.92083333333333,0,10,,none,Date: 2023-10-09. Fall weekday. Average temperature: 42.9°F (cool). Standard operations. Weather-driven variation expected.,1774.65
+2023-10-10,1774.65,116.46,44.3375,0,10,,none,Date: 2023-10-10. Fall weekday. Average temperature: 44.3°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1782.91
+2023-10-11,1782.91,120.32,44.60833333333333,0,10,,none,Date: 2023-10-11. Fall weekday. Average temperature: 44.6°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1782.97
+2023-10-12,1782.97,123.45,41.020833333333336,0,10,,none,Date: 2023-10-12. Fall weekday. Average temperature: 41.0°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1738.26
+2023-10-13,1738.26,114.35,43.40416666666667,0,10,,none,Date: 2023-10-13. Fall weekday. Average temperature: 43.4°F (cool). Standard operations. Weather-driven variation expected.,1688.14
+2023-10-14,1688.14,122.96,40.775,1,10,PSU vs UMass,psu_game,Date: 2023-10-14. Fall weekend. Average temperature: 40.8°F (cool). Football game at PSU today. Tailgating and fan activity throughout the day.,1357.41
+2023-10-15,1357.41,97.7,44.74166666666667,1,10,,none,Date: 2023-10-15. Fall weekend. Average temperature: 44.7°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1767.33
+2023-10-16,1767.33,126.2,42.541666666666664,0,10,,none,Date: 2023-10-16. Fall weekday. Average temperature: 42.5°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1782.81
+2023-10-17,1782.81,113.96,42.8375,0,10,,none,Date: 2023-10-17. Fall weekday. Average temperature: 42.8°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1807.9
+2023-10-18,1807.9,125.01,41.94166666666667,0,10,,none,Date: 2023-10-18. Fall weekday. Average temperature: 41.9°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1750.23
+2023-10-19,1750.23,115.93,42.25,0,10,,none,Date: 2023-10-19. Fall weekday. Average temperature: 42.2°F (cool). Standard operations. Weather-driven variation expected.,1708.06
+2023-10-20,1708.06,113.99,42.40416666666667,0,10,,none,Date: 2023-10-20. Fall weekday. Average temperature: 42.4°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1283.24
+2023-10-21,1283.24,86.37,42.74166666666667,1,10,,none,Date: 2023-10-21. Fall weekend. Average temperature: 42.7°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1310.79
+2023-10-22,1310.79,90.67,45.1875,1,10,,none,Date: 2023-10-22. Fall weekend. Average temperature: 45.2°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1763.75
+2023-10-23,1763.75,118.52,41.862500000000004,0,10,,none,Date: 2023-10-23. Fall weekday. Average temperature: 41.9°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1759.78
+2023-10-24,1759.78,120.48,42.291666666666664,0,10,,none,Date: 2023-10-24. Fall weekday. Average temperature: 42.3°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1788.07
+2023-10-25,1788.07,122.16,44.00416666666666,0,10,,none,Date: 2023-10-25. Fall weekday. Average temperature: 44.0°F (cool). Typical day. No special events. Demand follows seasonal baseline.,1763.57
+2023-10-26,1763.57,115.36,43.42916666666667,0,10,,none,Date: 2023-10-26. Fall weekday. Average temperature: 43.4°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1755.71
+2023-10-27,1755.71,121.1,42.1,0,10,,none,Date: 2023-10-27. Fall weekday. Average temperature: 42.1°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1716.96
+2023-10-28,1716.96,116.35,43.05833333333334,1,10,PSU vs Indiana,psu_game,Date: 2023-10-28. Fall weekend. Average temperature: 43.1°F (cool). Football game at PSU today. Tailgating and fan activity throughout the day.,1302.0900000000001
+2023-10-29,1302.0900000000001,86.3,43.0875,1,10,,none,Date: 2023-10-29. Fall weekend. Average temperature: 43.1°F (cool). Standard operations. Weather-driven variation expected.,1795.87
+2023-10-30,1795.87,122.74,42.545833333333334,0,10,,none,Date: 2023-10-30. Fall weekday. Average temperature: 42.5°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1750.7
+2023-10-31,1750.7,124.13,41.766666666666666,0,10,,none,Date: 2023-10-31. Fall weekday. Average temperature: 41.8°F (cool). Regular weekday. Normal commuting and commercial activity expected.,1760.58
+2023-11-01,1760.58,119.41,33.94166666666667,0,11,,none,Date: 2023-11-01. Fall weekday. Average temperature: 33.9°F (cold). Standard operations. Weather-driven variation expected.,1741.99
+2023-11-02,1741.99,118.74,33.237500000000004,0,11,,none,Date: 2023-11-02. Fall weekday. Average temperature: 33.2°F (cold). Standard operations. Weather-driven variation expected.,1780.5
+2023-11-03,1780.5,121.97,31.641666666666666,0,11,,none,Date: 2023-11-03. Fall weekday. Average temperature: 31.6°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1327.3700000000001
+2023-11-04,1327.3700000000001,88.36,31.758333333333336,1,11,,none,Date: 2023-11-04. Fall weekend. Average temperature: 31.8°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1337.83
+2023-11-05,1337.83,95.84,34.13333333333333,1,11,,none,Date: 2023-11-05. Fall weekend. Average temperature: 34.1°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1779.76
+2023-11-06,1779.76,117.43,31.52916666666667,0,11,,none,Date: 2023-11-06. Fall weekday. Average temperature: 31.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1758.64
+2023-11-07,1758.64,122.99,29.933333333333334,0,11,,none,Date: 2023-11-07. Fall weekday. Average temperature: 29.9°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1799.31
+2023-11-08,1799.31,120.36,33.13333333333333,0,11,,none,Date: 2023-11-08. Fall weekday. Average temperature: 33.1°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1787.16
+2023-11-09,1787.16,120.56,32.44166666666667,0,11,,none,Date: 2023-11-09. Fall weekday. Average temperature: 32.4°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1737.66
+2023-11-10,1737.66,121.09,33.3375,0,11,,none,Date: 2023-11-10. Fall weekday. Average temperature: 33.3°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1936.72
+2023-11-11,1936.72,133.48,33.63333333333333,1,11,PSU vs Michigan,big_game,Date: 2023-11-11. Fall weekend. Average temperature: 33.6°F (cold). Big football game at Beaver Stadium. Significant increase in visitors to State College.,1328.79
+2023-11-12,1328.79,90.22,34.00416666666667,1,11,,none,Date: 2023-11-12. Fall weekend. Average temperature: 34.0°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1817.68
+2023-11-13,1817.68,121.16,32.016666666666666,0,11,,none,Date: 2023-11-13. Fall weekday. Average temperature: 32.0°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1791.8899999999999
+2023-11-14,1791.8899999999999,122.23,33.32083333333333,0,11,,none,Date: 2023-11-14. Fall weekday. Average temperature: 33.3°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1765.85
+2023-11-15,1765.85,122.55,31.987499999999997,0,11,,none,Date: 2023-11-15. Fall weekday. Average temperature: 32.0°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1772.49
+2023-11-16,1772.49,113.55,32.475,0,11,,none,Date: 2023-11-16. Fall weekday. Average temperature: 32.5°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1752.3600000000001
+2023-11-17,1752.3600000000001,116.94,33.475,0,11,,none,Date: 2023-11-17. Fall weekday. Average temperature: 33.5°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1712.56
+2023-11-18,1712.56,124.7,33.78333333333333,1,11,PSU vs Rutgers,psu_game,Date: 2023-11-18. Fall weekend. Average temperature: 33.8°F (cold). Football game at PSU today. Tailgating and fan activity throughout the day.,1295.35
+2023-11-19,1295.35,87.14,33.300000000000004,1,11,,none,Date: 2023-11-19. Fall weekend. Average temperature: 33.3°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1786.64
+2023-11-20,1786.64,124.66,33.50833333333333,0,11,,none,Date: 2023-11-20. Fall weekday. Average temperature: 33.5°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1799.73
+2023-11-21,1799.73,126.92,35.02916666666667,0,11,,none,Date: 2023-11-21. Fall weekday. Average temperature: 35.0°F (cold). Standard operations. Weather-driven variation expected.,1770.7
+2023-11-22,1770.7,118.26,33.24583333333333,0,11,,none,Date: 2023-11-22. Fall weekday. Average temperature: 33.2°F (cold). Standard operations. Weather-driven variation expected.,1738.3
+2023-11-23,1738.3,117.23,32.395833333333336,0,11,,none,Date: 2023-11-23. Fall weekday. Average temperature: 32.4°F (cold). Standard operations. Weather-driven variation expected.,1770.97
+2023-11-24,1770.97,121.13,32.35,0,11,,none,Date: 2023-11-24. Fall weekday. Average temperature: 32.4°F (cold). Standard operations. Weather-driven variation expected.,1316.05
+2023-11-25,1316.05,88.05,31.95,1,11,,none,Date: 2023-11-25. Fall weekend. Average temperature: 31.9°F (cold). Standard operations. Weather-driven variation expected.,1309.5
+2023-11-26,1309.5,93.14,35.4625,1,11,,none,Date: 2023-11-26. Fall weekend. Average temperature: 35.5°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1744.2
+2023-11-27,1744.2,120.62,34.50833333333333,0,11,,none,Date: 2023-11-27. Fall weekday. Average temperature: 34.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1785.85
+2023-11-28,1785.85,112.77,29.745833333333334,0,11,,none,Date: 2023-11-28. Fall weekday. Average temperature: 29.7°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1722.45
+2023-11-29,1722.45,116.73,34.62083333333333,0,11,,none,Date: 2023-11-29. Fall weekday. Average temperature: 34.6°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1802.92
+2023-11-30,1802.92,126.27,32.43333333333333,0,11,,none,Date: 2023-11-30. Fall weekday. Average temperature: 32.4°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1536.75
+2023-12-01,1536.75,104.54,29.641666666666666,0,12,,none,Date: 2023-12-01. Winter weekday. Average temperature: 29.6°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1118.44
+2023-12-02,1118.44,80.01,29.879166666666666,1,12,,none,Date: 2023-12-02. Winter weekend. Average temperature: 29.9°F (cold). Standard operations. Weather-driven variation expected.,1176.31
+2023-12-03,1176.31,78.96,29.458333333333332,1,12,,none,Date: 2023-12-03. Winter weekend. Average temperature: 29.5°F (cold). Standard operations. Weather-driven variation expected.,1524.34
+2023-12-04,1524.34,107.0,30.245833333333334,0,12,,none,Date: 2023-12-04. Winter weekday. Average temperature: 30.2°F (cold). Standard operations. Weather-driven variation expected.,1572.23
+2023-12-05,1572.23,108.81,31.95,0,12,,none,Date: 2023-12-05. Winter weekday. Average temperature: 31.9°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1522.7
+2023-12-06,1522.7,113.72,30.833333333333332,0,12,,none,Date: 2023-12-06. Winter weekday. Average temperature: 30.8°F (cold). Standard operations. Weather-driven variation expected.,1507.9
+2023-12-07,1507.9,108.38,30.099999999999998,0,12,,none,Date: 2023-12-07. Winter weekday. Average temperature: 30.1°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1553.81
+2023-12-08,1553.81,106.85,30.579166666666666,0,12,,none,Date: 2023-12-08. Winter weekday. Average temperature: 30.6°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1142.67
+2023-12-09,1142.67,77.8,29.358333333333334,1,12,,none,Date: 2023-12-09. Winter weekend. Average temperature: 29.4°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1190.99
+2023-12-10,1190.99,80.24,31.150000000000002,1,12,,none,Date: 2023-12-10. Winter weekend. Average temperature: 31.2°F (cold). Standard operations. Weather-driven variation expected.,1565.16
+2023-12-11,1565.16,106.76,30.708333333333332,0,12,,none,Date: 2023-12-11. Winter weekday. Average temperature: 30.7°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1594.04
+2023-12-12,1594.04,114.17,30.5125,0,12,,none,Date: 2023-12-12. Winter weekday. Average temperature: 30.5°F (cold). Standard operations. Weather-driven variation expected.,1532.94
+2023-12-13,1532.94,99.46,29.195833333333336,0,12,,none,Date: 2023-12-13. Winter weekday. Average temperature: 29.2°F (cold). Standard operations. Weather-driven variation expected.,1547.11
+2023-12-14,1547.11,108.42,31.570833333333336,0,12,,none,Date: 2023-12-14. Winter weekday. Average temperature: 31.6°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1549.72
+2023-12-15,1549.72,102.93,29.5,0,12,,none,Date: 2023-12-15. Winter weekday. Average temperature: 29.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1173.61
+2023-12-16,1173.61,81.36,28.787499999999998,1,12,,none,Date: 2023-12-16. Winter weekend. Average temperature: 28.8°F (cold). Standard operations. Weather-driven variation expected.,1195.08
+2023-12-17,1195.08,77.98,30.175,1,12,,none,Date: 2023-12-17. Winter weekend. Average temperature: 30.2°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1544.2
+2023-12-18,1544.2,108.07,29.204166666666666,0,12,,none,Date: 2023-12-18. Winter weekday. Average temperature: 29.2°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1569.54
+2023-12-19,1569.54,108.91,29.95,0,12,,none,Date: 2023-12-19. Winter weekday. Average temperature: 29.9°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1538.81
+2023-12-20,1538.81,107.24,29.479166666666668,0,12,,none,Date: 2023-12-20. Winter weekday. Average temperature: 29.5°F (cold). Standard operations. Weather-driven variation expected.,1592.05
+2023-12-21,1592.05,110.59,30.425,0,12,,none,Date: 2023-12-21. Winter weekday. Average temperature: 30.4°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1543.91
+2023-12-22,1543.91,102.82,31.166666666666668,0,12,,none,Date: 2023-12-22. Winter weekday. Average temperature: 31.2°F (cold). Standard operations. Weather-driven variation expected.,1170.33
+2023-12-23,1170.33,86.01,29.916666666666668,1,12,,none,Date: 2023-12-23. Winter weekend. Average temperature: 29.9°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1157.29
+2023-12-24,1157.29,81.36,29.15833333333333,1,12,,none,Date: 2023-12-24. Winter weekend. Average temperature: 29.2°F (cold). Typical day. No special events. Demand follows seasonal baseline.,1042.26
+2023-12-25,1042.26,66.45,29.704166666666666,0,12,Christmas,holiday,Date: 2023-12-25. Winter weekday. Average temperature: 29.7°F (cold). Public holiday today. Reduced commercial activity; residential demand dominant.,1555.85
+2023-12-26,1555.85,105.72,32.43333333333333,0,12,,none,Date: 2023-12-26. Winter weekday. Average temperature: 32.4°F (cold). Standard operations. Weather-driven variation expected.,1555.53
+2023-12-27,1555.53,103.69,29.6125,0,12,,none,Date: 2023-12-27. Winter weekday. Average temperature: 29.6°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1546.47
+2023-12-28,1546.47,106.47,30.987499999999997,0,12,,none,Date: 2023-12-28. Winter weekday. Average temperature: 31.0°F (cold). Standard operations. Weather-driven variation expected.,1534.38
+2023-12-29,1534.38,107.51,29.954166666666666,0,12,,none,Date: 2023-12-29. Winter weekday. Average temperature: 30.0°F (cold). Standard operations. Weather-driven variation expected.,1131.0
+2023-12-30,1131.0,79.19,29.458333333333332,1,12,,none,Date: 2023-12-30. Winter weekend. Average temperature: 29.5°F (cold). Regular weekday. Normal commuting and commercial activity expected.,1127.21
