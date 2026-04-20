@@ -1,0 +1,901 @@
+site_id,site_name,month,month_name,site_type,population,ev_penetration_pct,has_university,climate_zone,avg_income_k,source_avg_daily_demand_kwh,source_avg_peak_kwh,source_avg_temp_f,site_description,transfer_notes,zero_shot_prompt
+ALT_001,Altoona - Chestnut Ave Station,1,January,mid_size_city,43000,4.1,0,humid_continental,38,1430.94,98.21,33.64,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: January
+  Average daily demand: 1430.9 kWh
+  Average peak hourly demand: 98.2 kWh
+  Average temperature: 33.6°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in January. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,2,February,mid_size_city,43000,4.1,0,humid_continental,38,1447.11,99.76,42.51,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: February
+  Average daily demand: 1447.1 kWh
+  Average peak hourly demand: 99.8 kWh
+  Average temperature: 42.5°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in February. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,3,March,mid_size_city,43000,4.1,0,humid_continental,38,1646.98,112.27,54.8,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: March
+  Average daily demand: 1647.0 kWh
+  Average peak hourly demand: 112.3 kWh
+  Average temperature: 54.8°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in March. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,4,April,mid_size_city,43000,4.1,0,humid_continental,38,1616.54,110.67,67.25,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: April
+  Average daily demand: 1616.5 kWh
+  Average peak hourly demand: 110.7 kWh
+  Average temperature: 67.3°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in April. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,5,May,mid_size_city,43000,4.1,0,humid_continental,38,1652.46,113.21,76.64,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: May
+  Average daily demand: 1652.5 kWh
+  Average peak hourly demand: 113.2 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in May. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,6,June,mid_size_city,43000,4.1,0,humid_continental,38,1948.74,132.66,79.96,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: June
+  Average daily demand: 1948.7 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 80.0°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in June. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,7,July,mid_size_city,43000,4.1,0,humid_continental,38,1889.59,129.03,76.58,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: July
+  Average daily demand: 1889.6 kWh
+  Average peak hourly demand: 129.0 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in July. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,8,August,mid_size_city,43000,4.1,0,humid_continental,38,1947.25,132.72,67.48,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: August
+  Average daily demand: 1947.2 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 67.5°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in August. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,9,September,mid_size_city,43000,4.1,0,humid_continental,38,1680.63,114.74,55.09,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: September
+  Average daily demand: 1680.6 kWh
+  Average peak hourly demand: 114.7 kWh
+  Average temperature: 55.1°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in September. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,10,October,mid_size_city,43000,4.1,0,humid_continental,38,1660.35,113.8,42.84,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: October
+  Average daily demand: 1660.4 kWh
+  Average peak hourly demand: 113.8 kWh
+  Average temperature: 42.8°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in October. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,11,November,mid_size_city,43000,4.1,0,humid_continental,38,1684.24,114.94,33.28,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: November
+  Average daily demand: 1684.2 kWh
+  Average peak hourly demand: 114.9 kWh
+  Average temperature: 33.3°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in November. Show your reasoning step by step, then give a final number."
+ALT_001,Altoona - Chestnut Ave Station,12,December,mid_size_city,43000,4.1,0,humid_continental,38,1415.21,97.2,30.05,"Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.",Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: December
+  Average daily demand: 1415.2 kWh
+  Average peak hourly demand: 97.2 kWh
+  Average temperature: 30.0°F
+
+Target site with NO historical data:
+  Mid-size post-industrial city in central PA. Blue-collar workforce. No major university. Colder winters due to elevation. Lower EV adoption than State College. Demand likely more residential-driven, with minimal event-based spikes.
+
+Transfer guidance: Scale down university event effects. Reduce EV penetration factor. Apply elevation-based cold weather adjustment.
+
+Question: Estimate the average daily EV charging demand (kWh) for Altoona - Chestnut Ave Station in December. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,1,January,state_capital,50000,6.8,0,humid_subtropical_transition,44,1430.94,98.21,33.64,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: January
+  Average daily demand: 1430.9 kWh
+  Average peak hourly demand: 98.2 kWh
+  Average temperature: 33.6°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in January. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,2,February,state_capital,50000,6.8,0,humid_subtropical_transition,44,1447.11,99.76,42.51,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: February
+  Average daily demand: 1447.1 kWh
+  Average peak hourly demand: 99.8 kWh
+  Average temperature: 42.5°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in February. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,3,March,state_capital,50000,6.8,0,humid_subtropical_transition,44,1646.98,112.27,54.8,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: March
+  Average daily demand: 1647.0 kWh
+  Average peak hourly demand: 112.3 kWh
+  Average temperature: 54.8°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in March. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,4,April,state_capital,50000,6.8,0,humid_subtropical_transition,44,1616.54,110.67,67.25,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: April
+  Average daily demand: 1616.5 kWh
+  Average peak hourly demand: 110.7 kWh
+  Average temperature: 67.3°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in April. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,5,May,state_capital,50000,6.8,0,humid_subtropical_transition,44,1652.46,113.21,76.64,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: May
+  Average daily demand: 1652.5 kWh
+  Average peak hourly demand: 113.2 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in May. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,6,June,state_capital,50000,6.8,0,humid_subtropical_transition,44,1948.74,132.66,79.96,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: June
+  Average daily demand: 1948.7 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 80.0°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in June. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,7,July,state_capital,50000,6.8,0,humid_subtropical_transition,44,1889.59,129.03,76.58,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: July
+  Average daily demand: 1889.6 kWh
+  Average peak hourly demand: 129.0 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in July. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,8,August,state_capital,50000,6.8,0,humid_subtropical_transition,44,1947.25,132.72,67.48,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: August
+  Average daily demand: 1947.2 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 67.5°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in August. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,9,September,state_capital,50000,6.8,0,humid_subtropical_transition,44,1680.63,114.74,55.09,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: September
+  Average daily demand: 1680.6 kWh
+  Average peak hourly demand: 114.7 kWh
+  Average temperature: 55.1°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in September. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,10,October,state_capital,50000,6.8,0,humid_subtropical_transition,44,1660.35,113.8,42.84,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: October
+  Average daily demand: 1660.4 kWh
+  Average peak hourly demand: 113.8 kWh
+  Average temperature: 42.8°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in October. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,11,November,state_capital,50000,6.8,0,humid_subtropical_transition,44,1684.24,114.94,33.28,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: November
+  Average daily demand: 1684.2 kWh
+  Average peak hourly demand: 114.9 kWh
+  Average temperature: 33.3°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in November. Show your reasoning step by step, then give a final number."
+HAR_001,Harrisburg - Market St Station,12,December,state_capital,50000,6.8,0,humid_subtropical_transition,44,1415.21,97.2,30.05,State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.,Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: December
+  Average daily demand: 1415.2 kWh
+  Average peak hourly demand: 97.2 kWh
+  Average temperature: 30.0°F
+
+Target site with NO historical data:
+  State capital with strong weekday government commuter demand. Higher income than Altoona. Warmer summers. Sharp weekday vs weekend contrast expected due to government workers. Conference and legislative events cause periodic spikes.
+
+Transfer guidance: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+Question: Estimate the average daily EV charging demand (kWh) for Harrisburg - Market St Station in December. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,1,January,lakeside_city,94000,3.8,0,lake_effect,36,1430.94,98.21,33.64,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: January
+  Average daily demand: 1430.9 kWh
+  Average peak hourly demand: 98.2 kWh
+  Average temperature: 33.6°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in January. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,2,February,lakeside_city,94000,3.8,0,lake_effect,36,1447.11,99.76,42.51,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: February
+  Average daily demand: 1447.1 kWh
+  Average peak hourly demand: 99.8 kWh
+  Average temperature: 42.5°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in February. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,3,March,lakeside_city,94000,3.8,0,lake_effect,36,1646.98,112.27,54.8,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: March
+  Average daily demand: 1647.0 kWh
+  Average peak hourly demand: 112.3 kWh
+  Average temperature: 54.8°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in March. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,4,April,lakeside_city,94000,3.8,0,lake_effect,36,1616.54,110.67,67.25,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: April
+  Average daily demand: 1616.5 kWh
+  Average peak hourly demand: 110.7 kWh
+  Average temperature: 67.3°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in April. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,5,May,lakeside_city,94000,3.8,0,lake_effect,36,1652.46,113.21,76.64,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: May
+  Average daily demand: 1652.5 kWh
+  Average peak hourly demand: 113.2 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in May. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,6,June,lakeside_city,94000,3.8,0,lake_effect,36,1948.74,132.66,79.96,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: June
+  Average daily demand: 1948.7 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 80.0°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in June. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,7,July,lakeside_city,94000,3.8,0,lake_effect,36,1889.59,129.03,76.58,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: July
+  Average daily demand: 1889.6 kWh
+  Average peak hourly demand: 129.0 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in July. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,8,August,lakeside_city,94000,3.8,0,lake_effect,36,1947.25,132.72,67.48,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: August
+  Average daily demand: 1947.2 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 67.5°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in August. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,9,September,lakeside_city,94000,3.8,0,lake_effect,36,1680.63,114.74,55.09,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: September
+  Average daily demand: 1680.6 kWh
+  Average peak hourly demand: 114.7 kWh
+  Average temperature: 55.1°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in September. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,10,October,lakeside_city,94000,3.8,0,lake_effect,36,1660.35,113.8,42.84,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: October
+  Average daily demand: 1660.4 kWh
+  Average peak hourly demand: 113.8 kWh
+  Average temperature: 42.8°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in October. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,11,November,lakeside_city,94000,3.8,0,lake_effect,36,1684.24,114.94,33.28,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: November
+  Average daily demand: 1684.2 kWh
+  Average peak hourly demand: 114.9 kWh
+  Average temperature: 33.3°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in November. Show your reasoning step by step, then give a final number."
+ERI_001,Erie - Peach St Station,12,December,lakeside_city,94000,3.8,0,lake_effect,36,1415.21,97.2,30.05,Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.,Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: December
+  Average daily demand: 1415.2 kWh
+  Average peak hourly demand: 97.2 kWh
+  Average temperature: 30.0°F
+
+Target site with NO historical data:
+  Largest city in northwestern PA. Lake Erie causes heavy lake-effect snow and cold temperatures — significant battery range reduction in winter. Tourism spikes in summer (Presque Isle State Park). Lower income and EV adoption than central PA. Industrial shift-work patterns.
+
+Transfer guidance: Apply lake-effect winter penalty (-15% demand Dec-Feb due to range anxiety). Add summer tourism boost (Jul-Aug). Flatten event spikes.
+
+Question: Estimate the average daily EV charging demand (kWh) for Erie - Peach St Station in December. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,1,January,mid_size_metro,77000,7.4,1,humid_continental,52,1430.94,98.21,33.64,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: January
+  Average daily demand: 1430.9 kWh
+  Average peak hourly demand: 98.2 kWh
+  Average temperature: 33.6°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in January. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,2,February,mid_size_metro,77000,7.4,1,humid_continental,52,1447.11,99.76,42.51,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: February
+  Average daily demand: 1447.1 kWh
+  Average peak hourly demand: 99.8 kWh
+  Average temperature: 42.5°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in February. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,3,March,mid_size_metro,77000,7.4,1,humid_continental,52,1646.98,112.27,54.8,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: March
+  Average daily demand: 1647.0 kWh
+  Average peak hourly demand: 112.3 kWh
+  Average temperature: 54.8°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in March. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,4,April,mid_size_metro,77000,7.4,1,humid_continental,52,1616.54,110.67,67.25,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: April
+  Average daily demand: 1616.5 kWh
+  Average peak hourly demand: 110.7 kWh
+  Average temperature: 67.3°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in April. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,5,May,mid_size_metro,77000,7.4,1,humid_continental,52,1652.46,113.21,76.64,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: May
+  Average daily demand: 1652.5 kWh
+  Average peak hourly demand: 113.2 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in May. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,6,June,mid_size_metro,77000,7.4,1,humid_continental,52,1948.74,132.66,79.96,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: June
+  Average daily demand: 1948.7 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 80.0°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in June. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,7,July,mid_size_metro,77000,7.4,1,humid_continental,52,1889.59,129.03,76.58,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: July
+  Average daily demand: 1889.6 kWh
+  Average peak hourly demand: 129.0 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in July. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,8,August,mid_size_metro,77000,7.4,1,humid_continental,52,1947.25,132.72,67.48,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: August
+  Average daily demand: 1947.2 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 67.5°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in August. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,9,September,mid_size_metro,77000,7.4,1,humid_continental,52,1680.63,114.74,55.09,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: September
+  Average daily demand: 1680.6 kWh
+  Average peak hourly demand: 114.7 kWh
+  Average temperature: 55.1°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in September. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,10,October,mid_size_metro,77000,7.4,1,humid_continental,52,1660.35,113.8,42.84,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: October
+  Average daily demand: 1660.4 kWh
+  Average peak hourly demand: 113.8 kWh
+  Average temperature: 42.8°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in October. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,11,November,mid_size_metro,77000,7.4,1,humid_continental,52,1684.24,114.94,33.28,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: November
+  Average daily demand: 1684.2 kWh
+  Average peak hourly demand: 114.9 kWh
+  Average temperature: 33.3°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in November. Show your reasoning step by step, then give a final number."
+BET_001,Bethlehem - Main St Station,12,December,mid_size_metro,77000,7.4,1,humid_continental,52,1415.21,97.2,30.05,Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.,Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: December
+  Average daily demand: 1415.2 kWh
+  Average peak hourly demand: 97.2 kWh
+  Average temperature: 30.0°F
+
+Target site with NO historical data:
+  Growing mid-size city in Lehigh Valley. Lehigh University drives some academic event demand similar to State College but smaller scale. Higher income corridor; higher EV adoption. SteelStacks arts venue causes weekend cultural event spikes spring-fall.
+
+Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events. Add weekend cultural event boost Apr-Oct. Higher baseline EV penetration.
+
+Question: Estimate the average daily EV charging demand (kWh) for Bethlehem - Main St Station in December. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,1,January,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1430.94,98.21,33.64,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: January
+  Average daily demand: 1430.9 kWh
+  Average peak hourly demand: 98.2 kWh
+  Average temperature: 33.6°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in January. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,2,February,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1447.11,99.76,42.51,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: February
+  Average daily demand: 1447.1 kWh
+  Average peak hourly demand: 99.8 kWh
+  Average temperature: 42.5°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in February. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,3,March,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1646.98,112.27,54.8,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: March
+  Average daily demand: 1647.0 kWh
+  Average peak hourly demand: 112.3 kWh
+  Average temperature: 54.8°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in March. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,4,April,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1616.54,110.67,67.25,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: April
+  Average daily demand: 1616.5 kWh
+  Average peak hourly demand: 110.7 kWh
+  Average temperature: 67.3°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in April. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,5,May,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1652.46,113.21,76.64,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: May
+  Average daily demand: 1652.5 kWh
+  Average peak hourly demand: 113.2 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in May. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,6,June,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1948.74,132.66,79.96,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: June
+  Average daily demand: 1948.7 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 80.0°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in June. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,7,July,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1889.59,129.03,76.58,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: July
+  Average daily demand: 1889.6 kWh
+  Average peak hourly demand: 129.0 kWh
+  Average temperature: 76.6°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in July. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,8,August,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1947.25,132.72,67.48,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: August
+  Average daily demand: 1947.2 kWh
+  Average peak hourly demand: 132.7 kWh
+  Average temperature: 67.5°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in August. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,9,September,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1680.63,114.74,55.09,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: September
+  Average daily demand: 1680.6 kWh
+  Average peak hourly demand: 114.7 kWh
+  Average temperature: 55.1°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in September. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,10,October,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1660.35,113.8,42.84,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: October
+  Average daily demand: 1660.4 kWh
+  Average peak hourly demand: 113.8 kWh
+  Average temperature: 42.8°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in October. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,11,November,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1684.24,114.94,33.28,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: November
+  Average daily demand: 1684.2 kWh
+  Average peak hourly demand: 114.9 kWh
+  Average temperature: 33.3°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in November. Show your reasoning step by step, then give a final number."
+PHL_001,Philadelphia - University City Station,12,December,major_metro,1600000,9.1,1,humid_subtropical_transition,55,1415.21,97.2,30.05,"Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.",Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.,"You are an EV charging demand forecasting expert.
+
+You have detailed data from a reference charging station:
+  Site: State College, PA (university town, pop. 42,000, EV penetration 8.2%)
+  Month: December
+  Average daily demand: 1415.2 kWh
+  Average peak hourly demand: 97.2 kWh
+  Average temperature: 30.0°F
+
+Target site with NO historical data:
+  Major metro. University City district has Penn, Drexel, Jefferson. High density, high EV adoption, warmer climate. Demand is high but more stable — less event-driven volatility than State College. Transit alternatives reduce peak demand relative to population.
+
+Transfer guidance: Scale up baseline 3x for density. Reduce event spike amplitude. Warmer temperature profile. Higher overnight demand due to density.
+
+Question: Estimate the average daily EV charging demand (kWh) for Philadelphia - University City Station in December. Show your reasoning step by step, then give a final number."
