@@ -1,6 +1,6 @@
 """
 Use Case 1: EV Charging Demand Forecasting with MOIRAI (Zero-shot)
-Salesforce's pretrained time series foundation model
+Salesforce uni2ts 2.0 compatible version
 
 Smart Mobility Lab, Penn State
 """
@@ -19,9 +19,9 @@ DATA_PATH  = "/home/xzh5180/Research/llm-evprediction/datasets/dataset1_timeseri
 OUTPUT_DIR = "/home/xzh5180/Research/llm-evprediction/outputs/usecase1_moirai_zeroshot/"
 N_EVAL     = 200
 PRED_LEN   = 6
-CTX_LEN    = 24
+CTX_LEN    = 24      # 24 / patch_size=8 = 3 patches，可以整除
+PATCH_SIZE = 8
 
-# 之前的结果（用于对比）
 CHRONOS_MAE  = [9.69, 13.96, 15.79, 16.60, 16.29, 15.70]
 CHRONOS_MAPE = 21.3
 TIMESFM_MAE  = [10.18, 14.34, 15.28, 16.23, 17.27, 20.06]
@@ -33,19 +33,10 @@ print("=" * 60)
 print("Use Case 1: EV Demand Forecasting with MOIRAI (Zero-shot)")
 print("=" * 60)
 
-# ── Step 1: 导入 MOIRAI ───────────────────────────────────────────────────────
+# ── Step 1: 导入 ──────────────────────────────────────────────────────────────
 print("\n[Step 1] 导入 MOIRAI...")
-print("  如果报错，先运行：pip install uni2ts")
-
-try:
-    from uni2ts.model.moirai import MoiraiForecast, MoiraiModule
-    from einops import rearrange
-except ImportError:
-    print("\n  ❌ uni2ts 未安装，请先运行：")
-    print("     pip install uni2ts")
-    exit(1)
-
-print("  ✅ MOIRAI 导入成功")
+from uni2ts.model.moirai import MoiraiForecast, MoiraiModule
+print("  ✅ 导入成功")
 
 # ── Step 2: 加载数据 ──────────────────────────────────────────────────────────
 print("\n[Step 2] 加载数据...")
@@ -57,31 +48,30 @@ target_cols  = [f"target_t+{i}" for i in range(1, 7)]
 np.random.seed(42)
 eval_idx  = np.random.choice(len(df), size=N_EVAL, replace=False)
 eval_df   = df.iloc[eval_idx].reset_index(drop=True)
-histories = eval_df[history_cols].values.astype(np.float32)   # (200, 24)
-targets   = eval_df[target_cols].values.astype(np.float32)    # (200, 6)
+histories = eval_df[history_cols].values.astype(np.float32)
+targets   = eval_df[target_cols].values.astype(np.float32)
 
 print(f"  评估样本数: {N_EVAL}")
 print(f"  输入: {CTX_LEN}小时 → 预测: {PRED_LEN}小时")
+print(f"  Patch size: {PATCH_SIZE}  ({CTX_LEN}/{PATCH_SIZE}={CTX_LEN//PATCH_SIZE} patches)")
 
-# ── Step 3: 加载 MOIRAI 模型 ──────────────────────────────────────────────────
+# ── Step 3: 加载模型 ──────────────────────────────────────────────────────────
 print("\n[Step 3] 加载 MOIRAI 模型...")
-print("  模型: Salesforce/moirai-1.0-R-small (91M params)")
-print("  第一次运行会从 HuggingFace 下载权重...")
 
 model = MoiraiForecast(
     module=MoiraiModule.from_pretrained("Salesforce/moirai-1.0-R-small"),
     prediction_length=PRED_LEN,
     context_length=CTX_LEN,
-    patch_size="auto",       # 自动选择最合适的 patch 大小
-    num_samples=100,         # 生成 100 个样本，取中位数
-    target_dim=1,            # 单变量（只用需求）
-    feat_dynamic_real_dim=0, # 无额外动态特征（zero-shot 先不用）
+    patch_size=PATCH_SIZE,   # 明确指定，不用 "auto"
+    num_samples=100,
+    target_dim=1,
+    feat_dynamic_real_dim=0,
     past_feat_dynamic_real_dim=0,
 )
 model.eval()
 print("  ✅ MOIRAI 加载成功")
 
-# ── Step 4: 运行 MOIRAI 预测 ──────────────────────────────────────────────────
+# ── Step 4: 预测 ──────────────────────────────────────────────────────────────
 print("\n[Step 4] 开始预测...")
 
 all_predictions = []
@@ -89,32 +79,30 @@ BATCH_SIZE = 32
 
 for start in range(0, len(histories), BATCH_SIZE):
     end   = min(start + BATCH_SIZE, len(histories))
-    batch = histories[start:end]   # (B, 24)
+    batch = histories[start:end]
     B     = len(batch)
 
-    # MOIRAI 输入格式：(batch, time, variate)
-    past_target = torch.tensor(batch).unsqueeze(-1)   # (B, 24, 1)
-
-    # 构造 observed mask（全部为 True，表示数据完整）
-    past_observed_target = torch.ones(B, CTX_LEN, 1, dtype=torch.bool)
+    past_target          = torch.tensor(batch).unsqueeze(-1)              # (B, 24, 1)
+    past_observed_target = torch.ones(B, CTX_LEN, 1, dtype=torch.bool)   # (B, 24, 1)
+    past_is_pad          = torch.zeros(B, CTX_LEN, dtype=torch.bool)     # (B, 24)
 
     with torch.no_grad():
-        # forecast 返回 (batch, num_samples, prediction_length, variate)
         forecast = model(
             past_target=past_target,
             past_observed_target=past_observed_target,
+            past_is_pad=past_is_pad,
         )
 
-    # 取中位数，shape: (B, PRED_LEN)
-    median_pred = forecast.median(dim=1).values.squeeze(-1).numpy()
+    # forecast shape: (B, num_samples, PRED_LEN, 1)
+    # 取中位数，去掉最后的 variate 维度
+    median_pred = forecast.median(dim=1).values.squeeze(-1).numpy()  # (B, PRED_LEN)
     all_predictions.append(median_pred)
-
     print(f"  进度: {end}/{len(histories)}")
 
-predictions = np.vstack(all_predictions)   # (200, 6)
+predictions = np.vstack(all_predictions)
 print(f"  ✅ 预测完成，输出 shape: {predictions.shape}")
 
-# ── Step 5: 评估精度 ──────────────────────────────────────────────────────────
+# ── Step 5: 评估 ──────────────────────────────────────────────────────────────
 print("\n[Step 5] 评估预测精度...")
 
 mae_per_h  = []
@@ -167,7 +155,7 @@ plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "predictions.png", dpi=150, bbox_inches="tight")
 print(f"  保存: {OUTPUT_DIR}predictions.png")
 
-# 图2：三模型 MAE 对比
+# 图2：三模型对比
 fig2, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
 fig2.suptitle("Zero-shot Comparison: Chronos vs TimesFM vs MOIRAI\nSmart Mobility Lab, Penn State",
               fontsize=12, fontweight="bold")
@@ -184,7 +172,6 @@ ax1.set_xticks(x)
 ax1.legend()
 ax1.grid(True, alpha=0.3, axis="y")
 
-# 总体 MAPE 对比柱状图
 models = ["Chronos", "TimesFM", "MOIRAI"]
 mapes  = [CHRONOS_MAPE, TIMESFM_MAPE, mape]
 colors = ["steelblue", "orange", "tomato"]
@@ -192,7 +179,7 @@ ax2.bar(models, mapes, color=colors, alpha=0.85, width=0.5)
 ax2.set_ylabel("MAPE (%)")
 ax2.set_title("Overall MAPE Comparison")
 ax2.set_ylim(0, max(mapes) * 1.3)
-for i, (m, v) in enumerate(zip(models, mapes)):
+for i, v in enumerate(mapes):
     ax2.text(i, v + 0.3, f"{v:.1f}%", ha="center", fontweight="bold")
 ax2.grid(True, alpha=0.3, axis="y")
 
