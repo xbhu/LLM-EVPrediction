@@ -62,7 +62,7 @@ print(f"  输入: 24小时 → 预测: 6小时")
 
 # ── Step 3: 加载 TimesFM 模型 ─────────────────────────────────────────────────
 print("\n[Step 3] 加载 TimesFM 模型...")
-print("  模型: google/timesfm-1.0-200m")
+print("  模型: google/timesfm-1.0-200m-pytorch")
 print("  第一次运行会从 HuggingFace 下载权重（约800MB）...")
 
 tfm = timesfm.TimesFm(
@@ -70,12 +70,12 @@ tfm = timesfm.TimesFm(
         backend="gpu",           # 使用 GPU
         per_core_batch_size=32,
         horizon_len=PRED_LEN,    # 预测步长
-        context_len=CTX_LEN,     # 输入长度
+        context_len=32,     # 输入长度
         num_layers=20,
         model_dims=1280,
     ),
     checkpoint=timesfm.TimesFmCheckpoint(
-        huggingface_repo_id="google/timesfm-1.0-200m"
+        huggingface_repo_id="google/timesfm-1.0-200m-pytorch"
     ),
 )
 
@@ -85,7 +85,9 @@ print("  ✅ TimesFM 加载成功")
 print("\n[Step 4] 开始预测...")
 
 # TimesFM 输入格式：list of 1D numpy arrays
-inputs     = [histories[i] for i in range(len(histories))]
+# 把24步补齐到32步（在开头补8个点，用第一个值填充）
+histories_padded = np.pad(histories, ((0,0),(8,0)), mode="edge")
+inputs     = [histories_padded[i] for i in range(len(histories_padded))]
 freq_input = [0] * len(inputs)   # 0 = 高频数据（小时级别）
 
 # 预测，返回 (point_forecast, experimental_quantile_preds)
