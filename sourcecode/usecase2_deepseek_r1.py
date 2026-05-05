@@ -34,9 +34,9 @@ DATA_PATH    = "/home/xzh5180/Research/llm-evprediction/datasets/dataset2_text_c
 OUTPUT_DIR   = "/home/xzh5180/Research/llm-evprediction/outputs/usecase2_deepseek_r1/"
 MODEL_NAME   = "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
 MAX_LENGTH   = 256      # R1 需要更多 token 来输出思考过程
-MAX_NEW_TOKENS = 200    # 允许更多输出 token 以容纳 <think> 内容
-BATCH_SIZE   = 2
-GRAD_ACCUM   = 8
+MAX_NEW_TOKENS = 80    # 允许更多输出 token 以容纳 <think> 内容
+BATCH_SIZE   = 1
+GRAD_ACCUM   = 16
 EPOCHS       = 10
 LR           = 2e-4
 DEVICE       = "cuda" if torch.cuda.is_available() else "cpu"
@@ -121,7 +121,7 @@ print(f"    基础模型加载完成")
 SYSTEM_MSG = (
     "You are an EV charging demand forecaster. "
     "Given a daily context description, predict the next-day total EV charging demand in kWh. "
-    "Think step by step, then provide ONLY the integer number as your final answer."
+    "Respond with ONLY the integer number, nothing else."
 )
 
 def build_inference_prompt(context_text: str) -> str:
@@ -132,7 +132,8 @@ def build_inference_prompt(context_text: str) -> str:
     return tokenizer.apply_chat_template(
         messages,
         tokenize=False,
-        add_generation_prompt=True
+        add_generation_prompt=True,
+        enable_thinking=False
     )
 
 def build_training_text(context_text: str, demand: float) -> str:
