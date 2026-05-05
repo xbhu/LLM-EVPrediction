@@ -33,9 +33,9 @@ from peft import LoraConfig, get_peft_model, TaskType, PeftModel
 DATA_PATH    = "/home/xzh5180/Research/llm-evprediction/datasets/dataset2_text_context.csv"
 OUTPUT_DIR   = "/home/xzh5180/Research/llm-evprediction/outputs/usecase2_gemma4_e4b/"
 MODEL_NAME   = "google/gemma-4-e4b-it"
-MAX_LENGTH   = 200
+MAX_LENGTH   = 128
 BATCH_SIZE   = 2
-GRAD_ACCUM   = 8
+GRAD_ACCUM   = 16
 EPOCHS       = 10
 LR           = 2e-4
 DEVICE       = "cuda" if torch.cuda.is_available() else "cpu"
@@ -215,11 +215,16 @@ else:
     lora_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
         r=LORA_R, lora_alpha=LORA_ALPHA, lora_dropout=LORA_DROPOUT,
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
-                        "gate_proj", "up_proj", "down_proj"],
+        target_modules=["q_proj.linear", "k_proj.linear", "v_proj.linear", "o_proj.linear",
+                        "gate_proj.linear", "up_proj.linear", "down_proj.linear"],
         bias="none"
     )
+    # 冻结视觉编码器，只训练文本解码器
+    for name, param in base_model.named_parameters():
+        if "vision_tower" in name:
+            param.requires_grad = False
     model = get_peft_model(base_model, lora_config)
+    model.enable_input_require_grads()
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total     = sum(p.numel() for p in model.parameters())
     print(f"    可训练参数: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
