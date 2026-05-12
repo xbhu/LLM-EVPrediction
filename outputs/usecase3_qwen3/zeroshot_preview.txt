@@ -1,0 +1,40 @@
+
+[1] GT=1501.5 kWh | event=none
+  Output : Predicted demand: 1423.4 kWh. Cold weather is expected to reduce charging demand compared to typical winter days.
+  Parsed : 1423.4  -> 78.1 kWh error
+
+[2] GT=1548.0 kWh | event=none
+  Output : Predicted demand: 1150.0 kWh. Cold winter weekday with normal commuting and commercial activity is expected to reduce demand compared to recent days.
+  Parsed : 1150.0  -> 398.0 kWh error
+
+[3] GT=1573.0 kWh | event=none
+  Output : Predicted demand: 1350.0 kWh. Cold weather is expected to reduce charging demand compared to recent days.
+  Parsed : 1350.0  -> 223.0 kWh error
+
+[4] GT=1522.3 kWh | event=none
+  Output : Predicted demand: 1475.3 kWh. Cold weather is expected to reduce charging demand compared to recent days.
+  Parsed : 1475.3  -> 47.0 kWh error
+
+[5] GT=1586.4 kWh | event=none
+  Output : Predicted demand: 1548.0 kWh. Cold weather and standard operations are expected to influence demand, leading to a prediction close to the average of the past few days.
+  Parsed : 1548.0  -> 38.4 kWh error
+
+[6] GT=1196.8 kWh | event=none
+  Output : Predicted demand: 1535.4 kWh. The demand is expected to be slightly lower than the recent average due to the cold temperature, which may reduce EV charging activity.
+  Parsed : 1535.4  -> 338.7 kWh error
+
+[7] GT=1232.2 kWh | event=none
+  Output : Predicted demand: 1562.4 kWh. Cold weather is expected to slightly reduce charging demand compared to recent days.
+  Parsed : 1562.4  -> 330.2 kWh error
+
+[8] GT=1007.0 kWh | event=none
+  Output : Predicted demand: 1522.3 kWh. The demand is expected to follow the seasonal baseline, with a cold temperature potentially affecting charging patterns.
+  Parsed : 1522.3  -> 515.3 kWh error
+
+[9] GT=1572.2 kWh | event=holiday
+  Output : Predicted demand: 1250.0 kWh. Cold weather and reduced commercial activity are expected to lower the demand compared to previous days.
+  Parsed : 1250.0  -> 322.2 kWh error
+
+[10] GT=1577.2 kWh | event=none
+  Output : Predicted demand: 1120.0 kWh. Cold weather and normal weekday activity are expected to reduce charging demand compared to recent days.
+  Parsed : 1120.0  -> 457.2 kWh error
