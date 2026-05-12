@@ -1,0 +1,28 @@
+{
+  "overall": {
+    "MAE": 51.5,
+    "RMSE": 101.8,
+    "MAPE": 3.07,
+    "parse_rate": 100.0,
+    "n_valid": 72,
+    "n_total": 72
+  },
+  "by_event": {
+    "none": {
+      "MAE": 52.15,
+      "RMSE": 102.51,
+      "MAPE": 3.1,
+      "parse_rate": 100.0,
+      "n_valid": 71,
+      "n_total": 71
+    },
+    "psu_game": {
+      "MAE": 4.92,
+      "RMSE": 4.92,
+      "MAPE": 0.37,
+      "parse_rate": 100.0,
+      "n_valid": 1,
+      "n_total": 1
+    }
+  }
+}
