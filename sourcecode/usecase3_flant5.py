@@ -235,7 +235,7 @@ def train_model(model, tokenizer, train_df, val_df):
         train_dataset = train_ds,
         eval_dataset  = val_ds,
         data_collator = collator,
-        tokenizer     = tokenizer,
+        processing_class = tokenizer,
     )
     print(f"\n{'='*60}")
     print(f"FINE-TUNING  ({EPOCHS} epochs, BF16, effective batch={BATCH_SIZE*GRAD_ACCUM})")
