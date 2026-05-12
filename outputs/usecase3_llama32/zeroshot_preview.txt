@@ -1,0 +1,40 @@
+
+[1] GT=1501.5 kWh | event=none
+  Output : Predicted demand: 1649.5 kWh. Tomorrow's predicted demand is higher than the average daily demand due to the cold weather, which typically increases EV charging demand as people charge their vehicles to maintain a comfortable temperature inside the vehicle.
+  Parsed : 1649.5  -> 148.0 kWh error
+
+[2] GT=1548.0 kWh | event=none
+  Output : Predicted demand: 1591.2 kWh. Tomorrow's predicted demand is higher than the average weekday demand due to the cold weather, which typically increases energy consumption for heating and potentially leads to increased EV charging.
+  Parsed : 1591.2  -> 43.2 kWh error
+
+[3] GT=1573.0 kWh | event=none
+  Output : Predicted demand: 1591.3 kWh. Tomorrow's predicted demand is higher than the average daily demand due to the cold weather, which typically increases EV charging demand as people charge their vehicles to maintain a comfortable temperature inside the vehicle.
+  Parsed : 1591.3  -> 18.3 kWh error
+
+[4] GT=1522.3 kWh | event=none
+  Output : Predicted demand: 1591.3 kWh. Tomorrow's predicted demand is higher than the average daily demand due to the cold weather, which typically increases EV charging demand as people charge their vehicles to maintain a comfortable temperature inside the vehicle.
+  Parsed : 1591.3  -> 69.0 kWh error
+
+[5] GT=1586.4 kWh | event=none
+  Output : Predicted demand: 1552.1 kWh. Tomorrow's demand is expected to be lower than the average due to the cold weather, which typically reduces EV charging due to increased range anxiety and lower battery capacity utilization.
+  Parsed : 1552.1  -> 34.3 kWh error
+
+[6] GT=1196.8 kWh | event=none
+  Output : Predicted demand: 1552.1 kWh. Tomorrow's demand is expected to be higher than the average weekday due to the cold weather, which typically increases energy consumption for heating and potentially leads to increased EV charging.
+  Parsed : 1552.1  -> 355.3 kWh error
+
+[7] GT=1232.2 kWh | event=none
+  Output : Predicted demand: 1450.8 kWh. Tomorrow's predicted demand is higher than the average daily demand due to the cold weather, which typically increases EV charging demand as people charge their vehicles to maintain a comfortable temperature inside the vehicle.
+  Parsed : 1450.8  -> 218.6 kWh error
+
+[8] GT=1007.0 kWh | event=none
+  Output : Predicted demand: 1452.5 kWh. Tomorrow's demand is expected to be lower than the seasonal baseline due to the cold weather, which typically reduces EV charging demand.
+  Parsed : 1452.5  -> 445.5 kWh error
+
+[9] GT=1572.2 kWh | event=holiday
+  Output : Predicted demand: 1552.1 kWh. Tomorrow is a winter weekday with reduced commercial activity, which typically leads to lower overall demand, but the cold temperature may increase residential demand, resulting in a slight increase in total demand.
+  Parsed : 1552.1  -> 20.1 kWh error
+
+[10] GT=1577.2 kWh | event=none
+  Output : Predicted demand: 1452.8 kWh. Tomorrow's demand is expected to be lower than average due to the cold weather, which typically reduces EV adoption and charging activity.
+  Parsed : 1452.8  -> 124.4 kWh error
