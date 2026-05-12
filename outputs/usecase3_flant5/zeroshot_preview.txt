@@ -1,0 +1,40 @@
+
+[1] GT=1501.5 kWh | event=none
+  Output : [732.5, 1562.3, 1566.1, 1585.4, 1576.8, 1542.2, 1188.3]
+  Parsed : 732.5  -> 769.0 kWh error
+
+[2] GT=1548.0 kWh | event=none
+  Output : [2023-01-09]
+  Parsed : 2023.0  -> 475.0 kWh error
+
+[3] GT=1573.0 kWh | event=none
+  Output : [2023-01-10. Winter weekday. Average temperature: 33.9°F (cold). Standard operations. Weather-driven variation expected. Total charging demand (kWh) for tomorrow: [1566.1, 1585.4, 1576.8, 1542.2, 1188.3, 1118.0, 150
+  Parsed : 2023.0  -> 450.0 kWh error
+
+[4] GT=1522.3 kWh | event=none
+  Output : [2023-01-11. Winter weekday. Average temperature: 32.7°F (cold). Standard operations. Weather-driven variation expected. Total charging demand (kWh) for tomorrow: [1585.4, 1576.8, 1542.2, 1188.3, 1118.0, 1501.5, 154
+  Parsed : 2023.0  -> 500.7 kWh error
+
+[5] GT=1586.4 kWh | event=none
+  Output : [1576.8 1542.2, 1188.3, 1118.0, 1501.5, 1548.0, 1573.0]
+  Parsed : 1576.8  -> 9.6 kWh error
+
+[6] GT=1196.8 kWh | event=none
+  Output : [2023-01-13. Winter weekday. Average temperature: 32.6°F (cold). Regular weekday. Normal commuting and commercial activity expected. Predicted total charging demand (kWh) for tomorrow: [1542.2, 1188.3, 1118.0, 1501.5, 154
+  Parsed : 2023.0  -> 826.2 kWh error
+
+[7] GT=1232.2 kWh | event=none
+  Output : [1188.3, 1118.0, 1501.5, 1548.0, 1573.0, 1522.3, 1586.4]
+  Parsed : 1188.3  -> 43.9 kWh error
+
+[8] GT=1007.0 kWh | event=none
+  Output : [118.0, 1501.5, 1548.0, 1573.0, 1522.3, 1586.4, 1196.8]
+  Parsed : 118.0  -> 889.0 kWh error
+
+[9] GT=1572.2 kWh | event=holiday
+  Output : [2023-01-16. Winter weekday. Average temperature: 33.6°F (cold). Public holiday today. Reduced commercial activity; residential demand dominant. Total charging demand (kWh) for tomorrow: [2023-01-16. Winter weekday. Average temperature: 33.6°F (cold).
+  Parsed : 2023.0  -> 450.8 kWh error
+
+[10] GT=1577.2 kWh | event=none
+  Output : [2023-01-17. Winter weekday. Average temperature: 34.5°F (cold). Regular weekday. Normal commuting and commercial activity expected. Predicted total charging demand (kWh) for tomorrow: [1548.0, 1573.0, 1522.3, 1586.4,
+  Parsed : 2023.0  -> 445.8 kWh error
