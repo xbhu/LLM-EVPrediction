@@ -1,0 +1,15 @@
+timestamp,anomaly_type,anomaly_magnitude,expected_kwh,demand_kwh,deviation_pct,llm_explanation,prediction,rouge_l,bertscore_f1
+2023-11-11 17:00:00,big_game_extra,1.1,99.71691666666666,257.71,158.4,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,1.0,1.0
+2023-02-10 19:00:00,equipment_failure,-0.7,108.41391666666667,30.63,-71.7,Charger malfunction reduced capacity by 70%.,Charger malfunction reduced capacity by 70%.,1.0,1.0000001
+2023-11-11 14:00:00,big_game_extra,1.1,85.11958448753462,224.32,163.5,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,1.0,1.0
+2023-12-23 20:00:00,holiday_travel,0.55,113.55445983379502,106.86,-5.9,Pre-Christmas travel surge; EV road-trippers stopped for charging.,Pre-Christmas travel surge; EV road-trippers stopped for charging.,1.0,1.0
+2023-12-24 00:00:00,holiday_travel,0.55,23.375631868131865,24.15,3.3,Pre-Christmas travel surge; EV road-trippers stopped for charging.,Pre-Christmas travel surge; EV road-trippers stopped for charging.,1.0,1.0
+2023-12-23 06:00:00,holiday_travel,0.55,66.03088154269972,71.42,8.2,Pre-Christmas travel surge; EV road-trippers stopped for charging.,Pre-Christmas travel surge; EV road-trippers stopped for charging.,1.0,1.0
+2023-03-17 18:00:00,unrecorded_event,0.85,104.27619444444444,206.24,97.8,Unrecorded St. Patrick's Day celebration caused demand spike.,Unrecorded St. Patrick's Day celebration caused demand spike.,1.0,1.0
+2023-12-23 10:00:00,holiday_travel,0.55,85.16118784530386,78.68,-7.6,Pre-Christmas travel surge; EV road-trippers stopped for charging.,Pre-Christmas travel surge; EV road-trippers stopped for charging.,1.0,1.0
+2023-03-17 20:00:00,unrecorded_event,0.85,113.55445983379502,220.65,94.3,Unrecorded St. Patrick's Day celebration caused demand spike.,Unrecorded St. Patrick's Day celebration caused demand spike.,1.0,1.0
+2023-10-31 21:00:00,halloween_event,0.7,76.19382271468145,132.77,74.3,Halloween downtown event not in scheduling system caused spike.,Halloween downtown event not in scheduling system caused spike.,1.0,1.0
+2023-11-11 11:00:00,big_game_extra,1.1,85.30701657458563,246.16,188.6,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,1.0,1.0
+2023-11-11 15:00:00,big_game_extra,1.1,85.32592797783933,223.5,161.9,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,PSU vs Michigan drew record attendance; parking/charging overwhelmed.,1.0,1.0
+2023-02-10 17:00:00,equipment_failure,-0.7,99.71691666666666,29.37,-70.5,Charger malfunction reduced capacity by 70%.,Charger malfunction reduced capacity by 70%.,1.0,1.0000001
+2023-06-21 14:00:00,heat_wave,0.6,85.11958448753462,163.6,92.2,Extreme heat (103°F) triggered battery cooling loads.,Extreme heat (103°F) triggered battery cooling loads.,1.0,0.9999999
