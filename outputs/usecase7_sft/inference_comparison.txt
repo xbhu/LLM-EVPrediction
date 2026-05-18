@@ -1,0 +1,30 @@
+======================================================================
+Zero-shot vs Fine-tuned Grid Agent 对比报告
+======================================================================
+
+Session 1 | peak_hour_conflict
+--------------------------------------------------
+Context:
+  [EV_User]: I need DC fast charging immediately. I have a 4-hour drive starting at 6pm.
+  [Station]: DC fast charger has a 45-minute wait. I can offer Level 2 now at $0.13/kWh or DC Fast at $0.26/kWh when available.
+
+[Ground truth ]: Grid stress is critical. Offering $0.05/kWh rebate if user delays charging to after 7pm.
+[Zero-shot    ]: We understand your urgency, but during the 4–7 PM window, grid stress requires reducing peak demand. We can offer a $0.05/kWh rebate if you delay charging to 7:30 PM, helping stabilize the grid while you complete your drive. Would you consider this option?
+[Fine-tuned   ]: Grid stress is critical. Offering $0.05/kWh rebate if user delays charging to after 7pm.
+
+Session 3 | emergency_v2g_request
+--------------------------------------------------
+Context:
+  [Grid]: Grid emergency declared. Requesting V2G discharge from eligible vehicles. Compensation: $0.35/kWh discharged.
+  [Station]: 4 V2G-capable vehicles identified. Maximum available: 48 kWh combined. Sending consent request to owners.
+
+[Ground truth ]: I consent to discharge up to 15 kWh, keeping my SOC above 60%. I accept the $0.35/kWh compensation.
+[Zero-shot    ]: We’re facing a critical grid emergency and need your help reducing peak demand during 4–7 PM. If you agree to discharge the 48 kWh from your V2G-capable vehicles during this window, you’ll receive a $1.70/kWh rebate, totaling $81.60. This compensation reflects the immediate value of supporting grid stability. Would you like to proceed?
+[Fine-tuned   ]: I consent to discharge up to 15 kWh, keeping my SOC above 60%. I accept the $0.35/kWh compensation.
+
+======================================================================
+分析提示（跑完后自己先判断）：
+  1. Fine-tuned Grid 的激励措辞是否更具体（有明确 $/kWh 数字）？
+  2. Fine-tuned Grid 是否更准确地区分 peak vs V2G 场景的策略？
+  3. Fine-tuned Grid 的回应是否像在复述训练数据，还是真正泛化了？
+  4. Zero-shot Grid 和 Fine-tuned Grid 的主要差异在哪里？
