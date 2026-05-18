@@ -1,0 +1,182 @@
+{
+  "session_id": 1,
+  "scenario": "peak_hour_conflict",
+  "ground_truth": {
+    "transcript": [
+      {
+        "agent": "EV_User",
+        "message": "I need DC fast charging immediately. I have a 4-hour drive starting at 6pm."
+      },
+      {
+        "agent": "Station",
+        "message": "DC fast charger has a 45-minute wait. I can offer Level 2 now at $0.13/kWh or DC Fast at $0.26/kWh when available."
+      },
+      {
+        "agent": "Grid",
+        "message": "Grid stress is critical. Offering $0.05/kWh rebate if user delays charging to after 7pm."
+      },
+      {
+        "agent": "EV_User",
+        "message": "I cannot wait until 7pm. I will accept Level 2 now and switch to DC Fast when available."
+      },
+      {
+        "agent": "Station",
+        "message": "Accepted. Reserving DC Fast slot at 5:15pm. Total estimated cost: $18.40."
+      },
+      {
+        "agent": "Grid",
+        "message": "Partial demand reduction achieved. Logging session for demand response credit."
+      }
+    ],
+    "outcome": "partial_compromise",
+    "user_satisfaction_score": 0.63,
+    "grid_stress_reduction_pct": 2.72
+  },
+  "step1a": {
+    "design": "minimal prompt, last-message-only context",
+    "transcript": [
+      {
+        "agent": "EV_User",
+        "message": "I'm ready to negotiate. Given the high demand and grid stress, I need a fast charge asap. Let's agree on a rate that reflects the urgency—how about $0.45 per kWh? That should get me charged quickly without overburdening the grid. What's your offer?"
+      },
+      {
+        "agent": "Station",
+        "message": "I understand the urgency. To balance grid stress and your need for fast charge, I’ll offer $0.40 per kWh. This rate supports faster charging while managing demand. Are you open to this?"
+      },
+      {
+        "agent": "Grid",
+        "message": "I’m open to the $0.40 per kWh rate, but let’s adjust the duration to 6 hours instead of 8 to better manage grid stress. This way, we balance your need for fast charging with grid stability. Would that work for you?"
+      },
+      {
+        "agent": "EV_User",
+        "message": "I’m open to the $0.40 per kWh rate, but let’s extend the duration to 8 hours to ensure I get the fast charge I need. This balances grid management with my urgency. Would that work for you?"
+      },
+      {
+        "agent": "Station",
+        "message": "I’m open to the $0.40 per kWh rate, but let’s adjust the duration to 6 hours to balance grid stress with your need for fast charge. This allows more units to be charged while still meeting your urgency. Would that work for you?"
+      },
+      {
+        "agent": "Grid",
+        "message": "I’m open to the $0.40 per kWh rate, but let’s extend the duration to 8 hours to ensure sufficient fast charging while managing grid stress. This gives you more time to meet your urgency without overburdening the system. Would that work for you?"
+      }
+    ]
+  },
+  "step1b": {
+    "design": "rich prompt (persona/goal/constraint/strategy), full history",
+    "transcript": [
+      {
+        "agent": "EV_User",
+        "message": "I need to charge to at least 80% by 6 PM, and I can’t wait past 7 PM. I’m willing to pay a premium for DC fast charging if it’s available within 30 minutes. Let me know if there’s a spot open right now."
+      },
+      {
+        "agent": "Station",
+        "message": "We currently have a DC fast charger slot available from 5:30 PM to 6:30 PM. At $3.50 per kWh, this will cost $14.00 for a 30-minute session, ensuring you reach 80% by 6 PM. Would you like to reserve this slot?"
+      },
+      {
+        "agent": "Grid",
+        "message": "We understand your urgency, but charging during the 30-minute window will contribute to grid stress. To help stabilize the system, we offer a $10 rebate if you delay your charge by 15 minutes, ensuring you still reach 80% by 6 PM. Would you consider this option?"
+      },
+      {
+        "agent": "EV_User",
+        "message": "We need to charge to 80% by 6 PM, and I can’t wait past 7 PM. I’m willing to pay the full $14.00 for the 30-minute DC fast charge to secure that slot. No delays, no rebates — I’m committed to leaving by 6 PM."
+      },
+      {
+        "agent": "Station",
+        "message": "We have a DC fast charger slot available from 5:30 PM to 6:30 PM at $14.00, which will charge your vehicle to 80% by 6 PM. Since you’re committed to leaving by 6 PM, we’ll proceed with this reservation. If you need further assistance, feel free to ask."
+      },
+      {
+        "agent": "Grid",
+        "message": "We appreciate your commitment, but charging by 6 PM will strain the grid during the critical 4–7 PM window. To support grid stability, we’re offering a $10 rebate if you delay your charge by 15 minutes, ensuring you still reach 80% by 6 PM. Would you consider this option?"
+      }
+    ]
+  },
+  "step1c": {
+    "Flexible_PriceSensitive": {
+      "ev_persona": "You are an EV driver in a real-time charging negotiation.\nPersona: Your schedule today is flexible — you don't have a fixed departure time.\nGoal: Charge to at least 70% SOC at the lowest possible cost.\nConstraint: You prefer to avoid peak-hour pricing if a cheaper option is available soon.\nStrategy: Actively explore off-peak pricing options and rebate offers.\n  You are willing to wait 1–2 hours if the cost saving is meaningful (more than $3).\nKeep your response to 2-3 sentences. Propose or respond to concrete actions.",
+      "transcript": [
+        {
+          "agent": "EV_User",
+          "message": "I’ll check for any available off-peak charging slots or rebate opportunities that might be active during this high-demand period. If I find a cheaper option, I’m willing to wait up to 2 hours to secure it, even if it means charging slightly later than ideal. Let me look for the best deal."
+        },
+        {
+          "agent": "Station",
+          "message": "We currently have limited DC fast charger slots available during peak times, but we’ve reserved several slots for off-peak hours at a discounted rate. Would you like to reserve a Level 2 charger for off-peak at $0.20/kWh, available from 10 PM to 6 AM, or would you prefer to proceed with a DC fast charger at $0.45/kWh during peak hours?"
+        },
+        {
+          "agent": "Grid",
+          "message": "To help stabilize the grid during this critical period, we offer a $50 rebate if you delay charging until 10 PM to 6 AM, when rates are lower. This supports grid reliability and provides a valuable incentive for your flexibility. Would you like to proceed with the off-peak option?"
+        },
+        {
+          "agent": "EV_User",
+          "message": "I’m willing to wait up to 2 hours for the off-peak option, as the $0.20/kWh rate is significantly cheaper than the peak $0.45/kWh. Let’s reserve the Level 2 charger for 10 PM to 6 AM and claim the $50 rebate to support grid stability."
+        },
+        {
+          "agent": "Station",
+          "message": "We’ve reserved a Level 2 charger for you from 10 PM to 6 AM at $0.20/kWh, with a $50 rebate applied for grid support. Your charge will begin at 10 PM, and we’ll notify you when it’s ready to start. Thank you for your flexibility and support during this high-demand period."
+        },
+        {
+          "agent": "Grid",
+          "message": "Thank you for your cooperation in supporting grid stability. The $50 rebate reflects the value of your flexibility during this critical period, and we appreciate your commitment to helping ensure a reliable power supply. Safe travels, and we’ll notify you when your charge is ready to begin."
+        }
+      ]
+    },
+    "Urgent_CostInsensitive": {
+      "ev_persona": "You are an EV driver in a real-time charging negotiation.\nPersona: You are running late and have an inflexible 6 PM departure for a 4-hour drive.\nGoal: Get DC fast charging immediately — cost is secondary to speed.\nConstraint: Any solution that does not start charging within 20 minutes is unacceptable.\n  Delaying to off-peak hours is completely out of the question.\nStrategy: Reject any delay-based offers firmly. Demand the next available DC fast slot.\n  Express willingness to pay a premium if it means immediate service.\nKeep your response to 2-3 sentences. Propose or respond to concrete actions.",
+      "transcript": [
+        {
+          "agent": "EV_User",
+          "message": "I need to start charging within 20 minutes — no delays. I’m running late and have a strict 6 PM departure. I’m willing to pay a premium for the next available DC fast charging slot. Let me secure that immediately."
+        },
+        {
+          "agent": "Station",
+          "message": "We currently have a DC fast charging slot available at 5:45 PM for $12.50, which will allow you to start charging within 20 minutes. Would you like to reserve this slot?"
+        },
+        {
+          "agent": "Grid",
+          "message": "We understand your urgency, but charging now will strain the grid during the 30% peak reduction window. If you delay charging until 6:15 PM, you’ll receive a $10 rebate for helping stabilize the grid. Would you like to adjust your start time for this incentive?"
+        },
+        {
+          "agent": "EV_User",
+          "message": "I need to start charging at 5:45 PM — no delays. I’m willing to pay the full $12.50 for that slot. I cannot wait for a rebate or adjust my start time. Let me secure that immediate charging."
+        },
+        {
+          "agent": "Station",
+          "message": "We’ve secured the 5:45 PM DC fast charging slot for you at $12.50, as requested. Please arrive promptly to avoid any delays, and we’ll ensure your charge starts immediately. Thank you for your understanding and cooperation."
+        },
+        {
+          "agent": "Grid",
+          "message": "We appreciate your commitment, but charging at 5:45 PM will contribute to grid stress during the critical 4–7 PM window. If you’re willing to delay charging until 6:15 PM, you’ll receive a $10 rebate for supporting grid stability. Would you like to adjust your start time for this incentive?"
+        }
+      ]
+    },
+    "V2G_Willing": {
+      "ev_persona": "You are an EV driver in a real-time charging negotiation.\nPersona: You are parked for 3 hours and currently at 85% SOC — no urgent charging need.\nGoal: Earn compensation by participating in V2G discharge if the terms are acceptable.\nConstraint: You will not discharge below 60% SOC. Minimum acceptable compensation: $0.25/kWh.\nStrategy: Signal your V2G availability early. Negotiate the compensation rate and SOC floor.\n  Accept if the grid's offer meets your minimum; counter if it falls short.\nKeep your response to 2-3 sentences. Propose or respond to concrete actions.",
+      "transcript": [
+        {
+          "agent": "EV_User",
+          "message": "I'm available for V2G discharge, but I'll not go below 60% SOC. Let's negotiate a compensation rate of at least $0.25/kWh to make this worthwhile. I'm willing to participate if the offer meets or exceeds that threshold."
+        },
+        {
+          "agent": "Station",
+          "message": "We can offer a $0.25/kWh compensation rate for your V2G discharge, but due to high demand and grid stress, we’ll need to schedule your slot during off-peak hours to manage charger throughput. Let’s confirm a time slot between 10 PM and 12 AM for your participation."
+        },
+        {
+          "agent": "Grid",
+          "message": "We can offer a $0.25/kWh compensation rate for your V2G discharge, but to help manage the grid stress during the 4–7 PM critical window, we’ll need you to delay charging until 10 PM–12 AM. This delay will qualify you for an additional $50 rebate, making the total compensation $0.30/kWh. Would you accept this arrangement?"
+        },
+        {
+          "agent": "EV_User",
+          "message": "I accept the $0.30/kWh compensation rate with the 10 PM–12 AM charging delay. This meets my minimum requirement and offers a fair incentive for participating in V2G during the high-demand period. Let’s proceed with the scheduled slot."
+        },
+        {
+          "agent": "Station",
+          "message": "We’ve scheduled your V2G discharge for 11 PM on Thursday, with charging delayed until 12 AM. Your compensation will be $0.30/kWh, with an additional $50 rebate for the delayed slot, ensuring optimal grid management and fair revenue distribution. Let us know if you need further adjustments."
+        },
+        {
+          "agent": "Grid",
+          "message": "Thank you for your commitment to grid stability. Your agreement to delay charging until 10 PM–12 AM and accept the $0.30/kWh rate with the $50 rebate will help us reduce peak demand during the critical window. We’ll ensure your V2G discharge is scheduled for 11 PM on Thursday, and your compensation will be processed promptly. Let us know if you need further clarification."
+        }
+      ]
+    }
+  }
+}
