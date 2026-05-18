@@ -1,0 +1,74 @@
+date,reference_action,predicted_action,rouge1,rouge2,rougeL
+2023-10-20,Raise price to $0.200/kWh from 4–7pm,Raise price to $0.200/kWh from 4–7pm,1.0,1.0,1.0
+2023-10-21,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-10-22,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-10-23,Increase price to $0.291/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.285/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,0.9565217391304348,0.9090909090909091,0.9565217391304348
+2023-10-24,Increase price to $0.363/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.363/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-10-25,Raise price to $0.197/kWh from 4–7pm,Raise price to $0.197/kWh from 4–7pm,1.0,1.0,1.0
+2023-10-26,Raise price to $0.172/kWh from 4–7pm,Raise price to $0.172/kWh from 4–7pm,1.0,1.0,1.0
+2023-10-27,Increase price to $0.263/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.263/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-10-28,Increase price to $0.143/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Pre-position mobile charging unit near stadium by 10am,Increase price to $0.133/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,0.6388888888888888,0.5714285714285714,0.6388888888888888
+2023-10-29,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-10-30,Raise price to $0.167/kWh from 4–7pm,Raise price to $0.167/kWh from 4–7pm,1.0,1.0,1.0
+2023-10-31,Increase price to $0.273/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.273/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-11-01,Raise price to $0.160/kWh from 4–7pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Raise price to $0.159/kWh from 4–7pm,0.4571428571428572,0.36363636363636365,0.4571428571428572
+2023-11-02,Increase price to $0.272/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Increase price to $0.272/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,1.0,1.0,1.0
+2023-11-03,Increase price to $0.353/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.353/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-11-04,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-11-05,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-11-06,Increase price to $0.298/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Increase price to $0.298/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,1.0,1.0,1.0
+2023-11-07,Raise price to $0.182/kWh from 4–7pm,Raise price to $0.182/kWh from 4–7pm,1.0,1.0,1.0
+2023-11-08,Increase price to $0.265/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Increase price to $0.265/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,1.0,1.0,1.0
+2023-11-09,Raise price to $0.172/kWh from 4–7pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Raise price to $0.172/kWh from 4–7pm,0.5142857142857142,0.48484848484848486,0.5142857142857142
+2023-11-10,Increase price to $0.361/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.361/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-11-11,Increase price to $0.186/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Pre-position mobile charging unit near stadium by 10am,Increase price to $0.186/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,0.8363636363636363,0.8301886792452831,0.8363636363636363
+2023-11-12,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-11-13,Raise price to $0.167/kWh from 4–7pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Raise price to $0.176/kWh from 4–7pm,0.4571428571428572,0.36363636363636365,0.4571428571428572
+2023-11-14,Increase price to $0.272/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Increase price to $0.272/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,0.7301587301587301,0.7213114754098361,0.7301587301587301
+2023-11-15,Raise price to $0.198/kWh from 4–7pm,Raise price to $0.198/kWh from 4–7pm,1.0,1.0,1.0
+2023-11-16,Raise price to $0.157/kWh from 4–7pm,Raise price to $0.157/kWh from 4–7pm,1.0,1.0,1.0
+2023-11-17,Increase price to $0.315/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Increase price to $0.315/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,1.0,1.0,1.0
+2023-11-18,Increase price to $0.181/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app | Pre-position mobile charging unit near stadium by 10am,Increase price to $0.175/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,0.8764044943820225,0.8505747126436781,0.8764044943820225
+2023-11-19,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-11-20,Raise price to $0.194/kWh from 4–7pm,Raise price to $0.194/kWh from 4–7pm,1.0,1.0,1.0
+2023-11-21,Increase price to $0.273/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.273/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-11-22,Increase price to $0.288/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.288/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-11-23,Raise price to $0.193/kWh from 4–7pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Raise price to $0.193/kWh from 4–7pm,0.5142857142857142,0.48484848484848486,0.5142857142857142
+2023-11-24,Increase price to $0.309/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,Increase price to $0.309/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app,1.0,1.0,1.0
+2023-11-25,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-11-26,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-11-27,Raise price to $0.198/kWh from 4–7pm,Raise price to $0.198/kWh from 4–7pm,1.0,1.0,1.0
+2023-11-28,Raise price to $0.203/kWh from 4–7pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Raise price to $0.203/kWh from 4–7pm,0.5142857142857142,0.48484848484848486,0.5142857142857142
+2023-11-29,Increase price to $0.316/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Increase price to $0.316/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,1.0,1.0,1.0
+2023-11-30,Raise price to $0.176/kWh from 4–7pm,Raise price to $0.176/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-01,Raise price to $0.176/kWh from 4–7pm,Raise price to $0.176/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-02,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-03,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-04,Raise price to $0.161/kWh from 4–7pm,Raise price to $0.157/kWh from 4–7pm,0.8888888888888888,0.75,0.8888888888888888
+2023-12-05,Raise price to $0.173/kWh from 4–7pm,Raise price to $0.173/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-06,Raise price to $0.169/kWh from 4–7pm,Raise price to $0.169/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-07,Raise price to $0.170/kWh from 4–7pm,Raise price to $0.170/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-08,Raise price to $0.167/kWh from 4–7pm,Raise price to $0.167/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-09,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-10,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-11,Raise price to $0.204/kWh from 4–7pm,Raise price to $0.202/kWh from 4–7pm,0.8888888888888888,0.75,0.8888888888888888
+2023-12-12,Raise price to $0.176/kWh from 4–7pm,Raise price to $0.176/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-13,Raise price to $0.174/kWh from 4–7pm,Raise price to $0.174/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-14,Raise price to $0.188/kWh from 4–7pm,Raise price to $0.188/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-15,Raise price to $0.167/kWh from 4–7pm,Raise price to $0.167/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-16,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-17,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-18,Raise price to $0.161/kWh from 4–7pm,Raise price to $0.161/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-19,Raise price to $0.176/kWh from 4–7pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Raise price to $0.176/kWh from 4–7pm,0.5142857142857142,0.48484848484848486,0.5142857142857142
+2023-12-20,Raise price to $0.198/kWh from 4–7pm,Raise price to $0.198/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-21,Raise price to $0.202/kWh from 4–7pm,Raise price to $0.202/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-22,Raise price to $0.179/kWh from 4–7pm,Raise price to $0.179/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-23,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-24,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-25,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-26,Raise price to $0.167/kWh from 4–7pm,Raise price to $0.176/kWh from 4–7pm,0.8888888888888888,0.75,0.8888888888888888
+2023-12-27,Raise price to $0.202/kWh from 4–7pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app,Raise price to $0.202/kWh from 4–7pm,0.5142857142857142,0.48484848484848486,0.5142857142857142
+2023-12-28,Raise price to $0.187/kWh from 4–7pm,Raise price to $0.195/kWh from 4–7pm,0.8888888888888888,0.75,0.8888888888888888
+2023-12-29,Raise price to $0.185/kWh from 4–7pm,Raise price to $0.185/kWh from 4–7pm,1.0,1.0,1.0
+2023-12-30,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0
+2023-12-31,Maintain current pricing; no intervention needed,Maintain current pricing; no intervention needed,1.0,1.0,1.0

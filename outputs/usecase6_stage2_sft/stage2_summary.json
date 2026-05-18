@@ -1,0 +1,13 @@
+{
+  "stage": "2_sft",
+  "model": "Qwen/Qwen3-4B",
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "train_size": 292,
+  "num_epochs": 5,
+  "test_size": 73,
+  "rouge1": 0.9326,
+  "rouge2": 0.9183,
+  "rougeL": 0.9326,
+  "timestamp": "2026-05-18 08:59:41"
+}
