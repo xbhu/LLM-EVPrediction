@@ -1,0 +1,46 @@
+{
+  "total_dataset_sessions": 120,
+  "parse_success_count": 120,
+  "parse_rate": 1.0,
+  "outcome_accuracy": 1.0,
+  "satisfaction_mae": 0.0584,
+  "confusion_matrix": {
+    "('partial_compromise', 'partial_compromise')": 40,
+    "('full_agreement', 'full_agreement')": 80
+  },
+  "by_scenario": {
+    "emergency_v2g_request": {
+      "n": 40,
+      "accuracy": 1.0,
+      "sat_mae": 0.07147499999999996,
+      "gt_outcomes": {
+        "full_agreement": 40
+      },
+      "pred_outcomes": {
+        "full_agreement": 40
+      }
+    },
+    "overnight_fleet_charging": {
+      "n": 40,
+      "accuracy": 1.0,
+      "sat_mae": 0.051075,
+      "gt_outcomes": {
+        "full_agreement": 40
+      },
+      "pred_outcomes": {
+        "full_agreement": 40
+      }
+    },
+    "peak_hour_conflict": {
+      "n": 40,
+      "accuracy": 1.0,
+      "sat_mae": 0.05275000000000002,
+      "gt_outcomes": {
+        "partial_compromise": 40
+      },
+      "pred_outcomes": {
+        "partial_compromise": 40
+      }
+    }
+  }
+}

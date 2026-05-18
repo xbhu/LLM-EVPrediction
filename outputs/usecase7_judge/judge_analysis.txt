@@ -1,0 +1,23 @@
+============================================================
+Use Case 7b Step 2 - LLM-as-Judge 评估报告
+============================================================
+数据集总条数       : 120
+JSON 解析成功率    : 120/120 (100.0%)
+Outcome 分类准确率 : 100.0%  (120/120)
+满意度估计 MAE     : 0.0584
+
+Confusion Matrix (GT → Predicted):
+  GT=full_agreement         → Pred=full_agreement         : 80
+  GT=partial_compromise     → Pred=partial_compromise     : 40
+
+按场景细分：
+  emergency_v2g_request               | acc=100.0% | sat_mae=0.0715
+  overnight_fleet_charging            | acc=100.0% | sat_mae=0.0511
+  peak_hour_conflict                  | acc=100.0% | sat_mae=0.0528
+
+Step 1 生成 transcript 的 Judge 判断：
+  [step1a                   ] Pred=partial_compromise     | Est_sat=0.75 | GT=partial_compromise
+  [step1b                   ] Pred=full_agreement         | Est_sat=0.95 | GT=partial_compromise
+  [step1c_Flexible_PriceSensitive] Pred=full_agreement         | Est_sat=0.95 | GT=partial_compromise
+  [step1c_Urgent_CostInsensitive] Pred=partial_compromise     | Est_sat=0.65 | GT=partial_compromise
+  [step1c_V2G_Willing       ] Pred=full_agreement         | Est_sat=0.95 | GT=partial_compromise
