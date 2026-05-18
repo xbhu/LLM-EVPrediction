@@ -1,0 +1,1462 @@
+[
+  {
+    "date": "2023-10-20",
+    "retrieved": [
+      {
+        "date": "2023-02-20",
+        "sim": 0.9982,
+        "action": "Raise price to $0.190/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-10-13",
+        "sim": 0.9977,
+        "action": "Raise price to $0.200/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-07-20",
+        "sim": 0.9977,
+        "action": "Increase price to $0.318/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-21",
+    "retrieved": [
+      {
+        "date": "2023-08-01",
+        "sim": 0.9985,
+        "action": "Increase price to $0.356/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-01-29",
+        "sim": 0.9985,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9984,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-22",
+    "retrieved": [
+      {
+        "date": "2023-10-07",
+        "sim": 0.9985,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-05-10",
+        "sim": 0.9982,
+        "action": "Raise price to $0.160/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-08-12",
+        "sim": 0.998,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-23",
+    "retrieved": [
+      {
+        "date": "2023-09-25",
+        "sim": 0.9986,
+        "action": "Increase price to $0.309/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-07-19",
+        "sim": 0.9985,
+        "action": "Increase price to $0.291/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-10-13",
+        "sim": 0.9984,
+        "action": "Raise price to $0.200/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-24",
+    "retrieved": [
+      {
+        "date": "2023-10-16",
+        "sim": 0.9981,
+        "action": "Increase price to $0.336/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-09-20",
+        "sim": 0.9974,
+        "action": "Increase price to $0.336/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-10",
+        "sim": 0.997,
+        "action": "Raise price to $0.161/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-25",
+    "retrieved": [
+      {
+        "date": "2023-09-08",
+        "sim": 0.9982,
+        "action": "Raise price to $0.172/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-20",
+        "sim": 0.9981,
+        "action": "Raise price to $0.190/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-10-03",
+        "sim": 0.998,
+        "action": "Raise price to $0.187/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-26",
+    "retrieved": [
+      {
+        "date": "2023-05-29",
+        "sim": 0.9982,
+        "action": "Increase price to $0.349/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-10-03",
+        "sim": 0.998,
+        "action": "Raise price to $0.187/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-04-19",
+        "sim": 0.998,
+        "action": "Raise price to $0.184/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-27",
+    "retrieved": [
+      {
+        "date": "2023-10-10",
+        "sim": 0.9984,
+        "action": "Increase price to $0.328/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-05-10",
+        "sim": 0.9981,
+        "action": "Raise price to $0.160/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-10-16",
+        "sim": 0.9979,
+        "action": "Increase price to $0.336/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-28",
+    "retrieved": [
+      {
+        "date": "2023-09-23",
+        "sim": 0.9971,
+        "action": "Increase price to $0.182/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Pre-position mobile charging unit near stadium by 10am"
+      },
+      {
+        "date": "2023-09-09",
+        "sim": 0.9961,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm | Pre-position mobile charging unit near stadium by 10am"
+      },
+      {
+        "date": "2023-10-14",
+        "sim": 0.9956,
+        "action": "Raise price to $0.143/kWh from 4\u20137pm | Pre-position mobile charging unit near stadium by 10am"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-29",
+    "retrieved": [
+      {
+        "date": "2023-10-07",
+        "sim": 0.999,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-29",
+        "sim": 0.9986,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9985,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-30",
+    "retrieved": [
+      {
+        "date": "2023-10-13",
+        "sim": 0.9987,
+        "action": "Raise price to $0.200/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-20",
+        "sim": 0.9979,
+        "action": "Raise price to $0.190/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-10-03",
+        "sim": 0.9978,
+        "action": "Raise price to $0.187/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-31",
+    "retrieved": [
+      {
+        "date": "2023-09-25",
+        "sim": 0.9984,
+        "action": "Increase price to $0.309/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-08-22",
+        "sim": 0.9984,
+        "action": "Increase price to $0.273/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-10-13",
+        "sim": 0.9984,
+        "action": "Raise price to $0.200/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-01",
+    "retrieved": [
+      {
+        "date": "2023-10-02",
+        "sim": 0.9979,
+        "action": "Raise price to $0.194/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-28",
+        "sim": 0.9978,
+        "action": "Raise price to $0.185/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9977,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-02",
+    "retrieved": [
+      {
+        "date": "2023-10-04",
+        "sim": 0.9976,
+        "action": "Increase price to $0.288/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9973,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-03-06",
+        "sim": 0.9972,
+        "action": "Raise price to $0.157/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-03",
+    "retrieved": [
+      {
+        "date": "2023-05-23",
+        "sim": 0.997,
+        "action": "Increase price to $0.344/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-03-07",
+        "sim": 0.9968,
+        "action": "Increase price to $0.267/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-09-05",
+        "sim": 0.9967,
+        "action": "Increase price to $0.322/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-04",
+    "retrieved": [
+      {
+        "date": "2023-01-29",
+        "sim": 0.9985,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-25",
+        "sim": 0.9984,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9984,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-05",
+    "retrieved": [
+      {
+        "date": "2023-03-11",
+        "sim": 0.9991,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-10-07",
+        "sim": 0.9991,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.999,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-06",
+    "retrieved": [
+      {
+        "date": "2023-03-02",
+        "sim": 0.998,
+        "action": "Increase price to $0.314/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-07",
+        "sim": 0.998,
+        "action": "Increase price to $0.267/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-09-01",
+        "sim": 0.9979,
+        "action": "Increase price to $0.308/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-07",
+    "retrieved": [
+      {
+        "date": "2023-03-27",
+        "sim": 0.9986,
+        "action": "Raise price to $0.181/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-06",
+        "sim": 0.9984,
+        "action": "Raise price to $0.157/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-09",
+        "sim": 0.9982,
+        "action": "Raise price to $0.184/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-08",
+    "retrieved": [
+      {
+        "date": "2023-03-27",
+        "sim": 0.9983,
+        "action": "Raise price to $0.181/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-07",
+        "sim": 0.9981,
+        "action": "Increase price to $0.267/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-09-27",
+        "sim": 0.9979,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-09",
+    "retrieved": [
+      {
+        "date": "2023-03-06",
+        "sim": 0.9986,
+        "action": "Raise price to $0.157/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-05-31",
+        "sim": 0.9984,
+        "action": "Raise price to $0.167/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9982,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-10",
+    "retrieved": [
+      {
+        "date": "2023-05-29",
+        "sim": 0.9984,
+        "action": "Increase price to $0.349/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-05-23",
+        "sim": 0.9981,
+        "action": "Increase price to $0.344/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-03-06",
+        "sim": 0.9979,
+        "action": "Raise price to $0.157/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-11",
+    "retrieved": [
+      {
+        "date": "2023-10-04",
+        "sim": 0.9951,
+        "action": "Increase price to $0.288/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9948,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-07-11",
+        "sim": 0.9947,
+        "action": "Increase price to $0.267/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-12",
+    "retrieved": [
+      {
+        "date": "2023-01-12",
+        "sim": 0.9975,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-08-12",
+        "sim": 0.9975,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-06-25",
+        "sim": 0.9973,
+        "action": "Raise price to $0.128/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-13",
+    "retrieved": [
+      {
+        "date": "2023-10-13",
+        "sim": 0.9978,
+        "action": "Raise price to $0.200/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9976,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-10-17",
+        "sim": 0.9975,
+        "action": "Increase price to $0.301/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-14",
+    "retrieved": [
+      {
+        "date": "2023-03-06",
+        "sim": 0.9975,
+        "action": "Raise price to $0.157/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9974,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-10-04",
+        "sim": 0.9973,
+        "action": "Increase price to $0.288/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-15",
+    "retrieved": [
+      {
+        "date": "2023-03-27",
+        "sim": 0.9958,
+        "action": "Raise price to $0.181/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-15",
+        "sim": 0.9955,
+        "action": "Increase price to $0.330/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-09-14",
+        "sim": 0.9954,
+        "action": "Raise price to $0.190/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-16",
+    "retrieved": [
+      {
+        "date": "2023-03-28",
+        "sim": 0.9976,
+        "action": "Raise price to $0.185/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9974,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-03-07",
+        "sim": 0.9972,
+        "action": "Increase price to $0.267/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-17",
+    "retrieved": [
+      {
+        "date": "2023-10-17",
+        "sim": 0.998,
+        "action": "Increase price to $0.301/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-05-29",
+        "sim": 0.9975,
+        "action": "Increase price to $0.349/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-07",
+        "sim": 0.9974,
+        "action": "Increase price to $0.267/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-18",
+    "retrieved": [
+      {
+        "date": "2023-09-23",
+        "sim": 0.9968,
+        "action": "Increase price to $0.182/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Pre-position mobile charging unit near stadium by 10am"
+      },
+      {
+        "date": "2023-10-14",
+        "sim": 0.9966,
+        "action": "Raise price to $0.143/kWh from 4\u20137pm | Pre-position mobile charging unit near stadium by 10am"
+      },
+      {
+        "date": "2023-09-16",
+        "sim": 0.9958,
+        "action": "Raise price to $0.148/kWh from 4\u20137pm | Pre-position mobile charging unit near stadium by 10am"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-19",
+    "retrieved": [
+      {
+        "date": "2023-03-19",
+        "sim": 0.9988,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-10-07",
+        "sim": 0.9987,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9986,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-20",
+    "retrieved": [
+      {
+        "date": "2023-10-12",
+        "sim": 0.9976,
+        "action": "Raise price to $0.190/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-03-28",
+        "sim": 0.9969,
+        "action": "Raise price to $0.185/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9968,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-21",
+    "retrieved": [
+      {
+        "date": "2023-10-04",
+        "sim": 0.9977,
+        "action": "Increase price to $0.288/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-04-04",
+        "sim": 0.9976,
+        "action": "Increase price to $0.259/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-09-25",
+        "sim": 0.9975,
+        "action": "Increase price to $0.309/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-22",
+    "retrieved": [
+      {
+        "date": "2023-10-11",
+        "sim": 0.9978,
+        "action": "Increase price to $0.340/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-04-12",
+        "sim": 0.9977,
+        "action": "Increase price to $0.284/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-05-24",
+        "sim": 0.9974,
+        "action": "Increase price to $0.358/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-23",
+    "retrieved": [
+      {
+        "date": "2023-10-02",
+        "sim": 0.9981,
+        "action": "Raise price to $0.194/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9978,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-08-01",
+        "sim": 0.9978,
+        "action": "Increase price to $0.356/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-24",
+    "retrieved": [
+      {
+        "date": "2023-04-11",
+        "sim": 0.9979,
+        "action": "Increase price to $0.294/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      },
+      {
+        "date": "2023-09-20",
+        "sim": 0.9971,
+        "action": "Increase price to $0.336/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-10-04",
+        "sim": 0.9969,
+        "action": "Increase price to $0.288/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-25",
+    "retrieved": [
+      {
+        "date": "2023-03-19",
+        "sim": 0.9986,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-29",
+        "sim": 0.9984,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9983,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-26",
+    "retrieved": [
+      {
+        "date": "2023-04-23",
+        "sim": 0.998,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9979,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-12",
+        "sim": 0.9978,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-27",
+    "retrieved": [
+      {
+        "date": "2023-03-27",
+        "sim": 0.9984,
+        "action": "Raise price to $0.181/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-05-26",
+        "sim": 0.9983,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-06",
+        "sim": 0.9983,
+        "action": "Raise price to $0.157/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-28",
+    "retrieved": [
+      {
+        "date": "2023-03-15",
+        "sim": 0.9979,
+        "action": "Increase price to $0.330/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-05-26",
+        "sim": 0.9978,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-09-27",
+        "sim": 0.9978,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-29",
+    "retrieved": [
+      {
+        "date": "2023-09-11",
+        "sim": 0.9957,
+        "action": "Increase price to $0.342/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-10-12",
+        "sim": 0.9953,
+        "action": "Raise price to $0.190/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-04-12",
+        "sim": 0.9952,
+        "action": "Increase price to $0.284/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-30",
+    "retrieved": [
+      {
+        "date": "2023-10-12",
+        "sim": 0.9968,
+        "action": "Raise price to $0.190/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-03-13",
+        "sim": 0.9965,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-09-11",
+        "sim": 0.9964,
+        "action": "Increase price to $0.342/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-01",
+    "retrieved": [
+      {
+        "date": "2023-01-12",
+        "sim": 0.9985,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-13",
+        "sim": 0.9984,
+        "action": "Raise price to $0.192/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-28",
+        "sim": 0.9983,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-02",
+    "retrieved": [
+      {
+        "date": "2023-08-12",
+        "sim": 0.9985,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-06-10",
+        "sim": 0.9984,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-12",
+        "sim": 0.9983,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-03",
+    "retrieved": [
+      {
+        "date": "2023-07-22",
+        "sim": 0.9987,
+        "action": "Raise price to $0.127/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-22",
+        "sim": 0.9984,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-02-13",
+        "sim": 0.9984,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-04",
+    "retrieved": [
+      {
+        "date": "2023-01-12",
+        "sim": 0.9969,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-05",
+        "sim": 0.9963,
+        "action": "Raise price to $0.173/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-23",
+        "sim": 0.9963,
+        "action": "Raise price to $0.173/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-05",
+    "retrieved": [
+      {
+        "date": "2023-02-27",
+        "sim": 0.9984,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-12",
+        "sim": 0.9983,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-28",
+        "sim": 0.9982,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-06",
+    "retrieved": [
+      {
+        "date": "2023-07-22",
+        "sim": 0.9987,
+        "action": "Raise price to $0.127/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-23",
+        "sim": 0.9985,
+        "action": "Raise price to $0.173/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-24",
+        "sim": 0.9985,
+        "action": "Raise price to $0.164/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-07",
+    "retrieved": [
+      {
+        "date": "2023-02-23",
+        "sim": 0.9986,
+        "action": "Raise price to $0.173/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-12",
+        "sim": 0.9986,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-08-12",
+        "sim": 0.9986,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-08",
+    "retrieved": [
+      {
+        "date": "2023-01-12",
+        "sim": 0.9988,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-07-22",
+        "sim": 0.9985,
+        "action": "Raise price to $0.127/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-28",
+        "sim": 0.9984,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-09",
+    "retrieved": [
+      {
+        "date": "2023-02-04",
+        "sim": 0.9987,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-06-10",
+        "sim": 0.9983,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-07-02",
+        "sim": 0.9982,
+        "action": "Raise price to $0.164/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-10",
+    "retrieved": [
+      {
+        "date": "2023-10-07",
+        "sim": 0.9984,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-02-12",
+        "sim": 0.9982,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-07",
+        "sim": 0.9981,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-11",
+    "retrieved": [
+      {
+        "date": "2023-02-13",
+        "sim": 0.9981,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-07-02",
+        "sim": 0.998,
+        "action": "Raise price to $0.164/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-08-12",
+        "sim": 0.9979,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-12",
+    "retrieved": [
+      {
+        "date": "2023-02-13",
+        "sim": 0.9978,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-07-22",
+        "sim": 0.9976,
+        "action": "Raise price to $0.127/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-08-12",
+        "sim": 0.9975,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-13",
+    "retrieved": [
+      {
+        "date": "2023-01-13",
+        "sim": 0.9984,
+        "action": "Raise price to $0.192/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-12",
+        "sim": 0.9983,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-06-25",
+        "sim": 0.9982,
+        "action": "Raise price to $0.128/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-14",
+    "retrieved": [
+      {
+        "date": "2023-01-13",
+        "sim": 0.998,
+        "action": "Raise price to $0.192/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-28",
+        "sim": 0.9979,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-17",
+        "sim": 0.9979,
+        "action": "Raise price to $0.191/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-15",
+    "retrieved": [
+      {
+        "date": "2023-02-15",
+        "sim": 0.9981,
+        "action": "Raise price to $0.163/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-17",
+        "sim": 0.9981,
+        "action": "Raise price to $0.191/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-04-15",
+        "sim": 0.9977,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-16",
+    "retrieved": [
+      {
+        "date": "2023-03-26",
+        "sim": 0.9978,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-02-12",
+        "sim": 0.9976,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-07",
+        "sim": 0.9976,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-17",
+    "retrieved": [
+      {
+        "date": "2023-02-17",
+        "sim": 0.998,
+        "action": "Raise price to $0.191/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-03-26",
+        "sim": 0.9979,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-02-13",
+        "sim": 0.9979,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-18",
+    "retrieved": [
+      {
+        "date": "2023-08-19",
+        "sim": 0.9984,
+        "action": "Raise price to $0.158/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-16",
+        "sim": 0.9983,
+        "action": "Raise price to $0.167/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-13",
+        "sim": 0.9982,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-19",
+    "retrieved": [
+      {
+        "date": "2023-02-13",
+        "sim": 0.9989,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-28",
+        "sim": 0.9985,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-17",
+        "sim": 0.9984,
+        "action": "Raise price to $0.191/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-20",
+    "retrieved": [
+      {
+        "date": "2023-08-20",
+        "sim": 0.9977,
+        "action": "Raise price to $0.144/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-06-21",
+        "sim": 0.9975,
+        "action": "Increase price to $0.347/kWh during peak hours (reduce demand by ~25%) | Activate demand response: notify users of peak pricing via app | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-13",
+        "sim": 0.9975,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-21",
+    "retrieved": [
+      {
+        "date": "2023-04-24",
+        "sim": 0.998,
+        "action": "Raise price to $0.202/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-01-12",
+        "sim": 0.998,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-06-25",
+        "sim": 0.9978,
+        "action": "Raise price to $0.128/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-22",
+    "retrieved": [
+      {
+        "date": "2023-02-28",
+        "sim": 0.9983,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-13",
+        "sim": 0.9982,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-01-24",
+        "sim": 0.9981,
+        "action": "Raise price to $0.172/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-23",
+    "retrieved": [
+      {
+        "date": "2023-08-12",
+        "sim": 0.9982,
+        "action": "Raise price to $0.138/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-14",
+        "sim": 0.998,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-12",
+        "sim": 0.9979,
+        "action": "Raise price to $0.170/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-24",
+    "retrieved": [
+      {
+        "date": "2023-04-24",
+        "sim": 0.9976,
+        "action": "Raise price to $0.202/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-09-24",
+        "sim": 0.9976,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-22",
+        "sim": 0.9974,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-25",
+    "retrieved": [
+      {
+        "date": "2023-07-04",
+        "sim": 0.9964,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-02-12",
+        "sim": 0.9962,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-09-24",
+        "sim": 0.9961,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-26",
+    "retrieved": [
+      {
+        "date": "2023-01-30",
+        "sim": 0.9983,
+        "action": "Raise price to $0.194/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-13",
+        "sim": 0.9982,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-01-24",
+        "sim": 0.9981,
+        "action": "Raise price to $0.172/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-27",
+    "retrieved": [
+      {
+        "date": "2023-07-02",
+        "sim": 0.9979,
+        "action": "Raise price to $0.164/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-28",
+        "sim": 0.9977,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-02-13",
+        "sim": 0.9974,
+        "action": "Raise price to $0.175/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-28",
+    "retrieved": [
+      {
+        "date": "2023-08-19",
+        "sim": 0.9984,
+        "action": "Raise price to $0.158/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-02-28",
+        "sim": 0.9982,
+        "action": "Raise price to $0.178/kWh from 4\u20137pm | Open overflow parking lot for temporary charging setup | Send queue time estimate to waiting users via app"
+      },
+      {
+        "date": "2023-01-24",
+        "sim": 0.9981,
+        "action": "Raise price to $0.172/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-29",
+    "retrieved": [
+      {
+        "date": "2023-01-13",
+        "sim": 0.998,
+        "action": "Raise price to $0.192/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-24",
+        "sim": 0.9979,
+        "action": "Raise price to $0.172/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-16",
+        "sim": 0.9979,
+        "action": "Raise price to $0.199/kWh from 4\u20137pm"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-30",
+    "retrieved": [
+      {
+        "date": "2023-01-30",
+        "sim": 0.9971,
+        "action": "Raise price to $0.194/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-07-30",
+        "sim": 0.997,
+        "action": "Raise price to $0.146/kWh from 4\u20137pm"
+      },
+      {
+        "date": "2023-01-28",
+        "sim": 0.9969,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-31",
+    "retrieved": [
+      {
+        "date": "2023-01-29",
+        "sim": 0.9984,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-01-28",
+        "sim": 0.9983,
+        "action": "Maintain current pricing; no intervention needed"
+      },
+      {
+        "date": "2023-03-12",
+        "sim": 0.9982,
+        "action": "Maintain current pricing; no intervention needed"
+      }
+    ]
+  }
+]

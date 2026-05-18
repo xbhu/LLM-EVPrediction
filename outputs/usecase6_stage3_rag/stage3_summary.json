@@ -1,0 +1,11 @@
+{
+  "stage": "3_rag",
+  "model": "Qwen/Qwen3-4B",
+  "retriever": "sentence-transformers/all-MiniLM-L6-v2",
+  "top_k": 3,
+  "test_size": 73,
+  "rouge1": 0.1932,
+  "rouge2": 0.0864,
+  "rougeL": 0.1689,
+  "timestamp": "2026-05-18 09:06:39"
+}
