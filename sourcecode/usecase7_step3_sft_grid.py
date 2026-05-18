@@ -218,7 +218,7 @@ def train_grid_agent(train_examples: list, eval_examples: list, tokenizer, model
         per_device_eval_batch_size=PER_DEVICE_BATCH,
         gradient_accumulation_steps=GRAD_ACCUM_STEPS,
         learning_rate=LEARNING_RATE,
-        warmup_ratio=WARMUP_RATIO,
+        warmup_steps=20,
         bf16=True,
         gradient_checkpointing=True,
         save_strategy="epoch",
@@ -227,7 +227,6 @@ def train_grid_agent(train_examples: list, eval_examples: list, tokenizer, model
         logging_steps=10,
         report_to="none",
         dataset_text_field="text",
-        max_seq_length=MAX_SEQ_LENGTH,
     )
 
     trainer = SFTTrainer(
@@ -387,7 +386,7 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     base_model = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
-        torch_dtype=torch.bfloat16,
+        dtype=torch.bfloat16,
         device_map="auto",
     )
     base_model.eval()
@@ -411,7 +410,7 @@ def main():
     print(f"\n[Loading] Reloading base model for zero-shot comparison ...")
     base_model_clean = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
-        torch_dtype=torch.bfloat16,
+        dtype=torch.bfloat16,
         device_map="auto",
     )
     base_model_clean.eval()
