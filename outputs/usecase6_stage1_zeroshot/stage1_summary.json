@@ -1,0 +1,9 @@
+{
+  "stage": "1_zeroshot",
+  "model": "Qwen/Qwen3-4B",
+  "test_size": 73,
+  "rouge1": 0.1198,
+  "rouge2": 0.0205,
+  "rougeL": 0.0903,
+  "timestamp": "2026-05-18 08:43:24"
+}
