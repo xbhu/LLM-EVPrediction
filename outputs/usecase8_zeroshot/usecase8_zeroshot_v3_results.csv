@@ -1,0 +1,2281 @@
+site_id,site_name,month,month_name,population,ev_penetration_pct,has_university,avg_income_k,climate_zone,source_avg_daily_demand_kwh,predicted_kwh,transfer_ratio,full_response
+ALT_001,Altoona - Chestnut Ave Station,1,January,43000,4.1,0,38,humid_continental,1430.94,475.4,0.332,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in January, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since the target site is a post-industrial city with a blue-collar workforce and no major university, we'll assume an EV penetration of 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 25,000 (a reasonable size for a city with lower EV adoption).
+
+The population adjustment factor is:
+$$
+\frac{25,000}{42,000} \approx 0.595
+$$
+
+### Step 3: Apply EV Penetration Adjustment
+$$
+\text{Adjusted EV penetration} = 8.2\% \times 0.595 \approx 4.88\%
+$$
+
+### Step 4: Adjust for Climate (Elevation and Cold Weather)
+Altoona is at a higher elevation than State College, leading to colder winters. We'll apply a cold weather adjustment factor of 1.15 (since colder temperatures can increase charging demand slightly due to more use of heating systems and longer charging times).
+
+### Step 5: Calculate the Adjusted Daily Demand
+Start with the reference site's average daily demand:
+$$
+1430.9 \, \text{kWh}
+$$
+
+Apply the population and EV penetration adjustments:
+$$
+1430.9 \times 0.595 \times 0.488 \approx 413.4 \, \text{kWh}
+$$
+
+Apply the cold weather adjustment:
+$$
+413.4 \times 1.15 \approx 475.4 \, \text{kWh}
+$$
+
+### Final Estimate
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in January is approximately **475.4 kWh**.
+
+Now, calculate the ratio to the State College demand:
+$$
+\text{Ratio} = \frac{475.4}{1430.9} \approx 0.332
+$$
+
+>>DEMAND: 475.4
+>>RATIO: 0.332"
+ALT_001,Altoona - Chestnut Ave Station,2,February,43000,4.1,0,38,humid_continental,1447.11,623.3,0.431,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in February, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Let's assume the target site has 4.5% EV penetration (based on being a post-industrial city with a blue-collar workforce and lower EV adoption).
+
+**EV Penetration Adjustment Factor = 4.5% / 8.2% ≈ 0.5488**
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 30,000 (a reasonable size for a city with lower EV adoption).
+
+**Population Adjustment Factor = 30,000 / 42,000 ≈ 0.7143**
+
+### Step 3: Adjust for Climate (Temperature)
+State College has an average temperature of 42.5°F in February. The target site is at a higher elevation, leading to colder winters. Let's assume the average temperature is 38°F (a typical colder winter temperature for central PA at higher elevation).
+
+Cold weather can increase EV charging demand due to more driving for heating and less driving for charging. However, since the target site is not a university and has lower EV penetration, we'll apply a moderate adjustment. Let's assume a 10% increase in demand due to colder weather.
+
+**Temperature Adjustment Factor = 1.10**
+
+### Step 4: Apply Adjustments
+Now, we apply all the adjustments to the reference site's average daily demand of 1447.1 kWh.
+
+**Adjusted Demand = 1447.1 kWh × 0.5488 × 0.7143 × 1.10**
+
+Let's calculate this:
+
+- 1447.1 × 0.5488 ≈ 793.6
+- 793.6 × 0.7143 ≈ 566.6
+- 566.6 × 1.10 ≈ 623.3
+
+### Final Estimate
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in February is approximately **623.3 kWh**.
+
+Now, calculate the ratio:
+
+**Ratio = 623.3 / 1447.1 ≈ 0.4307**
+
+>>DEMAND: 623.3
+>>R"
+ALT_001,Altoona - Chestnut Ave Station,3,March,43000,4.1,0,38,humid_continental,1646.98,1057.3,0.643,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in March, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Let's assume the EV penetration for Altoona is 4.1% (about half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. Altoona is a mid-size post-industrial city, likely with a smaller population. Let's assume Altoona has a population of 25,000 (a reasonable estimate for a mid-size city in central PA).
+
+The EV penetration rate is proportional to population, so we adjust the EV penetration rate based on population:
+
+EV penetration for Altoona = (25,000 / 42,000) × 8.2% ≈ 4.8%
+
+### Step 3: Adjust for Climate (Temperature)
+State College has an average temperature of 54.8°F in March. Altoona is at a higher elevation, so it's colder. Let's assume the average temperature in Altoona is 45°F. Cold weather can increase EV charging demand because people are more likely to charge their vehicles during colder months.
+
+We'll apply a temperature adjustment factor. A 10°F decrease in temperature can increase demand by about 10%. Since Altoona is 9.8°F colder, we'll apply a 9.8% increase in demand.
+
+### Step 4: Apply Adjustments to the Reference Demand
+State College's average daily demand is 1,647.0 kWh.
+
+First, apply the EV penetration adjustment:
+EV penetration adjustment factor = 4.8% / 8.2% ≈ 0.585
+
+Adjusted demand = 1,647.0 × 0.585 ≈ 963.6 kWh
+
+Next, apply the temperature adjustment (9.8% increase):
+Adjusted demand = 963.6 × 1.098 ≈ 1,057.3 kWh
+
+### Final Calculation
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in March is approximately 1,057.3 kWh.
+
+Now, calculate the ratio to State College's demand:
+Ratio = 1,057.3 / 1,647.0 ≈ 0.643
+
+>>DEMAND: 1057.3
+>>RATIO: 0.643"
+ALT_001,Altoona - Chestnut Ave Station,4,April,43000,4.1,0,38,humid_continental,1616.54,1057.6,0.654,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in April, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since it's a post-industrial city with a blue-collar workforce and no major university, we'll assume an EV penetration of 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 25,000 (a reasonable size for a city with lower EV adoption).
+
+The population adjustment factor is:
+$$
+\frac{25,000}{42,000} \approx 0.595
+$$
+
+### Step 3: Adjust for Climate (Temperature)
+State College has an average temperature of 67.3°F in April. The target site is in a colder area due to elevation, so we'll assume a slightly lower temperature, say 62°F. Cold weather can increase EV charging demand because people are more likely to charge vehicles during colder months.
+
+We'll apply a temperature adjustment factor of 1.1 (a 10% increase due to colder weather).
+
+### Step 4: Apply Adjustments
+Start with the average daily demand from State College: 1616.5 kWh.
+
+Apply the adjustments:
+$$
+\text{Adjusted Demand} = 1616.5 \times 0.595 \times 1.1
+$$
+$$
+\text{Adjusted Demand} \approx 1616.5 \times 0.6545 \approx 1057.6 \text{ kWh}
+$$
+
+### Step 5: Calculate the Ratio
+$$
+\text{Ratio} = \frac{1057.6}{1616.5} \approx 0.654
+$$
+
+>>DEMAND: 1057.6
+>>RATIO: 0.654"
+ALT_001,Altoona - Chestnut Ave Station,5,May,43000,4.1,0,38,humid_continental,1652.46,847.3,0.513,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in May, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Let's assume the EV penetration for Altoona is about 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. Altoona is a mid-size post-industrial city, likely with a smaller population. Let's assume Altoona has a population of 25,000 (a reasonable estimate for a mid-size city in central PA).
+
+The EV penetration rate is proportional to population, so we adjust the EV penetration rate based on population:
+
+EV penetration for Altoona = (25,000 / 42,000) × 8.2% ≈ 4.8%
+
+### Step 3: Adjust for Climate (Temperature)
+State College has an average temperature of 76.6°F in May. Altoona is in a colder area due to elevation, so we expect lower temperatures. Let's assume the average temperature in Altoona in May is 68°F. This is a 8.6°F difference, which is a moderate cooling effect.
+
+A general rule of thumb is that for every 1°F decrease in temperature, EV charging demand may decrease by about 0.5% (due to reduced driving and charging activity in colder weather). However, since the temperature is cooler, we'll apply a slight reduction factor. Let's use a 10% reduction for the colder climate.
+
+### Step 4: Apply Adjustments
+State College's average daily demand is 1652.5 kWh.
+
+First, apply the EV penetration adjustment:
+EV penetration adjustment factor = 4.8% / 8.2% ≈ 0.585
+
+Then apply the temperature adjustment (10% reduction):
+Temperature adjustment factor = 0.90
+
+Now calculate the adjusted demand:
+Adjusted demand = 1652.5 × 0.585 × 0.90 ≈ 847.3 kWh
+
+### Step 5: Calculate the Ratio
+Ratio = 847.3 / 1652.5 ≈ 0.513
+
+>>DEMAND: 847.3
+>>RATIO: 0.513"
+ALT_001,Altoona - Chestnut Ave Station,6,June,43000,4.1,0,38,humid_continental,1948.74,438.4,0.225,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in June, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since it's a post-industrial city with a blue-collar workforce and no major university, we'll assume an EV penetration of 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 25,000 (a reasonable size for a city with lower EV adoption).
+
+The population adjustment factor is:
+$$
+\frac{25,000}{42,000} \approx 0.595
+$$
+
+### Step 3: Adjust for Climate (Temperature)
+State College has an average temperature of 80.0°F in June. The target site is in a colder area due to elevation, so we'll assume a lower average temperature of 70.0°F. Since the target site is colder, we expect slightly lower demand due to reduced driving and charging activity in cooler weather. We'll apply a temperature adjustment factor of 0.92 (a slight reduction due to colder weather).
+
+### Step 4: Apply Adjustments
+Start with the reference site's average daily demand:
+$$
+1948.7 \, \text{kWh}
+$$
+
+Apply the EV penetration adjustment:
+$$
+1948.7 \times 0.41 = 799.0 \, \text{kWh}
+$$
+
+Apply the population adjustment:
+$$
+799.0 \times 0.595 = 476.6 \, \text{kWh}
+$$
+
+Apply the temperature adjustment:
+$$
+476.6 \times 0.92 = 438.4 \, \text{kWh}
+$$
+
+### Final Estimate
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in June is approximately **438.4 kWh**.
+
+Now, calculate the ratio:
+$$
+\frac{438.4}{1948.7} \approx 0.225
+$$
+
+>>DEMAND: 438.4
+>>RATIO: 0.225"
+ALT_001,Altoona - Chestnut Ave Station,7,July,43000,4.1,0,38,humid_continental,1889.59,1237.3,0.655,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in July, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since the target site is a post-industrial city with a blue-collar workforce and no major university, we'll assume an EV penetration of 3.5% (a reasonable estimate for such a location).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 30,000 (a typical size for such a city).
+
+The EV demand is proportional to population. So, we adjust the EV penetration based on population:
+
+- State College EV penetration: 8.2%
+- Target site EV penetration: 3.5%
+- Population ratio: 30,000 / 42,000 = 0.714
+
+Adjusted EV penetration for target site: 8.2% × 0.714 = 5.85%
+
+### Step 3: Adjust for Temperature
+The target site is in central PA and is described as colder due to elevation. July is a relatively warm month, but the target site is likely to have slightly cooler temperatures than State College. We'll apply a temperature adjustment factor of 0.92 (slightly cooler temperatures reduce EV charging demand).
+
+### Step 4: Apply Adjustments to Daily Demand
+State College's average daily demand is 1889.6 kWh.
+
+Adjusted daily demand = 1889.6 × (EV penetration ratio) × (temperature adjustment)
+
+EV penetration ratio = 5.85% / 8.2% = 0.7134  
+Temperature adjustment = 0.92
+
+Adjusted daily demand = 1889.6 × 0.7134 × 0.92 ≈ 1237.3 kWh
+
+### Step 5: Calculate the Ratio
+Ratio = Adjusted daily demand / State College demand  
+Ratio = 1237.3 / 1889.6 ≈ 0.655
+
+### Final Answer:
+>>DEMAND: 1237.3
+>>RATIO: 0.655"
+ALT_001,Altoona - Chestnut Ave Station,8,August,43000,4.1,0,38,humid_continental,1947.25,451.6,0.232,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in August, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since the target site is a post-industrial city with a blue-collar workforce and no major university, we'll assume an EV penetration of 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 25,000 (a reasonable size for a city with lower EV adoption).
+
+The population adjustment factor is:
+$$
+\frac{25,000}{42,000} \approx 0.595
+$$
+
+### Step 3: Adjust for Climate (Temperature)
+The reference site has an average temperature of 67.5°F, and the target site is colder due to elevation. We'll assume the target site has an average temperature of 62°F. Since the target site is colder, we'll apply a slight reduction in demand due to lower temperatures (EV charging is less frequent in colder weather).
+
+We'll use a temperature adjustment factor of 0.95 (a 5% reduction due to colder weather).
+
+### Step 4: Apply Adjustments
+Start with the reference site's average daily demand:
+$$
+1947.2 \, \text{kWh}
+$$
+
+Apply the EV penetration adjustment:
+$$
+1947.2 \times 0.41 = 798.35 \, \text{kWh}
+$$
+
+Apply the population adjustment:
+$$
+798.35 \times 0.595 \approx 475.37 \, \text{kWh}
+$$
+
+Apply the temperature adjustment:
+$$
+475.37 \times 0.95 \approx 451.60 \, \text{kWh}
+$$
+
+### Final Estimate
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in August is approximately **451.6 kWh**.
+
+Now, calculate the ratio to the State College demand:
+$$
+\frac{451.6}{1947.2} \approx 0.232
+$$
+
+>>DEMAND: 451.6
+>>RATIO: 0.232"
+ALT_001,Altoona - Chestnut Ave Station,9,September,43000,4.1,0,38,humid_continental,1680.63,724.1,0.431,"To estimate the average daily EV charging demand for the Altoona - Chestnut Ave Station in September, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this factor. Let's assume the target site has 4.5% EV penetration (a reasonable estimate for a post-industrial city with a blue-collar workforce and no major university).
+
+**EV Penetration Adjustment Factor = 4.5% / 8.2% ≈ 0.5488**
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 30,000 (a typical size for such a city).
+
+**Population Adjustment Factor = 30,000 / 42,000 ≈ 0.7143**
+
+### Step 3: Adjust for Climate (Temperature)
+State College has an average temperature of 55.1°F in September. The target site is in a colder area due to elevation, so we'll assume a slightly lower temperature, say 50°F. Cold weather can increase EV charging demand due to more use of heating systems and longer charging times.
+
+**Temperature Adjustment Factor = 1.1 (a 10% increase due to colder weather)**
+
+### Step 4: Apply Adjustments
+Now, we apply these factors to the reference site's average daily demand of 1680.6 kWh.
+
+**Adjusted Demand = 1680.6 kWh × 0.5488 × 0.7143 × 1.1**
+
+Let's calculate this:
+
+- 1680.6 × 0.5488 ≈ 922.5
+- 922.5 × 0.7143 ≈ 658.3
+- 658.3 × 1.1 ≈ 724.1
+
+### Final Estimate
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in September is approximately **724.1 kWh**.
+
+Now, calculate the ratio to the State College demand:
+
+**Ratio = 724.1 / 1680.6 ≈ 0.431**
+
+>>DEMAND: 724.1
+>>RATIO: 0.431"
+ALT_001,Altoona - Chestnut Ave Station,10,October,43000,4.1,0,38,humid_continental,1660.35,1136.3,0.684,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in October, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since the target site is a post-industrial city with a blue-collar workforce and no major university, we'll assume an EV penetration of 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 25,000 (a reasonable size for a city with lower EV adoption).
+
+The population adjustment factor is:
+$$
+\frac{25,000}{42,000} \approx 0.595
+$$
+
+### Step 3: Adjust for Climate (Temperature)
+The average temperature in State College is 42.8°F. The target site is in a colder area due to elevation, so we'll assume a lower temperature of 38°F. Cold weather can increase EV charging demand because people are more likely to charge their vehicles during colder months.
+
+We'll apply a temperature adjustment factor of 1.15 (a 15% increase due to colder weather).
+
+### Step 4: Apply Adjustments
+Start with the average daily demand from State College: 1660.4 kWh.
+
+Apply the adjustments:
+$$
+\text{Adjusted Demand} = 1660.4 \times 0.595 \times 1.15
+$$
+
+$$
+\text{Adjusted Demand} \approx 1660.4 \times 0.684 \approx 1136.3 \text{ kWh}
+$$
+
+### Step 5: Calculate the Ratio
+$$
+\text{Ratio} = \frac{1136.3}{1660.4} \approx 0.684
+$$
+
+>>DEMAND: 1136.3
+>>RATIO: 0.684"
+ALT_001,Altoona - Chestnut Ave Station,11,November,43000,4.1,0,38,humid_continental,1684.24,349.6,0.21,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in November, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since it's a post-industrial city with a blue-collar workforce and no major university, we'll estimate EV penetration to be around 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 25,000 (a reasonable size for a city with lower EV adoption).
+
+The population adjustment factor is:
+$$
+\frac{25,000}{42,000} \approx 0.595
+$$
+
+### Step 3: Adjust for Climate (Temperature)
+The reference site has an average temperature of 33.3°F. The target site is at a higher elevation, leading to colder winters. We'll assume a temperature adjustment factor of 0.85 (since colder temperatures can increase EV charging demand slightly, but we're adjusting downward due to lower EV penetration and less event-based demand).
+
+### Step 4: Apply Adjustments
+Start with the reference site's average daily demand:
+$$
+1684.2 \, \text{kWh}
+$$
+
+Apply the EV penetration adjustment:
+$$
+1684.2 \times 0.41 = 690.52 \, \text{kWh}
+$$
+
+Apply the population adjustment:
+$$
+690.52 \times 0.595 \approx 411.33 \, \text{kWh}
+$$
+
+Apply the temperature adjustment:
+$$
+411.33 \times 0.85 \approx 349.63 \, \text{kWh}
+$$
+
+### Final Estimate
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in November is approximately **349.63 kWh**.
+
+Now, calculate the ratio:
+$$
+\frac{349.63}{1684.2} \approx 0.2076
+$$
+
+>>DEMAND: 349.6
+>>RATIO: 0.21"
+ALT_001,Altoona - Chestnut Ave Station,12,December,43000,4.1,0,38,humid_continental,1415.21,715.4,0.505,"To estimate the average daily EV charging demand for Altoona - Chestnut Ave Station in December, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and climate.
+
+### Step 1: Adjust for EV Penetration
+State College has an EV penetration of 8.2%. The target site has lower EV adoption, so we'll reduce this percentage. Since it's a post-industrial city with a blue-collar workforce and no major university, we'll assume an EV penetration of 4.1% (approximately half of State College's rate).
+
+### Step 2: Adjust for Population
+State College has a population of 42,000. The target site is a mid-size post-industrial city in central PA, which we'll estimate to have a population of 25,000 (a reasonable size for a city with lower EV adoption).
+
+The population adjustment factor is:
+$$
+\frac{25,000}{42,000} \approx 0.595
+$$
+
+### Step 3: Adjust for Climate (Temperature)
+The reference site has an average temperature of 30.0°F. The target site is at a higher elevation, leading to colder winters. We'll assume a temperature adjustment factor of 0.85 (since colder temperatures can increase charging demand, but we are scaling down due to lower EV penetration and population).
+
+### Step 4: Apply Adjustments
+Start with the reference site's average daily demand:
+$$
+1415.2 \, \text{kWh}
+$$
+
+Apply the adjustments:
+$$
+\text{Adjusted Demand} = 1415.2 \times 0.595 \times 0.85
+$$
+
+First, calculate:
+$$
+1415.2 \times 0.595 = 841.7
+$$
+$$
+841.7 \times 0.85 = 715.4
+$$
+
+### Final Estimate
+The estimated average daily EV charging demand for Altoona - Chestnut Ave Station in December is approximately **715.4 kWh**.
+
+Now, calculate the ratio:
+$$
+\text{Ratio} = \frac{715.4}{1415.2} \approx 0.505
+$$
+
+>>DEMAND: 715.4
+>>RATIO: 0.505"
+HAR_001,Harrisburg - Market St Station,1,January,50000,6.8,0,44,humid_subtropical_transition,1430.94,1717.1,1.2,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in January, we need to consider several factors based on the transfer guidance and the characteristics of the target site.
+
+### Step 1: Understand the Reference Site
+- **State College, PA**: A university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- **January**: Average daily demand is 1430.9 kWh, with an average peak hourly demand of 98.2 kWh.
+- **Temperature**: 33.6°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg**: A state capital with strong weekday government commuter demand.
+- **Higher income than Altoona**, which suggests a higher EV penetration rate.
+- **Warmer summers**, but we are focusing on January, which is likely similar in temperature to State College.
+- **Sharp weekday vs. weekend contrast** due to government workers.
+- **Periodic spikes** due to conferences and legislative events.
+- **Strong Mon-Fri pattern**.
+
+### Step 3: Adjust for Similarities and Differences
+- **Mon-Fri pattern**: Similar to State College, but with government commuters, which may increase demand.
+- **Temperature**: Slightly warmer than State College, which may increase demand slightly.
+- **EV penetration**: Higher than State College (8.2% vs. unknown, but likely lower).
+- **Weekday vs. weekend contrast**: This may lead to higher average daily demand due to consistent weekday usage.
+
+### Step 4: Estimate the Demand
+- State College has an average daily demand of 1430.9 kWh.
+- Harrisburg is expected to have a **higher** average daily demand due to:
+  - Higher EV penetration (assuming around 10%).
+  - Stronger weekday demand.
+  - Slightly warmer temperatures.
+  - Periodic spikes from events.
+
+Assuming a **ratio of 1.2** (higher than State College due to government commuters and higher EV penetration), the estimated average daily demand would be:
+
+**Demand = 1430.9 kWh × 1.2 = 1717.08 kWh**
+
+### Step 5: Final Calculation
+- **Demand**: 1717.08 kWh
+- **Ratio**: 1717.08 / 1430.9 ≈ 1.2
+
+>>DEMAND: 1717.1
+>>RATIO: 1.2"
+HAR_001,Harrisburg - Market St Station,2,February,50000,6.8,0,44,humid_subtropical_transition,1447.11,,,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in February, we need to consider several factors based on the transfer guidance and the characteristics of the target site.
+
+### Step 1: Understand the Reference Site
+- **State College, PA**: A university town with a population of 42,000 and an EV penetration of 8.2%.
+- **February**: Average daily demand is 1447.1 kWh, with an average peak hourly demand of 99.8 kWh.
+- **Average temperature**: 42.5°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg**: A state capital with strong weekday government commuter demand.
+- **Higher income than Altoona**: This suggests a higher EV adoption rate.
+- **Warmer summers**: However, we are focusing on February, so we need to consider the temperature in February for Harrisburg.
+- **Sharp weekday vs weekend contrast**: Due to government workers, weekday demand is likely higher.
+- **Conference and legislative events**: These can cause periodic spikes in demand.
+- **Transfer guidance**: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+### Step 3: Adjust for Differences
+- **EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College. Let's assume a 10% EV penetration rate for Harrisburg (slightly higher than State College's 8.2%).
+- **Population**: Harrisburg is a state capital, likely larger than State College. Let's assume a population of 80,000.
+- **Temperature**: Harrisburg in February is likely slightly warmer than State College (42.5°F). Let's assume an average temperature of 45°F, which may slightly increase demand.
+- **Weekday vs Weekend Pattern**: Since Harrisburg has strong government commuter demand, the average daily demand may be higher due to the strong Mon-Fri pattern.
+
+### Step 4: Estimate the Demand
+- **State College's average daily demand**: 1447.1 kWh.
+- **EV Penetration Adjustment**: 10% vs 8.2% → 1.22 times higher.
+- **Population Adjustment**: 80,000 vs 42,000 → 1.90 times higher.
+- **Temperature Adjustment**: 45°F vs 42.5°F → 1.06 times higher.
+- **Weekday Pattern Adjustment**: Stronger Mon-Fri pattern → 1.2 times higher.
+
+Now, calculate the adjusted demand:
+
+$$
+\text{Adjusted Demand} = 1447.1 \times 1.22 \times 1.90 \times 1.06 \times 1.2
+$$
+
+$$
+\text{Adjusted Demand"
+HAR_001,Harrisburg - Market St Station,3,March,50000,6.8,0,44,humid_subtropical_transition,1646.98,1800.0,1.093,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in March, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In March, the average daily demand is 1647.0 kWh.
+- The average peak hourly demand is 112.3 kWh.
+- The average temperature is 54.8°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg** is the state capital with strong weekday government commuter demand.
+- It has a higher income level than Altoona, which suggests a higher EV penetration rate.
+- It has warmer summers, but we are focusing on March, which is not the warmest month.
+- There is a sharp contrast between weekday and weekend demand due to government workers.
+- There are periodic spikes due to conferences and legislative events.
+- The site has a strong Mon-Fri pattern, similar to the reference site but with government-related events replacing PSU games.
+
+### Step 3: Adjust for Similarities and Differences
+- **Population and EV Penetration**: Harrisburg is a state capital with a higher income level, which may suggest a higher EV penetration rate than State College. However, without specific data, we can only estimate based on the given information.
+- **Temperature**: Harrisburg is slightly warmer than State College, which may increase EV charging demand slightly.
+- **Demand Pattern**: Harrisburg has a strong Mon-Fri pattern, similar to State College, but with government-related events causing periodic spikes. This may increase the average daily demand slightly.
+
+### Step 4: Estimate the Average Daily Demand
+- State College has an average daily demand of 1647.0 kWh.
+- Harrisburg is expected to have a slightly higher demand due to higher income, warmer temperatures, and government-related events.
+- Based on the transfer guidance, we estimate that the demand for Harrisburg will be slightly higher than State College.
+
+### Step 5: Final Estimate
+Considering the above factors, we estimate that the average daily EV charging demand for Harrisburg - Market St Station in March is approximately **1800 kWh**.
+
+### Step 6: Calculate the Ratio
+- Ratio = Harrisburg demand / State College demand = 1800 / 1647 ≈ 1.093
+
+### Final Answer:
+>>DEMAND: 1800
+>>RATIO: 1.093"
+HAR_001,Harrisburg - Market St Station,4,April,50000,6.8,0,44,humid_subtropical_transition,1616.54,1939.8,1.2,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in April, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In April, the average daily demand is **1616.5 kWh**.
+- The average peak hourly demand is **110.7 kWh**.
+- The average temperature is **67.3°F**.
+
+### Step 2: Understand the Target Site
+- **Harrisburg** is the state capital with **strong weekday government commuter demand**.
+- It has a **higher income** than Altoona, which suggests a **higher EV penetration rate**.
+- It has **warmer summers**, so **April temperatures** are likely **slightly warmer** than State College.
+- There is a **sharp weekday vs. weekend contrast** due to government workers.
+- **Conference and legislative events** cause **periodic spikes** in demand.
+- The **Mon-Fri pattern** is **strong**, and we should **replace PSU games** (which may have lower demand) with **government events** (which may have higher demand).
+
+### Step 3: Adjust for Similarities and Differences
+- **Population**: Harrisburg is likely larger than State College, but we don’t have exact numbers. However, the **higher income** suggests a **higher EV penetration rate**.
+- **Temperature**: Slightly warmer than State College, which may increase demand slightly.
+- **Demand Pattern**: Stronger weekday demand and periodic spikes due to government events. This suggests **higher average daily demand** than State College.
+- **EV Penetration**: Higher than 8.2% due to higher income and government commuter demand.
+
+### Step 4: Estimate the Demand
+Given that Harrisburg has **stronger weekday demand**, **higher EV penetration**, and **slightly warmer temperatures**, we can estimate that the **average daily demand** will be **higher** than State College.
+
+Assuming a **ratio of 1.2** (based on higher income, government demand, and slightly warmer temperatures), the estimated average daily demand would be:
+
+$$
+\text{Demand} = 1616.5 \times 1.2 = 1939.8 \, \text{kWh}
+$$
+
+### Step 5: Calculate the Ratio
+$$
+\text{Ratio} = \frac{1939.8}{1616.5} \approx 1.2
+$$
+
+### Final Answer
+>>DEMAND: 1939.8
+>>RATIO: 1.2"
+HAR_001,Harrisburg - Market St Station,5,May,50000,6.8,0,44,humid_subtropical_transition,1652.46,,,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in May, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA**: A university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- **May**: Average daily demand is 1652.5 kWh, with an average peak hourly demand of 113.2 kWh.
+- **Average temperature**: 76.6°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg**: A state capital with strong weekday government commuter demand.
+- **Higher income than Altoona**, which suggests a higher EV penetration rate.
+- **Warmer summers**, so May may be slightly warmer than State College.
+- **Sharp weekday vs. weekend contrast** due to government workers.
+- **Conference and legislative events** cause periodic spikes in demand.
+- **Strong Mon-Fri pattern** (similar to PSU games in State College).
+
+### Step 3: Adjust for Similarities and Differences
+- **EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College, which has 8.2%.
+- **Temperature**: Harrisburg is slightly warmer than State College, which may increase demand slightly.
+- **Demand Pattern**: Harrisburg has a strong weekday pattern, similar to State College's Mon-Fri pattern. However, it also has periodic spikes due to events, which may increase the average demand.
+- **Population**: Harrisburg is likely larger than State College, which could increase demand.
+
+### Step 4: Estimate the Demand
+Assuming a similar population and similar EV penetration rate, but with a slightly higher EV penetration rate due to higher income and more government commuters, we can estimate the demand.
+
+Let’s assume:
+- EV penetration rate in Harrisburg is 9.5% (slightly higher than 8.2% in State College).
+- Population is similar or slightly higher.
+- Temperature is slightly warmer, which may increase demand by 5%.
+- Weekday pattern and periodic spikes may increase the average demand by 10%.
+
+Using the reference site's average daily demand of 1652.5 kWh, we can estimate the demand for Harrisburg as:
+
+**Demand = 1652.5 kWh × 1.10 (for weekday pattern and spikes) × 1.05 (for temperature) × 1.10 (for higher EV penetration)**
+
+**Demand = 1652.5 × 1.10 × 1.05 × 1.10 ≈ 2132.5 kWh**
+
+### Step 5: Calculate the Ratio
+**Ratio = 2132.5 /"
+HAR_001,Harrisburg - Market St Station,6,June,50000,6.8,0,44,humid_subtropical_transition,1948.74,,,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in June, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In June, the average daily demand is 1948.7 kWh.
+- The average peak hourly demand is 132.7 kWh.
+- The average temperature is 80.0°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg** is the state capital with strong weekday government commuter demand.
+- It has a higher income level than Altoona, which suggests a higher EV penetration rate.
+- It has warmer summers, so the temperature is likely similar or slightly higher than State College.
+- There is a sharp contrast between weekday and weekend demand due to government workers.
+- There are periodic spikes due to conferences and legislative events.
+- The site has a strong Mon-Fri pattern, similar to the PSU games at State College, but with government events instead.
+
+### Step 3: Adjust for Differences
+- **EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College. Let's assume a 10% EV penetration rate for Harrisburg (slightly higher than State College's 8.2%).
+- **Population**: Harrisburg is likely to have a larger population than State College, which would increase demand.
+- **Temperature**: Harrisburg is warmer, which may increase demand slightly.
+- **Demand Pattern**: The target site has a strong weekday pattern, similar to the reference site, but with government events causing periodic spikes.
+
+### Step 4: Estimate the Daily Demand
+- Let's assume the population of Harrisburg is about 30,000 (a reasonable estimate for the state capital).
+- Using the EV penetration rate of 10%, the total number of EVs in Harrisburg would be 30,000 * 0.10 = 3,000.
+- Assuming an average daily charging demand per EV is similar to State College (1948.7 kWh / 42,000 = ~0.0464 kWh per EV per day), we can estimate the daily demand for Harrisburg as:
+  - 3,000 EVs * 0.0464 kWh = 139.2 kWh per EV per day.
+  - Total daily demand = 139.2 kWh * 3,000 = 417,600 kWh (this is clearly too high, so we need to adjust).
+
+Wait, that approach is incorrect. Let's instead use the reference site's average"
+HAR_001,Harrisburg - Market St Station,7,July,50000,6.8,0,44,humid_subtropical_transition,1889.59,2267.5,1.2,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in July, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In July, the average daily demand is 1889.6 kWh.
+- The average peak hourly demand is 129.0 kWh.
+- The average temperature is 76.6°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg** is the state capital with strong weekday government commuter demand.
+- It has a higher income level than Altoona, which suggests a higher EV adoption rate.
+- It has warmer summers, similar to the reference site.
+- There is a sharp contrast between weekday and weekend demand due to government workers.
+- There are periodic spikes due to conferences and legislative events.
+- The transfer guidance suggests a strong Mon-Fri pattern, and we should replace PSU games with government events.
+
+### Step 3: Adjust for Similarities and Differences
+- **Population and EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College due to higher income and government presence.
+- **Temperature**: Harrisburg is slightly warmer than State College, which may increase demand slightly.
+- **Demand Pattern**: Harrisburg has a stronger weekday pattern, which is similar to the reference site. However, the presence of government events may cause periodic spikes, which could increase the average demand.
+
+### Step 4: Estimate the Demand
+- State College has an average daily demand of 1889.6 kWh.
+- Harrisburg is expected to have a higher EV penetration rate, so we can assume a higher demand.
+- Considering the slightly warmer temperature and the presence of government events, we estimate that the average daily demand for Harrisburg will be higher than State College.
+
+Assuming a ratio of 1.2 (higher EV penetration and more demand due to government events), the estimated average daily demand for Harrisburg would be:
+
+$$
+\text{Demand} = 1889.6 \times 1.2 = 2267.52 \, \text{kWh}
+$$
+
+### Step 5: Calculate the Ratio
+$$
+\text{Ratio} = \frac{2267.52}{1889.6} \approx 1.198
+$$
+
+>>DEMAND: 2267.5
+>>RATIO: 1.20"
+HAR_001,Harrisburg - Market St Station,8,August,50000,6.8,0,44,humid_subtropical_transition,1947.25,2239.28,1.15,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in August, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA**: A university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- **August**: Average daily demand is 1947.2 kWh, with an average peak hourly demand of 132.7 kWh.
+- **Average temperature**: 67.5°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg**: A state capital with strong weekday government commuter demand. It has a higher income than Altoona and warmer summers.
+- **August**: Expected to have a sharp contrast between weekdays and weekends due to government workers.
+- **Conference and legislative events**: Cause periodic spikes in demand.
+- **Temperature**: Slightly warmer than State College (67.5°F → likely higher, say 72°F).
+
+### Step 3: Adjust for Key Differences
+- **EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College. Let's assume a penetration rate of 9.5% (slightly higher than 8.2%).
+- **Weekday vs. Weekend Pattern**: Harrisburg has a strong Mon-Fri pattern, similar to State College, but with more government commuters. This may increase the average daily demand.
+- **Temperature**: Slightly warmer temperatures may increase charging demand, especially during peak hours.
+- **Events**: Conference and legislative events may cause periodic spikes, which could increase the average daily demand.
+
+### Step 4: Estimate the Daily Demand
+- **State College**: 1947.2 kWh/day.
+- **Harrisburg**: With a slightly higher EV penetration, stronger weekday pattern, and slightly warmer temperatures, we estimate that the average daily demand will be higher than State College.
+- Let's assume a ratio of 1.15 (15% higher) based on the factors above.
+
+### Step 5: Calculate the Estimated Demand
+$$
+\text{Estimated Demand} = 1947.2 \times 1.15 = 2239.28 \, \text{kWh/day}
+$$
+
+### Final Estimate
+- **DEMAND**: 2239.28 kWh
+- **RATIO**: 1.15
+
+>>DEMAND: 2239.28
+>>RATIO: 1.15"
+HAR_001,Harrisburg - Market St Station,9,September,50000,6.8,0,44,humid_subtropical_transition,1680.63,1850.0,1.1,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in September, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In September, the average daily demand is 1680.6 kWh.
+- The average peak hourly demand is 114.7 kWh.
+- The average temperature is 55.1°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg** is the state capital with strong weekday government commuter demand.
+- It has a higher income level than Altoona, which suggests a higher EV penetration rate.
+- It has warmer summers, so September temperatures may be slightly warmer than State College.
+- There is a sharp contrast between weekday and weekend demand due to government workers.
+- There are periodic spikes due to conferences and legislative events.
+- The site has a strong Mon-Fri pattern, similar to the PSU games in State College, but replaced by government events.
+
+### Step 3: Adjust for Similarities and Differences
+- **Population and EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College, which could increase demand.
+- **Temperature**: Harrisburg is slightly warmer than State College, which may increase demand slightly.
+- **Demand Pattern**: Harrisburg has a strong weekday pattern, similar to the reference site, but with government events causing periodic spikes.
+- **Peak Demand**: The average peak hourly demand may be similar or slightly higher due to government events.
+
+### Step 4: Estimate the Daily Demand
+- State College has an average daily demand of 1680.6 kWh.
+- Harrisburg is expected to have a slightly higher demand due to higher EV penetration and warmer temperatures.
+- Considering the strong weekday pattern and potential for periodic spikes, we estimate that the daily demand for Harrisburg will be slightly higher than State College.
+
+### Step 5: Final Estimate
+Based on the above reasoning, we estimate that the average daily EV charging demand for Harrisburg - Market St Station in September is approximately **1850 kWh**.
+
+This is a slight increase from State College's 1680.6 kWh, so the ratio is:
+
+**Ratio = 1850 / 1680.6 ≈ 1.099**
+
+### Final Answer
+>>DEMAND: 1850
+>>RATIO: 1.10"
+HAR_001,Harrisburg - Market St Station,10,October,50000,6.8,0,44,humid_subtropical_transition,1660.35,1700.0,1.024,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in October, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In October, the average daily demand is 1660.4 kWh.
+- The average peak hourly demand is 113.8 kWh.
+- The average temperature is 42.8°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg** is the state capital with strong weekday government commuter demand.
+- It has a higher income level than Altoona, which suggests a higher EV adoption rate.
+- It has warmer summers, but we are focusing on October, which is not the warmest month.
+- There is a sharp contrast between weekday and weekend demand due to government workers.
+- There are periodic spikes due to conferences and legislative events.
+- The site has a strong Mon-Fri pattern, similar to the reference site but with government-related events replacing PSU games.
+
+### Step 3: Adjust for Similarities and Differences
+- **Population and EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College due to higher income and government presence.
+- **Temperature**: Harrisburg is slightly warmer than State College, which may increase EV charging demand slightly.
+- **Demand Pattern**: The target site has a strong Mon-Fri pattern, similar to the reference site, but with government events causing periodic spikes.
+- **Weekend vs. Weekday**: The reference site (State College) may have more weekend demand due to university activities, while Harrisburg has a stronger weekday pattern.
+
+### Step 4: Estimate the Daily Demand
+- State College has an average daily demand of 1660.4 kWh.
+- Harrisburg is expected to have a slightly higher EV penetration and warmer temperatures, which may increase demand.
+- However, the weekday pattern is stronger, and the reference site has more weekend demand, which may slightly reduce the average daily demand.
+
+Considering these factors, we estimate that the average daily EV charging demand for Harrisburg - Market St Station in October is **approximately 1700 kWh**.
+
+### Step 5: Calculate the Ratio
+- Ratio = Target Demand / State College Demand
+- Ratio = 1700 / 1660.4 ≈ 1.024
+
+### Final Answer:
+>>DEMAND: 1700
+>>RATIO: 1.024"
+HAR_001,Harrisburg - Market St Station,11,November,50000,6.8,0,44,humid_subtropical_transition,1684.24,2021.0,1.2,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in November, we need to consider several factors based on the characteristics of the target site and the reference site (State College, PA).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In November, the average daily demand is 1684.2 kWh.
+- The average peak hourly demand is 114.9 kWh.
+- The average temperature is 33.3°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg** is the state capital with strong weekday government commuter demand.
+- It has a higher income level than Altoona, which suggests a higher EV adoption rate.
+- It has warmer summers, but we are focusing on November, which is not the warmest month.
+- There is a sharp contrast between weekday and weekend demand due to government workers.
+- There are periodic spikes due to conferences and legislative events.
+- The site has a strong Mon-Fri pattern, similar to the reference site but with government-related events replacing PSU games.
+
+### Step 3: Adjust for Similarities and Differences
+- **Population and EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College due to higher income and government presence.
+- **Temperature**: Harrisburg is slightly warmer than State College, which may increase EV charging demand slightly.
+- **Demand Pattern**: The target site has a strong Mon-Fri pattern, similar to the reference site, but with government events causing periodic spikes.
+- **Peak Demand**: The average peak hourly demand may be similar or slightly higher due to government commuters.
+
+### Step 4: Estimate the Daily Demand
+- State College has an average daily demand of 1684.2 kWh.
+- Harrisburg is expected to have a higher EV penetration rate, so we can estimate a higher daily demand.
+- Considering the slightly warmer temperature and the presence of government commuters, we can estimate that the daily demand is about 1.2 times that of State College.
+
+### Step 5: Final Calculation
+- Estimated daily demand for Harrisburg = 1684.2 kWh × 1.2 = 2021.04 kWh
+
+### Step 6: Calculate the Ratio
+- Ratio = 2021.04 / 1684.2 ≈ 1.2
+
+### Final Answer:
+>>DEMAND: 2021.0
+>>RATIO: 1.2"
+HAR_001,Harrisburg - Market St Station,12,December,50000,6.8,0,44,humid_subtropical_transition,1415.21,1698.2,1.2,"To estimate the average daily EV charging demand for the Harrisburg - Market St Station in December, we need to consider several factors based on the transfer guidance and the characteristics of the target site.
+
+### Step 1: Understand the Reference Site
+- **State College, PA**: A university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- **December**: Average daily demand is 1415.2 kWh, with an average peak hourly demand of 97.2 kWh.
+- **Temperature**: 30.0°F.
+
+### Step 2: Understand the Target Site
+- **Harrisburg**: A state capital with strong weekday government commuter demand.
+- **Higher income than Altoona**: This suggests a higher EV adoption rate.
+- **Warmer summers**: December is not the warmest month, but the temperature is slightly warmer than State College.
+- **Weekday vs. weekend contrast**: Stronger Mon-Fri pattern due to government workers.
+- **Conference and legislative events**: Periodic spikes in demand.
+- **Transfer guidance**: Strong Mon-Fri pattern. Replace PSU games with government events. Slightly warmer temperature profile.
+
+### Step 3: Adjust for Differences
+- **EV Penetration**: Harrisburg is likely to have a higher EV penetration rate than State College. Let's assume a 10% EV penetration rate for Harrisburg (slightly higher than State College's 8.2%).
+- **Population**: Harrisburg is a state capital, likely larger than State College. Let's assume a population of 80,000 for Harrisburg.
+- **Temperature**: Slightly warmer than State College, which may slightly increase demand.
+- **Weekday Pattern**: Stronger Mon-Fri pattern, which may increase average daily demand compared to a more evenly distributed pattern.
+
+### Step 4: Estimate Daily Demand
+- **State College**: 1415.2 kWh/day.
+- **Harrisburg**: Assuming a higher EV penetration rate and a larger population, we can estimate a higher daily demand.
+- Let's assume a ratio of 1.2 (based on higher EV penetration, larger population, and stronger weekday pattern).
+
+### Step 5: Calculate Estimated Demand
+- **Estimated Demand** = 1415.2 kWh/day × 1.2 = 1698.24 kWh/day.
+
+### Step 6: Calculate Ratio
+- **Ratio** = 1698.24 / 1415.2 ≈ 1.2.
+
+### Final Answer:
+>>DEMAND: 1698.2
+>>RATIO: 1.2"
+ERI_001,Erie - Peach St Station,1,January,94000,3.8,0,36,lake_effect,1430.94,1216.27,0.85,"To estimate the average daily EV charging demand for the Erie - Peach St Station in January, we need to consider several factors, including the climate, local EV adoption rates, and the impact of lake-effect snow.
+
+### Step 1: Base Demand from State College
+The reference site, State College, has an average daily demand of **1430.9 kWh** in January.
+
+### Step 2: Apply Lake-Effect Winter Penalty
+Erie experiences heavy lake-effect snow in winter, which reduces battery range and increases range anxiety. This leads to a **-15% demand penalty** during December through February. Since we are estimating for January, we apply this penalty.
+
+- **Penalty = 1430.9 kWh × 0.15 = 214.635 kWh**
+- **Adjusted Demand = 1430.9 kWh - 214.635 kWh = 1216.265 kWh**
+
+### Step 3: Consider Local Factors
+Erie has lower income and EV adoption rates compared to State College, and it is a larger city with different industrial and work patterns. However, since we are focusing on January (a winter month), the lake-effect penalty is the primary factor to consider. The tourism boost in summer is not relevant for January.
+
+### Step 4: Final Estimate
+After applying the lake-effect winter penalty, the estimated average daily EV charging demand for Erie - Peach St Station in January is approximately **1216.27 kWh**.
+
+### Step 5: Calculate the Ratio
+To find the ratio, we divide the estimated demand for Erie by the demand for State College:
+
+- **Ratio = 1216.27 / 1430.9 ≈ 0.85**
+
+### Final Answer:
+>>DEMAND: 1216.27
+>>RATIO: 0.85"
+ERI_001,Erie - Peach St Station,2,February,94000,3.8,0,36,lake_effect,1447.11,,,"To estimate the average daily EV charging demand for the Erie - Peach St Station in February, we need to consider several factors, including the reference site (State College, PA) and the unique characteristics of the target site.
+
+### Step 1: Reference Site Data
+- **State College, PA**: 
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1447.1 kWh
+  - Month: February
+  - Average temperature: 42.5°F
+
+### Step 2: Target Site Characteristics
+- **Erie, PA**:
+  - Largest city in northwestern PA
+  - Lake-effect snow in winter (heavy snowfall, cold temperatures)
+  - Tourism spikes in summer (Presque Isle State Park)
+  - Lower income and EV adoption than central PA
+  - Industrial shift-work patterns
+
+### Step 3: Apply Lake-Effect Winter Penalty
+- Lake-effect snow in Erie causes **significant battery range reduction** in winter, leading to **range anxiety**.
+- The transfer guidance specifies a **-15% demand penalty** for December–February due to this effect.
+
+### Step 4: Adjust for EV Penetration
+- State College has an EV penetration of 8.2%.
+- Erie has **lower EV adoption** than central PA, so we assume a **lower EV penetration rate**. Let's estimate it at **6.5%** (a reasonable assumption based on lower income and EV adoption).
+
+### Step 5: Estimate Daily Demand for Erie
+- First, estimate the **total daily electricity demand** for Erie based on population and EV penetration.
+- Let’s assume Erie has a **population of 120,000** (a reasonable estimate for the largest city in northwestern PA).
+- Total daily electricity demand for Erie:  
+  $ 120,000 \times \text{average electricity consumption per person} $
+
+  However, since we are focusing on **EV charging demand**, we can use the **EV penetration rate** to estimate this.
+
+- For State College, EV demand is 8.2% of total demand.  
+  For Erie, we estimate EV demand at 6.5% of total demand.
+
+- But we need to adjust for the **lake-effect winter penalty** of -15% on demand.
+
+### Step 6: Apply Adjustments
+- First, estimate the **EV demand for Erie** based on population and EV penetration:
+  $$
+  \text{Erie EV demand} = 120,000 \times 0.065 = 7,800 \text{ EVs}
+  $$
+- Assuming an average daily charging demand per EV is similar to State College (1447.1 kWh / 42,000 people = ~"
+ERI_001,Erie - Peach St Station,3,March,94000,3.8,0,36,lake_effect,1646.98,1482.3,0.899,"To estimate the average daily EV charging demand for the Erie - Peach St Station in March, we need to consider several factors based on the reference site (State College, PA) and the unique characteristics of the target site.
+
+### Step 1: Base Demand from Reference Site
+The reference site (State College, PA) has an average daily demand of **1647.0 kWh** in March.
+
+### Step 2: Apply Lake-Effect Winter Penalty
+The target site (Erie) experiences heavy lake-effect snow in winter, which reduces EV range and increases range anxiety. This leads to a **-15% demand penalty** during December–February. Since March is outside this period, we do not apply this penalty.
+
+### Step 3: Consider Seasonal Variations
+March is not a summer month, so we do not apply the summer tourism boost (Jul-Aug). Therefore, we do not adjust the demand for tourism.
+
+### Step 4: Adjust for Income and EV Adoption
+The target site has **lower income and EV adoption** than State College. This suggests that the EV charging demand is likely **lower** than the reference site. However, we do not have specific data to quantify this difference, so we will assume a moderate adjustment based on the general trend of lower EV penetration.
+
+### Step 5: Adjust for Industrial Shift-Work Patterns
+The target site has **industrial shift-work patterns**, which may lead to **higher demand during certain hours**. However, the question asks for **average daily demand**, so we will assume that the overall average is not significantly different from the reference site unless there is a clear indication otherwise.
+
+### Step 6: Final Estimate
+Given that March is not a winter month with lake-effect snow, and there is no summer tourism boost, we will assume that the average daily demand is **similar to the reference site**, but slightly **lower** due to lower EV adoption.
+
+Let’s estimate a **10% reduction** in demand due to lower EV adoption.
+
+$$
+\text{Estimated Demand} = 1647.0 \times (1 - 0.10) = 1647.0 \times 0.90 = 1482.3 \, \text{kWh}
+$$
+
+### Final Answer
+>>DEMAND: 1482.3  
+>>RATIO: 0.899"
+ERI_001,Erie - Peach St Station,4,April,94000,3.8,0,36,lake_effect,1616.54,953.7,0.59,"To estimate the average daily EV charging demand for the Erie - Peach St Station in April, we need to consider several factors that differ between the reference site (State College, PA) and the target site (Erie, PA).
+
+### Step 1: Base Demand from State College
+The reference site (State College, PA) has an average daily demand of **1616.5 kWh** in April.
+
+### Step 2: Adjust for Climate and Seasonality
+Erie is in a region with **heavy lake-effect snow** in winter, which causes **battery range reduction** and **range anxiety**, leading to **lower EV charging demand**. However, this is **not applicable in April**, as it is not winter. April is a **spring month**, and lake-effect snow is less severe. Therefore, we do **not apply the -15% winter penalty** for April.
+
+### Step 3: Adjust for Tourism
+Erie has **tourism spikes in summer** (July and August), but April is not a peak tourism month. Therefore, we **do not apply the summer tourism boost**.
+
+### Step 4: Adjust for Demographics and EV Adoption
+Erie has **lower income and EV adoption** than State College. This suggests that the **EV penetration rate is lower**, which would result in **lower EV charging demand**. Since EV penetration in State College is **8.2%**, and Erie has **lower EV adoption**, we expect the **daily demand to be lower** than State College.
+
+### Step 5: Estimate the Ratio
+Given that Erie has **lower EV adoption** and **different demographics**, we estimate that the **EV charging demand in Erie is about 60% of that in State College**. This is a reasonable estimate based on the lower income and EV adoption rates.
+
+### Step 6: Calculate the Estimated Demand
+Using the ratio of **0.59**, we calculate:
+
+$$
+\text{Estimated Demand} = 1616.5 \times 0.59 = 953.735 \, \text{kWh}
+$$
+
+### Final Estimate
+We round to one decimal place, so the estimated average daily EV charging demand is **953.7 kWh**.
+
+>>DEMAND: 953.7
+>>RATIO: 0.59"
+ERI_001,Erie - Peach St Station,5,May,94000,3.8,0,36,lake_effect,1652.46,,,"To estimate the average daily EV charging demand for the Erie - Peach St Station in May, we need to consider several factors that differentiate it from the reference site in State College, PA.
+
+### Step 1: Base Demand from State College
+The reference site in State College, PA has an average daily demand of **1652.5 kWh** in May.
+
+### Step 2: Consider Regional Differences
+Erie is a larger city in northwestern PA, but it has **lower income and EV adoption** than State College. This suggests that the EV penetration rate in Erie is likely **lower than 8.2%**. However, since we are estimating for May, which is not winter, we don't need to apply the **-15% winter penalty**.
+
+### Step 3: Consider Seasonal Factors
+May is not a summer or winter month, so we don't need to apply the **summer tourism boost** or **winter range anxiety penalty**. However, we should consider that Erie may have **different temperature patterns** than State College. The average temperature in Erie in May is likely **lower than 76.6°F**, which could slightly reduce battery range and thus reduce demand. However, since May is not winter, this effect is likely **mild**.
+
+### Step 4: Adjust for EV Penetration
+Since Erie has **lower EV adoption** than State College, we need to adjust the demand accordingly. Let's assume that the EV penetration in Erie is **7.5%**, which is slightly lower than the 8.2% in State College.
+
+### Step 5: Calculate Adjusted Demand
+We can estimate the demand for Erie by adjusting the State College demand based on the difference in EV penetration:
+
+- State College EV penetration: 8.2%
+- Erie EV penetration: 7.5%
+- Difference: 0.7%
+
+To adjust the demand, we can use the following formula:
+
+$$
+\text{Erie Demand} = \text{State College Demand} \times \left( \frac{\text{Erie EV Penetration}}{\text{State College EV Penetration}} \right)
+$$
+
+$$
+\text{Erie Demand} = 1652.5 \times \left( \frac{7.5}{8.2} \right) \approx 1652.5 \times 0.9146 \approx 1511.3
+$$
+
+### Step 6: Final Estimate
+After considering the lower EV penetration and other regional factors, the estimated average daily EV charging demand for Erie - Peach St Station in May is approximately **1511.3 kWh**.
+
+### Final Calculation
+- **DEMAND**: 1511.3
+- **RATIO**: 1511.3 / 1652.5 ≈ 0.9"
+ERI_001,Erie - Peach St Station,6,June,94000,3.8,0,36,lake_effect,1948.74,1473.4,0.756,"To estimate the average daily EV charging demand for the Erie - Peach St Station in June, we need to consider several factors that differ from the reference site in State College, PA.
+
+### Step 1: Understand the reference site
+- **State College, PA**: A university town with a population of 42,000, EV penetration of 8.2%.
+- **June**: Average daily demand is 1948.7 kWh, with an average peak hourly demand of 132.7 kWh.
+- **Average temperature**: 80.0°F.
+
+### Step 2: Understand the target site
+- **Erie, PA**: Largest city in northwestern PA.
+- **Climate**: Lake-effect snow in winter, cold temperatures in winter, which reduces battery range and causes range anxiety. However, we are focusing on **June**, which is a summer month.
+- **Tourism**: Presque Isle State Park is a major tourist attraction in summer, which could increase EV charging demand.
+- **EV adoption**: Lower than State College due to lower income and different demographics.
+- **Industrial shift-work patterns**: May affect charging demand, but we are focusing on average daily demand.
+
+### Step 3: Apply adjustments
+- **Summer tourism boost (July–August)**: Since we are looking at June, which is just before the peak summer tourism months, we can assume a moderate increase in demand.
+- **No lake-effect penalty**: Since we are in June, the lake-effect snow is not a factor.
+- **Lower EV adoption**: The target site has lower EV penetration than State College, so we expect lower demand.
+
+### Step 4: Estimate the demand
+- **State College average daily demand**: 1948.7 kWh.
+- **Lower EV adoption**: Assume 70% of State College's EV penetration (since the target site has lower EV adoption).
+- **Summer tourism boost**: Assume a 10% increase due to tourism.
+
+So, the estimated average daily demand for Erie - Peach St Station in June is:
+
+$$
+\text{Demand} = 1948.7 \times 0.7 \times 1.1 = 1473.4 \, \text{kWh}
+$$
+
+### Step 5: Calculate the ratio
+$$
+\text{Ratio} = \frac{1473.4}{1948.7} \approx 0.756
+$$
+
+>>DEMAND: 1473.4
+>>RATIO: 0.756"
+ERI_001,Erie - Peach St Station,7,July,94000,3.8,0,36,lake_effect,1889.59,1847.1,0.98,"To estimate the average daily EV charging demand for the Erie - Peach St Station in July, we need to adjust the demand from the reference site (State College, PA) based on the unique characteristics of the target site.
+
+### Step 1: Start with the reference site data
+- **State College, PA (reference site):** Average daily demand = 1889.6 kWh
+
+### Step 2: Adjust for summer tourism boost
+The target site (Erie) experiences a tourism spike in July and August due to Presque Isle State Park. This suggests that the average daily demand may be higher than the reference site during this time. We will apply a **summer tourism boost factor**. Based on the reference site's data and the nature of the target site, we estimate a **15% increase** in demand due to tourism.
+
+- **Adjusted demand for summer tourism boost:**  
+  1889.6 kWh × 1.15 = 2173.04 kWh
+
+### Step 3: Adjust for climate and battery range
+The target site experiences cold temperatures in winter, but we are focusing on July, which is a summer month. However, the lake-effect snow in winter can reduce battery range, which may affect EV adoption. Since we are focusing on July, we do not apply the winter penalty. However, the target site has **lower income and EV adoption** than State College, which may result in **lower demand**.
+
+To account for this, we apply a **reduction factor** of **0.85** to the adjusted demand from the tourism boost.
+
+- **Final adjusted demand:**  
+  2173.04 kWh × 0.85 = 1847.084 kWh
+
+### Step 4: Final estimate
+The estimated average daily EV charging demand for Erie - Peach St Station in July is approximately **1847.08 kWh**.
+
+### Step 5: Calculate the ratio
+- **Ratio = Target demand / Reference demand**  
+  = 1847.08 / 1889.6 ≈ 0.977
+
+### Final Answer:
+>>DEMAND: 1847.1
+>>RATIO: 0.98"
+ERI_001,Erie - Peach St Station,8,August,94000,3.8,0,36,lake_effect,1947.25,2044.56,1.05,"To estimate the average daily EV charging demand for the Erie - Peach St Station in August, we need to adjust the State College data based on the unique characteristics of the target site.
+
+### Step 1: Start with the State College data
+- **State College, PA (reference site):** Average daily demand = 1947.2 kWh
+
+### Step 2: Adjust for summer tourism boost
+- The target site (Erie) experiences a **summer tourism boost** in July and August due to Presque Isle State Park.
+- This suggests that the average daily demand in Erie may be **higher** than in State College during these months.
+
+### Step 3: Adjust for lake-effect snow and cold temperatures (winter penalty)
+- However, the question specifically asks for **August**, which is **summer** in Erie.
+- Lake-effect snow is more significant in **winter**, so the **winter penalty** does **not** apply in August.
+- Therefore, we **do not** apply the -15% winter penalty in this case.
+
+### Step 4: Adjust for lower EV adoption and income
+- The target site has **lower EV adoption** and **lower income** than State College.
+- This suggests that the average daily demand in Erie may be **lower** than in State College.
+
+### Step 5: Apply a reasonable adjustment factor
+- Since Erie has **summer tourism** but also **lower EV adoption**, we need to **balance** these factors.
+- A reasonable assumption is that the **summer tourism boost** may increase demand by **10%**, but the **lower EV adoption** may reduce demand by **5%**.
+- Net adjustment: **+5%** (10% increase from tourism, 5% decrease from lower adoption).
+
+### Step 6: Calculate the adjusted demand
+- State College demand = 1947.2 kWh
+- Adjusted demand for Erie = 1947.2 × 1.05 = **2044.56 kWh**
+
+### Step 7: Calculate the ratio
+- Ratio = 2044.56 / 1947.2 ≈ **1.05**
+
+### Final Answer:
+>>DEMAND: 2044.56
+>>RATIO: 1.05"
+ERI_001,Erie - Peach St Station,9,September,94000,3.8,0,36,lake_effect,1680.63,,,"To estimate the average daily EV charging demand for the Erie - Peach St Station in September, we need to consider several factors that differ between the reference site (State College, PA) and the target site (Erie, PA).
+
+### Step 1: Understand the reference site
+- **State College, PA** is a university town with a population of 42,000 and an EV penetration rate of 8.2%.
+- In September, the average daily demand is **1680.6 kWh**.
+- The average peak hourly demand is **114.7 kWh**.
+- The average temperature is **55.1°F**, which is relatively mild and not extreme.
+
+### Step 2: Understand the target site
+- **Erie, PA** is the largest city in northwestern PA.
+- It experiences **heavy lake-effect snow and cold temperatures**, especially in winter, which reduces battery range and may lead to **range anxiety**.
+- However, the question is about **September**, which is not the winter season (Dec-Feb), so the **-15% demand penalty** due to lake-effect snow does not apply in September.
+- **Tourism** spikes in **July and August**, but September is not a peak tourism month, so we do not add a tourism boost.
+- Erie has **lower income and EV adoption** than State College, which suggests **lower EV penetration**.
+- The **industrial shift-work patterns** may lead to **flattened event spikes**, but this is not a major factor in September.
+
+### Step 3: Adjust for EV penetration
+- State College has an EV penetration of **8.2%**.
+- Erie has **lower EV adoption**, so we assume a lower EV penetration rate. Let's estimate it at **6.5%** (a reasonable assumption based on lower income and EV adoption).
+
+### Step 4: Adjust for temperature
+- In September, the temperature in Erie is likely similar to State College (around 55°F), so no significant temperature adjustment is needed.
+
+### Step 5: Estimate the average daily demand
+- The average daily demand in State College is **1680.6 kWh**.
+- The EV penetration in Erie is **6.5%**, compared to **8.2%** in State College.
+- The ratio of EV penetration is **6.5 / 8.2 ≈ 0.7927**.
+- Therefore, the estimated average daily demand in Erie is:
+  $$
+  1680.6 \times 0.7927 ≈ 1332.3 \text{ kWh}
+  $$
+
+### Final Estimate
+- **DEMAND**: 1332.3 kWh
+- **RATIO**: 1332.3 / 1680.6 ≈ 0.7"
+ERI_001,Erie - Peach St Station,10,October,94000,3.8,0,36,lake_effect,1660.35,1419.6,0.855,"To estimate the average daily EV charging demand for the Erie - Peach St Station in October, we need to consider several factors based on the reference site (State College, PA) and the unique characteristics of the target site.
+
+### Step 1: Base Demand from Reference Site
+The reference site (State College, PA) has an average daily demand of **1660.4 kWh** in October.
+
+### Step 2: Adjust for Climate Effects
+The target site (Erie, PA) experiences **lake-effect snow** in winter, which causes **range anxiety** and reduces EV charging demand. Since October is not in the peak winter months (December–February), the **-15% winter penalty** does not apply directly. However, we can still consider a **moderate climate adjustment** due to colder temperatures. Since the average temperature in Erie is likely lower than in State College, we estimate a **10% reduction** in demand due to colder weather.
+
+### Step 3: Adjust for Tourism and Income
+Erie has **lower EV adoption** and **lower income** compared to State College. This means the EV penetration rate is likely lower. Additionally, while tourism spikes in summer (July–August), October is not a peak tourism month. Therefore, we estimate a **5% reduction** in demand due to lower EV adoption and income levels.
+
+### Step 4: Apply Adjustments
+- Base demand: 1660.4 kWh
+- Climate adjustment (10% reduction): 1660.4 × 0.90 = 1494.36 kWh
+- Income/ev adoption adjustment (5% reduction): 1494.36 × 0.95 = **1419.64 kWh**
+
+### Step 5: Final Estimate
+The estimated average daily EV charging demand for Erie - Peach St Station in October is **1419.64 kWh**.
+
+### Step 6: Calculate Ratio
+Ratio = 1419.64 / 1660.4 ≈ **0.855**
+
+>>DEMAND: 1419.6
+>>RATIO: 0.855"
+ERI_001,Erie - Peach St Station,11,November,94000,3.8,0,36,lake_effect,1684.24,1288.41,0.765,"To estimate the average daily EV charging demand for the Erie - Peach St Station in November, we need to consider several factors based on the provided information:
+
+1. **Base Demand**: The reference site (State College, PA) has an average daily demand of 1684.2 kWh in November. However, the target site (Erie) has lower EV adoption and income levels, so we expect lower demand.
+
+2. **Lake-Effect Winter Penalty**: Erie experiences heavy lake-effect snow in winter, which reduces EV battery range and increases range anxiety. This leads to a -15% demand reduction during December–February. Since November is just before the peak of this penalty, we apply a 15% reduction to the base demand.
+
+3. **Seasonal Adjustment**: The target site has lower EV adoption than State College, so we adjust the demand accordingly. Based on the description, we estimate that the EV penetration in Erie is lower than 8.2%, so we reduce the demand by an additional 10% to account for this.
+
+Now, let's calculate the adjusted demand:
+
+- Base demand (State College): 1684.2 kWh
+- Apply -15% lake-effect penalty: 1684.2 × 0.85 = 1431.57 kWh
+- Apply 10% reduction for lower EV adoption: 1431.57 × 0.90 = 1288.41 kWh
+
+Therefore, the estimated average daily EV charging demand for Erie - Peach St Station in November is approximately 1288.41 kWh.
+
+Now, calculate the ratio:
+
+- Ratio = 1288.41 / 1684.2 ≈ 0.765
+
+>>DEMAND: 1288.41
+>>RATIO: 0.765"
+ERI_001,Erie - Peach St Station,12,December,94000,3.8,0,36,lake_effect,1415.21,1202.9,0.85,"### Step 1: Understand the reference site
+- **State College, PA**: A university town with a population of 42,000. EV penetration is 8.2%.
+- **December**: Average daily demand is 1415.2 kWh, with an average peak hourly demand of 97.2 kWh.
+- **Average temperature**: 30.0°F.
+
+### Step 2: Understand the target site
+- **Erie, PA**: Largest city in northwestern PA.
+- **Climate**: Lake-effect snow in winter, leading to cold temperatures and reduced EV battery range.
+- **Tourism**: Spikes in summer (July–August) due to Presque Isle State Park.
+- **EV adoption**: Lower than State College due to lower income and industrial shift-work patterns.
+
+### Step 3: Apply the transfer guidance
+- **Winter penalty**: Apply a -15% demand reduction for December–February due to lake-effect snow and range anxiety.
+- **Summer boost**: Not applicable for December.
+- **Flatten event spikes**: Not relevant for December.
+
+### Step 4: Adjust the reference demand
+- The reference site (State College) has an average daily demand of 1415.2 kWh in December.
+- Apply the -15% winter penalty:
+  $$
+  \text{Adjusted demand} = 1415.2 \times (1 - 0.15) = 1415.2 \times 0.85 = 1202.92 \, \text{kWh}
+  $$
+
+### Step 5: Adjust for EV adoption
+- The target site (Erie) has lower EV adoption than State College.
+- Since EV penetration is lower, we expect lower demand. However, the problem does not provide a specific EV penetration rate for Erie, so we assume the -15% winter penalty is the main adjustment.
+
+### Step 6: Final estimate
+- Based on the -15% winter penalty, the estimated average daily EV charging demand for Erie in December is **1202.92 kWh**.
+
+### Step 7: Calculate the ratio
+- Ratio = Target demand / State College demand
+- $$
+  \text{Ratio} = \frac{1202.92}{1415.2} \approx 0.85
+  $$
+
+>>DEMAND: 1202.9
+>>RATIO: 0.85"
+BET_001,Bethlehem - Main St Station,1,January,77000,7.4,1,52,humid_continental,1430.94,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in January, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1430.9 kWh
+  - Average peak hourly demand: 98.2 kWh
+  - Average temperature: 33.6°F (January)
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station (target site):**
+  - Growing mid-size city in Lehigh Valley
+  - Similar to State College but smaller in scale
+  - Higher income corridor
+  - Higher EV adoption (not specified, but implied to be higher than 8.2%)
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall
+  - We are focusing on **January**, so the cultural event spikes are not relevant here
+
+### Step 3: Apply transfer guidance
+- **EV penetration:** Higher than State College (8.2%), so we assume a higher EV penetration rate. Let's assume 10% for the target site (a reasonable increase).
+- **Event multiplier:** Apply 60% of PSU event multiplier for Lehigh events. Since we are not considering events in January, this multiplier is not directly applicable.
+- **Weekend cultural event boost:** Not applicable in January.
+
+### Step 4: Estimate the average daily demand
+We can estimate the average daily demand using the formula:
+
+$$
+\text{Demand} = \text{Population} \times \text{EV penetration} \times \text{Average kWh per EV charge}
+$$
+
+However, since we don't have the average kWh per EV charge, we can use the reference data to estimate it.
+
+From the reference site:
+- Average daily demand = 1430.9 kWh
+- Population = 42,000
+- EV penetration = 8.2%
+
+So, the average kWh per EV charge is:
+
+$$
+\frac{1430.9}{42,000 \times 0.082} \approx \frac{1430.9}{3444} \approx 0.415 \text{ kWh per EV charge}
+$$
+
+Now, apply this to the target site:
+- Population: Let's assume the target site has a population of 35,000 (smaller than State College)
+- EV penetration: 10% (higher than 8.2%)
+
+$$
+\text{Demand} = 35,000 \times 0.10 \times"
+BET_001,Bethlehem - Main St Station,2,February,77000,7.4,1,52,humid_continental,1447.11,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in February, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1447.1 kWh
+  - Average peak hourly demand: 99.8 kWh
+  - Average temperature: 42.5°F
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station**:
+  - Growing mid-size city in Lehigh Valley
+  - Higher income corridor
+  - Higher EV adoption (than State College)
+  - Similar to State College in terms of academic event demand, but smaller scale
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall
+  - February is not a peak season for cultural events, so no boost needed
+
+### Step 3: Apply transfer guidance
+- **EV penetration**: Higher than State College. Let's assume 10% (a reasonable increase from 8.2%).
+- **Event multiplier**: Apply 60% of PSU event multiplier for Lehigh events. Since the reference site is State College, we assume the multiplier is similar to PSU, but we apply 60% of that. However, since the target site is not in a university town, we may not need to apply the event multiplier for academic events. But since the target site has similar academic event demand, we will apply 60% of the multiplier.
+- **Weekend cultural event boost**: Not applicable in February.
+- **Temperature**: February in Lehigh Valley is likely similar to State College (around 42.5°F), so no temperature adjustment needed.
+
+### Step 4: Calculate the estimated average daily demand
+We can estimate the daily demand using the formula:
+
+$$
+\text{Estimated Daily Demand} = \text{State College Daily Demand} \times \left( \frac{\text{Target EV Penetration}}{\text{State College EV Penetration}} \right)
+$$
+
+$$
+\text{Estimated Daily Demand} = 1447.1 \times \left( \frac{10}{8.2} \right) = 1447.1 \times 1.2195 = 1767.3 \text{ kWh}
+$$
+
+### Step 5: Apply event multiplier (60% of PSU multiplier)
+Since the target site has similar academic event demand, we apply 60% of the multiplier. However, since the multiplier is not given, we assume it is similar to State College. Therefore, we apply 60% of the multiplier, which is"
+BET_001,Bethlehem - Main St Station,3,March,77000,7.4,1,52,humid_continental,1646.98,2898.7,1.76,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in March, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1647.0 kWh
+  - Average peak hourly demand: 112.3 kWh
+  - Average temperature: 54.8°F
+  - Month: March
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station (target site):**
+  - Growing mid-size city in Lehigh Valley
+  - Similar to State College but smaller in scale
+  - Higher income corridor
+  - Higher EV adoption (not specified, but implied to be higher than 8.2%)
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall
+  - March is within the spring-fall period, so weekend cultural event boost applies
+  - Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events
+
+### Step 3: Apply transfer guidance
+- **Event multiplier adjustment:** Since the target site has a cultural event boost (weekend spikes), we apply 60% of the PSU event multiplier. However, since the reference site (State College) does not have such events, we assume the multiplier is 1.0 for the reference site. Therefore, the target site will have a 60% increase in demand due to events.
+- **EV penetration adjustment:** The target site has higher EV penetration than State College. Since the exact value is not given, we assume it is 10% higher than 8.2%, which is 9.02%.
+
+### Step 4: Calculate the adjusted demand
+- **State College demand:** 1647.0 kWh
+- **EV penetration adjustment:** 1647.0 kWh × 1.10 = 1811.7 kWh
+- **Event multiplier adjustment:** 1811.7 kWh × 1.60 = 2898.7 kWh
+
+### Step 5: Final estimate
+The estimated average daily EV charging demand for the Bethlehem - Main St Station in March is **2898.7 kWh**.
+
+Now, calculate the ratio:
+- **Ratio = 2898.7 / 1647.0 ≈ 1.76**
+
+### Final Answer:
+>>DEMAND: 2898.7
+>>RATIO: 1.76"
+BET_001,Bethlehem - Main St Station,4,April,77000,7.4,1,52,humid_continental,1616.54,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in April, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1616.5 kWh
+  - Average peak hourly demand: 110.7 kWh
+  - Average temperature: 67.3°F
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station (target site):**
+  - Growing mid-size city in Lehigh Valley
+  - Higher income corridor
+  - Higher EV adoption (not specified, but implied to be higher than 8.2%)
+  - Similar to State College in terms of academic event demand, but smaller scale
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall
+  - Transfer guidance:
+    - Apply 60% of PSU event multiplier for Lehigh events
+    - Add weekend cultural event boost April–October
+    - Higher baseline EV penetration
+
+### Step 3: Estimate EV penetration
+Since the target site has higher EV adoption than State College, we assume a higher EV penetration rate. Let's estimate it as 10% (higher than 8.2%).
+
+### Step 4: Estimate population
+The target site is a growing mid-size city in the Lehigh Valley. While the exact population is not given, we can estimate it to be around 100,000 (a reasonable estimate for a mid-size city in the Lehigh Valley).
+
+### Step 5: Estimate daily demand
+Using the formula:
+
+$$
+\text{Daily demand} = \text{Population} \times \text{EV penetration} \times \text{Average kWh per EV charge}
+$$
+
+We need to estimate the average kWh per EV charge. Since the reference site has an average daily demand of 1616.5 kWh, and the population is 42,000 with 8.2% EV penetration, we can estimate the average kWh per EV charge as:
+
+$$
+\text{Average kWh per EV charge} = \frac{1616.5}{42000 \times 0.082} \approx 0.48 \text{ kWh per EV charge}
+$$
+
+Now, applying this to the target site:
+
+$$
+\text{Daily demand} = 100000 \times 0.10 \times 0.48 = 4800 \text{ kWh}
+$$
+
+### Step 6: Adjust for event multiplier and weekend boost
+- Apply 6"
+BET_001,Bethlehem - Main St Station,5,May,77000,7.4,1,52,humid_continental,1652.46,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in May, we need to adjust the data from the reference site (State College, PA) based on the differences in population, EV penetration, and event factors.
+
+### Step 1: Base Demand Adjustment
+State College has an average daily demand of 1652.5 kWh. The target site is a growing mid-size city in the Lehigh Valley, which is expected to have a higher EV penetration than State College. Since the problem states that the target site has ""higher EV penetration,"" we will assume a higher base demand than State College.
+
+Let’s assume a 10% higher EV penetration (as a reasonable estimate based on the description of a ""higher income corridor"" and ""higher EV adoption""). This would increase the base demand by 10%:
+
+**Base demand adjustment = 1652.5 * 1.10 = 1817.75 kWh**
+
+### Step 2: Apply Event Multiplier
+The reference site (State College) does not have significant cultural events, but the target site has ""weekend cultural event spikes"" in April–October. Since May is within this period, we need to apply a weekend event boost.
+
+The problem states to apply **60% of PSU event multiplier** for Lehigh events. Assuming the PSU event multiplier is 1.2 (a typical value for event-based demand spikes), the Lehigh event multiplier would be:
+
+**Lehigh event multiplier = 1.2 * 0.60 = 0.72**
+
+This multiplier is applied to the weekend demand. Since the problem says to ""add weekend cultural event boost Apr-Oct,"" we assume that the weekend demand is increased by this multiplier. However, since the question asks for **average daily** demand, we need to consider that the event boost is only on weekends.
+
+Assuming that weekends make up about 1/7 of the month (approximately 8.57 days per month), we can estimate the average daily demand as follows:
+
+**Weekend demand = Base demand * 0.72**
+**Weekday demand = Base demand**
+
+**Average daily demand = (6 * Base demand + 1 * (Base demand * 0.72)) / 7**
+
+Let’s calculate this:
+
+**Weekend demand = 1817.75 * 0.72 = 1308.66 kWh**
+**Weekday demand = 1817.75 kWh**
+
+**Total monthly demand = (6 * 1817.75) + 1308.66 = 10906.5 + 1308.66 = 12215.16 kWh**
+
+**Average daily demand = 12215.16 / 30 ≈"
+BET_001,Bethlehem - Main St Station,6,June,77000,7.4,1,52,humid_continental,1948.74,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in June, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1948.7 kWh
+  - Average peak hourly demand: 132.7 kWh
+  - Average temperature: 80.0°F
+  - Month: June
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station (target site):**
+  - Growing mid-size city in Lehigh Valley
+  - Higher income corridor
+  - Higher EV adoption (than State College)
+  - Similar to State College in terms of academic event demand, but smaller scale
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall
+  - June is within the spring-fall period, so weekend cultural event boost applies
+  - Transfer guidance:
+    - Apply 60% of PSU event multiplier for Lehigh events
+    - Add weekend cultural event boost (Apr-Oct)
+    - Higher baseline EV penetration
+
+### Step 3: Estimate EV penetration
+- State College: 8.2%
+- Lehigh Valley (target site): Higher EV adoption. Let's assume 10% (a reasonable increase for a higher-income corridor).
+
+### Step 4: Estimate population
+- State College: 42,000
+- Lehigh Valley (target site): Let's assume a population of 150,000 (a mid-size city in the Lehigh Valley).
+
+### Step 5: Estimate daily demand
+- Daily demand is proportional to population and EV penetration.
+- State College daily demand: 1948.7 kWh
+- Target site population is 150,000 vs. 42,000 → 3.57 times larger
+- Target site EV penetration is 10% vs. 8.2% → 1.22 times higher
+
+So, the estimated daily demand for the target site is:
+$$
+1948.7 \times 3.57 \times 1.22 = 8505.5 \text{ kWh}
+$$
+
+### Step 6: Adjust for event multiplier and weekend boost
+- Apply 60% of PSU event multiplier for Lehigh events. Let's assume the PSU multiplier is 1.2 (a reasonable estimate for event-driven demand).
+- 60% of 1.2 = 0.72
+- Add weekend cultural event boost (Apr-Oct): 1.1 (a 10"
+BET_001,Bethlehem - Main St Station,7,July,77000,7.4,1,52,humid_continental,1889.59,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in July, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1889.6 kWh
+  - Average peak hourly demand: 129.0 kWh
+  - Average temperature: 76.6°F
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station (target site):**
+  - Growing mid-size city in Lehigh Valley
+  - Higher income corridor
+  - Higher EV adoption (not specified, but implied to be higher than 8.2%)
+  - Similar to State College in terms of population and EV penetration, but with some differences
+  - Lehigh University drives academic event demand (similar to State College but smaller scale)
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall (so we apply a boost for weekends in July)
+  - Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events (we assume this is a multiplier for event-related demand)
+  - Add weekend cultural event boost (Apr-Oct), so we apply a boost for weekends in July
+  - Higher baseline EV penetration (we assume this is 10% or higher)
+
+### Step 3: Apply adjustments
+- **EV penetration:** Assume the target site has a higher EV penetration than State College. Let's assume 10% (a reasonable increase from 8.2%).
+- **Event multiplier:** Apply 60% of PSU event multiplier. Since we don't have the exact multiplier, we'll assume it's a 1.5 multiplier (a common value for event-based demand). So 60% of that is 0.9.
+- **Weekend boost:** Apply a 10% weekend boost for cultural events (since it's in the spring-fall season and July is within that range).
+
+### Step 4: Calculate the adjusted demand
+- **State College demand per person:**  
+  1889.6 kWh / 42,000 = 0.045 kWh per person per day
+
+- **Target site population:** Assume similar to State College, 42,000 people.
+
+- **Target site EV penetration:** 10% (higher than 8.2%)
+
+- **Daily demand based on EV penetration:**  
+  42,000 * 0.10 = 4,200 EV users  
+  4,200 * 0.045 = 189 kWh"
+BET_001,Bethlehem - Main St Station,8,August,77000,7.4,1,52,humid_continental,1947.25,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in August, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1947.2 kWh
+  - Average peak hourly demand: 132.7 kWh
+  - Average temperature: 67.5°F
+  - Month: August
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station (target site):**
+  - Growing mid-size city in Lehigh Valley
+  - Higher income corridor
+  - Higher EV adoption (not specified, but implied to be higher than 8.2%)
+  - Similar to State College in terms of academic event demand, but smaller scale
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall (so we apply a boost for weekends in April–October)
+  - Month: August (which falls within April–October)
+
+### Step 3: Apply transfer guidance
+- **EV penetration:** Higher than State College (we'll assume 10% as a reasonable estimate, since it's higher income and EV adoption is higher)
+- **Event multiplier:** Apply 60% of PSU event multiplier for Lehigh events. Since we don't have the exact multiplier, we'll assume it's similar to State College, but with a 60% adjustment.
+- **Weekend boost:** Apply a weekend cultural event boost for April–October (August is within this range), so we'll add a 10% boost for weekends.
+
+### Step 4: Calculate the adjusted demand
+- **State College average daily demand:** 1947.2 kWh
+- **EV penetration adjustment:** 10% (higher than 8.2%) → 1947.2 × (10 / 8.2) ≈ 2374.63 kWh
+- **Event multiplier adjustment:** 60% of PSU event multiplier (we'll assume it's similar to State College, so we'll apply 60% of the event multiplier, which we'll assume is 1.0 for simplicity) → 2374.63 × 1.0 = 2374.63 kWh
+- **Weekend boost adjustment:** 10% boost for weekends → 2374.63 × 1.1 = 2612.09 kWh
+
+### Step 5: Final estimate
+The estimated average daily EV charging demand for the Bethlehem - Main St Station in August is approximately **2612."
+BET_001,Bethlehem - Main St Station,9,September,77000,7.4,1,52,humid_continental,1680.63,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in September, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1680.6 kWh
+  - Average peak hourly demand: 114.7 kWh
+  - Average temperature: 55.1°F
+  - Month: September
+
+### Step 2: Understand the target site
+- **Lehigh Valley (Bethlehem - Main St Station)**:
+  - Growing mid-size city
+  - Higher income corridor
+  - Higher EV adoption (than State College)
+  - Similar to State College in terms of academic event demand (Lehigh University)
+  - SteelStacks arts venue causes weekend cultural event spikes in spring-fall
+  - September is within the spring-fall period, so weekend cultural event boost applies
+  - Transfer guidance: Apply 60% of PSU event multiplier for Lehigh events
+  - Higher baseline EV penetration than State College
+
+### Step 3: Adjust for EV penetration
+State College has an EV penetration of 8.2%. The target site has **higher EV penetration**, so we assume a higher value. Since the exact value is not given, we can estimate it based on the higher income corridor and higher EV adoption. Let's assume the EV penetration is **10%** for the target site.
+
+### Step 4: Adjust for event multiplier
+The transfer guidance says to apply **60% of PSU event multiplier** for Lehigh events. Since the reference site (State College) does not have event multiplier data, we assume that the event multiplier for State College is **1.0** (no events), and the Lehigh event multiplier is **1.6** (60% of PSU event multiplier). However, since the target site is in September, and the event multiplier is only applied **Apr-Oct**, we apply the 60% multiplier for the weekend cultural events.
+
+Assuming that the weekend cultural events occur **2 days per week** (Saturday and Sunday), and that the average daily demand is adjusted by **10%** for these days, we can estimate the average daily demand as follows:
+
+- **Base demand (without events)**: 1680.6 kWh
+- **Event multiplier**: 1.6 (60% of PSU event multiplier)
+- **Weekend boost**: 10% (for 2 days per week)
+
+However, since the question asks for **average daily demand**, we need to adjust the base demand based on the event multiplier and the weekend boost.
+
+### Step 5: Apply adjustments
+Let’s assume that the"
+BET_001,Bethlehem - Main St Station,10,October,77000,7.4,1,52,humid_continental,1660.35,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in October, we need to adjust the data from the reference site (State College, PA) based on the differences between the two locations.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1660.4 kWh
+  - Average peak hourly demand: 113.8 kWh
+  - Average temperature: 42.8°F
+
+### Step 2: Understand the target site
+- **Bethlehem - Main St Station (target site):**
+  - Growing mid-size city in Lehigh Valley
+  - Higher income corridor
+  - Higher EV adoption (not specified, but implied to be higher than 8.2%)
+  - Similar to State College in terms of academic event demand, but smaller scale
+  - SteelStacks arts venue causes weekend cultural event spikes in April–October
+  - Transfer guidance:
+    - Apply 60% of PSU event multiplier for Lehigh events
+    - Add weekend cultural event boost April–October
+    - Higher baseline EV penetration
+
+### Step 3: Estimate EV penetration
+Since the target site has higher EV adoption than State College, we assume a higher EV penetration rate. Let's assume the EV penetration is 10% (a reasonable increase from 8.2%).
+
+### Step 4: Estimate population
+The target site is a growing mid-size city in the Lehigh Valley. While the exact population is not given, we can estimate it to be similar to State College (42,000) but slightly smaller due to the ""mid-size city"" description. Let's assume the population is 35,000.
+
+### Step 5: Estimate daily demand
+Using the formula:
+
+$$
+\text{Daily demand} = \text{Population} \times \text{EV penetration} \times \text{Average kWh per EV charge}
+$$
+
+We don't have the exact average kWh per EV charge, but we can use the reference site's average daily demand to estimate the average kWh per EV charge.
+
+From State College:
+- Average daily demand: 1660.4 kWh
+- Population: 42,000
+- EV penetration: 8.2%
+
+$$
+\text{Average kWh per EV charge} = \frac{1660.4}{42,000 \times 0.082} \approx \frac{1660.4}{3444} \approx 0.482 \text{ kWh per EV charge}
+$$
+
+Now, apply this to the target site:
+
+$$
+\text{Daily demand} = 35,"
+BET_001,Bethlehem - Main St Station,11,November,77000,7.4,1,52,humid_continental,1684.24,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in November, we need to consider several factors based on the reference site (State College, PA) and the target site (Lehigh Valley, Bethlehem).
+
+### Step 1: Understand the Reference Site
+- **State College, PA** is a university town with a population of 42,000.
+- **EV penetration**: 8.2%
+- **Average daily demand**: 1684.2 kWh
+- **Average peak hourly demand**: 114.9 kWh
+- **Average temperature**: 33.3°F (November)
+
+### Step 2: Understand the Target Site
+- **Lehigh Valley** is a growing mid-size city with a higher income corridor and higher EV adoption.
+- **EV penetration**: Higher than State College (not specified, but implied to be higher).
+- **Lehigh University** drives academic event demand, similar to State College but on a smaller scale.
+- **SteelStacks arts venue** causes weekend cultural event spikes in spring-fall.
+- **Transfer guidance**:
+  - Apply **60% of PSU event multiplier** for Lehigh events.
+  - Add **weekend cultural event boost** in April–October.
+  - Higher baseline EV penetration.
+
+### Step 3: Adjust for EV Penetration
+Since the target site has **higher EV penetration**, we assume it is **10% higher** than State College. This is a reasonable assumption based on the higher income corridor and higher EV adoption.
+
+### Step 4: Adjust for Event Multiplier
+The transfer guidance says to apply **60% of PSU event multiplier** for Lehigh events. Since the reference site (State College) is not an event-driven site, we assume that the **event multiplier** for State College is **1.0** (no events), and for Lehigh, it is **1.6** (60% of PSU event multiplier, assuming PSU is 1.0). However, since we are in **November**, and the **SteelStacks** events are **spring-fall**, we **do not apply the weekend cultural event boost** in November.
+
+### Step 5: Calculate the Adjusted Demand
+- **State College average daily demand**: 1684.2 kWh
+- **EV penetration adjustment**: 10% higher → 1684.2 × 1.1 = 1852.62 kWh
+- **Event multiplier adjustment**: 60% of PSU event multiplier (assumed 1.0) → 1.6
+- **Final demand**: 1852.62 × 1.6 = 2964.19 kWh
+
+### Step 6: Calculate the Ratio
+- **Ratio** = Target demand / State College demand = 2964.1"
+BET_001,Bethlehem - Main St Station,12,December,77000,7.4,1,52,humid_continental,1415.21,,,"To estimate the average daily EV charging demand for the Bethlehem - Main St Station in December, we need to consider several factors based on the reference site (State College, PA) and the target site (Lehigh Valley, Bethlehem).
+
+### Step 1: Understand the reference site
+- **State College, PA** is a university town with a population of 42,000.
+- **EV penetration**: 8.2%
+- **Average daily demand**: 1415.2 kWh
+- **Average peak hourly demand**: 97.2 kWh
+- **Average temperature**: 30.0°F (cold, which may affect EV charging demand)
+
+### Step 2: Understand the target site
+- **Lehigh Valley** is a growing mid-size city with a higher income corridor and higher EV adoption.
+- **EV penetration**: Higher than State College (not specified, but implied to be higher)
+- **Lehigh University** drives academic event demand, similar to State College but on a smaller scale.
+- **SteelStacks arts venue** causes weekend cultural event spikes in spring-fall.
+- **December** is not a season with cultural events, so we don't apply the weekend boost.
+
+### Step 3: Apply transfer guidance
+- **Event multiplier**: Apply 60% of PSU event multiplier for Lehigh events. Since we don't have the exact multiplier, we assume it's similar to State College but adjusted for the higher EV penetration.
+- **Weekend boost**: Not applicable in December.
+- **Higher EV penetration**: This will increase the demand compared to State College.
+
+### Step 4: Estimate the demand
+- **State College average daily demand**: 1415.2 kWh
+- **Higher EV penetration**: Let's assume 10% higher than State College (a reasonable estimate for a higher-income area with higher EV adoption).
+- **Adjust for event multiplier**: Since we don't have the exact multiplier, we assume it's similar to State College but adjusted for the higher EV penetration.
+
+Let’s estimate the demand as follows:
+- **Base demand**: 1415.2 kWh (State College)
+- **Higher EV penetration**: 10% increase → 1415.2 × 1.10 = 1556.72 kWh
+- **Event multiplier**: Assume 60% of PSU event multiplier, which we estimate as 1.05 (similar to State College but slightly higher due to higher EV penetration)
+- **Final estimate**: 1556.72 × 1.05 = 1634.55 kWh
+
+### Step 5: Calculate the ratio
+- **Ratio = Target demand / State College demand**
+- **Ratio = 1634.55 / 1415.2 ≈ 1.155**
+
+### Final Answer"
+PHL_001,Philadelphia - University City Station,1,January,1600000,9.1,1,55,humid_subtropical_transition,1430.94,3577.25,2.5,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in January, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1430.9 kWh
+  - Average peak hourly demand: 98.2 kWh
+  - Average temperature: 33.6°F
+
+### Step 2: Understand the target site
+- **Philadelphia - University City**:
+  - High density, high EV adoption
+  - Warmer climate (higher temperature than State College)
+  - Higher overnight demand due to density
+  - Less event-driven volatility
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has 3 times the density of State College, so we expect a higher demand.
+- **Reduce event spike amplitude**: Since the target site has less event-driven volatility, the spikes in demand are smaller.
+- **Warmer temperature profile**: Warmer temperatures may lead to higher demand, but the guidance does not specify a direct multiplier for temperature.
+- **Higher overnight demand due to density**: This implies that the demand is more consistent and higher at night.
+
+### Step 4: Estimate the average daily demand
+- The reference site has an average daily demand of 1430.9 kWh.
+- The transfer guidance suggests scaling up the baseline by 3x for density, but we must also consider that the target site has less event-driven volatility and higher overnight demand. This suggests that the scaling factor may be slightly less than 3x due to the reduced event-driven spikes.
+
+Let’s estimate the scaling factor as **2.5x** (a reasonable compromise between the 3x density and the reduced event-driven volatility).
+
+- **Estimated daily demand** = 1430.9 kWh × 2.5 = **3577.25 kWh**
+
+### Step 5: Calculate the ratio
+- **Ratio** = 3577.25 / 1430.9 ≈ **2.499**
+
+### Final Answer:
+>>DEMAND: 3577.25
+>>RATIO: 2.50"
+PHL_001,Philadelphia - University City Station,2,February,1600000,9.1,1,55,humid_subtropical_transition,1447.11,2500.0,1.73,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in February, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1447.1 kWh
+  - Average peak hourly demand: 99.8 kWh
+  - Average temperature: 42.5°F
+
+### Step 2: Understand the target site
+- **Philadelphia - University City**:
+  - High density, high EV adoption
+  - Warmer climate (higher temperature than State College)
+  - More stable demand (less event-driven volatility)
+  - Higher overnight demand due to density
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has 3 times the density of State College, so we expect a higher demand.
+- **Reduce event spike amplitude**: Since the target site has more stable demand, the spikes are less pronounced.
+- **Warmer temperature profile**: Warmer temperatures may increase charging demand, but the guidance doesn't specify a direct multiplier for temperature.
+- **Higher overnight demand due to density**: This suggests that the target site has higher demand during nighttime hours.
+
+### Step 4: Estimate the target site demand
+- The reference site has an average daily demand of 1447.1 kWh.
+- The transfer guidance suggests scaling up the baseline by 3x for density, but we must also consider that the target site has more stable demand and less event-driven volatility. This implies that the scaling factor may be less than 3x.
+- Given the high density and higher overnight demand, we estimate that the target site has a higher demand than State College, but not necessarily 3x.
+
+After considering the factors, we estimate that the average daily EV charging demand for the Philadelphia - University City Station in February is **2,500 kWh**.
+
+### Step 5: Calculate the ratio
+- Ratio = Target demand / State College demand = 2500 / 1447.1 ≈ 1.73
+
+### Final Answer:
+>>DEMAND: 2500
+>>RATIO: 1.73"
+PHL_001,Philadelphia - University City Station,3,March,1600000,9.1,1,55,humid_subtropical_transition,1646.98,4941.0,3.0,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in March, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1647.0 kWh
+  - Average peak hourly demand: 112.3 kWh
+  - Average temperature: 54.8°F
+
+### Step 2: Understand the target site
+- **Philadelphia - University City**:
+  - High density, high EV adoption
+  - Warmer climate (higher temperature than State College)
+  - Higher overnight demand due to density
+  - Less event-driven volatility
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has 3 times the density of State College, so we expect a higher demand.
+- **Reduce event spike amplitude**: Since the target site has less event-driven volatility, the daily demand may be more stable, but we are focusing on average daily demand, which is less affected by event spikes.
+- **Warmer temperature profile**: Warmer temperatures may increase EV charging demand, especially overnight.
+- **Higher overnight demand due to density**: This suggests that the target site has higher demand during nighttime hours.
+
+### Step 4: Estimate the average daily demand
+- The reference site has an average daily demand of 1647.0 kWh.
+- The transfer guidance suggests scaling up the baseline by 3x for density.
+- However, the target site has a higher EV penetration (not explicitly given, but implied by the description of high EV adoption).
+- Since the target site is in a warmer climate, we may expect a slight increase in demand due to more charging during the day.
+- However, the guidance says to ""scale up baseline 3x for density,"" which is the main factor.
+
+So, we estimate the average daily demand as:
+
+**Demand = 1647.0 kWh × 3 = 4941.0 kWh**
+
+### Step 5: Calculate the ratio
+- Ratio = Target Demand / State College Demand = 4941.0 / 1647.0 ≈ 3.0
+
+### Final Answer:
+>>DEMAND: 4941.0
+>>RATIO: 3.0"
+PHL_001,Philadelphia - University City Station,4,April,1600000,9.1,1,55,humid_subtropical_transition,1616.54,,,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in April, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1616.5 kWh
+  - Average peak hourly demand: 110.7 kWh
+  - Average temperature: 67.3°F
+
+### Step 2: Understand the target site
+- **Philadelphia - University City**:
+  - High density, high EV adoption
+  - Warmer climate (implied to be warmer than 67.3°F)
+  - Higher overnight demand due to density
+  - Less event-driven volatility than State College
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has 3 times the density of State College, so the demand should be scaled up by 3.
+- **Reduce event spike amplitude**: This implies that the target site has less variability in demand, so the average daily demand may be more stable.
+- **Warmer temperature profile**: Warmer temperatures may lead to higher demand, but this is not explicitly quantified.
+- **Higher overnight demand due to density**: This suggests that the target site has higher demand during nighttime hours.
+
+### Step 4: Estimate the average daily demand
+- The reference site has an average daily demand of 1616.5 kWh.
+- The transfer guidance suggests scaling up by 3x for density, but we also need to consider that the target site has less event-driven volatility and higher overnight demand. This suggests that the scaling factor may be slightly less than 3, but we will use the guidance as a starting point.
+
+Assuming a scaling factor of 3x for density, the estimated average daily demand would be:
+
+$$
+\text{Estimated Daily Demand} = 1616.5 \times 3 = 4849.5 \, \text{kWh}
+$$
+
+However, since the target site has less event-driven volatility and higher overnight demand, we may adjust this slightly downward. A reasonable estimate would be to scale up by 2.5x.
+
+$$
+\text{Estimated Daily Demand} = 1616.5 \times 2.5 = 4041.25 \, \text{kWh}
+$$
+
+### Step 5: Calculate the ratio
+$$
+\text{Ratio} = \frac{4041.25}{1616.5} \approx 2.5
+$$
+
+### Final Answer:
+>>DEMAND:"
+PHL_001,Philadelphia - University City Station,5,May,1600000,9.1,1,55,humid_subtropical_transition,1652.46,4957.5,3.0,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in May, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1652.5 kWh
+  - Average peak hourly demand: 113.2 kWh
+  - Average temperature: 76.6°F
+
+### Step 2: Understand the target site
+- **Philadelphia - University City**:
+  - High density, high EV adoption
+  - Warmer climate
+  - Higher overnight demand due to density
+  - Less event-driven volatility than State College
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has 3 times the density of State College, so we multiply the average daily demand by 3.
+- **Reduce event spike amplitude**: This implies that the target site has less volatility, so we may reduce the peak demand, but since we are focusing on average daily demand, this may not directly affect the average.
+- **Warmer temperature profile**: This may not directly affect the average daily demand, but it could influence charging patterns (e.g., more charging at night).
+- **Higher overnight demand due to density**: This suggests that the target site has higher overnight demand, which may increase the average daily demand.
+
+### Step 4: Estimate the average daily demand
+- Start with the reference site's average daily demand: 1652.5 kWh
+- Scale up by 3x for density: 1652.5 × 3 = 4957.5 kWh
+- Adjust for higher overnight demand and less event-driven volatility: Since the target site has higher density and more stable demand, we may not need to adjust much beyond the scaling factor.
+
+### Step 5: Calculate the ratio
+- Ratio = Target demand / State College demand = 4957.5 / 1652.5 ≈ 3.0
+
+### Final Estimate
+- **Average daily EV charging demand**: 4957.5 kWh
+- **Ratio**: 3.0
+
+>>DEMAND: 4957.5
+>>RATIO: 3.0"
+PHL_001,Philadelphia - University City Station,6,June,1600000,9.1,1,55,humid_subtropical_transition,1948.74,4871.75,2.5,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in June, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1948.7 kWh
+  - Average peak hourly demand: 132.7 kWh
+  - Average temperature: 80.0°F
+
+### Step 2: Analyze the target site
+- **Philadelphia - University City**:
+  - High density
+  - High EV adoption
+  - Warmer climate
+  - More stable demand (less event-driven volatility)
+  - Higher overnight demand due to density
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has a higher density than State College, so we should scale up the baseline demand.
+- **Reduce event spike amplitude**: Since the target site has more stable demand, we should reduce the variability (event spikes) compared to State College.
+- **Warmer temperature profile**: Warmer temperatures may increase demand, but the guidance doesn't specify a direct multiplier for temperature.
+- **Higher overnight demand due to density**: This suggests that the target site has higher demand during nighttime hours.
+
+### Step 4: Estimate the average daily demand
+- The reference site has an average daily demand of 1948.7 kWh.
+- The transfer guidance suggests scaling up the baseline by 3x for density, but we must also consider that the target site has more stable demand and less event-driven volatility. This implies that the scaling factor may be less than 3x.
+- Given the high density and higher EV adoption, we estimate that the target site's average daily demand is **2.5 times** the reference site's demand.
+
+### Step 5: Calculate the estimated demand
+- Estimated daily demand = 1948.7 kWh × 2.5 = **4871.75 kWh**
+
+### Step 6: Calculate the ratio
+- Ratio = 4871.75 / 1948.7 ≈ **2.50**
+
+### Final Answer:
+>>DEMAND: 4871.75
+>>RATIO: 2.50"
+PHL_001,Philadelphia - University City Station,7,July,1600000,9.1,1,55,humid_subtropical_transition,1889.59,5216.6,2.75,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in July, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1889.6 kWh
+  - Average peak hourly demand: 129.0 kWh
+  - Average temperature: 76.6°F
+
+### Step 2: Understand the target site
+- **Philadelphia - University City**:
+  - High density, high EV adoption
+  - Warmer climate
+  - More stable demand (less event-driven volatility)
+  - Higher overnight demand due to density
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has a higher density than State College, so we expect a higher demand.
+- **Reduce event spike amplitude**: Since the target site has more stable demand, the spikes (event-driven demand) are less pronounced.
+- **Warmer temperature profile**: Warmer temperatures may increase charging demand, but the guidance doesn't specify a direct multiplier for temperature.
+- **Higher overnight demand due to density**: This implies that the target site has more charging during the night.
+
+### Step 4: Estimate the target site's demand
+- The reference site has an average daily demand of 1889.6 kWh.
+- The transfer guidance suggests scaling up by 3x for density, but we must also consider that the target site has more stable demand and less event-driven volatility. This implies that the scaling factor may not be exactly 3x, but closer to 2.5x or 2.75x.
+- Given the guidance, we will estimate the target site's average daily demand as **2.75 × 1889.6 kWh**.
+
+### Step 5: Calculate the estimated demand
+$$
+\text{Estimated demand} = 2.75 \times 1889.6 = 5216.6 \, \text{kWh}
+$$
+
+### Step 6: Calculate the ratio
+$$
+\text{Ratio} = \frac{5216.6}{1889.6} \approx 2.75
+$$
+
+>>DEMAND: 5216.6
+>>RATIO: 2.75"
+PHL_001,Philadelphia - University City Station,8,August,1600000,9.1,1,55,humid_subtropical_transition,1947.25,4868.0,2.5,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in August, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1947.2 kWh
+  - Average peak hourly demand: 132.7 kWh
+  - Average temperature: 67.5°F
+
+### Step 2: Analyze the target site
+- **Philadelphia - University City**:
+  - High density
+  - High EV adoption
+  - Warmer climate (implied to be warmer than 67.5°F)
+  - More stable demand (less event-driven volatility)
+  - Higher overnight demand due to density
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has a higher density than State College, so we multiply the reference demand by 3.
+- **Reduce event spike amplitude**: Since the target site has more stable demand, we reduce the volatility, which may mean the average daily demand is not as high as a simple 3x scaling.
+- **Warmer temperature profile**: Warmer temperatures may increase demand, but the guidance does not specify a direct multiplier for this.
+- **Higher overnight demand due to density**: This supports the idea of higher demand, but again, we need to balance with the reduced event-driven volatility.
+
+### Step 4: Estimate the average daily demand
+Given the guidance, we start with the reference demand and scale it up by 3, but we must adjust for the reduced event-driven volatility. Since the target site has more stable demand, we might expect a lower increase than 3x. A reasonable estimate would be to scale up by 2.5x.
+
+So:
+- **Estimated average daily demand** = 1947.2 kWh × 2.5 = 4868 kWh
+
+### Step 5: Calculate the ratio
+- **Ratio** = 4868 / 1947.2 ≈ 2.5
+
+### Final Answer:
+>>DEMAND: 4868
+>>RATIO: 2.5"
+PHL_001,Philadelphia - University City Station,9,September,1600000,9.1,1,55,humid_subtropical_transition,1680.63,4033.0,2.4,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in September, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1680.6 kWh
+  - Average peak hourly demand: 114.7 kWh
+  - Average temperature: 55.1°F
+
+### Step 2: Analyze the target site
+- **Philadelphia - University City**:
+  - High density
+  - High EV adoption
+  - Warmer climate (higher temperature than State College)
+  - More stable demand (less event-driven volatility)
+  - Higher overnight demand due to density
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has a much higher population density than State College, so the demand should be higher.
+- **Reduce event spike amplitude**: Since the target site has more stable demand, the daily demand may not be as affected by events, so the average daily demand may be more consistent.
+- **Warmer temperature profile**: Warmer temperatures may increase EV charging demand, especially overnight.
+- **Higher overnight demand due to density**: This suggests that the target site has higher demand during the night due to the high density of EV users.
+
+### Step 4: Estimate the average daily demand
+- The reference site has an average daily demand of 1680.6 kWh.
+- The transfer guidance suggests scaling up the baseline by 3x for density, but we must also consider the reduced event volatility and higher overnight demand.
+- Since the target site has a higher density and more stable demand, we can estimate that the average daily demand will be higher than the reference site.
+
+Let’s estimate the average daily demand for the target site as follows:
+
+- **Scale up by 3x for density**: 1680.6 × 3 = 5041.8 kWh
+- However, since the target site has more stable demand and less event-driven volatility, we may reduce this by 20% to account for the reduced event spike amplitude and more consistent demand.
+- 5041.8 × 0.8 = 4033.44 kWh
+
+This is a rough estimate based on the transfer guidance and the characteristics of the target site.
+
+### Step 5: Calculate the ratio
+- Ratio = Target demand / State College demand
+- Ratio = 4033.44 / 1680.6 ≈ 2.40
+
+### Final Answer:
+>>DEMAND: 4033"
+PHL_001,Philadelphia - University City Station,10,October,1600000,9.1,1,55,humid_subtropical_transition,1660.35,2490.6,1.5,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in October, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1660.4 kWh
+  - Average peak hourly demand: 113.8 kWh
+  - Average temperature: 42.8°F
+
+### Step 2: Analyze the target site
+- **Philadelphia - University City**:
+  - High density
+  - High EV adoption
+  - Warmer climate (implies higher temperature)
+  - More stable demand (less event-driven volatility)
+  - Higher overnight demand due to density
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply the transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has a higher population density than State College, so we expect a higher demand.
+- **Reduce event spike amplitude**: Since the target site has more stable demand, the peak demand may not be as high as in State College.
+- **Warmer temperature profile**: Warmer temperatures may increase charging demand, but the guidance does not specify a direct multiplier for temperature.
+- **Higher overnight demand due to density**: This implies that the average daily demand may be higher than State College.
+
+### Step 4: Estimate the average daily demand
+- The reference site has an average daily demand of 1660.4 kWh.
+- The transfer guidance suggests scaling up by 3x for density, but we must also consider the reduced event spike amplitude and higher overnight demand.
+- Since the target site has a higher density and more stable demand, we can estimate that the average daily demand will be **higher** than State College, but not as much as a 3x increase due to the reduced event volatility.
+
+Let’s estimate a reasonable value. If we assume that the average daily demand is **1.5x** the reference site, then:
+
+$$
+\text{Estimated daily demand} = 1660.4 \times 1.5 = 2490.6 \, \text{kWh}
+$$
+
+### Step 5: Calculate the ratio
+$$
+\text{Ratio} = \frac{2490.6}{1660.4} \approx 1.50
+$$
+
+### Final Answer:
+>>DEMAND: 2490.6
+>>RATIO: 1.50"
+PHL_001,Philadelphia - University City Station,11,November,1600000,9.1,1,55,humid_subtropical_transition,1684.24,4210.5,2.5,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in November, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA**:
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1684.2 kWh
+  - Average peak hourly demand: 114.9 kWh
+  - Average temperature: 33.3°F
+
+### Step 2: Understand the target site
+- **Philadelphia - University City**:
+  - High density, high EV adoption
+  - Warmer climate (implied to be warmer than 33.3°F)
+  - Higher overnight demand due to density
+  - Less event-driven volatility than State College
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density**: This suggests that the target site has 3 times the density of State College, so we multiply the reference demand by 3.
+- **Reduce event spike amplitude**: This implies that the target site has less variability, so we may reduce the peak demand slightly, but since we are focusing on average daily demand, this may not significantly affect the average.
+- **Warmer temperature profile**: Warmer temperatures may increase charging demand, but since we are scaling up based on density, this may be already accounted for.
+- **Higher overnight demand due to density**: This supports the scaling up of the baseline.
+
+### Step 4: Estimate the average daily demand
+- Reference average daily demand: 1684.2 kWh
+- Scale up by 3x: 1684.2 × 3 = 5052.6 kWh
+
+However, the transfer guidance also mentions that the target site has **less event-driven volatility**, which may mean that the average daily demand is **not as high as 3x**. Given that the target site has **higher density** and **higher EV adoption**, we can assume that the scaling factor is slightly less than 3, but still significantly higher than 1.
+
+A reasonable estimate, based on the guidance, is to scale up by **2.5x**.
+
+### Step 5: Final calculation
+- 1684.2 × 2.5 = 4210.5 kWh
+
+### Final Answer:
+>>DEMAND: 4210.5
+>>RATIO: 2.50"
+PHL_001,Philadelphia - University City Station,12,December,1600000,9.1,1,55,humid_subtropical_transition,1415.21,3538.0,2.5,"To estimate the average daily EV charging demand for the Philadelphia - University City Station in December, we need to adjust the data from the reference site (State College, PA) based on the transfer guidance provided.
+
+### Step 1: Understand the reference data
+- **State College, PA (reference site):**
+  - Population: 42,000
+  - EV penetration: 8.2%
+  - Average daily demand: 1415.2 kWh
+  - Average peak hourly demand: 97.2 kWh
+  - Average temperature: 30.0°F
+  - Month: December
+
+### Step 2: Understand the target site
+- **Philadelphia - University City:**
+  - High density
+  - High EV adoption
+  - Warmer climate (so less temperature-related variability)
+  - More stable demand (less event-driven volatility)
+  - Higher overnight demand due to density
+  - Transit alternatives reduce peak demand relative to population
+
+### Step 3: Apply transfer guidance
+- **Scale up baseline 3x for density:** This suggests that the target site has 3 times the density of the reference site, so we expect a higher demand.
+- **Reduce event spike amplitude:** Since the target site has more stable demand, the peak demand may not be as high as in State College.
+- **Warmer temperature profile:** Warmer temperatures may lead to less variability in demand, but since the target site is in a metro area, the overall demand is likely higher.
+- **Higher overnight demand due to density:** This suggests that the target site has more charging during the night, which may increase the average daily demand.
+
+### Step 4: Estimate the average daily demand
+- The reference site has an average daily demand of 1415.2 kWh.
+- The transfer guidance suggests scaling up the baseline by 3x for density, but we also need to adjust for the reduced event spike amplitude and higher overnight demand.
+- Since the target site has a higher density and more stable demand, we can estimate that the average daily demand is **higher** than the reference site, but not as high as a 3x increase.
+
+A reasonable estimate, based on the guidance, is to scale up the reference demand by approximately 2.5x (since the target site is more densely populated and has more stable demand, but not as high as 3x).
+
+### Step 5: Final calculation
+- Reference demand: 1415.2 kWh
+- Estimated target demand: 1415.2 × 2.5 = **3538 kWh**
+
+### Step 6: Calculate the ratio
+- Ratio = Target demand / Reference demand = 3538 / 1415.2 ≈ **2.5**
+
+### Final Answer:
+>>DEMAND: 3538
+>>RATIO: 2.5"
