@@ -3,10 +3,10 @@
 # Use Case 5 - Route B: Fine-tuned Seq2Seq Explainer
 # Model: Flan-T5-large (780M, encoder-decoder)
 #
-# 修复记录（相比初版）：
-#   1. evaluation_strategy → eval_strategy（新版 transformers 改名）
-#   2. as_target_tokenizer() 已移除 → 改用 text_target= 参数
-#   3. Seq2SeqTrainer 用 processing_class= 而不是 tokenizer=
+# Fix log (relative to initial version):
+#   1. evaluation_strategy -> eval_strategy (renamed in newer transformers)
+#   2. as_target_tokenizer() removed -> use text_target= parameter instead
+#   3. Seq2SeqTrainer uses processing_class= instead of tokenizer=
 # ============================================================
 
 # ============================================================
@@ -18,7 +18,7 @@ MODEL_NAME     = "google/flan-t5-large"
 MAX_INPUT_LEN  = 512
 MAX_TARGET_LEN = 64
 TRAIN_RATIO    = 0.8
-NUM_EPOCHS     = 10       # 故意多跑几轮，让过拟合现象充分暴露
+NUM_EPOCHS     = 10       # intentionally run extra epochs to let overfitting fully emerge
 BATCH_SIZE     = 4
 LEARNING_RATE  = 5e-4
 SEED           = 42
@@ -109,10 +109,10 @@ print(val_df["anomaly_type"].value_counts().to_string())
 # ============================================================
 # 3. PyTorch Dataset
 #
-# Seq2Seq tokenization 要点：
-#   - 输入正常 tokenize
-#   - 输出用 text_target= 参数（新版写法，替代已移除的 as_target_tokenizer()）
-#   - padding 交给 DataCollator 统一处理，这里不做
+# Seq2Seq tokenization key points:
+#   - Input tokenized normally
+#   - Output uses text_target= parameter (new API, replaces removed as_target_tokenizer())
+#   - Padding is handled uniformly by DataCollator; not done here
 # ============================================================
 class AnomalyDataset(Dataset):
     def __init__(self, dataframe, tokenizer):
@@ -125,7 +125,7 @@ class AnomalyDataset(Dataset):
     def __getitem__(self, idx):
         row = self.data.iloc[idx]
 
-        # Tokenize 输入
+        # Tokenize input
         model_inputs = self.tokenizer(
             row["prompt"],
             max_length=MAX_INPUT_LEN,
@@ -133,7 +133,7 @@ class AnomalyDataset(Dataset):
             padding=False,
         )
 
-        # Tokenize 输出（text_target= 是新版写法）
+        # Tokenize output (text_target= is the new API)
         labels = self.tokenizer(
             text_target=row["llm_explanation"],
             max_length=MAX_TARGET_LEN,
@@ -156,9 +156,9 @@ print("Model loaded.")
 # ============================================================
 # 5. Dataset & DataCollator
 #
-# DataCollatorForSeq2Seq 的作用：
-#   - 把同一 batch 长度不同的序列 pad 到相同长度
-#   - 把 labels 的 padding 位置设为 -100（loss 计算时自动忽略）
+# Role of DataCollatorForSeq2Seq:
+#   - Pad sequences of different lengths within a batch to the same length
+#   - Set padding positions in labels to -100 (automatically ignored during loss computation)
 # ============================================================
 train_dataset = AnomalyDataset(train_df, tokenizer)
 val_dataset   = AnomalyDataset(val_df,   tokenizer)
@@ -172,7 +172,7 @@ data_collator = DataCollatorForSeq2Seq(
 
 # ============================================================
 # 6. Training arguments
-#    eval_strategy 是新版写法（旧版叫 evaluation_strategy，已改名）
+#    eval_strategy is the new API (old name was evaluation_strategy; renamed)
 # ============================================================
 training_args = Seq2SeqTrainingArguments(
     output_dir                  = OUTPUT_DIR,
@@ -193,7 +193,7 @@ training_args = Seq2SeqTrainingArguments(
 
 # ============================================================
 # 7. Trainer
-#    processing_class= 是新版写法（旧版叫 tokenizer=）
+#    processing_class= is the new API (old name was tokenizer=)
 # ============================================================
 trainer = Seq2SeqTrainer(
     model            = model,

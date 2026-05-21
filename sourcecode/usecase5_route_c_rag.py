@@ -2,14 +2,14 @@
 # usecase5_route_c_rag.py
 # Use Case 5 - Route C: RAG-based Anomaly Explanation
 #
-# 流程：
-#   1. 用 sentence-transformers 把每个异常事件向量化
-#   2. 用 FAISS 做向量检索，找最相似的历史案例
-#   3. 把检索到的案例注入 prompt
-#   4. 用 Qwen3-4B 结合历史案例生成解释
+# Pipeline:
+#   1. Vectorize each anomaly event using sentence-transformers
+#   2. Use FAISS for vector retrieval to find the most similar historical cases
+#   3. Inject retrieved cases into the prompt
+#   4. Use Qwen3-4B to generate explanations conditioned on historical cases
 #
-# 评估方式：Leave-one-out
-#   对每个异常，从其余 67 个里检索，避免检索到自身
+# Evaluation strategy: Leave-one-out
+#   For each anomaly, retrieve from the remaining 67 samples to avoid self-retrieval
 # ============================================================
 
 # ============================================================
@@ -17,9 +17,9 @@
 # ============================================================
 DATASET_PATH   = "/home/xzh5180/Research/llm-evprediction/datasets/dataset5_anomaly.csv"
 OUTPUT_DIR     = "/home/xzh5180/Research/llm-evprediction/outputs/usecase5_route_c"
-EMBED_MODEL    = "all-MiniLM-L6-v2"   # sentence-transformers 模型，轻量快速
+EMBED_MODEL    = "all-MiniLM-L6-v2"   # sentence-transformers model, lightweight and fast
 GEN_MODEL      = "Qwen/Qwen3-4B"
-TOP_K          = 3                     # 检索最相似的 3 个历史案例
+TOP_K          = 3                     # retrieve the 3 most similar historical cases
 MAX_NEW_TOKENS = 128
 REPETITION_PENALTY = 1.2
 
@@ -55,10 +55,10 @@ DAY_NAMES = ["Monday","Tuesday","Wednesday","Thursday",
              "Friday","Saturday","Sunday"]
 
 # ============================================================
-# 2. 为每个异常建立"描述字符串"用于 embedding
+# 2. Build a "description string" for each anomaly for embedding
 #
-# 不直接用 prompt（太长），而是提炼关键特征做成简短描述。
-# 语义相近的事件，embedding 向量在空间里距离就近。
+# Rather than using the full prompt (too long), condense key features into a short description.
+# Semantically similar events will have nearby embedding vectors in space.
 # ============================================================
 def build_description(row):
     direction = "above" if row["deviation_kwh"] > 0 else "below"
@@ -77,9 +77,9 @@ anomaly_df["description"] = anomaly_df.apply(build_description, axis=1)
 # ============================================================
 # 3. Embedding
 #
-# SentenceTransformer 把每段描述文字转成固定维度的向量。
-# normalize_embeddings=True：归一化到单位长度，
-# 这样内积（inner product）就等于余弦相似度。
+# SentenceTransformer converts each description string into a fixed-dimensional vector.
+# normalize_embeddings=True: normalize to unit length so that
+# inner product equals cosine similarity.
 # ============================================================
 print(f"\nLoading embedding model: {EMBED_MODEL} ...")
 embed_model = SentenceTransformer(EMBED_MODEL)
@@ -87,7 +87,7 @@ embed_model = SentenceTransformer(EMBED_MODEL)
 descriptions = anomaly_df["description"].tolist()
 embeddings   = embed_model.encode(
     descriptions,
-    normalize_embeddings=True,   # 归一化，使内积 = 余弦相似度
+    normalize_embeddings=True,   # normalize so inner product = cosine similarity
     show_progress_bar=True,
     convert_to_numpy=True,
 ).astype(np.float32)
@@ -95,10 +95,10 @@ embeddings   = embed_model.encode(
 print(f"Embedding shape: {embeddings.shape}")  # (68, 384)
 
 # ============================================================
-# 4. 建立 FAISS 索引
+# 4. Build FAISS index
 #
-# IndexFlatIP = 用内积（Inner Product）做相似度。
-# 因为向量已经归一化，内积值越大 = 余弦相似度越高 = 越相似。
+# IndexFlatIP = similarity measured by Inner Product.
+# Since vectors are normalized, higher inner product = higher cosine similarity = more similar.
 # ============================================================
 dim   = embeddings.shape[1]
 index = faiss.IndexFlatIP(dim)
@@ -106,35 +106,35 @@ index.add(embeddings)
 print(f"FAISS index built: {index.ntotal} vectors, dim={dim}")
 
 # ============================================================
-# 5. 查看检索效果（打印第一个异常的 top-3 邻居）
+# 5. Inspect retrieval quality (print top-3 neighbors for the first anomaly)
 # ============================================================
 print("\n" + "="*60)
 print("RETRIEVAL EXAMPLE (first anomaly row):")
 print("="*60)
 query_vec = embeddings[0:1]
-D, I = index.search(query_vec, TOP_K + 1)   # +1 因为第一名是自身
+D, I = index.search(query_vec, TOP_K + 1)   # +1 because rank-1 is always self
 
 print(f"Query: {descriptions[0]}")
 print(f"True label: {anomaly_df['anomaly_type'].iloc[0]}")
 print("\nTop retrieved neighbors (excluding self):")
 for rank, (score, idx) in enumerate(zip(D[0], I[0])):
-    if idx == 0:   # 跳过自身
+    if idx == 0:   # skip self
         continue
     print(f"  #{rank} score={score:.4f} | {descriptions[idx]}")
     print(f"         type={anomaly_df['anomaly_type'].iloc[idx]} | "
           f"explanation={anomaly_df['llm_explanation'].iloc[idx]}")
 
 # ============================================================
-# 6. 构造 RAG prompt
+# 6. Build RAG prompt
 #
-# 两部分组成：
-#   - 当前异常的基本信息（和 Route A 相同）
-#   - 检索到的历史案例（新增部分）
+# Two components:
+#   - Basic information about the current anomaly (same as Route A)
+#   - Retrieved historical cases (newly added component)
 # ============================================================
 def build_rag_prompt(row, retrieved_rows):
     direction = "above" if row["deviation_kwh"] > 0 else "below"
 
-    # 当前异常描述
+    # Current anomaly description
     current = (
         "You are an EV charging demand analyst. "
         "A significant deviation has been detected at a charging station.\n\n"
@@ -151,7 +151,7 @@ def build_rag_prompt(row, retrieved_rows):
         f"{direction} expected ({abs(row['deviation_pct'])}%)\n"
     )
 
-    # 检索到的历史案例
+    # Retrieved historical cases
     history = "\nSimilar historical anomaly cases for reference:\n"
     for i, r in enumerate(retrieved_rows, 1):
         r_dir = "above" if r["deviation_kwh"] > 0 else "below"
@@ -173,7 +173,7 @@ def build_rag_prompt(row, retrieved_rows):
 
 
 # ============================================================
-# 7. Load Qwen3-4B（与 Route A 完全相同）
+# 7. Load Qwen3-4B (identical to Route A)
 # ============================================================
 print(f"\nLoading generation model: {GEN_MODEL} ...")
 tokenizer = AutoTokenizer.from_pretrained(GEN_MODEL)
@@ -183,11 +183,11 @@ gen_model.eval()
 print("Generation model loaded.")
 
 # ============================================================
-# 8. Leave-one-out 推理
+# 8. Leave-one-out inference
 #
-# 对每个异常 i，从其余所有样本里检索 top-k，
-# 避免检索到自身（自身相似度最高，检索到自身就等于作弊）。
-# 实现方式：检索 top-(k+1)，跳过结果中 index == i 的那条。
+# For each anomaly i, retrieve top-k from all other samples,
+# avoiding self-retrieval (self has highest similarity; retrieving self is cheating).
+# Implementation: retrieve top-(k+1) and skip the result where index == i.
 # ============================================================
 print(f"\nRunning RAG inference on {len(anomaly_df)} anomaly samples ...")
 predictions = []
@@ -195,14 +195,14 @@ predictions = []
 for i in range(len(anomaly_df)):
     query_vec = embeddings[i:i+1]
 
-    # 检索 top-(k+1)，第一名通常是自身
+    # Retrieve top-(k+1); rank-1 is usually self
     D, I = index.search(query_vec, TOP_K + 1)
 
-    # 过滤掉自身，取前 TOP_K 个
+    # Filter out self; take top TOP_K results
     neighbors = [idx for idx in I[0] if idx != i][:TOP_K]
     retrieved_rows = [anomaly_df.iloc[idx].to_dict() for idx in neighbors]
 
-    # 构造 RAG prompt
+    # Build RAG prompt
     row    = anomaly_df.iloc[i]
     prompt = build_rag_prompt(row, retrieved_rows)
 

@@ -3,10 +3,10 @@
 # Use Case 5 - Route A: Zero-shot Anomaly Explanation
 # Model: Qwen3-4B (causal LM, no training)
 #
-# 与 flan-t5 版本的主要区别：
-#   1. AutoModelForCausalLM  替换  AutoModelForSeq2SeqLM
-#   2. apply_chat_template   包装 prompt（chat 模型需要）
-#   3. 推理时切掉 input tokens，只解码新生成的部分
+# Main differences from the flan-t5 version:
+#   1. AutoModelForCausalLM  replaces  AutoModelForSeq2SeqLM
+#   2. apply_chat_template   wraps the prompt (required for chat models)
+#   3. During inference, cut off input tokens and decode only newly generated parts
 # ============================================================
 
 # ============================================================
@@ -16,7 +16,7 @@ DATASET_PATH   = "/home/xzh5180/Research/llm-evprediction/datasets/dataset5_anom
 OUTPUT_DIR     = "/home/xzh5180/Research/llm-evprediction/outputs/usecase5_route_a"
 MODEL_NAME     = "Qwen/Qwen3-4B"
 MAX_NEW_TOKENS = 128
-REPETITION_PENALTY = 1.2   # 防止重复循环（flan-t5 出现的问题）
+REPETITION_PENALTY = 1.2   # prevent repetition loops (an issue observed with flan-t5)
 
 # ============================================================
 import os, torch, numpy as np, pandas as pd
@@ -39,7 +39,7 @@ print(f"Total: {len(df)} rows | Normal: {len(normal_df)} | Anomaly: {len(anomaly
 
 # ============================================================
 # 2. Compute expected_kwh
-#    同小时所有正常行的均值
+#    mean of all normal rows at the same hour
 # ============================================================
 hour_baseline = normal_df.groupby("hour")["demand_kwh"].mean().to_dict()
 
@@ -50,7 +50,7 @@ anomaly_df["deviation_pct"] = (
 ).round(1)
 
 # ============================================================
-# 3. Build prompts（同 flan-t5 版，不泄露答案）
+# 3. Build prompts (same as flan-t5 version; answer not revealed)
 # ============================================================
 DAY_NAMES = ["Monday","Tuesday","Wednesday","Thursday",
              "Friday","Saturday","Sunday"]
@@ -77,7 +77,7 @@ def build_prompt(row):
 
 anomaly_df["prompt"] = anomaly_df.apply(build_prompt, axis=1)
 
-# 打印一个例子，确认 prompt 内容
+# Print one example to verify prompt content
 print("\n" + "="*60)
 print("EXAMPLE PROMPT (first anomaly row):")
 print("="*60)
@@ -86,9 +86,9 @@ print(anomaly_df["prompt"].iloc[0])
 # ============================================================
 # 4. Load Qwen3-4B
 #
-# 与 Flan-T5 的关键区别：
-#   - AutoModelForCausalLM（自回归生成，适合开放式文本）
-#   - AutoModelForSeq2SeqLM 是 encoder-decoder，适合结构化 QA
+# Key difference from Flan-T5:
+#   - AutoModelForCausalLM (autoregressive generation, suitable for open-ended text)
+#   - AutoModelForSeq2SeqLM is encoder-decoder, better suited for structured QA
 # ============================================================
 print(f"\nLoading {MODEL_NAME} ...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -101,15 +101,15 @@ model.eval()
 print("Model loaded.")
 
 # ============================================================
-# 5. 推理：逐条处理
+# 5. Inference: process row by row
 #
-# Causal LM 推理与 Seq2Seq 的核心差异：
-#   - Seq2Seq：输入 → encoder → decoder 生成（输入输出分开）
-#   - Causal LM：输入和输出拼在一起，generate() 返回的是
-#     [input tokens + new tokens]，需要切掉 input 部分
+# Core difference between Causal LM and Seq2Seq inference:
+#   - Seq2Seq: input -> encoder -> decoder generates (input and output are separate)
+#   - Causal LM: input and output are concatenated; generate() returns
+#     [input tokens + new tokens], so input portion must be sliced off
 #
-# 另外 Qwen3 是 chat 模型，用 apply_chat_template 包装 prompt
-# 比裸 prompt 效果更好（模型被训练成对话格式）
+# Qwen3 is a chat model; wrapping the prompt with apply_chat_template
+# yields better results (the model is trained on a conversational format)
 # ============================================================
 predictions = []
 prompts = anomaly_df["prompt"].tolist()
@@ -118,7 +118,7 @@ print(f"\nRunning inference on {len(prompts)} anomaly samples ...")
 
 for i, prompt in enumerate(prompts):
 
-    # 用 chat template 包装（enable_thinking=False 关闭推理模式）
+    # Wrap with chat template (enable_thinking=False disables reasoning mode)
     messages = [{"role": "user", "content": prompt}]
     text = tokenizer.apply_chat_template(
         messages,
@@ -136,12 +136,12 @@ for i, prompt in enumerate(prompts):
         output_ids = model.generate(
             **inputs,
             max_new_tokens=MAX_NEW_TOKENS,
-            do_sample=False,                   # greedy，结果可复现
+            do_sample=False,                   # greedy decoding for reproducibility
             repetition_penalty=REPETITION_PENALTY,
             pad_token_id=tokenizer.eos_token_id
         )
 
-    # 只解码新生成的 tokens（切掉 input 部分）
+    # Decode only newly generated tokens (slice off input portion)
     new_tokens = output_ids[0][input_len:]
     decoded = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
     predictions.append(decoded)
