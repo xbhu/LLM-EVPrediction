@@ -1,29 +1,29 @@
 """
-Use Case 7c - Step 3: SFT Grid Agent（LoRA 微调）
-=================================================
-核心概念：
-  用数据集中 Grid 的真实回应来 fine-tune Grid Agent，
-  使其在 peak/V2G 场景下的谈判措辞更专业、更具体。
+Use Case 7c - Step 3: SFT Grid Agent (LoRA fine-tuning)
+========================================================
+Core concept:
+  Fine-tune the Grid Agent using the ground-truth Grid responses from the dataset,
+  so its negotiation language in peak/V2G scenarios becomes more professional and specific.
 
-训练数据构造：
-  120 sessions × 2 Grid 轮次 = 240 个样本
-  输入：scenario 上下文 + Grid 发言前的完整对话历史
-  输出：数据集里 Grid 的 ground truth 回应
+Training data construction:
+  120 sessions × 2 Grid turns = 240 samples
+  Input:  scenario context + full conversation history before each Grid turn
+  Output: ground-truth Grid response from the dataset
 
-训练后对比：
-  在 peak_hour 和 V2G 场景下，
-  分别让 zero-shot Grid 和 fine-tuned Grid 接同一段历史各说一轮，
-  观察措辞变化。
+Post-training comparison:
+  For peak_hour and V2G scenarios,
+  run the same conversation history through both zero-shot and fine-tuned Grid,
+  then observe how the wording differs.
 
-输出目录：
+Output directory:
   outputs/usecase7_sft/
-    grid_agent_lora/          ← LoRA checkpoint
+    grid_agent_lora/          <- LoRA checkpoint
     sft_train_data.jsonl
     sft_eval_data.jsonl
     inference_comparison.json
-    inference_comparison.txt  ← 可读对比报告
+    inference_comparison.txt  <- human-readable comparison report
 
-运行：python sourcecode/usecase7_step3_sft_grid.py
+Run: python sourcecode/usecase7_step3_sft_grid.py
 """
 
 import json
@@ -47,32 +47,32 @@ EVAL_DATA_PATH  = os.path.join(OUTPUT_DIR, "sft_eval_data.jsonl")
 COMPARE_JSON    = os.path.join(OUTPUT_DIR, "inference_comparison.json")
 COMPARE_TXT     = os.path.join(OUTPUT_DIR, "inference_comparison.txt")
 
-# 训练超参数
-TRAIN_SESSIONS      = 96    # 前96条 session 做训练（192个样本）
-# 后24条 session 做验证（48个样本）
+# Training hyperparameters
+TRAIN_SESSIONS      = 96    # first 96 sessions for training (192 samples)
+# last 24 sessions for validation (48 samples)
 NUM_EPOCHS          = 3
 PER_DEVICE_BATCH    = 2
-GRAD_ACCUM_STEPS    = 4     # 有效 batch size = 8
+GRAD_ACCUM_STEPS    = 4     # effective batch size = 8
 LEARNING_RATE       = 2e-4
 WARMUP_RATIO        = 0.1
 MAX_SEQ_LENGTH      = 512
 
-# LoRA 超参数
+# LoRA hyperparameters
 LORA_R              = 8
 LORA_ALPHA          = 16
 LORA_TARGET_MODULES = "all-linear"
 LORA_DROPOUT        = 0.05
 
-# 推理对比用的 session（peak_hour 和 V2G 各一条）
+# Sessions used for inference comparison (one peak_hour and one V2G)
 COMPARE_SESSION_IDS = [1, 3]  # session 1=peak_hour, session 3=emergency_v2g
-COMPARE_GRID_TURN   = 2       # 对比 Grid 的第一轮发言（transcript index=2）
+COMPARE_GRID_TURN   = 2       # compare Grid's first speaking turn (transcript index=2)
 MAX_NEW_TOKENS_INFER = 150
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # =============================================================================
-# GRID AGENT SYSTEM PROMPT（和 Step 1b 保持一致）
-# 这是 fine-tuning 时用的 system prompt，训练时和推理时要保持相同
+# GRID AGENT SYSTEM PROMPT (consistent with Step 1b)
+# This is the system prompt used during fine-tuning; must be identical at train and inference time
 # =============================================================================
 GRID_SYSTEM_PROMPT = """You are the regional grid operator responsible for power grid stability.
 Persona: You manage demand response programs and use financial incentives to shift load.
@@ -83,15 +83,15 @@ Strategy: Lead with a specific dollar rebate tied to a clear delay condition.
   Acknowledge user urgency, but emphasize the grid emergency and the compensation value.
 Keep your response to 2-3 sentences. Propose or respond to concrete actions."""
 
-# 谈判轮次顺序（和 Step 1 保持一致）
+# Negotiation turn order (consistent with Step 1)
 TURN_ORDER = ["EV_User", "Station", "Grid", "EV_User", "Station", "Grid"]
 
 # =============================================================================
-# STEP 1：构造 SFT 训练数据
-# 从每条 transcript 中提取 Grid 的两轮发言，各自构造一个训练样本
+# STEP 1: Build SFT training data
+# Extract the two Grid turns from each transcript and construct one training sample per turn
 # =============================================================================
 def build_user_content(scenario_desc: str, history: list, agent_role: str) -> str:
-    """构造 user message：场景 + Grid 发言前的对话历史"""
+    """Build the user message: scenario + conversation history before the Grid turn."""
     if history:
         history_text = "\n".join(
             f"[{t['agent']}]: {t['message']}" for t in history
@@ -110,26 +110,26 @@ def build_user_content(scenario_desc: str, history: list, agent_role: str) -> st
 
 def prepare_sft_data(df: pd.DataFrame, tokenizer) -> tuple[list, list]:
     """
-    从 120 条 transcript 中提取 Grid 的发言轮次，构造训练样本。
+    Extract Grid speaking turns from 120 transcripts and build training samples.
 
-    每个样本的 messages 格式：
-      system : GRID_SYSTEM_PROMPT
-      user   : scenario + 发言前历史
-      assistant: Grid 的 ground truth 回应
+    Each sample messages format:
+      system:    GRID_SYSTEM_PROMPT
+      user:      scenario + conversation history before the turn
+      assistant: Grid ground-truth response
 
-    用 tokenizer.apply_chat_template 把 messages 转成文本，
-    enable_thinking=False 确保训练时不产生 <think> token。
+    Uses tokenizer.apply_chat_template to convert messages to text;
+    enable_thinking=False ensures no <think> tokens are produced during training.
 
-    返回：(train_examples, eval_examples)
+    Returns: (train_examples, eval_examples)
     """
     all_examples = []
 
     for _, row in df.iterrows():
         transcript = json.loads(row["negotiation_transcript"])
 
-        # Grid 在 TURN_ORDER 中的索引：2 和 5
+        # Grid turn indices in TURN_ORDER: 2 and 5
         for grid_idx in [2, 5]:
-            history_before  = transcript[:grid_idx]   # Grid 发言前的历史
+            history_before  = transcript[:grid_idx]   # conversation history before the Grid turn
             grid_response   = transcript[grid_idx]["message"]
 
             user_content = build_user_content(
@@ -144,8 +144,8 @@ def prepare_sft_data(df: pd.DataFrame, tokenizer) -> tuple[list, list]:
                 {"role": "assistant", "content": grid_response},
             ]
 
-            # 把 messages 转成 text（apply_chat_template）
-            # add_generation_prompt=False：训练时不加推理提示，直接包含 assistant 回应
+            # Convert messages to text via apply_chat_template
+            # add_generation_prompt=False: do not append a generation prompt during training; the assistant response is included directly
             text = tokenizer.apply_chat_template(
                 messages,
                 tokenize=False,
@@ -160,7 +160,7 @@ def prepare_sft_data(df: pd.DataFrame, tokenizer) -> tuple[list, list]:
                 "grid_turn":  grid_idx,
             })
 
-    # 按 session_id 分 train/eval（不按样本随机分，避免同一 session 的两轮分开）
+    # Split by session_id for train/eval (not by sample, to keep both turns of a session together)
     train_examples = [e for e in all_examples if e["session_id"] <= TRAIN_SESSIONS]
     eval_examples  = [e for e in all_examples if e["session_id"] >  TRAIN_SESSIONS]
 
@@ -168,7 +168,7 @@ def prepare_sft_data(df: pd.DataFrame, tokenizer) -> tuple[list, list]:
     print(f"[Data] Train: {len(train_examples)} | Eval: {len(eval_examples)}")
     print(f"[Data] Train sessions: 1–{TRAIN_SESSIONS} | Eval sessions: {TRAIN_SESSIONS+1}–{df['session_id'].max()}")
 
-    # 保存到文件（便于检查）
+    # Save to file for inspection
     with open(TRAIN_DATA_PATH, "w") as f:
         for e in train_examples:
             f.write(json.dumps(e, ensure_ascii=False) + "\n")
@@ -182,19 +182,19 @@ def prepare_sft_data(df: pd.DataFrame, tokenizer) -> tuple[list, list]:
 
 
 # =============================================================================
-# STEP 2：LoRA Fine-tuning
+# STEP 2: LoRA Fine-tuning
 # =============================================================================
 def train_grid_agent(train_examples: list, eval_examples: list, tokenizer, model):
     """
-    用 SFTTrainer + LoRA 微调 Grid Agent。
+    Fine-tune the Grid Agent using SFTTrainer + LoRA.
 
-    关键设计：
-      - 4B 模型用 BF16 直接训练（不需要 QLoRA）
-      - target_modules="all-linear" 覆盖所有线性层
-      - dataset_text_field="text"：直接用预处理好的文本，跳过内部 template 处理
-      - processing_class=tokenizer（trl 1.4.0 规范）
+    Key design decisions:
+      - 4B model trained directly in BF16 (no QLoRA needed)
+      - target_modules="all-linear" covers all linear layers
+      - dataset_text_field="text": use pre-processed text directly, skip internal template handling
+      - processing_class=tokenizer (trl 1.4.0 convention)
     """
-    # LoRA 配置
+    # LoRA config
     lora_config = LoraConfig(
         r=LORA_R,
         lora_alpha=LORA_ALPHA,
@@ -206,11 +206,11 @@ def train_grid_agent(train_examples: list, eval_examples: list, tokenizer, model
     model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
 
-    # 构造 HuggingFace Dataset
+    # Build HuggingFace Dataset
     train_dataset = Dataset.from_list([{"text": e["text"]} for e in train_examples])
     eval_dataset  = Dataset.from_list([{"text": e["text"]} for e in eval_examples])
 
-    # SFTConfig（trl 1.4.0）
+    # SFTConfig (trl 1.4.0)
     sft_config = SFTConfig(
         output_dir=LORA_DIR,
         num_train_epochs=NUM_EPOCHS,
@@ -240,7 +240,7 @@ def train_grid_agent(train_examples: list, eval_examples: list, tokenizer, model
     print("\n[Training] Starting LoRA fine-tuning of Grid Agent...")
     trainer.train()
 
-    # 保存 LoRA adapter
+    # Save LoRA adapter
     model.save_pretrained(LORA_DIR)
     tokenizer.save_pretrained(LORA_DIR)
     print(f"[Saved] LoRA adapter → {LORA_DIR}")
@@ -249,7 +249,7 @@ def train_grid_agent(train_examples: list, eval_examples: list, tokenizer, model
 
 
 # =============================================================================
-# STEP 3：推理对比（zero-shot vs fine-tuned）
+# STEP 3: Inference comparison (zero-shot vs fine-tuned)
 # =============================================================================
 def infer_grid_response(
     scenario_desc: str,
@@ -258,7 +258,7 @@ def infer_grid_response(
     tokenizer,
     model,
 ) -> str:
-    """让 Grid 根据当前历史生成回应（用于推理对比）"""
+    """Generate a Grid response given the current history (used for inference comparison)."""
     user_content = build_user_content(scenario_desc, history, "Grid")
     messages = [
         {"role": "system", "content": system_prompt},
@@ -284,21 +284,21 @@ def infer_grid_response(
 
 def run_inference_comparison(df: pd.DataFrame, tokenizer, base_model, finetuned_model):
     """
-    对比 zero-shot vs fine-tuned Grid 在两个场景下的回应。
-    固定输入（相同对话历史），只换模型，观察输出差异。
+    Compare zero-shot vs fine-tuned Grid responses for two scenarios.
+    The input (conversation history) is fixed; only the model changes.
 
-    对比场景：
-      session 1（peak_hour_conflict） → Grid 的第1轮回应（transcript index=2）
-      session 3（emergency_v2g_request）→ Grid 的第1轮回应（transcript index=2）
+    Comparison scenarios:
+      session 1 (peak_hour_conflict)     -> Grid's 1st response (transcript index=2)
+      session 3 (emergency_v2g_request)  -> Grid's 1st response (transcript index=2)
     """
     results = []
-    report_lines = ["=" * 70, "Zero-shot vs Fine-tuned Grid Agent 对比报告", "=" * 70]
+    report_lines = ["=" * 70, "Zero-shot vs Fine-tuned Grid Agent Comparison Report", "=" * 70]
 
     for sid in COMPARE_SESSION_IDS:
         row        = df[df["session_id"] == sid].iloc[0]
         transcript = json.loads(row["negotiation_transcript"])
 
-        # 取 Grid 第一轮发言前的历史（index=0,1 = EV_User, Station）
+        # Take the conversation history before Grid's first turn (indices 0,1 = EV_User, Station)
         history_before = transcript[:COMPARE_GRID_TURN]
         gt_response    = transcript[COMPARE_GRID_TURN]["message"]
 
@@ -357,14 +357,14 @@ def run_inference_comparison(df: pd.DataFrame, tokenizer, base_model, finetuned_
     report_lines += [
         "",
         "=" * 70,
-        "分析提示（跑完后自己先判断）：",
-        "  1. Fine-tuned Grid 的激励措辞是否更具体（有明确 $/kWh 数字）？",
-        "  2. Fine-tuned Grid 是否更准确地区分 peak vs V2G 场景的策略？",
-        "  3. Fine-tuned Grid 的回应是否像在复述训练数据，还是真正泛化了？",
-        "  4. Zero-shot Grid 和 Fine-tuned Grid 的主要差异在哪里？",
+        "Analysis prompts (judge for yourself before looking at the results):",
+        "  1. Is the fine-tuned Grid's incentive language more specific (clear $/kWh numbers)?",
+        "  2. Does the fine-tuned Grid more accurately distinguish peak vs V2G strategies?",
+        "  3. Does the fine-tuned Grid recite training data, or has it truly generalized?",
+        "  4. What is the main difference between zero-shot and fine-tuned Grid responses?",
     ]
 
-    # 保存结果
+    # Save results
     with open(COMPARE_JSON, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     with open(COMPARE_TXT, "w", encoding="utf-8") as f:
@@ -381,7 +381,7 @@ def run_inference_comparison(df: pd.DataFrame, tokenizer, base_model, finetuned_
 def main():
     df = pd.read_csv(DATA_PATH)
 
-    # ── 加载 base model（BF16，4B 不需要 QLoRA）──────────────────────────
+    # ── Load base model (BF16; 4B model does not need QLoRA) ────────────
     print(f"\n[Loading] {MODEL_NAME} ...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     base_model = AutoModelForCausalLM.from_pretrained(
@@ -392,21 +392,21 @@ def main():
     base_model.eval()
     print(f"[Loaded]  dtype=bfloat16 | device={next(base_model.parameters()).device}")
 
-    # ── 构造训练数据 ──────────────────────────────────────────────────────
+    # ── Build training data ───────────────────────────────────────────────
     train_examples, eval_examples = prepare_sft_data(df, tokenizer)
 
-    # ── 训练 ──────────────────────────────────────────────────────────────
-    # 注意：train_grid_agent 内部调用 get_peft_model，会修改 base_model
-    # 训练完成后 base_model 已经是 peft model（带了 LoRA adapter）
-    print("\n[Note] 训练后 base_model 会变成 PeftModel。")
-    print("[Note] 推理对比时，zero-shot 用 merge 前的 base weights，")
-    print("       fine-tuned 用 merge 后的 adapter。")
+    # ── Training ──────────────────────────────────────────────────────────
+    # Note: train_grid_agent internally calls get_peft_model, which modifies base_model.
+    # After training, base_model becomes a PeftModel (with LoRA adapter attached).
+    print("\n[Note] After training, base_model becomes a PeftModel.")
+    print("[Note] For inference comparison, zero-shot uses the original base weights,")
+    print("       and fine-tuned uses the merged adapter.")
 
     finetuned_model = train_grid_agent(train_examples, eval_examples, tokenizer, base_model)
     finetuned_model.eval()
 
-    # ── 加载纯净的 base model 用于 zero-shot 对比 ────────────────────────
-    # 重新加载一个没有 LoRA 的 base model，保证对比公平
+    # ── Reload a clean base model for zero-shot comparison ───────────────
+    # Reload without LoRA to ensure a fair comparison
     print(f"\n[Loading] Reloading base model for zero-shot comparison ...")
     base_model_clean = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
@@ -415,12 +415,12 @@ def main():
     )
     base_model_clean.eval()
 
-    # ── 推理对比 ──────────────────────────────────────────────────────────
+    # ── Inference comparison ──────────────────────────────────────────────
     run_inference_comparison(df, tokenizer, base_model_clean, finetuned_model)
 
-    print("\n[Done] Step 3 complete。")
-    print("请对比 outputs/usecase7_sft/inference_comparison.txt 里的输出，")
-    print("先说说你观察到的差异，我们再一起分析 fine-tuning 的效果。")
+    print("\n[Done] Step 3 complete.")
+    print("Please review outputs/usecase7_sft/inference_comparison.txt,")
+    print("and describe the differences you observe before analyzing the fine-tuning effect.")
 
 
 if __name__ == "__main__":

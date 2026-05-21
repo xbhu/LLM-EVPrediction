@@ -1,21 +1,21 @@
 """
-Use Case 7b - Step 2: LLM-as-Judge 评估谈判 transcript
+Use Case 7b - Step 2: LLM-as-Judge Evaluation of Negotiation Transcripts
 =======================================================
-核心概念：
-  LLM 不再是谈判参与者，而是旁观评判者。
-  读取完整 transcript → 输出结构化 JSON 判断 → 与 ground truth 对比。
+Core concept:
+  The LLM acts as an outside observer — not a negotiation participant.
+  Reads the full transcript → outputs a structured JSON judgment → compares with ground truth.
 
-输入：
-  1. 数据集原始 120 条 transcript（主要评估对象）
-  2. 如果 Step 1 输出文件存在，也一并评估（可选）
+Input:
+  1. The 120 original dataset transcripts (primary evaluation target)
+  2. If the Step 1 output file exists, evaluate those transcripts as well (optional)
 
-输出：
+Output:
   outputs/usecase7_judge/
-    judge_results.jsonl      ← 逐条结果（增量写入，断点可续）
-    judge_summary.json       ← 汇总指标
-    judge_analysis.txt       ← 可读报告
+    judge_results.jsonl      <- per-session results (incremental write, resume-safe)
+    judge_summary.json       <- aggregated metrics
+    judge_analysis.txt       <- human-readable report
 
-运行：python sourcecode/usecase7b_step2_llm_judge.py
+Run: python sourcecode/usecase7b_step2_llm_judge.py
 """
 
 import json
@@ -36,16 +36,16 @@ OUTPUT_DIR      = "/home/xzh5180/Research/llm-evprediction/outputs/usecase7_judg
 RESULTS_FILE    = os.path.join(OUTPUT_DIR, "judge_results.jsonl")
 SUMMARY_FILE    = os.path.join(OUTPUT_DIR, "judge_summary.json")
 ANALYSIS_FILE   = os.path.join(OUTPUT_DIR, "judge_analysis.txt")
-MAX_NEW_TOKENS  = 300   # judge 需要输出 JSON，给足空间
+MAX_NEW_TOKENS  = 300   # judge needs to output JSON — allocate enough space
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # =============================================================================
 # JUDGE PROMPT
-# 设计要点：
-#   1. 明确角色：observer，不是参与者
-#   2. 给足上下文：scenario + 各方初始状态 + transcript
-#   3. 严格要求纯 JSON 输出，禁止任何前缀或说明文字
-#   4. 字段名和值域必须和 ground truth 完全一致
+# Design notes:
+#   1. Clear role: observer, not a participant
+#   2. Provide sufficient context: scenario + initial state of all parties + transcript
+#   3. Require pure JSON output — no preamble or explanatory text
+#   4. Field names and value ranges must exactly match those in the ground truth
 # =============================================================================
 JUDGE_SYSTEM = """You are an expert evaluator of multi-party EV charging negotiation transcripts.
 Your task: read a negotiation transcript and provide an objective structured evaluation.
@@ -66,7 +66,7 @@ Evaluation guidelines:
   Consider: did the user get what they needed? Did they have to make painful concessions?"""
 
 def build_judge_user_prompt(row: pd.Series) -> str:
-    """构建 judge 的 user message：场景上下文 + 格式化 transcript"""
+    """Build the judge's user message: scenario context + formatted transcript."""
     transcript = json.loads(row["negotiation_transcript"])
     transcript_text = "\n".join(
         f"  [{t['agent']}]: {t['message']}" for t in transcript
@@ -91,7 +91,7 @@ def build_judge_user_prompt_from_transcript(
     grid_signal: str,
     transcript: list,
 ) -> str:
-    """从 Step 1 生成的 transcript 构建 judge prompt（字段单独传入）"""
+    """Build a judge prompt from a Step 1 generated transcript (fields passed individually)."""
     transcript_text = "\n".join(
         f"  [{t['agent']}]: {t['message']}" for t in transcript
     )
@@ -123,10 +123,10 @@ def load_model(model_name: str):
     return tokenizer, model
 
 # =============================================================================
-# JUDGE 推理
+# JUDGE INFERENCE
 # =============================================================================
 def run_judge(user_prompt: str, tokenizer, model) -> str:
-    """调用 judge LLM，返回原始字符串输出"""
+    """Call the judge LLM and return its raw string output."""
     messages = [
         {"role": "user", "content": f"{JUDGE_SYSTEM}\n\n{user_prompt}"},
     ]
@@ -148,23 +148,23 @@ def run_judge(user_prompt: str, tokenizer, model) -> str:
     return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
 
 # =============================================================================
-# JSON 解析（robust）
-# LLM 有时会在 JSON 前后加上多余的文字或 markdown，需要容错处理
+# JSON PARSING (robust)
+# LLMs sometimes add extra text or markdown around the JSON — handle this gracefully
 # =============================================================================
 def parse_judge_output(raw: str) -> dict:
     """
-    三层解析策略：
-      1. 直接尝试 json.loads（最理想情况）
-      2. 用正则提取第一个 {...} 块再解析
-      3. 都失败则返回 None，记录为解析失败
+    Three-layer parsing strategy:
+      1. Try json.loads directly (ideal case)
+      2. Use regex to extract the first {...} block and parse that
+      3. If both fail, return None and record a parse failure
     """
-    # 层1：直接解析
+    # Layer 1: direct parse
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
         pass
 
-    # 层2：提取 {...} 块
+    # Layer 2: extract {...} block
     match = re.search(r'\{[^{}]*\}', raw, re.DOTALL)
     if match:
         try:
@@ -172,11 +172,11 @@ def parse_judge_output(raw: str) -> dict:
         except json.JSONDecodeError:
             pass
 
-    # 层3：失败
+    # Layer 3: failure
     return None
 
 # =============================================================================
-# 验证解析结果字段合法性
+# VALIDATE PARSED RESULT FIELDS
 # =============================================================================
 def validate_parsed(parsed: dict) -> bool:
     if parsed is None:
@@ -196,7 +196,7 @@ def validate_parsed(parsed: dict) -> bool:
     return True
 
 # =============================================================================
-# 读取已完成的 session（断点续跑）
+# LOAD COMPLETED SESSION IDs (for resume support)
 # =============================================================================
 def load_completed_ids(results_file: str) -> set:
     completed = set()
@@ -215,16 +215,16 @@ def load_completed_ids(results_file: str) -> set:
     return completed
 
 # =============================================================================
-# PART A：评估数据集原始 120 条 transcript
+# PART A: Evaluate the 120 original dataset transcripts
 # =============================================================================
 def evaluate_dataset_transcripts(df: pd.DataFrame, tokenizer, model):
     print("\n" + "="*60)
-    print("PART A: 评估数据集原始 120 条 transcript")
+    print("PART A: Evaluate 120 original dataset transcripts")
     print("="*60)
 
     completed = load_completed_ids(RESULTS_FILE)
     if completed:
-        print(f"[Resume] 已完成 {len(completed)} 条，跳过继续...")
+        print(f"[Resume] {len(completed)} sessions already completed, skipping...")
 
     with open(RESULTS_FILE, "a", encoding="utf-8") as f_out:
         for idx, row in df.iterrows():
@@ -264,15 +264,15 @@ def evaluate_dataset_transcripts(df: pd.DataFrame, tokenizer, model):
             )
 
 # =============================================================================
-# PART B：评估 Step 1 生成的 transcript（如果文件存在）
+# PART B: Evaluate Step 1 generated transcripts (if the file exists)
 # =============================================================================
 def evaluate_step1_transcripts(step1_path: str, df: pd.DataFrame, tokenizer, model):
     if not os.path.exists(step1_path):
-        print(f"\n[Skip Part B] Step 1 输出文件不存在：{step1_path}")
+        print(f"\n[Skip Part B] Step 1 output file not found: {step1_path}")
         return
 
     print("\n" + "="*60)
-    print("PART B: 评估 Step 1 生成的 transcript")
+    print("PART B: Evaluate Step 1 generated transcripts")
     print("="*60)
 
     with open(step1_path, "r", encoding="utf-8") as f:
@@ -281,7 +281,7 @@ def evaluate_step1_transcripts(step1_path: str, df: pd.DataFrame, tokenizer, mod
     session_row = df[df["session_id"] == step1["session_id"]].iloc[0]
     completed   = load_completed_ids(RESULTS_FILE)
 
-    # 构建待评估条目：step1a、step1b、step1c 三种 persona
+    # Build evaluation entries: step1a, step1b, step1c (three persona types)
     to_evaluate = {}
     if "step1a" in step1:
         to_evaluate["step1a"] = step1["step1a"]["transcript"]
@@ -334,11 +334,11 @@ def evaluate_step1_transcripts(step1_path: str, df: pd.DataFrame, tokenizer, mod
             )
 
 # =============================================================================
-# 汇总分析
+# SUMMARY ANALYSIS
 # =============================================================================
 def compute_summary():
     print("\n" + "="*60)
-    print("汇总分析")
+    print("Summary Analysis")
     print("="*60)
 
     records = []
@@ -350,7 +350,7 @@ def compute_summary():
 
     df_r = pd.DataFrame(records)
 
-    # 只分析数据集原始部分（有充分的 ground truth）
+    # Only analyze the original dataset portion (which has full ground truth)
     ds = df_r[df_r["source"] == "dataset"].copy()
     ds = ds[ds["parse_success"] == True]
 
@@ -358,17 +358,17 @@ def compute_summary():
     parsed_ok = len(ds)
     parse_rate = parsed_ok / total if total > 0 else 0
 
-    # 分类准确率
+    # Classification accuracy
     correct  = (ds["predicted_outcome"] == ds["gt_outcome"]).sum()
     accuracy = correct / len(ds) if len(ds) > 0 else 0
 
-    # 满意度 MAE
+    # Satisfaction MAE
     ds["sat_error"] = (
         ds["estimated_satisfaction"].astype(float) - ds["gt_satisfaction"].astype(float)
     ).abs()
     sat_mae = ds["sat_error"].mean()
 
-    # 按场景细分
+    # Break down by scenario
     scenario_stats = ds.groupby("scenario").apply(
         lambda g: pd.Series({
             "n":              len(g),
@@ -380,7 +380,7 @@ def compute_summary():
         })
     ).to_dict(orient="index")
 
-    # Confusion matrix（文字版）
+    # Confusion matrix (text version)
     from collections import Counter
     cm = Counter(zip(ds["gt_outcome"], ds["predicted_outcome"]))
 
@@ -397,31 +397,31 @@ def compute_summary():
     with open(SUMMARY_FILE, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
-    # 可读报告
+    # Human-readable report
     lines = [
         "=" * 60,
-        "Use Case 7b Step 2 - LLM-as-Judge 评估报告",
+        "Use Case 7b Step 2 - LLM-as-Judge Evaluation Report",
         "=" * 60,
-        f"数据集总条数       : {total}",
-        f"JSON 解析成功率    : {parsed_ok}/{total} ({parse_rate:.1%})",
-        f"Outcome 分类准确率 : {accuracy:.1%}  ({correct}/{parsed_ok})",
-        f"满意度估计 MAE     : {sat_mae:.4f}",
+        f"Total dataset sessions   : {total}",
+        f"JSON parse success rate  : {parsed_ok}/{total} ({parse_rate:.1%})",
+        f"Outcome classification   : {accuracy:.1%}  ({correct}/{parsed_ok})",
+        f"Satisfaction est. MAE    : {sat_mae:.4f}",
         "",
         "Confusion Matrix (GT → Predicted):",
     ]
     for (gt, pred), cnt in sorted(cm.items()):
         lines.append(f"  GT={gt:22s} → Pred={pred:22s} : {cnt}")
 
-    lines += ["", "按场景细分："]
+    lines += ["", "By scenario:"]
     for sc, stats in scenario_stats.items():
         lines.append(
             f"  {sc:35s} | acc={stats['accuracy']:.1%} | sat_mae={stats['sat_mae']:.4f}"
         )
 
-    # Part B 结果（如果有）
+    # Part B results (if any)
     step1_rows = df_r[df_r["source"] != "dataset"]
     if len(step1_rows) > 0:
-        lines += ["", "Step 1 生成 transcript 的 Judge 判断："]
+        lines += ["", "Judge verdicts for Step 1 generated transcripts:"]
         for _, r in step1_rows.iterrows():
             lines.append(
                 f"  [{r['source']:25s}] Pred={r.get('predicted_outcome','?'):22s} "
@@ -443,17 +443,17 @@ def main():
     df = pd.read_csv(DATA_PATH)
     tokenizer, model = load_model(MODEL_NAME)
 
-    # Part A：数据集原始 120 条
+    # Part A: 120 original dataset sessions
     evaluate_dataset_transcripts(df, tokenizer, model)
 
-    # Part B：Step 1 生成的 transcript（文件存在才跑）
+    # Part B: Step 1 generated transcripts (only if file exists)
     evaluate_step1_transcripts(STEP1_OUTPUT, df, tokenizer, model)
 
-    # 汇总
+    # Summary
     compute_summary()
     print(f"\n[Saved] {SUMMARY_FILE}")
     print(f"[Saved] {ANALYSIS_FILE}")
-    print("[Done]  Step 2 complete。跑完后我们分析结果，再进入 Step 3。")
+    print("[Done]  Step 2 complete. Analyze the results, then proceed to Step 3.")
 
 
 if __name__ == "__main__":

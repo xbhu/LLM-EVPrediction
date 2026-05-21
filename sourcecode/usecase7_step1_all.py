@@ -1,12 +1,12 @@
 """
 Use Case 7 - Step 1: Zero-shot Multi-Agent EV Charging Negotiation
 ==================================================================
-Step 1a: 用数据集的 minimal prompt，每个 agent 只看上一条消息
-Step 1b: 用设计过的 rich prompt，每个 agent 看完整对话历史
-Step 1c: 固定 Station/Grid，给 EV Driver 换三种 persona，观察行为差异
+Step 1a: use the dataset's minimal prompt; each agent sees only the last message
+Step 1b: use a designed rich prompt; each agent sees the full conversation history
+Step 1c: fix Station/Grid, swap in three EV Driver personas to observe behavioral differences
 
-运行：python sourcecode/uc7_step1_all.py
-输出：outputs/usecase7_zeroshot/
+Usage: python sourcecode/uc7_step1_all.py
+Output: outputs/usecase7_zeroshot/
 """
 
 import json
@@ -21,22 +21,22 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 MODEL_NAME        = "Qwen/Qwen3-4B"
 DATA_PATH         = "/home/xzh5180/Research/llm-evprediction/datasets/dataset7_multiagent.csv"
 OUTPUT_DIR        = "/home/xzh5180/Research/llm-evprediction/outputs/usecase7_zeroshot"
-TARGET_SESSION_ID = 1       # peak_hour_conflict，用这一条做所有对比
-MAX_NEW_TOKENS    = 150     # 每个 agent 每轮最多生成的 token 数
-NUM_ROUNDS        = 6       # 谈判总轮数
+TARGET_SESSION_ID = 1       # peak_hour_conflict; use this session for all comparisons
+MAX_NEW_TOKENS    = 150     # maximum tokens each agent generates per turn
+NUM_ROUNDS        = 6       # total number of negotiation rounds
 TURN_ORDER        = ["EV_User", "Station", "Grid", "EV_User", "Station", "Grid"]
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # =============================================================================
-# STEP 1a：数据集原始 minimal prompt
-# 设计逻辑：每个 agent 只看上一条消息（{incoming_message}），
-#           模拟最简单的 reactive agent——只响应当前刺激
+# STEP 1a: original minimal prompt from the dataset
+# Design rationale: each agent sees only the last message ({incoming_message}),
+#                  simulating the simplest reactive agent — responds only to the current stimulus
 # =============================================================================
 def build_minimal_system_prompt(agent_role: str, scenario_description: str) -> str:
     """
-    直接用数据集的 agent_prompt_template，填入 agent_role 和 scenario。
-    注意：这个模板没有区分三个角色的 goal/constraint，
-         所有 agent 的目标都是同一句话："maximize your own objective"
+    Directly use the dataset's agent_prompt_template, filling in agent_role and scenario.
+    Note: this template does not differentiate goal/constraint among the three roles;
+         all agents share the same objective: "maximize your own objective"
     """
     return (
         f"You are the {agent_role} agent in an EV charging negotiation.\n"
@@ -46,9 +46,9 @@ def build_minimal_system_prompt(agent_role: str, scenario_description: str) -> s
     )
 
 # =============================================================================
-# STEP 1b：设计过的 rich role prompts
-# 设计逻辑：四要素 persona / goal / constraint / strategy 明确区分三个角色，
-#           每个 agent 看完整对话历史（full history）
+# STEP 1b: designed rich role prompts
+# Design rationale: four elements (persona / goal / constraint / strategy) clearly differentiate the three roles;
+#                  each agent sees the full conversation history (full history)
 # =============================================================================
 RICH_PROMPTS = {
     "EV_User": """You are an EV driver in a real-time charging negotiation.
@@ -79,9 +79,9 @@ Keep your response to 2-3 sentences. Propose or respond to concrete actions.""",
 }
 
 # =============================================================================
-# STEP 1c：三种 EV Driver persona（Station 和 Grid 沿用 RICH_PROMPTS）
-# 设计逻辑：同一场景，只改 EV Driver 的 persona 和 strategy，
-#           观察用户异质性如何影响谈判走向
+# STEP 1c: three EV Driver personas (Station and Grid reuse RICH_PROMPTS)
+# Design rationale: same scenario, only EV Driver's persona and strategy change,
+#                  to observe how user heterogeneity affects negotiation outcomes
 # =============================================================================
 EV_PERSONAS = {
     "Flexible_PriceSensitive": """You are an EV driver in a real-time charging negotiation.
@@ -126,7 +126,7 @@ def load_model(model_name: str):
     return tokenizer, model
 
 # =============================================================================
-# INFERENCE：单个 agent 生成一轮回应
+# INFERENCE: generate one round of response for a single agent
 # =============================================================================
 def agent_speak(
     system_prompt: str,
@@ -137,7 +137,7 @@ def agent_speak(
     messages = [
         {"role": "user", "content": f"{system_prompt}\n\n{user_content}"},
     ]
-    # Qwen3 不支持独立 system role 时用 user 拼接；enable_thinking=False
+    # Qwen3 concatenates into user role when independent system role is unsupported; enable_thinking=False
     text = tokenizer.apply_chat_template(
         messages,
         tokenize=False,
@@ -156,7 +156,7 @@ def agent_speak(
     return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
 
 # =============================================================================
-# STEP 1a 谈判：每个 agent 只看上一条消息
+# STEP 1a negotiation: each agent sees only the last message
 # =============================================================================
 def run_1a(session_row: pd.Series, tokenizer, model) -> list:
     print("\n" + "="*60)
@@ -168,7 +168,7 @@ def run_1a(session_row: pd.Series, tokenizer, model) -> list:
         sys_prompt = build_minimal_system_prompt(
             agent_role, session_row["scenario_description"]
         )
-        # 只传入上一条消息（或空）
+        # Pass only the last message (or empty)
         if history:
             last = history[-1]
             user_content = f"Current message from other agent: {last['message']}"
@@ -182,7 +182,7 @@ def run_1a(session_row: pd.Series, tokenizer, model) -> list:
     return history
 
 # =============================================================================
-# STEP 1b 谈判：每个 agent 看完整对话历史
+# STEP 1b negotiation: each agent sees the full conversation history
 # =============================================================================
 def run_1b(session_row: pd.Series, tokenizer, model) -> list:
     print("\n" + "="*60)
@@ -193,7 +193,7 @@ def run_1b(session_row: pd.Series, tokenizer, model) -> list:
     for agent_role in TURN_ORDER:
         sys_prompt = RICH_PROMPTS[agent_role]
 
-        # 构建完整历史文本
+        # Build full history text
         if history:
             history_text = "\n".join(
                 f"[{t['agent']}]: {t['message']}" for t in history
@@ -216,14 +216,14 @@ def run_1b(session_row: pd.Series, tokenizer, model) -> list:
     return history
 
 # =============================================================================
-# STEP 1c 谈判：固定 Station/Grid，换 EV Driver persona
+# STEP 1c negotiation: fix Station/Grid, swap EV Driver persona
 # =============================================================================
 def run_1c(session_row: pd.Series, persona_name: str, tokenizer, model) -> list:
     print("\n" + "="*60)
     print(f"STEP 1c | EV Persona: {persona_name}")
     print("="*60)
 
-    # 1c 沿用 rich prompt 的完整历史设计
+    # 1c reuses the full history design from the rich prompt approach
     prompts_1c = {**RICH_PROMPTS, "EV_User": EV_PERSONAS[persona_name]}
 
     history = []
@@ -252,11 +252,11 @@ def run_1c(session_row: pd.Series, persona_name: str, tokenizer, model) -> list:
     return history
 
 # =============================================================================
-# 打印 Ground Truth（便于对比）
+# Print Ground Truth (for comparison)
 # =============================================================================
 def print_ground_truth(session_row: pd.Series):
     print("\n" + "="*60)
-    print("GROUND TRUTH（数据集原始对话）")
+    print("GROUND TRUTH (original dataset conversation)")
     print("="*60)
     gt = json.loads(session_row["negotiation_transcript"])
     for turn in gt:
@@ -279,10 +279,10 @@ def main():
     print(f"Grid signal : {session_row['grid_signal']}")
     print(f"{'='*60}")
 
-    # Ground truth 先打出来，方便跑完后对比
+    # Print ground truth first for easy comparison after running
     print_ground_truth(session_row)
 
-    # 加载模型（只加载一次，三个 step 共用）
+    # Load model once; shared across all three steps
     tokenizer, model = load_model(MODEL_NAME)
 
     results = {
@@ -310,7 +310,7 @@ def main():
         "transcript": hist_1b,
     }
 
-    # ── Step 1c：三种 EV persona ──────────────────────────────────
+    # ── Step 1c: three EV personas ─────────────────────────────────────
     results["step1c"] = {}
     for persona_name in EV_PERSONAS:
         hist = run_1c(session_row, persona_name, tokenizer, model)
@@ -319,13 +319,13 @@ def main():
             "transcript": hist,
         }
 
-    # 保存完整结果
+    # Save complete results
     out_path = os.path.join(OUTPUT_DIR, "step1_all_results.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 
     print(f"\n\n[Saved] {out_path}")
-    print("[Done]  Step 1 complete. 请分析输出后我们进入 Step 2。")
+    print("[Done]  Step 1 complete. Please analyze the output before proceeding to Step 2.")
 
 
 if __name__ == "__main__":
