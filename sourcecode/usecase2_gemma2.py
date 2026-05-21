@@ -2,12 +2,12 @@
 Use Case 2: EV Charging Demand Prediction
 Gemma 2 9B — Zero-Shot + QLoRA Fine-Tune
 
-推理修复：直接 decode 新生成的 token，不用字符串切片
+Inference fix: directly decode newly generated tokens instead of string slicing
 
-SKIP_TRAINING = True  → 跳过训练，直接加载已有 LoRA 权重测试
-SKIP_TRAINING = False → 重新训练
+SKIP_TRAINING = True  -> skip training, load existing LoRA weights for evaluation
+SKIP_TRAINING = False -> retrain from scratch
 
-前置条件：
+Prerequisites:
   pip install peft bitsandbytes accelerate transformers
 
 Author: XB Hu / Smart Mobility Lab, Penn State
@@ -27,7 +27,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model, TaskType, PeftModel
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 0. 配置
+# 0. Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 DATA_PATH    = "/home/xzh5180/Research/llm-evprediction/datasets/dataset2_text_context.csv"
 OUTPUT_DIR   = "/home/xzh5180/Research/llm-evprediction/outputs/usecase2_gemma2/"
@@ -57,9 +57,9 @@ print(f"  Device        : {DEVICE}")
 print(f"  Model         : {MODEL_NAME}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 1. 加载数据
+# 1. Load data
 # ─────────────────────────────────────────────────────────────────────────────
-print("\n[1] 加载数据...")
+print("\n[1] Loading data...")
 df = pd.read_csv(DATA_PATH, parse_dates=["date"])
 df = df.sort_values("date").reset_index(drop=True)
 
@@ -71,16 +71,16 @@ train_df = df.iloc[:n_train].reset_index(drop=True)
 val_df   = df.iloc[n_train:n_train + n_val].reset_index(drop=True)
 test_df  = df.iloc[n_train + n_val:].reset_index(drop=True)
 
-print(f"    总数据量 : {n} 行")
-print(f"    训练集   : {len(train_df)} 行")
-print(f"    验证集   : {len(val_df)} 行")
-print(f"    测试集   : {len(test_df)} 行")
+print(f"    Total data: {n} rows")
+print(f"    Train set: {len(train_df)} rows")
+print(f"    Val set  : {len(val_df)} rows")
+print(f"    Test set : {len(test_df)} rows")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 2. 加载模型
+# 2. Load model
 # ─────────────────────────────────────────────────────────────────────────────
-print(f"\n[2] 加载 Gemma 2 9B（4-bit 量化）...")
-print(f"    第一次运行会从 Hugging Face 下载模型（约 18GB）...")
+print(f"\n[2] Loading Gemma 2 9B (4-bit quantization)...")
+print(f"    First run will download model from Hugging Face (~18GB)...")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token    = tokenizer.eos_token
@@ -89,7 +89,7 @@ tokenizer.padding_side = "right"
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.bfloat16,  # Gemma 2 推荐 bfloat16
+    bnb_4bit_compute_dtype=torch.bfloat16,  # Gemma 2 recommends bfloat16
     bnb_4bit_use_double_quant=True
 )
 
@@ -100,12 +100,12 @@ base_model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True
 )
 base_model.config.pad_token_id = tokenizer.eos_token_id
-print(f"    基础模型加载完成")
+print(f"    Base model loaded")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 3. Prompt 格式
+# 3. Prompt format
 #
-# Gemma 2 Instruct 使用 <start_of_turn> / <end_of_turn> 格式
+# Gemma 2 Instruct uses the <start_of_turn> / <end_of_turn> format
 # ─────────────────────────────────────────────────────────────────────────────
 SYSTEM_MSG = (
     "You are an EV charging demand forecaster. "
@@ -154,10 +154,10 @@ def run_inference(model, tokenizer, context_text: str) -> float | None:
     return None
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段一：Zero-Shot
+# Phase 1: Zero-Shot
 # ─────────────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)
-print("  阶段一：Zero-Shot")
+print("  Phase 1: Zero-Shot")
 print("=" * 60)
 
 zs_preds    = []
@@ -177,19 +177,19 @@ with torch.no_grad():
         zs_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 zs_preds  = np.array(zs_preds)
 zs_labels = np.array(zs_labels)
 zs_mae    = mean_absolute_error(zs_labels, zs_preds)
 zs_mape   = np.mean(np.abs((zs_labels - zs_preds) / (zs_labels + 1e-6))) * 100
 
-print(f"\n  Zero-Shot 结果:")
+print(f"\n  Zero-Shot results:")
 print(f"    MAE : {zs_mae:.1f} kWh  |  MAPE : {zs_mape:.1f}%")
-print(f"    解析失败 : {zs_failures}/{len(test_df)}")
+print(f"    Parse failures: {zs_failures}/{len(test_df)}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段二：QLoRA Fine-Tune
+# Phase 2: QLoRA Fine-Tune
 # ─────────────────────────────────────────────────────────────────────────────
 best_model_path = OUTPUT_DIR + "best_lora"
 train_losses    = []
@@ -197,16 +197,16 @@ val_losses      = []
 
 if SKIP_TRAINING:
     print("\n" + "=" * 60)
-    print("  阶段二：跳过训练，加载已有 LoRA 权重")
+    print("  Phase 2: Skipping training, loading existing LoRA weights")
     print("=" * 60)
-    print(f"    加载: {best_model_path}")
+    print(f"    Loading: {best_model_path}")
 
 else:
     print("\n" + "=" * 60)
-    print("  阶段二：QLoRA Fine-Tune")
+    print("  Phase 2: QLoRA Fine-Tune")
     print("=" * 60)
 
-    # Gemma 2 的 attention 层名称
+    # Gemma 2 attention layer names
     lora_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
         r=LORA_R, lora_alpha=LORA_ALPHA, lora_dropout=LORA_DROPOUT,
@@ -217,7 +217,7 @@ else:
     model = get_peft_model(base_model, lora_config)
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total     = sum(p.numel() for p in model.parameters())
-    print(f"    可训练参数: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
+    print(f"    Trainable parameters: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
 
     class GemmaDataset(Dataset):
         def __init__(self, df, tokenizer, max_length):
@@ -251,7 +251,7 @@ else:
     scheduler     = StepLR(optimizer, step_size=3, gamma=0.5)
     best_val_loss = float("inf")
 
-    print(f"\n[4] 开始训练（{EPOCHS} epochs）...")
+    print(f"\n[4] Starting training ({EPOCHS} epochs)...")
     print("-" * 60)
 
     for epoch in range(EPOCHS):
@@ -291,15 +291,15 @@ else:
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
             model.save_pretrained(best_model_path)
-            flag = " ← 最佳"
+            flag = " <- Best"
         else:
             flag = ""
 
         print(f"  Epoch {epoch+1:2d}/{EPOCHS}  "
               f"Train Loss: {avg_train_loss:.4f}  Val Loss: {avg_val_loss:.4f}{flag}")
 
-# ── 测试集评估 ────────────────────────────────────────────────────────────────
-print("\n[5] 测试集评估（QLoRA Fine-Tune）...")
+# ── Test set evaluation ──────────────────────────────────────────────────────────
+print("\n[5] Test set evaluation (QLoRA Fine-Tune)...")
 ft_model = PeftModel.from_pretrained(base_model, best_model_path)
 ft_model.eval()
 
@@ -319,7 +319,7 @@ with torch.no_grad():
         ft_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 ft_preds  = np.array(ft_preds)
 ft_labels = np.array(ft_labels)
@@ -329,18 +329,18 @@ ft_mape   = np.mean(np.abs((ft_labels - ft_preds) / (ft_labels + 1e-6))) * 100
 mae_base  = mean_absolute_error(ft_labels, np.full_like(ft_labels, ft_labels.mean()))
 
 print("\n" + "=" * 60)
-print("  最终结果对比")
+print("  Final results comparison")
 print("=" * 60)
 print(f"  Gemma2 Zero-Shot       → MAE: {zs_mae:.1f} kWh  |  MAPE: {zs_mape:.1f}%")
 print(f"  Gemma2 QLoRA Fine-Tune → MAE: {ft_mae:.1f} kWh  |  MAPE: {ft_mape:.1f}%")
-print(f"  基线（均值预测）        → MAE: {mae_base:.1f} kWh")
-print(f"\n  参考：Mistral QLoRA  → MAE: 42.3 kWh")
-print(f"  参考：Llama QLoRA    → MAE: 73.5 kWh")
-print(f"  参考：Flan-T5        → MAE: 149.2 kWh")
+print(f"  Baseline (mean prediction)  -> MAE: {mae_base:.1f} kWh")
+print(f"\n  Reference: Mistral QLoRA  -> MAE: 42.3 kWh")
+print(f"  Reference: Llama QLoRA    -> MAE: 73.5 kWh")
+print(f"  Reference: Flan-T5        -> MAE: 149.2 kWh")
 print("=" * 60)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 可视화
+# Visualization
 # ─────────────────────────────────────────────────────────────────────────────
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle(
@@ -395,8 +395,8 @@ ax.grid(True, alpha=0.3, axis="y")
 plt.tight_layout()
 plot_path = OUTPUT_DIR + "gemma2_results.png"
 plt.savefig(plot_path, dpi=150, bbox_inches="tight")
-print(f"\n  图表已保存: {plot_path}")
-print(f"  Zero-Shot 解析失败: {zs_failures}/{len(test_df)}")
-print(f"  Fine-Tune 解析失败: {ft_failures}/{len(test_df)}")
+print(f"\n  Plot saved: {plot_path}")
+print(f"  Zero-Shot parse failures: {zs_failures}/{len(test_df)}")
+print(f"  Fine-Tune parse failures: {ft_failures}/{len(test_df)}")
 print(f"  Fine-Tune RMSE: {ft_rmse:.1f} kWh")
-print("\n✅ Gemma 2 9B QLoRA 完成")
+print("\n✅ Gemma 2 9B QLoRA complete")

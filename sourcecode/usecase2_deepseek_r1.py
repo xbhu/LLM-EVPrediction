@@ -2,14 +2,14 @@
 Use Case 2: EV Charging Demand Prediction
 DeepSeek-R1-0528-Qwen3-8B — Zero-Shot + QLoRA Fine-Tune
 
-DeepSeek R1 的关键特点：
-  - Chain-of-Thought 推理模型，输出格式：<think>推理过程</think>最终答案
-  - 基于 Qwen3-8B 蒸馏，使用相同的 ChatML 格式
-  - MIT License，完全开源，无需注册
-  - parse_demand 需要跳过 <think>...</think> 部分提取数字
+Key features of DeepSeek R1:
+  - Chain-of-Thought reasoning model, output format: <think>reasoning</think>final answer
+  - Distilled from Qwen3-8B, uses same ChatML format
+  - MIT License, fully open source, no registration required
+  - parse_demand must skip <think>...</think> section to extract the number
 
-SKIP_TRAINING = True  → 跳过训练，直接加载已有 LoRA 权重
-SKIP_TRAINING = False → 重新训练
+SKIP_TRAINING = True  -> skip training, load existing LoRA weights
+SKIP_TRAINING = False -> train from scratch
 
 Author: XB Hu / Smart Mobility Lab, Penn State
 """
@@ -28,13 +28,13 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model, TaskType, PeftModel
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 0. 配置
+# 0. Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 DATA_PATH    = "/home/xzh5180/Research/llm-evprediction/datasets/dataset2_text_context.csv"
 OUTPUT_DIR   = "/home/xzh5180/Research/llm-evprediction/outputs/usecase2_deepseek_r1/"
 MODEL_NAME   = "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B"
-MAX_LENGTH   = 256      # R1 需要更多 token 来输出思考过程
-MAX_NEW_TOKENS = 80    # 允许更多输出 token 以容纳 <think> 内容
+MAX_LENGTH   = 256      # R1 needs more tokens to output its reasoning process
+MAX_NEW_TOKENS = 80    # allow more output tokens to accommodate <think> content
 BATCH_SIZE   = 1
 GRAD_ACCUM   = 16
 EPOCHS       = 10
@@ -57,12 +57,12 @@ print("=" * 60)
 print(f"  SKIP_TRAINING : {SKIP_TRAINING}")
 print(f"  Device        : {DEVICE}")
 print(f"  Model         : {MODEL_NAME}")
-print(f"  Thinking Mode : ON（输出 <think>...</think> 再给数字）")
+print(f"  Thinking Mode : ON (outputs <think>...</think> then the number)")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 1. 加载数据
+# 1. Load data
 # ─────────────────────────────────────────────────────────────────────────────
-print("\n[1] 加载数据...")
+print("\n[1] Loading data...")
 df = pd.read_csv(DATA_PATH, parse_dates=["date"])
 df = df.sort_values("date").reset_index(drop=True)
 
@@ -74,16 +74,16 @@ train_df = df.iloc[:n_train].reset_index(drop=True)
 val_df   = df.iloc[n_train:n_train + n_val].reset_index(drop=True)
 test_df  = df.iloc[n_train + n_val:].reset_index(drop=True)
 
-print(f"    总数据量 : {n} 行")
-print(f"    训练集   : {len(train_df)} 行")
-print(f"    验证集   : {len(val_df)} 行")
-print(f"    测试集   : {len(test_df)} 行")
+print(f"    Total data: {n} rows")
+print(f"    Train set: {len(train_df)} rows")
+print(f"    Val set  : {len(val_df)} rows")
+print(f"    Test set : {len(test_df)} rows")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 2. 加载模型
+# 2. Load model
 # ─────────────────────────────────────────────────────────────────────────────
-print(f"\n[2] 加载 DeepSeek-R1-0528-Qwen3-8B（4-bit 量化）...")
-print(f"    第一次运行会从 Hugging Face 下载模型（约 16GB）...")
+print(f"\n[2] Loading DeepSeek-R1-0528-Qwen3-8B (4-bit quantization)...")
+print(f"    First run will download the model from Hugging Face (~16GB)...")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
@@ -101,12 +101,12 @@ base_model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True
 )
 base_model.config.pad_token_id = tokenizer.eos_token_id
-print(f"    基础模型加载完成")
+print(f"    Base model loaded")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 3. Prompt 格式 + 解析
+# 3. Prompt format + parsing
 #
-# R1 输出格式：
+# R1 output format:
 #   <think>
 #   Let me think about this...
 #   The temperature is cold, it's a weekday...
@@ -114,9 +114,9 @@ print(f"    基础模型加载完成")
 #   </think>
 #   1543
 #
-# parse_demand 需要：
-#   优先找 </think> 之后的数字（最终答案）
-#   找不到则从整个输出里找最后一个合理数字
+# parse_demand must:
+#   First look for a number after </think> (final answer)
+#   If not found, search entire output for last reasonable number
 # ─────────────────────────────────────────────────────────────────────────────
 SYSTEM_MSG = (
     "You are an EV charging demand forecaster. "
@@ -138,14 +138,14 @@ def build_inference_prompt(context_text: str) -> str:
 
 def build_training_text(context_text: str, demand: float) -> str:
     prompt = build_inference_prompt(context_text)
-    # 训练时给出简短答案，不强制生成完整 think 块
+    # During training, provide concise answer without forcing full think block
     return prompt + f"{demand:.0f}<|im_end|>"
 
 def parse_r1_output(generated_str: str) -> float | None:
     """
-    R1 输出解析：优先取 </think> 之后的数字
+    R1 output parsing: prefer number after </think>
     """
-    # 策略1：找 </think> 之后的第一个合理数字（最终答案）
+    # Strategy 1: find first reasonable number after </think> (final answer)
     after_think = re.split(r'</think>', generated_str, maxsplit=1)
     if len(after_think) > 1:
         match = re.search(r'\b(\d{3,5}(?:\.\d+)?)\b', after_think[1])
@@ -154,7 +154,7 @@ def parse_r1_output(generated_str: str) -> float | None:
             if 100 < val < 5000:
                 return val
 
-    # 策略2：找整个输出里最后一个合理数字
+    # Strategy 2: find last reasonable number in entire output
     matches = re.findall(r'\b(\d{3,5}(?:\.\d+)?)\b', generated_str)
     for m in reversed(matches):
         val = float(m)
@@ -188,10 +188,10 @@ def run_inference(model, tokenizer, context_text: str) -> float | None:
     return parse_r1_output(generated_str)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段一：Zero-Shot
+# Phase 1: Zero-Shot
 # ─────────────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)
-print("  阶段一：Zero-Shot")
+print("  Phase 1: Zero-Shot")
 print("=" * 60)
 
 zs_preds    = []
@@ -211,19 +211,19 @@ with torch.no_grad():
         zs_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 zs_preds  = np.array(zs_preds)
 zs_labels = np.array(zs_labels)
 zs_mae    = mean_absolute_error(zs_labels, zs_preds)
 zs_mape   = np.mean(np.abs((zs_labels - zs_preds) / (zs_labels + 1e-6))) * 100
 
-print(f"\n  Zero-Shot 结果:")
+print(f"\n  Zero-Shot results:")
 print(f"    MAE : {zs_mae:.1f} kWh  |  MAPE : {zs_mape:.1f}%")
-print(f"    解析失败 : {zs_failures}/{len(test_df)}")
+print(f"    Parse failures: {zs_failures}/{len(test_df)}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段二：QLoRA Fine-Tune
+# Phase 2: QLoRA Fine-Tune
 # ─────────────────────────────────────────────────────────────────────────────
 best_model_path = OUTPUT_DIR + "best_lora"
 train_losses    = []
@@ -231,13 +231,13 @@ val_losses      = []
 
 if SKIP_TRAINING:
     print("\n" + "=" * 60)
-    print("  阶段二：跳过训练，加载已有 LoRA 权重")
+    print("  Phase 2: Skipping training, loading existing LoRA weights")
     print("=" * 60)
-    print(f"    加载: {best_model_path}")
+    print(f"    Loading: {best_model_path}")
 
 else:
     print("\n" + "=" * 60)
-    print("  阶段二：QLoRA Fine-Tune")
+    print("  Phase 2: QLoRA Fine-Tune")
     print("=" * 60)
 
     lora_config = LoraConfig(
@@ -252,7 +252,7 @@ else:
 
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total     = sum(p.numel() for p in model.parameters())
-    print(f"    可训练参数: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
+    print(f"    Trainable parameters: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
 
     class R1Dataset(Dataset):
         def __init__(self, df, tokenizer, max_length):
@@ -286,7 +286,7 @@ else:
     scheduler     = StepLR(optimizer, step_size=3, gamma=0.5)
     best_val_loss = float("inf")
 
-    print(f"\n[4] 开始训练（{EPOCHS} epochs）...")
+    print(f"\n[4] Starting training ({EPOCHS} epochs)...")
     print("-" * 60)
 
     for epoch in range(EPOCHS):
@@ -326,15 +326,15 @@ else:
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
             model.save_pretrained(best_model_path)
-            flag = " ← 最佳"
+            flag = " <- Best"
         else:
             flag = ""
 
         print(f"  Epoch {epoch+1:2d}/{EPOCHS}  "
               f"Train Loss: {avg_train_loss:.4f}  Val Loss: {avg_val_loss:.4f}{flag}")
 
-# ── 测试集评估 ────────────────────────────────────────────────────────────────
-print("\n[5] 测试集评估（QLoRA Fine-Tune）...")
+# ── Test set evaluation ──────────────────────────────────────────────────────────
+print("\n[5] Test set evaluation (QLoRA Fine-Tune)...")
 ft_model = PeftModel.from_pretrained(base_model, best_model_path)
 ft_model.eval()
 
@@ -354,7 +354,7 @@ with torch.no_grad():
         ft_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 ft_preds  = np.array(ft_preds)
 ft_labels = np.array(ft_labels)
@@ -364,18 +364,18 @@ ft_mape   = np.mean(np.abs((ft_labels - ft_preds) / (ft_labels + 1e-6))) * 100
 mae_base  = mean_absolute_error(ft_labels, np.full_like(ft_labels, ft_labels.mean()))
 
 print("\n" + "=" * 60)
-print("  最终结果对比")
+print("  Final results comparison")
 print("=" * 60)
-print(f"  R1 Zero-Shot       → MAE: {zs_mae:.1f} kWh  |  MAPE: {zs_mape:.1f}%")
-print(f"  R1 QLoRA Fine-Tune → MAE: {ft_mae:.1f} kWh  |  MAPE: {ft_mape:.1f}%")
-print(f"  基线（均值预测）    → MAE: {mae_base:.1f} kWh")
-print(f"\n  参考：Gemma2  QLoRA → MAE: 36.0 kWh")
-print(f"  参考：Mistral QLoRA → MAE: 42.3 kWh")
-print(f"  参考：Llama   QLoRA → MAE: 73.5 kWh")
+print(f"  R1 Zero-Shot       -> MAE: {zs_mae:.1f} kWh  |  MAPE: {zs_mape:.1f}%")
+print(f"  R1 QLoRA Fine-Tune -> MAE: {ft_mae:.1f} kWh  |  MAPE: {ft_mape:.1f}%")
+print(f"  Baseline (mean prediction) -> MAE: {mae_base:.1f} kWh")
+print(f"\n  Reference: Gemma2  QLoRA -> MAE: 36.0 kWh")
+print(f"  Reference: Mistral QLoRA -> MAE: 42.3 kWh")
+print(f"  Reference: Llama   QLoRA -> MAE: 73.5 kWh")
 print("=" * 60)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 可视化
+# Visualization
 # ─────────────────────────────────────────────────────────────────────────────
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle(
@@ -430,8 +430,8 @@ ax.grid(True, alpha=0.3, axis="y")
 plt.tight_layout()
 plot_path = OUTPUT_DIR + "deepseek_r1_results.png"
 plt.savefig(plot_path, dpi=150, bbox_inches="tight")
-print(f"\n  图表已保存: {plot_path}")
-print(f"  Zero-Shot 解析失败: {zs_failures}/{len(test_df)}")
-print(f"  Fine-Tune 解析失败: {ft_failures}/{len(test_df)}")
+print(f"\n  Plot saved: {plot_path}")
+print(f"  Zero-Shot parse failures: {zs_failures}/{len(test_df)}")
+print(f"  Fine-Tune parse failures: {ft_failures}/{len(test_df)}")
 print(f"  Fine-Tune RMSE: {ft_rmse:.1f} kWh")
-print("\n✅ DeepSeek-R1-0528-Qwen3-8B QLoRA 完成")
+print("\n✅ DeepSeek-R1-0528-Qwen3-8B QLoRA complete")

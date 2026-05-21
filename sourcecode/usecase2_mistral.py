@@ -2,12 +2,12 @@
 Use Case 2: EV Charging Demand Prediction
 Mistral 7B — Zero-Shot + QLoRA Fine-Tune
 
-和 Llama 代码的主要区别：
-  1. 模型名：mistralai/Mistral-7B-Instruct-v0.3
-  2. Prompt 格式：Mistral 用 [INST] ... [/INST] 格式，不是 Llama 的 header 格式
-  3. 无需注册申请，直接下载
+Main differences from Llama code:
+  1. Model name: mistralai/Mistral-7B-Instruct-v0.3
+  2. Prompt format: Mistral uses [INST] ... [/INST] format, not Llama header format
+  3. No registration needed; download directly
 
-前置条件：
+Prerequisites:
   pip install peft bitsandbytes accelerate transformers
 
 Author: XB Hu / Smart Mobility Lab, Penn State
@@ -36,14 +36,14 @@ from peft import (
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 0. 配置
+# 0. Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 DATA_PATH  = "/home/xzh5180/Research/llm-evprediction/datasets/dataset2_text_context.csv"
 OUTPUT_DIR = "/home/xzh5180/Research/llm-evprediction/outputs/usecase2_mistral/"
 MODEL_NAME = "mistralai/Mistral-7B-Instruct-v0.3"
 MAX_LENGTH = 200
 BATCH_SIZE = 2
-GRAD_ACCUM = 8         # 等效 batch size = 16
+GRAD_ACCUM = 8         # effective batch size = 16
 EPOCHS     = 10
 LR         = 2e-4
 DEVICE     = "cuda" if torch.cuda.is_available() else "cpu"
@@ -69,9 +69,9 @@ print(f"  Batch size  : {BATCH_SIZE} × {GRAD_ACCUM} grad accum = {BATCH_SIZE * 
 print(f"  LR          : {LR}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 1. 加载数据
+# 1. Load data
 # ─────────────────────────────────────────────────────────────────────────────
-print("\n[1] 加载数据...")
+print("\n[1] Loading data...")
 df = pd.read_csv(DATA_PATH, parse_dates=["date"])
 df = df.sort_values("date").reset_index(drop=True)
 
@@ -83,16 +83,16 @@ train_df = df.iloc[:n_train].reset_index(drop=True)
 val_df   = df.iloc[n_train:n_train + n_val].reset_index(drop=True)
 test_df  = df.iloc[n_train + n_val:].reset_index(drop=True)
 
-print(f"    总数据量 : {n} 行")
-print(f"    训练集   : {len(train_df)} 行")
-print(f"    验证集   : {len(val_df)} 行")
-print(f"    测试集   : {len(test_df)} 行")
+print(f"    Total data : {n} rows")
+print(f"    Train set  : {len(train_df)} rows")
+print(f"    Val set    : {len(val_df)} rows")
+print(f"    Test set   : {len(test_df)} rows")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 2. 加载 Tokenizer 和 4-bit 量化模型
+# 2. Load Tokenizer and 4-bit quantized model
 # ─────────────────────────────────────────────────────────────────────────────
-print(f"\n[2] 加载 Mistral 7B（4-bit 量化）...")
-print(f"    第一次运行会从 Hugging Face 下载模型（约 15GB）...")
+print(f"\n[2] Loading Mistral 7B (4-bit quantization)...")
+print(f"    First run will download model from Hugging Face (~15GB)...")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token    = tokenizer.eos_token
@@ -113,12 +113,12 @@ base_model = AutoModelForCausalLM.from_pretrained(
 )
 base_model.config.pad_token_id = tokenizer.eos_token_id
 
-print(f"    基础模型加载完成")
+print(f"    Base model loaded")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 3. 添加 LoRA
+# 3. Add LoRA
 #
-# Mistral 的 attention 层名称和 Llama 完全相同，target_modules 一样
+# Mistral attention layer names are identical to Llama; same target_modules
 # ─────────────────────────────────────────────────────────────────────────────
 lora_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM,
@@ -137,14 +137,14 @@ model = get_peft_model(base_model, lora_config)
 
 trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
 total     = sum(p.numel() for p in model.parameters())
-print(f"\n    总参数量     : {total/1e6:.0f}M")
-print(f"    可训练参数量 : {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
+print(f"\n    Total parameters     : {total/1e6:.0f}M")
+print(f"    Trainable parameters : {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 4. Prompt 格式
+# 4. Prompt format
 #
-# Mistral Instruct 使用 [INST] ... [/INST] 格式
-# 这是和 Llama 最主要的区别
+# Mistral Instruct uses the [INST] ... [/INST] format
+# This is the main difference from Llama
 # ─────────────────────────────────────────────────────────────────────────────
 SYSTEM_MSG = (
     "You are an EV charging demand forecaster. "
@@ -170,10 +170,10 @@ def parse_demand(text: str, prompt: str) -> float | None:
     return None
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段一：Zero-Shot
+# Phase 1: Zero-Shot
 # ─────────────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)
-print("  阶段一：Zero-Shot")
+print("  Phase 1: Zero-Shot")
 print("=" * 60)
 
 zs_preds    = []
@@ -210,22 +210,22 @@ with torch.no_grad():
         zs_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成")
+            print(f"    {i+1}/{len(test_df)} done")
 
 zs_preds  = np.array(zs_preds)
 zs_labels = np.array(zs_labels)
 zs_mae    = mean_absolute_error(zs_labels, zs_preds)
 zs_mape   = np.mean(np.abs((zs_labels - zs_preds) / (zs_labels + 1e-6))) * 100
 
-print(f"\n  Zero-Shot 结果:")
+print(f"\n  Zero-Shot results:")
 print(f"    MAE : {zs_mae:.1f} kWh  |  MAPE : {zs_mape:.1f}%")
-print(f"    解析失败 : {zs_failures}/{len(test_df)}")
+print(f"    Parse failures : {zs_failures}/{len(test_df)}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段二：QLoRA Fine-Tune
+# Phase 2: QLoRA Fine-Tune
 # ─────────────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)
-print("  阶段二：QLoRA Fine-Tune")
+print("  Phase 2: QLoRA Fine-Tune")
 print("=" * 60)
 
 class MistralDataset(Dataset):
@@ -263,13 +263,13 @@ class MistralDataset(Dataset):
             "labels"         : labels
         }
 
-print("\n[3] 初始化 Dataset...")
+print("\n[3] Initializing Dataset...")
 train_dataset = MistralDataset(train_df, tokenizer, MAX_LENGTH)
 val_dataset   = MistralDataset(val_df,   tokenizer, MAX_LENGTH)
 train_loader  = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 val_loader    = DataLoader(val_dataset,   batch_size=BATCH_SIZE, shuffle=False)
-print(f"    训练 batches : {len(train_loader)}")
-print(f"    验证 batches : {len(val_loader)}")
+print(f"    Train batches : {len(train_loader)}")
+print(f"    Val batches   : {len(val_loader)}")
 
 optimizer     = AdamW(
     filter(lambda p: p.requires_grad, model.parameters()),
@@ -281,7 +281,7 @@ best_model_path = OUTPUT_DIR + "best_lora"
 train_losses  = []
 val_losses    = []
 
-print(f"\n[4] 开始训练（{EPOCHS} epochs）...")
+print(f"\n[4] Starting training ({EPOCHS} epochs)...")
 print("-" * 60)
 
 for epoch in range(EPOCHS):
@@ -325,7 +325,7 @@ for epoch in range(EPOCHS):
     if avg_val_loss < best_val_loss:
         best_val_loss = avg_val_loss
         model.save_pretrained(best_model_path)
-        flag = " ← 最佳"
+        flag = " <- Best"
     else:
         flag = ""
 
@@ -333,10 +333,10 @@ for epoch in range(EPOCHS):
           f"Train Loss: {avg_train_loss:.4f}  "
           f"Val Loss: {avg_val_loss:.4f}{flag}")
 
-print(f"\n  训练完成，最佳 LoRA 权重已保存: {best_model_path}")
+print(f"\n  Training complete, best LoRA weights saved: {best_model_path}")
 
-# ── 测试集评估 ────────────────────────────────────────────────────────────────
-print("\n[5] 测试集评估（QLoRA Fine-Tune）...")
+# ── Test set evaluation ─────────────────────────────────────────────────────────
+print("\n[5] Test set evaluation (QLoRA Fine-Tune)...")
 model = PeftModel.from_pretrained(base_model, best_model_path)
 model.eval()
 
@@ -380,16 +380,16 @@ ft_mape   = np.mean(np.abs((ft_labels - ft_preds) / (ft_labels + 1e-6))) * 100
 mae_base  = mean_absolute_error(ft_labels, np.full_like(ft_labels, ft_labels.mean()))
 
 print("\n" + "=" * 60)
-print("  最终结果对比")
+print("  Final results comparison")
 print("=" * 60)
 print(f"  Mistral Zero-Shot      → MAE: {zs_mae:.1f} kWh  |  MAPE: {zs_mape:.1f}%")
 print(f"  Mistral QLoRA Fine-Tune→ MAE: {ft_mae:.1f} kWh  |  MAPE: {ft_mape:.1f}%")
-print(f"  基线（均值预测）        → MAE: {mae_base:.1f} kWh")
-print(f"\n  参考：Flan-T5 Fine-Tune → MAE: 149.2 kWh  |  MAPE: 12.2%")
+print(f"  Baseline (mean prediction) -> MAE: {mae_base:.1f} kWh")
+print(f"\n  Reference: Flan-T5 Fine-Tune -> MAE: 149.2 kWh  |  MAPE: 12.2%")
 print("=" * 60)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 可视化
+# Visualization
 # ─────────────────────────────────────────────────────────────────────────────
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle(
@@ -400,32 +400,32 @@ fig.suptitle(
 ax = axes[0, 0]
 ax.plot(range(1, EPOCHS+1), train_losses, label="Train Loss", color="steelblue")
 ax.plot(range(1, EPOCHS+1), val_losses,   label="Val Loss",   color="darkorange")
-ax.set_title("训练曲线")
+ax.set_title("Training Curve")
 ax.set_xlabel("Epoch")
 ax.set_ylabel("Loss")
 ax.legend()
 ax.grid(True, alpha=0.3)
 
 ax = axes[0, 1]
-ax.plot(zs_labels, label="真实值",         color="steelblue",  lw=1.5)
-ax.plot(zs_preds,  label="Zero-Shot 预测", color="darkorange", lw=1.5, linestyle="--")
+ax.plot(zs_labels, label="Actual",     color="steelblue",  lw=1.5)
+ax.plot(zs_preds,  label="Zero-Shot",  color="darkorange", lw=1.5, linestyle="--")
 ax.set_title(f"Zero-Shot  (MAE: {zs_mae:.0f} kWh)")
-ax.set_xlabel("样本序号")
-ax.set_ylabel("需求 (kWh)")
+ax.set_xlabel("Sample Index")
+ax.set_ylabel("Demand (kWh)")
 ax.legend()
 ax.grid(True, alpha=0.3)
 
 ax = axes[1, 0]
-ax.plot(ft_labels, label="真实值",          color="steelblue",  lw=1.5)
-ax.plot(ft_preds,  label="Fine-Tune 预测",  color="darkorange", lw=1.5, linestyle="--")
+ax.plot(ft_labels, label="Actual",      color="steelblue",  lw=1.5)
+ax.plot(ft_preds,  label="Fine-Tune",   color="darkorange", lw=1.5, linestyle="--")
 ax.set_title(f"QLoRA Fine-Tune  (MAE: {ft_mae:.0f} kWh)")
-ax.set_xlabel("样本序号")
-ax.set_ylabel("需求 (kWh)")
+ax.set_xlabel("Sample Index")
+ax.set_ylabel("Demand (kWh)")
 ax.legend()
 ax.grid(True, alpha=0.3)
 
 ax = axes[1, 1]
-labels_bar = ["Mistral\nZero-Shot", "Mistral\nQLoRA", "均值\n基线", "Flan-T5\nFine-Tune"]
+labels_bar = ["Mistral\nZero-Shot", "Mistral\nQLoRA", "Mean\nBaseline", "Flan-T5\nFine-Tune"]
 maes_bar   = [zs_mae, ft_mae, mae_base, 149.2]
 colors_bar = ["lightcoral", "steelblue", "lightgray", "darkorange"]
 bars = ax.bar(labels_bar, maes_bar, color=colors_bar, edgecolor="white", width=0.5)
@@ -433,14 +433,14 @@ for bar, val in zip(bars, maes_bar):
     ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 3,
             f"{val:.0f}", ha="center", va="bottom", fontsize=11)
 ax.set_ylabel("MAE (kWh)")
-ax.set_title("MAE 横向对比")
+ax.set_title("MAE Comparison")
 ax.grid(True, alpha=0.3, axis="y")
 
 plt.tight_layout()
 plot_path = OUTPUT_DIR + "mistral_results.png"
 plt.savefig(plot_path, dpi=150, bbox_inches="tight")
-print(f"\n  图表已保存: {plot_path}")
+print(f"\n  Plot saved: {plot_path}")
 
-print("\n✅ Mistral 7B QLoRA 实验完成")
+print("\n✅ Mistral 7B QLoRA experiment complete")
 print(f"   Zero-Shot MAE  : {zs_mae:.1f} kWh")
 print(f"   Fine-Tune MAE  : {ft_mae:.1f} kWh  RMSE: {ft_rmse:.1f}  MAPE: {ft_mape:.1f}%")

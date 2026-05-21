@@ -2,14 +2,14 @@
 Use Case 2: EV Charging Demand Prediction
 Qwen3-8B — Zero-Shot + QLoRA Fine-Tune
 
-Qwen3 的关键特点：
-  - 内置 Thinking Mode（默认开启），可以切换到 Non-Thinking Mode
-  - 本代码使用 Non-Thinking Mode（enable_thinking=False），直接输出数字
-  - ChatML 格式：<|im_start|>system/user/assistant<|im_end|>
-  - 无需注册，Apache 2.0 开源
+Key features of Qwen3:
+  - Built-in Thinking Mode (enabled by default), switchable to Non-Thinking Mode
+  - This code uses Non-Thinking Mode (enable_thinking=False) for direct numeric output
+  - ChatML format: <|im_start|>system/user/assistant<|im_end|>
+  - No registration required; Apache 2.0 open source
 
-SKIP_TRAINING = True  → 跳过训练，直接加载已有 LoRA 权重
-SKIP_TRAINING = False → 重新训练
+SKIP_TRAINING = True  -> skip training, load existing LoRA weights
+SKIP_TRAINING = False -> retrain from scratch
 
 Author: XB Hu / Smart Mobility Lab, Penn State
 """
@@ -28,7 +28,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model, TaskType, PeftModel
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 0. 配置
+# 0. Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 DATA_PATH    = "/home/xzh5180/Research/llm-evprediction/datasets/dataset2_text_context.csv"
 OUTPUT_DIR   = "/home/xzh5180/Research/llm-evprediction/outputs/usecase2_qwen3/"
@@ -56,12 +56,12 @@ print("=" * 60)
 print(f"  SKIP_TRAINING : {SKIP_TRAINING}")
 print(f"  Device        : {DEVICE}")
 print(f"  Model         : {MODEL_NAME}")
-print(f"  Thinking Mode : OFF（Non-Thinking，直接输出数字）")
+print(f"  Thinking Mode : OFF (Non-Thinking, outputs number directly)")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 1. 加载数据
+# 1. Load data
 # ─────────────────────────────────────────────────────────────────────────────
-print("\n[1] 加载数据...")
+print("\n[1] Loading data...")
 df = pd.read_csv(DATA_PATH, parse_dates=["date"])
 df = df.sort_values("date").reset_index(drop=True)
 
@@ -73,16 +73,16 @@ train_df = df.iloc[:n_train].reset_index(drop=True)
 val_df   = df.iloc[n_train:n_train + n_val].reset_index(drop=True)
 test_df  = df.iloc[n_train + n_val:].reset_index(drop=True)
 
-print(f"    总数据量 : {n} 行")
-print(f"    训练集   : {len(train_df)} 行")
-print(f"    验证集   : {len(val_df)} 行")
-print(f"    测试集   : {len(test_df)} 行")
+print(f"    Total data: {n} rows")
+print(f"    Train set: {len(train_df)} rows")
+print(f"    Val set  : {len(val_df)} rows")
+print(f"    Test set : {len(test_df)} rows")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 2. 加载模型
+# 2. Load model
 # ─────────────────────────────────────────────────────────────────────────────
-print(f"\n[2] 加载 Qwen3-8B（4-bit 量化）...")
-print(f"    第一次运行会从 Hugging Face 下载模型（约 16GB）...")
+print(f"\n[2] Loading Qwen3-8B (4-bit quantization)...")
+print(f"    First run will download model from Hugging Face (~16GB)...")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
@@ -100,13 +100,13 @@ base_model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True
 )
 base_model.config.pad_token_id = tokenizer.eos_token_id
-print(f"    基础模型加载完成")
+print(f"    Base model loaded")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 3. Prompt 格式
+# 3. Prompt format
 #
-# Qwen3 使用 ChatML 格式，通过 apply_chat_template 构建
-# 关键：enable_thinking=False 关闭思考模式，直接输出数字
+# Qwen3 uses ChatML format built via apply_chat_template
+# Key: enable_thinking=False disables thinking mode for direct numeric output
 # ─────────────────────────────────────────────────────────────────────────────
 SYSTEM_MSG = (
     "You are an EV charging demand forecaster. "
@@ -115,7 +115,7 @@ SYSTEM_MSG = (
 )
 
 def build_inference_prompt(context_text: str) -> str:
-    """使用 apply_chat_template 构建推理 prompt，关闭 thinking mode"""
+    """Build inference prompt using apply_chat_template with thinking mode disabled"""
     messages = [
         {"role": "system", "content": SYSTEM_MSG},
         {"role": "user",   "content": context_text.strip()}
@@ -124,16 +124,16 @@ def build_inference_prompt(context_text: str) -> str:
         messages,
         tokenize=False,
         add_generation_prompt=True,
-        enable_thinking=False   # ← 关闭思考模式，直接输出数字
+        enable_thinking=False   # <- disable thinking mode for direct numeric output
     )
 
 def build_training_text(context_text: str, demand: float) -> str:
-    """构建训练用完整文本（包含答案）"""
+    """Build complete training text including the answer"""
     prompt = build_inference_prompt(context_text)
     return prompt + f"{demand:.0f}<|im_end|>"
 
 def run_inference(model, tokenizer, context_text: str) -> float | None:
-    """推理：只 decode 新生成的 token"""
+    """Inference: decode only the newly generated tokens"""
     prompt = build_inference_prompt(context_text)
     inputs = tokenizer(
         prompt,
@@ -163,10 +163,10 @@ def run_inference(model, tokenizer, context_text: str) -> float | None:
     return None
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段一：Zero-Shot
+# Phase 1: Zero-Shot
 # ─────────────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)
-print("  阶段一：Zero-Shot")
+print("  Phase 1: Zero-Shot")
 print("=" * 60)
 
 zs_preds    = []
@@ -186,19 +186,19 @@ with torch.no_grad():
         zs_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 zs_preds  = np.array(zs_preds)
 zs_labels = np.array(zs_labels)
 zs_mae    = mean_absolute_error(zs_labels, zs_preds)
 zs_mape   = np.mean(np.abs((zs_labels - zs_preds) / (zs_labels + 1e-6))) * 100
 
-print(f"\n  Zero-Shot 结果:")
+print(f"\n  Zero-Shot results:")
 print(f"    MAE : {zs_mae:.1f} kWh  |  MAPE : {zs_mape:.1f}%")
-print(f"    解析失败 : {zs_failures}/{len(test_df)}")
+print(f"    Parse failures: {zs_failures}/{len(test_df)}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段二：QLoRA Fine-Tune
+# Phase 2: QLoRA Fine-Tune
 # ─────────────────────────────────────────────────────────────────────────────
 best_model_path = OUTPUT_DIR + "best_lora"
 train_losses    = []
@@ -206,13 +206,13 @@ val_losses      = []
 
 if SKIP_TRAINING:
     print("\n" + "=" * 60)
-    print("  阶段二：跳过训练，加载已有 LoRA 权重")
+    print("  Phase 2: Skipping training, loading existing LoRA weights")
     print("=" * 60)
-    print(f"    加载: {best_model_path}")
+    print(f"    Loading: {best_model_path}")
 
 else:
     print("\n" + "=" * 60)
-    print("  阶段二：QLoRA Fine-Tune")
+    print("  Phase 2: QLoRA Fine-Tune")
     print("=" * 60)
 
     lora_config = LoraConfig(
@@ -227,7 +227,7 @@ else:
 
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total     = sum(p.numel() for p in model.parameters())
-    print(f"    可训练参数: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
+    print(f"    Trainable parameters: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
 
     class Qwen3Dataset(Dataset):
         def __init__(self, df, tokenizer, max_length):
@@ -261,7 +261,7 @@ else:
     scheduler     = StepLR(optimizer, step_size=3, gamma=0.5)
     best_val_loss = float("inf")
 
-    print(f"\n[4] 开始训练（{EPOCHS} epochs）...")
+    print(f"\n[4] Starting training ({EPOCHS} epochs)...")
     print("-" * 60)
 
     for epoch in range(EPOCHS):
@@ -301,15 +301,15 @@ else:
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
             model.save_pretrained(best_model_path)
-            flag = " ← 最佳"
+            flag = " <- Best"
         else:
             flag = ""
 
         print(f"  Epoch {epoch+1:2d}/{EPOCHS}  "
               f"Train Loss: {avg_train_loss:.4f}  Val Loss: {avg_val_loss:.4f}{flag}")
 
-# ── 测试集评估 ────────────────────────────────────────────────────────────────
-print("\n[5] 测试集评估（QLoRA Fine-Tune）...")
+# ── Test set evaluation ──────────────────────────────────────────────────────────
+print("\n[5] Test set evaluation (QLoRA Fine-Tune)...")
 ft_model = PeftModel.from_pretrained(base_model, best_model_path)
 ft_model.eval()
 
@@ -329,7 +329,7 @@ with torch.no_grad():
         ft_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 ft_preds  = np.array(ft_preds)
 ft_labels = np.array(ft_labels)
@@ -339,19 +339,19 @@ ft_mape   = np.mean(np.abs((ft_labels - ft_preds) / (ft_labels + 1e-6))) * 100
 mae_base  = mean_absolute_error(ft_labels, np.full_like(ft_labels, ft_labels.mean()))
 
 print("\n" + "=" * 60)
-print("  最终结果对比")
+print("  Final results comparison")
 print("=" * 60)
 print(f"  Qwen3-8B Zero-Shot       → MAE: {zs_mae:.1f} kWh  |  MAPE: {zs_mape:.1f}%")
 print(f"  Qwen3-8B QLoRA Fine-Tune → MAE: {ft_mae:.1f} kWh  |  MAPE: {ft_mape:.1f}%")
-print(f"  基线（均值预测）          → MAE: {mae_base:.1f} kWh")
-print(f"\n  参考：Gemma2  QLoRA → MAE: 36.0 kWh")
-print(f"  参考：Mistral QLoRA → MAE: 42.3 kWh")
-print(f"  参考：Llama   QLoRA → MAE: 73.5 kWh")
-print(f"  参考：Flan-T5 FT    → MAE: 149.2 kWh")
+print(f"  Baseline (mean prediction) -> MAE: {mae_base:.1f} kWh")
+print(f"\n  Reference: Gemma2  QLoRA -> MAE: 36.0 kWh")
+print(f"  Reference: Mistral QLoRA -> MAE: 42.3 kWh")
+print(f"  Reference: Llama   QLoRA -> MAE: 73.5 kWh")
+print(f"  Reference: Flan-T5 FT    -> MAE: 149.2 kWh")
 print("=" * 60)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 可视化
+# Visualization
 # ─────────────────────────────────────────────────────────────────────────────
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle(
@@ -406,8 +406,8 @@ ax.grid(True, alpha=0.3, axis="y")
 plt.tight_layout()
 plot_path = OUTPUT_DIR + "qwen3_results.png"
 plt.savefig(plot_path, dpi=150, bbox_inches="tight")
-print(f"\n  图表已保存: {plot_path}")
-print(f"  Zero-Shot 解析失败: {zs_failures}/{len(test_df)}")
-print(f"  Fine-Tune 解析失败: {ft_failures}/{len(test_df)}")
+print(f"\n  Plot saved: {plot_path}")
+print(f"  Zero-Shot parse failures: {zs_failures}/{len(test_df)}")
+print(f"  Fine-Tune parse failures: {ft_failures}/{len(test_df)}")
 print(f"  Fine-Tune RMSE: {ft_rmse:.1f} kWh")
-print("\n✅ Qwen3-8B QLoRA 完成")
+print("\n✅ Qwen3-8B QLoRA complete")

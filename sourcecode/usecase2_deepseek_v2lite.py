@@ -2,14 +2,14 @@
 Use Case 2: EV Charging Demand Prediction
 DeepSeek-V2-Lite-Chat — Zero-Shot + QLoRA Fine-Tune
 
-DeepSeek-V2-Lite 的关键特点（学习重点）：
-  - MoE 架构：15.7B 总参数，但每次推理只激活 2.4B
-  - MLA（Multi-head Latent Attention）：KV cache 压缩，推理更快
-  - 需要 trust_remote_code=True（自定义架构）
-  - LoRA target_modules 和标准 Transformer 不同（MLA 层名不同）
+Key features of DeepSeek-V2-Lite (learning highlights):
+  - MoE architecture: 15.7B total parameters, but only 2.4B activated per inference
+  - MLA (Multi-head Latent Attention): KV cache compression for faster inference
+  - Requires trust_remote_code=True (custom architecture)
+  - LoRA target_modules differ from standard Transformer (MLA layer names differ)
 
-SKIP_TRAINING = True  → 跳过训练，直接加载已有 LoRA 权重
-SKIP_TRAINING = False → 重新训练
+SKIP_TRAINING = True  -> skip training, load existing LoRA weights
+SKIP_TRAINING = False -> retrain from scratch
 
 Author: XB Hu / Smart Mobility Lab, Penn State
 """
@@ -28,7 +28,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model, TaskType, PeftModel
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 0. 配置
+# 0. Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 DATA_PATH    = "/home/xzh5180/Research/llm-evprediction/datasets/dataset2_text_context.csv"
 OUTPUT_DIR   = "/home/xzh5180/Research/llm-evprediction/outputs/usecase2_deepseek_v2lite/"
@@ -56,12 +56,12 @@ print("=" * 60)
 print(f"  SKIP_TRAINING : {SKIP_TRAINING}")
 print(f"  Device        : {DEVICE}")
 print(f"  Model         : {MODEL_NAME}")
-print(f"  架构          : MoE（15.7B 总参数 / 2.4B 激活参数）")
+print(f"  Architecture  : MoE (15.7B total params / 2.4B activated)")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 1. 加载数据
+# 1. Load data
 # ─────────────────────────────────────────────────────────────────────────────
-print("\n[1] 加载数据...")
+print("\n[1] Loading data...")
 df = pd.read_csv(DATA_PATH, parse_dates=["date"])
 df = df.sort_values("date").reset_index(drop=True)
 
@@ -73,18 +73,18 @@ train_df = df.iloc[:n_train].reset_index(drop=True)
 val_df   = df.iloc[n_train:n_train + n_val].reset_index(drop=True)
 test_df  = df.iloc[n_train + n_val:].reset_index(drop=True)
 
-print(f"    总数据量 : {n} 行")
-print(f"    训练集   : {len(train_df)} 行")
-print(f"    验证集   : {len(val_df)} 行")
-print(f"    测试集   : {len(test_df)} 行")
+print(f"    Total data: {n} rows")
+print(f"    Train set: {len(train_df)} rows")
+print(f"    Val set  : {len(val_df)} rows")
+print(f"    Test set : {len(test_df)} rows")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 2. 加载模型
+# 2. Load model
 #
-# 注意：DeepSeek-V2 使用自定义架构，必须加 trust_remote_code=True
+# Note: DeepSeek-V2 uses a custom architecture; trust_remote_code=True is required
 # ─────────────────────────────────────────────────────────────────────────────
-print(f"\n[2] 加载 DeepSeek-V2-Lite-Chat（4-bit 量化）...")
-print(f"    第一次运行会从 Hugging Face 下载模型（约 15GB）...")
+print(f"\n[2] Loading DeepSeek-V2-Lite-Chat (4-bit quantization)...")
+print(f"    First run will download model from Hugging Face (~15GB)...")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
 
@@ -99,23 +99,23 @@ base_model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
     quantization_config=bnb_config,
     device_map="auto",
-    trust_remote_code=True    # MoE 自定义架构必须
+    trust_remote_code=True    # required for MoE custom architecture
 )
 
-# DeepSeek-V2 需要从 generation_config 读取 pad_token_id
+# DeepSeek-V2 requires reading pad_token_id from generation_config
 gen_config = GenerationConfig.from_pretrained(MODEL_NAME, trust_remote_code=True)
 base_model.generation_config = gen_config
 base_model.generation_config.pad_token_id = gen_config.eos_token_id
 
-print(f"    基础模型加载完成")
+print(f"    Base model loaded")
 total_params   = sum(p.numel() for p in base_model.parameters()) / 1e9
-print(f"    总参数量: {total_params:.1f}B（其中每次推理只激活 ~2.4B）")
+print(f"    Total parameters: {total_params:.1f}B (only ~2.4B activated per inference)")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 3. Prompt 格式
+# 3. Prompt format
 #
-# DeepSeek-V2-Lite-Chat 使用 apply_chat_template
-# 格式：<|begin_of_sentence|>User: ...\n\nAssistant:
+# DeepSeek-V2-Lite-Chat uses apply_chat_template
+# Format: <|begin_of_sentence|>User: ...\n\nAssistant:
 # ─────────────────────────────────────────────────────────────────────────────
 SYSTEM_MSG = (
     "You are an EV charging demand forecaster. "
@@ -168,10 +168,10 @@ def run_inference(model, tokenizer, context_text: str) -> float | None:
     return None
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段一：Zero-Shot
+# Phase 1: Zero-Shot
 # ─────────────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)
-print("  阶段一：Zero-Shot")
+print("  Phase 1: Zero-Shot")
 print("=" * 60)
 
 zs_preds    = []
@@ -191,24 +191,24 @@ with torch.no_grad():
         zs_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 zs_preds  = np.array(zs_preds)
 zs_labels = np.array(zs_labels)
 zs_mae    = mean_absolute_error(zs_labels, zs_preds)
 zs_mape   = np.mean(np.abs((zs_labels - zs_preds) / (zs_labels + 1e-6))) * 100
 
-print(f"\n  Zero-Shot 结果:")
+print(f"\n  Zero-Shot results:")
 print(f"    MAE : {zs_mae:.1f} kWh  |  MAPE : {zs_mape:.1f}%")
-print(f"    解析失败 : {zs_failures}/{len(test_df)}")
+print(f"    Parse failures: {zs_failures}/{len(test_df)}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 阶段二：QLoRA Fine-Tune
+# Phase 2: QLoRA Fine-Tune
 #
-# DeepSeek-V2 使用 MLA 架构，attention 层名和标准 Transformer 不同：
-#   标准：q_proj, k_proj, v_proj, o_proj
-#   MLA：q_proj, kv_a_proj_with_mqa, kv_b_proj, o_proj
-# MoE FFN 层名和标准相同：gate_proj, up_proj, down_proj
+# DeepSeek-V2 uses MLA architecture; attention layer names differ from standard Transformer:
+#   Standard: q_proj, k_proj, v_proj, o_proj
+#   MLA: q_proj, kv_a_proj_with_mqa, kv_b_proj, o_proj
+# MoE FFN layer names are the same as standard: gate_proj, up_proj, down_proj
 # ─────────────────────────────────────────────────────────────────────────────
 best_model_path = OUTPUT_DIR + "best_lora"
 train_losses    = []
@@ -216,23 +216,23 @@ val_losses      = []
 
 if SKIP_TRAINING:
     print("\n" + "=" * 60)
-    print("  阶段二：跳过训练，加载已有 LoRA 权重")
+    print("  Phase 2: Skipping training, loading existing LoRA weights")
     print("=" * 60)
-    print(f"    加载: {best_model_path}")
+    print(f"    Loading: {best_model_path}")
 
 else:
     print("\n" + "=" * 60)
-    print("  阶段二：QLoRA Fine-Tune")
+    print("  Phase 2: QLoRA Fine-Tune")
     print("=" * 60)
 
-    # MLA 的 attention 层名：q_proj + kv_a_proj_with_mqa + kv_b_proj + o_proj
+    # MLA attention layer names: q_proj + kv_a_proj_with_mqa + kv_b_proj + o_proj
     lora_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
         r=LORA_R, lora_alpha=LORA_ALPHA, lora_dropout=LORA_DROPOUT,
         target_modules=[
             "q_proj",
-            "kv_a_proj_with_mqa",   # MLA 特有：KV 压缩投影
-            "kv_b_proj",            # MLA 特有：KV 解压缩投影
+            "kv_a_proj_with_mqa",   # MLA-specific: KV compression projection
+            "kv_b_proj",            # MLA-specific: KV decompression projection
             "o_proj",
             "gate_proj", "up_proj", "down_proj"  # MoE FFN
         ],
@@ -243,7 +243,7 @@ else:
 
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total     = sum(p.numel() for p in model.parameters())
-    print(f"    可训练参数: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
+    print(f"    Trainable parameters: {trainable/1e6:.2f}M ({trainable/total*100:.2f}%)")
 
     class V2Dataset(Dataset):
         def __init__(self, df, tokenizer, max_length):
@@ -277,7 +277,7 @@ else:
     scheduler     = StepLR(optimizer, step_size=3, gamma=0.5)
     best_val_loss = float("inf")
 
-    print(f"\n[4] 开始训练（{EPOCHS} epochs）...")
+    print(f"\n[4] Starting training ({EPOCHS} epochs)...")
     print("-" * 60)
 
     for epoch in range(EPOCHS):
@@ -317,15 +317,15 @@ else:
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
             model.save_pretrained(best_model_path)
-            flag = " ← 最佳"
+            flag = " <- Best"
         else:
             flag = ""
 
         print(f"  Epoch {epoch+1:2d}/{EPOCHS}  "
               f"Train Loss: {avg_train_loss:.4f}  Val Loss: {avg_val_loss:.4f}{flag}")
 
-# ── 测试集评估 ────────────────────────────────────────────────────────────────
-print("\n[5] 测试集评估（QLoRA Fine-Tune）...")
+# ── Test set evaluation ──────────────────────────────────────────────────────────
+print("\n[5] Test set evaluation (QLoRA Fine-Tune)...")
 ft_model = PeftModel.from_pretrained(base_model, best_model_path)
 ft_model.eval()
 
@@ -345,7 +345,7 @@ with torch.no_grad():
         ft_labels.append(row["next_day_demand"])
 
         if (i + 1) % 10 == 0:
-            print(f"    {i+1}/{len(test_df)} 完成  pred={pred:.0f}")
+            print(f"    {i+1}/{len(test_df)} done  pred={pred:.0f}")
 
 ft_preds  = np.array(ft_preds)
 ft_labels = np.array(ft_labels)
@@ -355,18 +355,18 @@ ft_mape   = np.mean(np.abs((ft_labels - ft_preds) / (ft_labels + 1e-6))) * 100
 mae_base  = mean_absolute_error(ft_labels, np.full_like(ft_labels, ft_labels.mean()))
 
 print("\n" + "=" * 60)
-print("  最终结果对比")
+print("  Final results comparison")
 print("=" * 60)
 print(f"  V2-Lite Zero-Shot       → MAE: {zs_mae:.1f} kWh  |  MAPE: {zs_mape:.1f}%")
 print(f"  V2-Lite QLoRA Fine-Tune → MAE: {ft_mae:.1f} kWh  |  MAPE: {ft_mape:.1f}%")
-print(f"  基线（均值预测）         → MAE: {mae_base:.1f} kWh")
-print(f"\n  参考：Gemma2  QLoRA → MAE: 36.0 kWh")
-print(f"  参考：Mistral QLoRA → MAE: 42.3 kWh")
-print(f"  参考：Llama   QLoRA → MAE: 73.5 kWh")
+print(f"  Baseline (mean prediction)   -> MAE: {mae_base:.1f} kWh")
+print(f"\n  Reference: Gemma2  QLoRA -> MAE: 36.0 kWh")
+print(f"  Reference: Mistral QLoRA -> MAE: 42.3 kWh")
+print(f"  Reference: Llama   QLoRA -> MAE: 73.5 kWh")
 print("=" * 60)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 可视化
+# Visualization
 # ─────────────────────────────────────────────────────────────────────────────
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle(
@@ -421,8 +421,8 @@ ax.grid(True, alpha=0.3, axis="y")
 plt.tight_layout()
 plot_path = OUTPUT_DIR + "deepseek_v2lite_results.png"
 plt.savefig(plot_path, dpi=150, bbox_inches="tight")
-print(f"\n  图表已保存: {plot_path}")
-print(f"  Zero-Shot 解析失败: {zs_failures}/{len(test_df)}")
-print(f"  Fine-Tune 解析失败: {ft_failures}/{len(test_df)}")
+print(f"\n  Plot saved: {plot_path}")
+print(f"  Zero-Shot parse failures: {zs_failures}/{len(test_df)}")
+print(f"  Fine-Tune parse failures: {ft_failures}/{len(test_df)}")
 print(f"  Fine-Tune RMSE: {ft_rmse:.1f} kWh")
-print("\n✅ DeepSeek-V2-Lite-Chat QLoRA 完成")
+print("\n✅ DeepSeek-V2-Lite-Chat QLoRA complete")
