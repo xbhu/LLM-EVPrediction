@@ -1,15 +1,15 @@
 """
 Use Case 8: Analysis & Visualization
 ======================================
-输入：
-  - usecase8_zeroshot_v3_results.csv   （5个城市全年预测）
-  - usecase8_ablation_results.csv      （ablation实验结果）
-输出：4张图，保存到 outputs/usecase8_zeroshot/
+Input:
+  - usecase8_zeroshot_v3_results.csv   (full-year predictions for 5 cities)
+  - usecase8_ablation_results.csv      (ablation experiment results)
+Output: 4 figures, saved to outputs/usecase8_zeroshot/
 
-图1: 全年季节性曲线 — 5个城市预测值 vs State College 真实值
-图2: 城市特征 vs 平均 transfer ratio 散点图
-图3: Ablation 热力图 — 5种条件 × 2城市的平均 ratio
-图4: Altoona 和 Harrisburg 的 ratio 月度稳定性（每个月跨条件的波动）
+Fig 1: Annual seasonal curves — predicted values for 5 cities vs State College actual
+Fig 2: City characteristics vs average transfer ratio scatter plot
+Fig 3: Ablation heatmap — 5 conditions × 2 cities, avg ratio
+Fig 4: Monthly ratio stability for Altoona and Harrisburg (variation across conditions per month)
 """
 
 import os

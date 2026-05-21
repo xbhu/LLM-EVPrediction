@@ -1,16 +1,16 @@
 """
 Use Case 8: Prompt Ablation Study
 ===================================
-目的：测试 LLM 的预测依赖哪类信息
-城市：Altoona（ratio < 1）和 Harrisburg（ratio > 1）
-条件：5种 prompt 版本，每种 × 12个月 = 120次推理
+Goal: Test which types of information the LLM's predictions depend on
+Cities: Altoona (ratio < 1) and Harrisburg (ratio > 1)
+Conditions: 5 prompt versions, each × 12 months = 120 inferences
 
-5种 Ablation 条件：
-  full          - 完整 prompt（基准）
-  no_desc       - 删掉 site_description（定性城市描述）
-  no_notes      - 删掉 transfer_notes（迁移推理提示）
-  no_source     - 删掉 State College 的具体数值
-  numeric_only  - 只保留数值特征，删掉所有自然语言描述
+5 Ablation conditions:
+  full          - full prompt (baseline)
+  no_desc       - remove site_description (qualitative city description)
+  no_notes      - remove transfer_notes (transfer reasoning guidance)
+  no_source     - remove the specific State College numeric values
+  numeric_only  - keep only numeric features, remove all natural language descriptions
 """
 
 import os
@@ -32,10 +32,10 @@ MAX_NEW_TOKENS = 600
 TEMPERATURE    = 0.1
 DO_SAMPLE      = True
 
-# 只跑这两个城市
+# Run only these two cities
 TARGET_CITIES = ["Altoona - Chestnut Ave Station", "Harrisburg - Market St Station"]
 
-# 格式约束（和v3一致）
+# Format constraint (same as v3)
 FORMAT_INSTRUCTION = """
 At the very end of your response, write exactly these two lines and nothing after them:
 >>DEMAND: [number]

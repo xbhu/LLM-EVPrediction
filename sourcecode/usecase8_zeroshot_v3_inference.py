@@ -1,9 +1,9 @@
 """
 Use Case 8: Zero-Shot EV Demand Transfer — v3 (Robust Extraction)
 =================================================================
-改进点（相对v2）：
-  - 输出格式改为 >>DEMAND / >>RATIO 前缀，避免与推理文本混淆
-  - regex 专门匹配 >> 前缀行，提取成功率大幅提升
+Improvements over v2:
+  - Output format changed to >>DEMAND / >>RATIO prefix to avoid confusion with reasoning text
+  - Regex specifically matches >> prefix lines, significantly improving extraction success rate
 """
 
 import os
@@ -25,7 +25,7 @@ MAX_NEW_TOKENS = 600
 TEMPERATURE    = 0.1
 DO_SAMPLE      = True
 
-# 追加在每个 prompt 末尾的格式约束
+# Format constraint appended to the end of every prompt
 FORMAT_INSTRUCTION = """
 At the very end of your response, write exactly these two lines and nothing after them:
 >>DEMAND: [number]
