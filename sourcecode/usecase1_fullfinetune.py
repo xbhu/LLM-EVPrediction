@@ -18,7 +18,7 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-# ── 配置 ──────────────────────────────────────────────────────────────────────
+# ── Configuration ─────────────────────────────────────────────────────────────
 DATA_PATH     = "/home/xzh5180/Research/llm-evprediction/datasets/dataset1_timeseries.csv"
 OUTPUT_DIR    = "/home/xzh5180/Research/llm-evprediction/outputs/usecase1_finetune/"
 MODEL_NAME    = "amazon/chronos-t5-small"
@@ -36,8 +36,8 @@ print("=" * 60)
 print("Use Case 1: Fine-tuning Chronos on EV Charging Data")
 print("=" * 60)
 
-# ── Step 1: 加载数据 ──────────────────────────────────────────────────────────
-print("\n[Step 1] 加载数据...")
+# ── Step 1: Load data ─────────────────────────────────────────────────────────
+print("\n[Step 1] Loading data...")
 df = pd.read_csv(DATA_PATH)
 
 history_cols = [f"demand_t-{i}" for i in range(24, 0, -1)]
@@ -53,7 +53,7 @@ X_train, y_train = X[:n_train], y[:n_train]
 X_val,   y_val   = X[n_train:n_val], y[n_train:n_val]
 X_test,  y_test  = X[n_val:], y[n_val:]
 
-print(f"  训练集: {len(X_train)} | 验证集: {len(X_val)} | 测试集: {len(X_test)}")
+print(f"  Train set: {len(X_train)} | Val set: {len(X_val)} | Test set: {len(X_test)}")
 
 # ── Step 2: Dataset ───────────────────────────────────────────────────────────
 class EVDataset(Dataset):
@@ -66,8 +66,8 @@ class EVDataset(Dataset):
 train_loader = DataLoader(EVDataset(X_train, y_train), batch_size=BATCH_SIZE, shuffle=True)
 val_loader   = DataLoader(EVDataset(X_val,   y_val),   batch_size=BATCH_SIZE, shuffle=False)
 
-# ── Step 3: 加载模型 ──────────────────────────────────────────────────────────
-print("\n[Step 2] 加载 Chronos 预训练权重...")
+# ── Step 3: Load model ────────────────────────────────────────────────────────
+print("\n[Step 2] Loading Chronos pretrained weights...")
 
 pipeline = BaseChronosPipeline.from_pretrained(
     MODEL_NAME,
@@ -78,30 +78,30 @@ device    = torch.device("cuda")
 tokenizer = pipeline.tokenizer
 t5_model  = pipeline.model.model   # T5ForConditionalGeneration
 
-print(f"  参数量: {sum(p.numel() for p in t5_model.parameters()):,}")
+print(f"  Parameter count: {sum(p.numel() for p in t5_model.parameters()):,}")
 
-# ── Step 4: 检查 tokenizer 的 boundaries ──────────────────────────────────────
-# Chronos tokenizer 把浮点数量化成 token ID
-# 我们需要 boundaries 来对 target 做同样的量化
-print("\n[Step 3] 检查 tokenizer API...")
+# ── Step 4: Check tokenizer boundaries ───────────────────────────────────────
+# Chronos tokenizer quantizes floats into token IDs
+# We need boundaries to apply the same quantization to targets
+print("\n[Step 3] Checking tokenizer API...")
 
 def get_boundaries(tokenizer):
     for attr in ["boundaries", "bin_edges", "centers", "low", "bins"]:
         if hasattr(tokenizer, attr):
             val = getattr(tokenizer, attr)
             if isinstance(val, torch.Tensor) and val.numel() > 10:
-                print(f"  找到 boundaries: tokenizer.{attr}, shape={val.shape}")
+                print(f"  Found boundaries: tokenizer.{attr}, shape={val.shape}")
                 return val
-    # fallback: 从 tokenizer 源码推断（Chronos 默认 4096 bins, 范围约 -10~10）
-    print("  未找到 boundaries 属性，使用默认 linspace 估算")
-    return torch.linspace(-15.0, 15.0, 4095)  # 4095 个边界 → 4096 个 bin
+    # fallback: infer from tokenizer source (Chronos default 4096 bins, range ~-10 to 10)
+    print("  No boundaries attribute found, using default linspace estimate")
+    return torch.linspace(-15.0, 15.0, 4095)  # 4095 boundaries -> 4096 bins
 
 boundaries = get_boundaries(tokenizer)
 
 def tokenize_sequence(seq_cpu, boundaries):
     """
-    把原始时间序列 (B, T) 量化成 token ID (B, T)
-    同时返回 scale，用于后续解码
+    Quantize raw time series (B, T) into token IDs (B, T)
+    Also returns scale for subsequent decoding:
     1. scale = mean(|seq|) per sample
     2. normalized = seq / scale
     3. token_id = bucketize(normalized, boundaries)
@@ -113,8 +113,8 @@ def tokenize_sequence(seq_cpu, boundaries):
 
 def decode_tokens(token_ids, scale, boundaries):
     """
-    把 token ID 解码回浮点值
-    取每个 bin 的中心值，再乘以 scale
+    Decode token IDs back to float values.
+    Takes the center value of each bin, then multiplies by scale.
     """
     centers = torch.cat([
         boundaries[:1] - (boundaries[1] - boundaries[0]),
@@ -124,21 +124,21 @@ def decode_tokens(token_ids, scale, boundaries):
     values = centers[token_ids.cpu()] * scale
     return values
 
-# ── Step 5: 验证 tokenize/decode 的正确性 ─────────────────────────────────────
-print("\n[Step 4] 验证量化/反量化...")
+# ── Step 5: Verify tokenize/decode correctness ───────────────────────────────
+print("\n[Step 4] Verifying quantization/dequantization...")
 test_seq   = torch.tensor(X_train[:3], dtype=torch.float32)
 test_ids, test_scale = tokenize_sequence(test_seq, boundaries)
 test_recon = decode_tokens(test_ids, test_scale, boundaries)
 recon_err  = (test_seq - test_recon).abs().mean().item()
-print(f"  量化重建误差（应接近0）: {recon_err:.4f} kWh")
+print(f"  Quantization reconstruction error (should be near 0): {recon_err:.4f} kWh")
 
-# ── Step 6: 优化器 ────────────────────────────────────────────────────────────
-print("\n[Step 5] 设置优化器...")
+# ── Step 6: Optimizer ─────────────────────────────────────────────────────────
+print("\n[Step 5] Setting up optimizer...")
 optimizer = AdamW(t5_model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
 scheduler = CosineAnnealingLR(optimizer, T_max=EPOCHS)
 
-# ── Step 7: 训练循环 ──────────────────────────────────────────────────────────
-print("\n[Step 6] 开始训练...")
+# ── Step 7: Training loop ─────────────────────────────────────────────────────
+print("\n[Step 6] Starting training...")
 print("-" * 60)
 
 train_losses  = []
@@ -150,20 +150,20 @@ PATIENCE      = 3
 
 for epoch in range(1, EPOCHS + 1):
 
-    # ── 训练 ──
+    # ── Training ──
     t5_model.train()
     ep_train = 0.0
 
     for batch_X, batch_y in train_loader:
-        # 1. 把 context + target 拼成完整序列，用同一个 scale 量化
+        # 1. Concatenate context + target into full sequence, quantize with same scale
         full_seq   = torch.cat([batch_X, batch_y], dim=1)       # (B, 30)
         full_ids, scale = tokenize_sequence(full_seq, boundaries)  # (B, 30)
 
         ctx_ids = full_ids[:, :CTX_LEN].to(device)             # (B, 24)
         tgt_ids = full_ids[:, CTX_LEN:].to(device)             # (B, 6)
 
-        # 2. T5 seq2seq: encoder 看 context，decoder 预测 target
-        #    T5ForConditionalGeneration.forward(input_ids, labels) 返回 cross-entropy loss
+        # 2. T5 seq2seq: encoder sees context, decoder predicts target
+        #    T5ForConditionalGeneration.forward(input_ids, labels) returns cross-entropy loss
         optimizer.zero_grad()
         outputs = t5_model(input_ids=ctx_ids, labels=tgt_ids)
         loss    = outputs.loss
@@ -175,7 +175,7 @@ for epoch in range(1, EPOCHS + 1):
 
     avg_train = ep_train / len(train_loader)
 
-    # ── 验证 ──
+    # ── Validation ──
     t5_model.eval()
     ep_val = 0.0
 
@@ -202,17 +202,17 @@ for epoch in range(1, EPOCHS + 1):
         best_epoch    = epoch
         patience_ctr  = 0
         torch.save(t5_model.state_dict(), OUTPUT_DIR + "best_model.pt")
-        print(f"             ✅ 保存最佳模型")
+        print(f"             ✅ Best model saved")
     else:
         patience_ctr += 1
         if patience_ctr >= PATIENCE:
-            print(f"\n  Early Stopping（epoch {epoch}），最佳在 epoch {best_epoch}")
+            print(f"\n  Early Stopping (epoch {epoch}), best at epoch {best_epoch}")
             break
 
 print("-" * 60)
 
-# ── Step 8: 测试集评估 ────────────────────────────────────────────────────────
-print("\n[Step 7] 加载最佳模型，在测试集上评估...")
+# ── Step 8: Test set evaluation ──────────────────────────────────────────────
+print("\n[Step 7] Loading best model, evaluating on test set...")
 t5_model.load_state_dict(torch.load(OUTPUT_DIR + "best_model.pt"))
 t5_model.eval()
 
@@ -226,22 +226,22 @@ for start in range(0, len(X_test), EVAL_BS):
     ctx_ids  = ctx_ids.to(device)
 
     with torch.no_grad():
-        # 用 T5 greedy decode 生成 target tokens
+        # Use T5 greedy decode to generate target tokens
         gen_ids = t5_model.generate(
             input_ids=ctx_ids,
             max_new_tokens=PRED_LEN,
             do_sample=False,
         )
-        # generate 输出包含 decoder_start_token，去掉第一个 token
+        # generate output includes decoder_start_token, skip the first token
         pred_ids = gen_ids[:, 1:PRED_LEN+1].cpu()
 
-    # 解码回 kWh
+    # Decode back to kWh
     preds = decode_tokens(pred_ids, scale, boundaries)
     all_preds.append(preds.numpy())
 
 predictions = np.vstack(all_preds)
 
-print("\n  Fine-tuned 模型结果：")
+print("\n  Fine-tuned model results:")
 mae_per_h  = []
 rmse_per_h = []
 for h in range(PRED_LEN):
@@ -254,11 +254,11 @@ for h in range(PRED_LEN):
 overall_mae  = mean_absolute_error(y_test.flatten(), predictions.flatten())
 overall_rmse = mean_squared_error(y_test.flatten(), predictions.flatten()) ** 0.5
 mape         = overall_mae / y_test.mean() * 100
-print(f"\n  总体 MAE: {overall_mae:.2f} kWh  MAPE: {mape:.1f}%")
-print(f"  对比 Zero-shot MAPE: 21.3%  →  Fine-tuned MAPE: {mape:.1f}%")
+print(f"\n  Overall MAE: {overall_mae:.2f} kWh  MAPE: {mape:.1f}%")
+print(f"  Comparison: Zero-shot MAPE: 21.3%  ->  Fine-tuned MAPE: {mape:.1f}%")
 
-# ── Step 9: 画图 ──────────────────────────────────────────────────────────────
-print("\n[Step 8] 生成图表...")
+# ── Step 9: Plot ──────────────────────────────────────────────────────────────
+print("\n[Step 8] Generating charts...")
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5))
 fig.suptitle("Fine-tuning Chronos — EV Charging Demand\nSmart Mobility Lab, Penn State",
@@ -285,10 +285,10 @@ ax2.set_xticks(x); ax2.legend(); ax2.grid(True, alpha=0.3, axis="y")
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "results.png", dpi=150, bbox_inches="tight")
-print(f"  保存: {OUTPUT_DIR}results.png")
+print(f"  Saved: {OUTPUT_DIR}results.png")
 
 print("\n" + "=" * 60)
-print("✅ Fine-tuning 完成")
-print(f"   Zero-shot MAPE: 21.3%  →  Fine-tuned MAPE: {mape:.1f}%")
-print(f"   最佳模型: {OUTPUT_DIR}best_model.pt")
+print("✅ Fine-tuning complete")
+print(f"   Zero-shot MAPE: 21.3%  ->  Fine-tuned MAPE: {mape:.1f}%")
+print(f"   Best model: {OUTPUT_DIR}best_model.pt")
 print("=" * 60)

@@ -14,7 +14,7 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-# ── 配置 ──────────────────────────────────────────────────────────────────────
+# ── Configuration ─────────────────────────────────────────────────────────────
 DATA_PATH  = "/home/xzh5180/Research/llm-evprediction/datasets/dataset1_timeseries.csv"
 OUTPUT_DIR = "/home/xzh5180/Research/llm-evprediction/outputs/usecase1_chronos/"
 MODEL_NAME = "amazon/chronos-t5-small"
@@ -22,23 +22,23 @@ N_EVAL     = 200
 N_SAMPLES  = 20
 BATCH_SIZE = 20
 
-# 自动创建输出目录
+# Auto-create output directory
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 print("=" * 60)
 print("Use Case 1: EV Demand Forecasting with Chronos")
 print("=" * 60)
 
-# ── Step 1: 加载数据 ──────────────────────────────────────────────────────────
-print("\n[Step 1] 加载数据...")
+# ── Step 1: Load data ─────────────────────────────────────────────────────────
+print("\n[Step 1] Loading data...")
 df = pd.read_csv(DATA_PATH)
-print(f"  数据集大小: {len(df)} 个样本")
-print(f"  每个样本: 过去24小时需求 → 预测未来6小时需求")
+print(f"  Dataset size: {len(df)} samples")
+print(f"  Each sample: past 24-hour demand -> forecast next 6-hour demand")
 
-# ── Step 2: 加载 Chronos 模型 ─────────────────────────────────────────────────
-print("\n[Step 2] 加载 Chronos 模型...")
-print(f"  模型: {MODEL_NAME}")
-print("  第一次运行会从 HuggingFace 下载模型权重，需要几分钟...")
+# ── Step 2: Load Chronos model ────────────────────────────────────────────────
+print("\n[Step 2] Loading Chronos model...")
+print(f"  Model: {MODEL_NAME}")
+print("  First run will download model weights from HuggingFace, this may take a few minutes...")
 
 from chronos import BaseChronosPipeline
 
@@ -47,10 +47,10 @@ pipeline = BaseChronosPipeline.from_pretrained(
     device_map="cuda",
     torch_dtype=torch.bfloat16,
 )
-print("  ✅ 模型加载成功")
+print("  ✅ Model loaded successfully")
 
-# ── Step 3: 准备评估数据 ──────────────────────────────────────────────────────
-print("\n[Step 3] 准备评估样本...")
+# ── Step 3: Prepare evaluation data ──────────────────────────────────────────
+print("\n[Step 3] Preparing evaluation samples...")
 
 np.random.seed(42)
 eval_idx = np.random.choice(len(df), size=N_EVAL, replace=False)
@@ -62,12 +62,12 @@ target_cols  = [f"target_t+{i}" for i in range(1, 7)]
 histories = eval_df[history_cols].values   # (200, 24)
 targets   = eval_df[target_cols].values    # (200, 6)
 
-print(f"  评估样本数: {N_EVAL}")
-print(f"  输入长度: 24小时 → 预测: 6小时")
+print(f"  Evaluation samples: {N_EVAL}")
+print(f"  Input length: 24 hours -> Forecast: 6 hours")
 
-# ── Step 4: 运行 Chronos 预测 ─────────────────────────────────────────────────
-print("\n[Step 4] 开始预测...")
-print(f"  每个样本生成 {N_SAMPLES} 个预测，取中位数作为最终结果")
+# ── Step 4: Run Chronos predictions ──────────────────────────────────────────
+print("\n[Step 4] Starting predictions...")
+print(f"  Generating {N_SAMPLES} predictions per sample, using median as final result")
 
 all_predictions = []
 
@@ -85,13 +85,13 @@ for start in range(0, len(histories), BATCH_SIZE):
 
     median_pred = np.median(forecast.numpy(), axis=1)
     all_predictions.append(median_pred)
-    print(f"  进度: {end}/{len(histories)}")
+    print(f"  Progress: {end}/{len(histories)}")
 
 predictions = np.vstack(all_predictions)  # (200, 6)
-print("  ✅ 预测完成")
+print("  ✅ Predictions complete")
 
-# ── Step 5: 评估精度 ──────────────────────────────────────────────────────────
-print("\n[Step 5] 评估预测精度...")
+# ── Step 5: Evaluate accuracy ─────────────────────────────────────────────────
+print("\n[Step 5] Evaluating forecast accuracy...")
 
 mae_per_h  = []
 rmse_per_h = []
@@ -108,15 +108,15 @@ overall_rmse = mean_squared_error(targets.flatten(), predictions.flatten()) ** 0
 mean_demand  = targets.mean()
 mape         = overall_mae / mean_demand * 100
 
-print(f"\n  总体 MAE:  {overall_mae:.2f} kWh")
-print(f"  总体 RMSE: {overall_rmse:.2f} kWh")
-print(f"  平均需求:  {mean_demand:.2f} kWh")
-print(f"  MAPE:      {mape:.1f}%")
+print(f"\n  Overall MAE:  {overall_mae:.2f} kWh")
+print(f"  Overall RMSE: {overall_rmse:.2f} kWh")
+print(f"  Mean demand:  {mean_demand:.2f} kWh")
+print(f"  MAPE:         {mape:.1f}%")
 
-# ── Step 6: 画图 ──────────────────────────────────────────────────────────────
-print("\n[Step 6] 生成图表...")
+# ── Step 6: Plot ──────────────────────────────────────────────────────────────
+print("\n[Step 6] Generating charts...")
 
-# 图1：4个预测示例
+# Figure 1: 4 forecast examples
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle("EV Charging Demand Forecasting — Chronos (Zero-shot)\nSmart Mobility Lab, Penn State",
              fontsize=13, fontweight="bold")
@@ -142,9 +142,9 @@ for i in range(4):
 plt.tight_layout()
 path1 = OUTPUT_DIR + "predictions.png"
 plt.savefig(path1, dpi=150, bbox_inches="tight")
-print(f"  保存: {path1}")
+print(f"  Saved: {path1}")
 
-# 图2：误差分析
+# Figure 2: Error analysis
 fig2, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 fig2.suptitle("Forecast Error Analysis — Chronos", fontsize=12, fontweight="bold")
 
@@ -168,11 +168,11 @@ ax2.grid(True, alpha=0.3)
 plt.tight_layout()
 path2 = OUTPUT_DIR + "error_analysis.png"
 plt.savefig(path2, dpi=150, bbox_inches="tight")
-print(f"  保存: {path2}")
+print(f"  Saved: {path2}")
 
 print("\n" + "=" * 60)
-print("✅ Use Case 1 完成")
+print("✅ Use Case 1 complete")
 print(f"   MAE:  {overall_mae:.2f} kWh  ({mape:.1f}% of mean demand)")
 print(f"   RMSE: {overall_rmse:.2f} kWh")
-print(f"   输出目录: {OUTPUT_DIR}")
+print(f"   Output directory: {OUTPUT_DIR}")
 print("=" * 60)

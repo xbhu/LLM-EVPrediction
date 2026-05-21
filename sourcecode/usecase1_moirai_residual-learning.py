@@ -22,7 +22,7 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-# ── 配置 ──────────────────────────────────────────────────────────────────────
+# ── Configuration ───────────────────────────────────────────────────────────────
 DATA_PATH   = "/home/xzh5180/Research/llm-evprediction/datasets/dataset1_timeseries.csv"
 OUTPUT_DIR  = "/home/xzh5180/Research/llm-evprediction/outputs/usecase1_moirai_finetune/"
 PRED_LEN    = 6
@@ -47,8 +47,8 @@ print("Use Case 1: MOIRAI + Residual Correction Network")
 print("Method: Frozen MOIRAI + trainable correction network")
 print("=" * 60)
 
-# ── Step 1: 加载数据 ───────────────────────────────────────────────────────────
-print("\n[Step 1] 加载数据...")
+# ── Step 1: Load data ────────────────────────────────────────────────────────────
+print("\n[Step 1] Loading data...")
 df = pd.read_csv(DATA_PATH)
 df['timestamp'] = pd.to_datetime(df['timestamp'])
 df['hour']       = df['timestamp'].dt.hour
@@ -65,19 +65,19 @@ y        = df[target_cols].values.astype(np.float32)
 future_temp = X_temp[:, -1:] * np.ones((len(X_temp), PRED_LEN), dtype=np.float32)
 X_temp_full = np.concatenate([X_temp, future_temp], axis=1)   # (N, 30)
 
-# 额外特征：最后一步需求、小时、是否周末 → 辅助修正网络
-hour_arr      = df['hour'].values.astype(np.float32) / 23.0         # 归一化到 0-1
+# Additional features: last demand, hour, weekend flag -> assist correction network
+hour_arr      = df['hour'].values.astype(np.float32) / 23.0         # normalized to 0-1
 weekend_arr   = df['is_weekend'].values.astype(np.float32)
-last_demand   = X_demand[:, -1]                                       # 最近一步需求
-last_temp     = X_temp[:, -1]                                         # 最近一步温度
+last_demand   = X_demand[:, -1]                                       # most recent demand
+last_temp     = X_temp[:, -1]                                         # most recent temperature
 X_meta = np.stack([last_demand/150.0, last_temp/110.0,
                    hour_arr, weekend_arr], axis=1).astype(np.float32) # (N, 4)
 
-print(f"  需求 shape: {X_demand.shape}")
-print(f"  温度 shape: {X_temp_full.shape}")
-print(f"  元特征 shape: {X_meta.shape}  (last_demand, last_temp, hour, is_weekend)")
+print(f"  Demand shape: {X_demand.shape}")
+print(f"  Temperature shape: {X_temp_full.shape}")
+print(f"  Meta-feature shape: {X_meta.shape}  (last_demand, last_temp, hour, is_weekend)")
 
-# ── Step 2: 数据切分 ───────────────────────────────────────────────────────────
+# ── Step 2: Data split ───────────────────────────────────────────────────────────
 n       = len(X_demand)
 n_train = int(n * TRAIN_RATIO)
 n_val   = int(n * (TRAIN_RATIO + VAL_RATIO))
@@ -87,10 +87,10 @@ X_t_tr, X_t_val, X_t_te     = X_temp_full[:n_train], X_temp_full[n_train:n_val],
 X_m_tr, X_m_val, X_m_te     = X_meta[:n_train], X_meta[n_train:n_val], X_meta[n_val:]
 y_tr,   y_val,   y_te        = y[:n_train], y[n_train:n_val], y[n_val:]
 
-print(f"\n[Step 2] 数据切分: 训练 {len(X_d_tr)} | 验证 {len(X_d_val)} | 测试 {len(X_d_te)}")
+print(f"\n[Step 2] Data split: Train {len(X_d_tr)} | Val {len(X_d_val)} | Test {len(X_d_te)}")
 
-# ── Step 3: 加载冻结的 MOIRAI ─────────────────────────────────────────────────
-print("\n[Step 3] 加载 MOIRAI（冻结，不训练）...")
+# ── Step 3: Load frozen MOIRAI ──────────────────────────────────────────────────
+print("\n[Step 3] Loading MOIRAI (frozen, no training)...")
 
 moirai = MoiraiForecast(
     module=MoiraiModule.from_pretrained("Salesforce/moirai-1.0-R-small"),
@@ -105,16 +105,16 @@ moirai = MoiraiForecast(
 moirai.eval()
 for p in moirai.parameters():
     p.requires_grad = False
-print("  ✅ MOIRAI 加载完成，全部参数已冻结")
+print("  ✅ MOIRAI loaded, all parameters frozen")
 
-# ── Step 4: 定义残差修正网络 ──────────────────────────────────────────────────
-print("\n[Step 4] 定义残差修正网络...")
+# ── Step 4: Define residual correction network ────────────────────────────────
+print("\n[Step 4] Defining residual correction network...")
 
 class ResidualCorrectionNet(nn.Module):
     """
-    输入：MOIRAI 的基础预测（PRED_LEN=6）+ 元特征（4维）
-    输出：残差修正量（PRED_LEN=6）
-    最终预测 = MOIRAI 基础预测 + 修正量
+    Input: MOIRAI base predictions (PRED_LEN=6) + meta features (4-dim)
+    Output: residual correction (PRED_LEN=6)
+    Final prediction = MOIRAI base prediction + correction
     """
     def __init__(self, pred_len=6, meta_dim=4, hidden=64):
         super().__init__()
@@ -125,7 +125,7 @@ class ResidualCorrectionNet(nn.Module):
             nn.ReLU(),
             nn.Linear(hidden, pred_len),
         )
-        # 初始化输出层为接近0，让修正量一开始很小
+        # Initialize output layer near zero so initial corrections are small
         nn.init.zeros_(self.net[-1].weight)
         nn.init.zeros_(self.net[-1].bias)
 
@@ -135,13 +135,13 @@ class ResidualCorrectionNet(nn.Module):
 
 correction_net = ResidualCorrectionNet(pred_len=PRED_LEN, meta_dim=4, hidden=64)
 n_trainable = sum(p.numel() for p in correction_net.parameters())
-print(f"  修正网络参数量: {n_trainable:,}（极少，只占 MOIRAI 的 {n_trainable/13827528*100:.2f}%）")
+print(f"  Correction network parameters: {n_trainable:,} (tiny, only {n_trainable/13827528*100:.2f}% of MOIRAI)")
 
-# ── Step 5: 先获取 MOIRAI 的全部基础预测（预计算，节省训练时间） ──────────────────
-print("\n[Step 5] 预计算 MOIRAI 基础预测（所有样本）...")
+# ── Step 5: Pre-compute MOIRAI base predictions (saves training time) ──────────
+print("\n[Step 5] Pre-computing MOIRAI base predictions (all samples)...")
 
 def get_moirai_predictions(X_d, X_t, batch_size=32):
-    """用冻结的 MOIRAI 预测所有样本，结果存到 numpy array"""
+    """Use frozen MOIRAI to predict all samples, store result in numpy array"""
     preds = []
     for s in range(0, len(X_d), batch_size):
         e = min(s + batch_size, len(X_d))
@@ -161,18 +161,18 @@ def get_moirai_predictions(X_d, X_t, batch_size=32):
         preds.append(fc.median(dim=1).values.squeeze(-1).numpy())
     return np.vstack(preds)
 
-print("  计算训练集基础预测...")
+print("  Computing base predictions for training set...")
 base_tr  = get_moirai_predictions(X_d_tr,  X_t_tr)
-print("  计算验证集基础预测...")
+print("  Computing base predictions for validation set...")
 base_val = get_moirai_predictions(X_d_val, X_t_val)
-print("  计算测试集基础预测...")
+print("  Computing base predictions for test set...")
 base_te  = get_moirai_predictions(X_d_te,  X_t_te)
 
-# 计算零样本 MAPE
+# Compute zero-shot MAPE
 zs_mape = mean_absolute_error(y_te.flatten(), base_te.flatten()) / y_te.mean() * 100
-print(f"\n  多变量 Zero-shot MAPE（预计算验证）: {zs_mape:.1f}%")
+print(f"\n  Multivariate Zero-shot MAPE (pre-computed validation): {zs_mape:.1f}%")
 
-# ── Step 6: Dataset（用预计算的基础预测） ──────────────────────────────────────
+# ── Step 6: Dataset (using pre-computed base predictions) ─────────────────────────
 class CorrectionDataset(Dataset):
     def __init__(self, base_pred, meta, y):
         self.base = torch.tensor(base_pred)
@@ -186,8 +186,8 @@ train_loader = DataLoader(CorrectionDataset(base_tr,  X_m_tr,  y_tr),
 val_loader   = DataLoader(CorrectionDataset(base_val, X_m_val, y_val),
                           batch_size=BATCH_SIZE, shuffle=False)
 
-# ── Step 7: 训练修正网络 ───────────────────────────────────────────────────────
-print("\n[Step 6] 训练残差修正网络...")
+# ── Step 7: Train correction network ────────────────────────────────────────────
+print("\n[Step 6] Training residual correction network...")
 print("-" * 60)
 
 optimizer = AdamW(correction_net.parameters(), lr=LR, weight_decay=1e-4)
@@ -202,7 +202,7 @@ patience_ctr  = 0
 
 for epoch in range(1, EPOCHS + 1):
 
-    # 训练
+    # Train
     correction_net.train()
     ep_train = 0.0
     for base_pred, meta, batch_y in train_loader:
@@ -216,7 +216,7 @@ for epoch in range(1, EPOCHS + 1):
         ep_train += loss.item()
     avg_train = ep_train / len(train_loader)
 
-    # 验证
+    # Validate
     correction_net.eval()
     ep_val = 0.0
     with torch.no_grad():
@@ -239,17 +239,17 @@ for epoch in range(1, EPOCHS + 1):
         best_epoch    = epoch
         patience_ctr  = 0
         torch.save(correction_net.state_dict(), OUTPUT_DIR + "best_correction.pt")
-        print(f"             ✅ 保存最佳修正网络")
+        print(f"             ✅ Best correction network saved")
     else:
         patience_ctr += 1
         if patience_ctr >= PATIENCE:
-            print(f"\n  Early Stopping（epoch {epoch}），最佳在 epoch {best_epoch}")
+            print(f"\n  Early stopping (epoch {epoch}), best at epoch {best_epoch}")
             break
 
 print("-" * 60)
 
-# ── Step 8: 测试集评估 ─────────────────────────────────────────────────────────
-print("\n[Step 7] 加载最佳修正网络，测试集评估...")
+# ── Step 8: Test set evaluation ──────────────────────────────────────────────────
+print("\n[Step 7] Loading best correction network, evaluating on test set...")
 correction_net.load_state_dict(torch.load(OUTPUT_DIR + "best_correction.pt"))
 correction_net.eval()
 
@@ -261,7 +261,7 @@ with torch.no_grad():
 
 mae_per_h  = []
 rmse_per_h = []
-print("\n  Fine-tuned（MOIRAI + 修正网络）结果：")
+print("\n  Fine-tuned (MOIRAI + correction network) results:")
 for h in range(PRED_LEN):
     mae  = mean_absolute_error(y_te[:, h], ft_preds[:, h])
     rmse = mean_squared_error(y_te[:, h],  ft_preds[:, h]) ** 0.5
@@ -271,22 +271,22 @@ for h in range(PRED_LEN):
 
 ft_mape = mean_absolute_error(y_te.flatten(), ft_preds.flatten()) / y_te.mean() * 100
 
-print(f"\n  ── 全部模型 MAPE 汇总 ──")
+print(f"\n  ── All model MAPE summary ──")
 print(f"  Chronos zero-shot:                {CHRONOS_MAPE}%")
 print(f"  Chronos fine-tuned:               {CHRONOS_FT_MAPE}%")
 print(f"  TimesFM zero-shot:                {TIMESFM_MAPE}%")
-print(f"  MOIRAI zero-shot（单变量）:        {MOIRAI_ZS_MAPE}%")
-print(f"  MOIRAI zero-shot（多变量）:        {zs_mape:.1f}%")
-print(f"  MOIRAI + 残差修正（多变量）:       {ft_mape:.1f}%")
+print(f"  MOIRAI zero-shot (univariate):        {MOIRAI_ZS_MAPE}%")
+print(f"  MOIRAI zero-shot (multivariate):      {zs_mape:.1f}%")
+print(f"  MOIRAI + residual correction (multivariate): {ft_mape:.1f}%")
 
-# ── Step 9: 画图 ───────────────────────────────────────────────────────────────
-print("\n[Step 8] 生成图表...")
+# ── Step 9: Plot ──────────────────────────────────────────────────────────────────
+print("\n[Step 8] Generating plots...")
 
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 fig.suptitle("MOIRAI + Residual Correction Network — EV Charging Demand\nSmart Mobility Lab, Penn State",
              fontsize=12, fontweight="bold")
 
-# 训练曲线
+# Training curve
 ax = axes[0]
 ax.plot(range(1, len(train_losses)+1), train_losses,
         color="steelblue", marker="o", label="Train Loss")
@@ -310,10 +310,10 @@ ax.set_xlabel("Forecast Horizon"); ax.set_ylabel("MAE (kWh)")
 ax.set_title("MAE by Horizon"); ax.set_xticks(x)
 ax.legend(fontsize=8); ax.grid(True, alpha=0.3, axis="y")
 
-# MAPE 总览
+# MAPE overview
 ax = axes[2]
 labels = ["Chronos\nZS", "Chronos\nFT", "TimesFM\nZS",
-          "MOIRAI\nZS\n单变量", "MOIRAI\nZS\n多变量", "MOIRAI+\n修正网络"]
+          "MOIRAI\nZS\nUnivariate", "MOIRAI\nZS\nMultivariate", "MOIRAI+\nCorrection"]
 mapes  = [CHRONOS_MAPE, CHRONOS_FT_MAPE, TIMESFM_MAPE,
           MOIRAI_ZS_MAPE, zs_mape, ft_mape]
 colors = ["steelblue","cornflowerblue","orange","salmon","tomato","darkred"]
@@ -327,9 +327,9 @@ ax.grid(True, alpha=0.3, axis="y")
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "results.png", dpi=150, bbox_inches="tight")
-print(f"  保存: {OUTPUT_DIR}results.png")
+print(f"  Saved: {OUTPUT_DIR}results.png")
 
-# 预测示例图
+# Prediction example plots
 fig2, axes2 = plt.subplots(2, 2, figsize=(14, 9))
 fig2.suptitle("MOIRAI + Residual Correction — Prediction Examples\nSmart Mobility Lab, Penn State",
               fontsize=13, fontweight="bold")
@@ -349,12 +349,12 @@ for i in range(4):
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "predictions.png", dpi=150, bbox_inches="tight")
-print(f"  保存: {OUTPUT_DIR}predictions.png")
+print(f"  Saved: {OUTPUT_DIR}predictions.png")
 
 print("\n" + "=" * 60)
-print("✅ MOIRAI + 残差修正网络 完成")
-print(f"   MOIRAI ZS 单变量:          {MOIRAI_ZS_MAPE}%")
-print(f"   MOIRAI ZS 多变量:          {zs_mape:.1f}%")
-print(f"   MOIRAI + 残差修正 多变量:  {ft_mape:.1f}%")
-print(f"   最佳修正网络: {OUTPUT_DIR}best_correction.pt")
+print("✅ MOIRAI + residual correction network complete")
+print(f"   MOIRAI ZS univariate:          {MOIRAI_ZS_MAPE}%")
+print(f"   MOIRAI ZS multivariate:        {zs_mape:.1f}%")
+print(f"   MOIRAI + residual correction multivariate: {ft_mape:.1f}%")
+print(f"   Best correction network: {OUTPUT_DIR}best_correction.pt")
 print("=" * 60)

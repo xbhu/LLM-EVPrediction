@@ -14,12 +14,12 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-# ── 配置 ──────────────────────────────────────────────────────────────────────
+# ── Configuration ───────────────────────────────────────────────────────────────
 DATA_PATH  = "/home/xzh5180/Research/llm-evprediction/datasets/dataset1_timeseries.csv"
 OUTPUT_DIR = "/home/xzh5180/Research/llm-evprediction/outputs/usecase1_moirai_zeroshot/"
 N_EVAL     = 200
 PRED_LEN   = 6
-CTX_LEN    = 24      # 24 / patch_size=8 = 3 patches，可以整除
+CTX_LEN    = 24      # 24 / patch_size=8 = 3 patches, evenly divisible
 PATCH_SIZE = 8
 
 CHRONOS_MAE  = [9.69, 13.96, 15.79, 16.60, 16.29, 15.70]
@@ -33,13 +33,13 @@ print("=" * 60)
 print("Use Case 1: EV Demand Forecasting with MOIRAI (Zero-shot)")
 print("=" * 60)
 
-# ── Step 1: 导入 ──────────────────────────────────────────────────────────────
-print("\n[Step 1] 导入 MOIRAI...")
+# ── Step 1: Import ──────────────────────────────────────────────────────────────
+print("\n[Step 1] Importing MOIRAI...")
 from uni2ts.model.moirai import MoiraiForecast, MoiraiModule
-print("  ✅ 导入成功")
+print("  ✅ Import successful")
 
-# ── Step 2: 加载数据 ──────────────────────────────────────────────────────────
-print("\n[Step 2] 加载数据...")
+# ── Step 2: Load data ────────────────────────────────────────────────────────────
+print("\n[Step 2] Loading data...")
 df = pd.read_csv(DATA_PATH)
 
 history_cols = [f"demand_t-{i}" for i in range(24, 0, -1)]
@@ -51,28 +51,28 @@ eval_df   = df.iloc[eval_idx].reset_index(drop=True)
 histories = eval_df[history_cols].values.astype(np.float32)
 targets   = eval_df[target_cols].values.astype(np.float32)
 
-print(f"  评估样本数: {N_EVAL}")
-print(f"  输入: {CTX_LEN}小时 → 预测: {PRED_LEN}小时")
+print(f"  Evaluation samples: {N_EVAL}")
+print(f"  Input: {CTX_LEN} hours -> Forecast: {PRED_LEN} hours")
 print(f"  Patch size: {PATCH_SIZE}  ({CTX_LEN}/{PATCH_SIZE}={CTX_LEN//PATCH_SIZE} patches)")
 
-# ── Step 3: 加载模型 ──────────────────────────────────────────────────────────
-print("\n[Step 3] 加载 MOIRAI 模型...")
+# ── Step 3: Load model ───────────────────────────────────────────────────────────
+print("\n[Step 3] Loading MOIRAI model...")
 
 model = MoiraiForecast(
     module=MoiraiModule.from_pretrained("Salesforce/moirai-1.0-R-small"),
     prediction_length=PRED_LEN,
     context_length=CTX_LEN,
-    patch_size=PATCH_SIZE,   # 明确指定，不用 "auto"
+    patch_size=PATCH_SIZE,   # explicitly specified, not "auto"
     num_samples=100,
     target_dim=1,
     feat_dynamic_real_dim=0,
     past_feat_dynamic_real_dim=0,
 )
 model.eval()
-print("  ✅ MOIRAI 加载成功")
+print("  ✅ MOIRAI loaded successfully")
 
-# ── Step 4: 预测 ──────────────────────────────────────────────────────────────
-print("\n[Step 4] 开始预测...")
+# ── Step 4: Predict ──────────────────────────────────────────────────────────────
+print("\n[Step 4] Starting prediction...")
 
 all_predictions = []
 BATCH_SIZE = 32
@@ -94,16 +94,16 @@ for start in range(0, len(histories), BATCH_SIZE):
         )
 
     # forecast shape: (B, num_samples, PRED_LEN, 1)
-    # 取中位数，去掉最后的 variate 维度
+    # take median, remove last variate dimension
     median_pred = forecast.median(dim=1).values.squeeze(-1).numpy()  # (B, PRED_LEN)
     all_predictions.append(median_pred)
-    print(f"  进度: {end}/{len(histories)}")
+    print(f"  Progress: {end}/{len(histories)}")
 
 predictions = np.vstack(all_predictions)
-print(f"  ✅ 预测完成，输出 shape: {predictions.shape}")
+print(f"  ✅ Predictions complete, output shape: {predictions.shape}")
 
-# ── Step 5: 评估 ──────────────────────────────────────────────────────────────
-print("\n[Step 5] 评估预测精度...")
+# ── Step 5: Evaluate ─────────────────────────────────────────────────────────────
+print("\n[Step 5] Evaluating prediction accuracy...")
 
 mae_per_h  = []
 rmse_per_h = []
@@ -119,18 +119,18 @@ overall_mae  = mean_absolute_error(targets.flatten(), predictions.flatten())
 overall_rmse = mean_squared_error(targets.flatten(), predictions.flatten()) ** 0.5
 mape         = overall_mae / targets.mean() * 100
 
-print(f"\n  总体 MAE:  {overall_mae:.2f} kWh")
-print(f"  总体 RMSE: {overall_rmse:.2f} kWh")
-print(f"  MAPE:      {mape:.1f}%")
-print(f"\n  三模型对比：")
+print(f"\n  Overall MAE:  {overall_mae:.2f} kWh")
+print(f"  Overall RMSE: {overall_rmse:.2f} kWh")
+print(f"  MAPE:         {mape:.1f}%")
+print(f"\n  Three-model comparison:")
 print(f"  Chronos  MAPE: {CHRONOS_MAPE}%")
 print(f"  TimesFM  MAPE: {TIMESFM_MAPE}%")
 print(f"  MOIRAI   MAPE: {mape:.1f}%")
 
-# ── Step 6: 画图 ──────────────────────────────────────────────────────────────
-print("\n[Step 6] 生成图表...")
+# ── Step 6: Plot ─────────────────────────────────────────────────────────────────
+print("\n[Step 6] Generating plots...")
 
-# 图1：4个预测示例
+# Figure 1: 4 forecast examples
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle("EV Charging Demand Forecasting — MOIRAI (Zero-shot)\nSmart Mobility Lab, Penn State",
              fontsize=13, fontweight="bold")
@@ -153,9 +153,9 @@ for i in range(4):
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "predictions.png", dpi=150, bbox_inches="tight")
-print(f"  保存: {OUTPUT_DIR}predictions.png")
+print(f"  Saved: {OUTPUT_DIR}predictions.png")
 
-# 图2：三模型对比
+# Figure 2: Three-model comparison
 fig2, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
 fig2.suptitle("Zero-shot Comparison: Chronos vs TimesFM vs MOIRAI\nSmart Mobility Lab, Penn State",
               fontsize=12, fontweight="bold")
@@ -185,12 +185,12 @@ ax2.grid(True, alpha=0.3, axis="y")
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "comparison.png", dpi=150, bbox_inches="tight")
-print(f"  保存: {OUTPUT_DIR}comparison.png")
+print(f"  Saved: {OUTPUT_DIR}comparison.png")
 
 print("\n" + "=" * 60)
-print("✅ Use Case 1 MOIRAI Zero-shot 完成")
+print("✅ Use Case 1 MOIRAI Zero-shot complete")
 print(f"   Chronos MAPE:  {CHRONOS_MAPE}%")
 print(f"   TimesFM MAPE:  {TIMESFM_MAPE}%")
 print(f"   MOIRAI  MAPE:  {mape:.1f}%")
-print(f"   输出目录: {OUTPUT_DIR}")
+print(f"   Output directory: {OUTPUT_DIR}")
 print("=" * 60)

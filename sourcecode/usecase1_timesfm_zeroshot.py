@@ -13,7 +13,7 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 
-# ── 配置 ──────────────────────────────────────────────────────────────────────
+# ── Configuration ───────────────────────────────────────────────────────────────
 DATA_PATH  = "/home/xzh5180/Research/llm-evprediction/datasets/dataset1_timeseries.csv"
 OUTPUT_DIR = "/home/xzh5180/Research/llm-evprediction/outputs/usecase1_timesfm_zeroshot/"
 N_EVAL     = 200
@@ -22,7 +22,7 @@ CTX_LEN    = 24
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Chronos zero-shot 结果（用于对比）
+# Chronos zero-shot results (for comparison)
 CHRONOS_MAE = [9.69, 13.96, 15.79, 16.60, 16.29, 15.70]
 CHRONOS_MAPE = 21.3
 
@@ -30,22 +30,22 @@ print("=" * 60)
 print("Use Case 1: EV Demand Forecasting with TimesFM (Zero-shot)")
 print("=" * 60)
 
-# ── Step 1: 安装并导入 TimesFM ────────────────────────────────────────────────
-print("\n[Step 1] 导入 TimesFM...")
-print("  如果报错 ModuleNotFoundError，先运行：")
+# ── Step 1: Install and import TimesFM ──────────────────────────────────────────
+print("\n[Step 1] Importing TimesFM...")
+print("  If you get ModuleNotFoundError, first run:")
 print("  pip install timesfm")
 
 try:
     import timesfm
 except ImportError:
-    print("\n  ❌ TimesFM 未安装，请先运行：")
+    print("\n  ❌ TimesFM not installed. Please run:")
     print("     pip install timesfm")
     exit(1)
 
-print("  ✅ TimesFM 导入成功")
+print("  ✅ TimesFM imported successfully")
 
-# ── Step 2: 加载数据 ──────────────────────────────────────────────────────────
-print("\n[Step 2] 加载数据...")
+# ── Step 2: Load data ────────────────────────────────────────────────────────────
+print("\n[Step 2] Loading data...")
 df = pd.read_csv(DATA_PATH)
 
 history_cols = [f"demand_t-{i}" for i in range(24, 0, -1)]
@@ -57,20 +57,20 @@ eval_df   = df.iloc[eval_idx].reset_index(drop=True)
 histories = eval_df[history_cols].values   # (200, 24)
 targets   = eval_df[target_cols].values    # (200, 6)
 
-print(f"  评估样本数: {N_EVAL}")
-print(f"  输入: 24小时 → 预测: 6小时")
+print(f"  Evaluation samples: {N_EVAL}")
+print(f"  Input: 24 hours -> Forecast: 6 hours")
 
-# ── Step 3: 加载 TimesFM 模型 ─────────────────────────────────────────────────
-print("\n[Step 3] 加载 TimesFM 模型...")
-print("  模型: google/timesfm-1.0-200m-pytorch")
-print("  第一次运行会从 HuggingFace 下载权重（约800MB）...")
+# ── Step 3: Load TimesFM model ──────────────────────────────────────────────────
+print("\n[Step 3] Loading TimesFM model...")
+print("  Model: google/timesfm-1.0-200m-pytorch")
+print("  First run will download weights from HuggingFace (~800MB)...")
 
 tfm = timesfm.TimesFm(
     hparams=timesfm.TimesFmHparams(
-        backend="gpu",           # 使用 GPU
+        backend="gpu",           # use GPU
         per_core_batch_size=32,
-        horizon_len=PRED_LEN,    # 预测步长
-        context_len=32,     # 输入长度
+        horizon_len=PRED_LEN,    # forecast horizon
+        context_len=32,     # input length
         num_layers=20,
         model_dims=1280,
     ),
@@ -79,18 +79,18 @@ tfm = timesfm.TimesFm(
     ),
 )
 
-print("  ✅ TimesFM 加载成功")
+print("  ✅ TimesFM loaded successfully")
 
-# ── Step 4: 运行 TimesFM 预测 ─────────────────────────────────────────────────
-print("\n[Step 4] 开始预测...")
+# ── Step 4: Run TimesFM predictions ─────────────────────────────────────────────
+print("\n[Step 4] Starting prediction...")
 
-# TimesFM 输入格式：list of 1D numpy arrays
-# 把24步补齐到32步（在开头补8个点，用第一个值填充）
+# TimesFM input format: list of 1D numpy arrays
+# Pad 24 steps to 32 steps (prepend 8 points, edge-filled)
 histories_padded = np.pad(histories, ((0,0),(8,0)), mode="edge")
 inputs     = [histories_padded[i] for i in range(len(histories_padded))]
-freq_input = [0] * len(inputs)   # 0 = 高频数据（小时级别）
+freq_input = [0] * len(inputs)   # 0 = high-frequency data (hourly)
 
-# 预测，返回 (point_forecast, experimental_quantile_preds)
+# Predict, returns (point_forecast, experimental_quantile_preds)
 point_forecasts, _ = tfm.forecast(
     inputs,
     freq=freq_input,
@@ -98,10 +98,10 @@ point_forecasts, _ = tfm.forecast(
 
 # point_forecasts shape: (N_EVAL, horizon_len)
 predictions = np.array(point_forecasts)[:, :PRED_LEN]
-print(f"  ✅ 预测完成，输出 shape: {predictions.shape}")
+print(f"  ✅ Predictions complete, output shape: {predictions.shape}")
 
-# ── Step 5: 评估精度 ──────────────────────────────────────────────────────────
-print("\n[Step 5] 评估预测精度...")
+# ── Step 5: Evaluate accuracy ────────────────────────────────────────────────────
+print("\n[Step 5] Evaluating prediction accuracy...")
 
 mae_per_h  = []
 rmse_per_h = []
@@ -118,15 +118,15 @@ overall_rmse = mean_squared_error(targets.flatten(), predictions.flatten()) ** 0
 mean_demand  = targets.mean()
 mape         = overall_mae / mean_demand * 100
 
-print(f"\n  总体 MAE:  {overall_mae:.2f} kWh")
-print(f"  总体 RMSE: {overall_rmse:.2f} kWh")
-print(f"  MAPE:      {mape:.1f}%")
-print(f"\n  对比：Chronos MAPE {CHRONOS_MAPE}%  →  TimesFM MAPE {mape:.1f}%")
+print(f"\n  Overall MAE:  {overall_mae:.2f} kWh")
+print(f"  Overall RMSE: {overall_rmse:.2f} kWh")
+print(f"  MAPE:         {mape:.1f}%")
+print(f"\n  Comparison: Chronos MAPE {CHRONOS_MAPE}%  ->  TimesFM MAPE {mape:.1f}%")
 
-# ── Step 6: 画图 ──────────────────────────────────────────────────────────────
-print("\n[Step 6] 生成图表...")
+# ── Step 6: Plot ─────────────────────────────────────────────────────────────────
+print("\n[Step 6] Generating plots...")
 
-# 图1：4个预测示例
+# Figure 1: 4 forecast examples
 fig, axes = plt.subplots(2, 2, figsize=(14, 9))
 fig.suptitle("EV Charging Demand Forecasting — TimesFM (Zero-shot)\nSmart Mobility Lab, Penn State",
              fontsize=13, fontweight="bold")
@@ -149,9 +149,9 @@ for i in range(4):
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "predictions.png", dpi=150, bbox_inches="tight")
-print(f"  保存: {OUTPUT_DIR}predictions.png")
+print(f"  Saved: {OUTPUT_DIR}predictions.png")
 
-# 图2：TimesFM vs Chronos MAE 对比
+# Figure 2: TimesFM vs Chronos MAE comparison
 fig2, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5))
 fig2.suptitle("TimesFM vs Chronos — Zero-shot Comparison\nSmart Mobility Lab, Penn State",
               fontsize=12, fontweight="bold")
@@ -180,11 +180,11 @@ ax2.grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig(OUTPUT_DIR + "comparison.png", dpi=150, bbox_inches="tight")
-print(f"  保存: {OUTPUT_DIR}comparison.png")
+print(f"  Saved: {OUTPUT_DIR}comparison.png")
 
 print("\n" + "=" * 60)
-print("✅ Use Case 1 TimesFM Zero-shot 完成")
+print("✅ Use Case 1 TimesFM Zero-shot complete")
 print(f"   TimesFM MAPE:  {mape:.1f}%")
 print(f"   Chronos MAPE:  {CHRONOS_MAPE}%")
-print(f"   输出目录: {OUTPUT_DIR}")
+print(f"   Output directory: {OUTPUT_DIR}")
 print("=" * 60)
