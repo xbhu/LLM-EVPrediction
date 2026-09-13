@@ -12,18 +12,35 @@ A hands-on learning project that explores **eight distinct roles** Large Languag
 
 ```
 llm-evprediction/
-├── datasets/          # CSV datasets for all 8 use cases
-├── sourcecode/        # Python scripts — one per model per use case
-│   ├── usecase1_chronos.py
-│   ├── usecase2_llama.py
-│   └── ...
-└── outputs/           # Generated plots, logs, and evaluation results
-    ├── usecase1_chronos/
-    ├── usecase2_llama/
-    └── ...
+├── datasets/                                        # CSV datasets for all 8 use cases
+├── sourcecode/                                      # Python scripts organized by use case
+│   ├── usecase1_time-series-foundation-models/
+│   │   ├── usecase1_chronos.py
+│   │   ├── usecase1_timesfm_zeroshot.py
+│   │   ├── usecase1_moirai_zeroshot.py
+│   │   └── ...
+│   ├── usecase2_text-context-fewshot-finetuning/
+│   ├── usecase3_end-to-end-prediction-explanation/
+│   ├── usecase4_data-augmentation-extreme-scenarios/
+│   ├── usecase5_anomaly-explainer/
+│   ├── usecase6_decision-support/
+│   ├── usecase7_multiagent-negotiation/
+│   └── usecase8_zero-shot-transfer/
+└── outputs/                                         # Generated plots, logs, and results
+    ├── usecase1_time-series-foundation-models/
+    │   ├── usecase1_chronos/
+    │   ├── usecase1_chronos_finetune/
+    │   └── ...
+    ├── usecase2_text-context-fewshot-finetuning/
+    ├── usecase3_end-to-end-prediction-explanation/
+    ├── usecase4_data-augmentation-extreme-scenarios/
+    ├── usecase5_anomaly-explainer/
+    ├── usecase6_decision-support/
+    ├── usecase7_multiagent-negotiation/
+    └── usecase8_zero-shot-transfer/
 ```
 
-Script naming convention: `usecase{N}_{model}.py` — each script is self-contained and maps directly to a subfolder under `outputs/`.
+Each `sourcecode/usecase{N}_*/` folder contains one Python script per model, plus a Markdown notes file summarizing the approach. Each `outputs/usecase{N}_*/` folder mirrors the same structure, with one subfolder per model run containing plots, logs, and evaluation results.
 
 ---
 
