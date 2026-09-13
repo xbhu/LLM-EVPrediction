@@ -40,7 +40,7 @@ llm-evprediction/
     └── usecase8_zero-shot-transfer/
 ```
 
-Each `sourcecode/usecase{N}_*/` folder contains one Python script per model, plus a Markdown notes file summarizing the approach. Each `outputs/usecase{N}_*/` folder mirrors the same structure, with one subfolder per model run containing plots, logs, and evaluation results.
+Each `sourcecode/usecase{N}_*/` folder contains one Python script per model, plus a `README.md` summarizing the approach (rendered automatically when browsing the folder on GitHub). Each `outputs/usecase{N}_*/` folder mirrors the same structure, with one subfolder per model run containing plots, logs, and evaluation results.
 
 ---
 
